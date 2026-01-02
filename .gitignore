@@ -359,3 +359,8 @@ Papers
 
 # Python virtual environment
 .venv/
+
+# Python cache
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
