@@ -1,10 +1,7 @@
 {
-  "latex-workshop.latex.outDir": "tex/build",
+  "latex-workshop.latex.outDir": "build",
   "latex-workshop.latex.recipes": [
-    {
-      "name": "latexmk (pdf)",
-      "tools": ["latexmk"]
-    }
+    { "name": "latexmk (pdf)", "tools": ["latexmk"] }
   ],
   "latex-workshop.latex.tools": [
     {
@@ -14,7 +11,7 @@
         "-pdf",
         "-interaction=nonstopmode",
         "-halt-on-error",
-        "-outdir=tex/build",
+        "-outdir=build",
         "%DOC%"
       ]
     }
