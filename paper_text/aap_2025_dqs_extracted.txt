@@ -1,0 +1,7601 @@
+SOURCE: papers/aap-2025_dqs.pdf
+PAGES: 63
+META /Author: Darrell Duffie, Lei Qiao, Yeneng Sun
+META /CreationDate: D:20250611094855+03'00'
+META /Creator: LaTeX with hyperref
+META /Keywords: 60J28, 91B68, 91B70, Independent dynamic random matching, Markov chain, exact law of large numbers, continuous-time, random mutation
+META /ModDate: D:20250619162016+08'00'
+META /Producer: Acrobat Distiller 24.0 (Windows)
+META /Subject: The Annals of Applied Probability, 2025, Vol. 35, No. 3, 1755-1790
+META /Title: Continuous time random matching
+
+================================================================================
+
+
+--- PAGE 1 ---
+
+The Annals of Applied Probability
+2025, V ol. 35, No. 3, 1755–1790
+https://doi.org/10.1214/25-AAP2156
+© Institute of Mathematical Statistics, 2025
+CONTINUOUS TIME RANDOM MATCHING
+BY DARRELL DUFFIE 1,a,L EI QIAO2,b AND YENENG SUN3,c
+1Graduate School of Business, Stanford University,adufﬁe@stanford.edu
+2School of Economics, Shanghai University of Finance and Economics,bqiao.lei@mail.shufe.edu.cn
+3Departments of Economics and Mathematics, National University of Singapore,cynsun@nus.edu.sg
+Continuous-time random matching with a large (continuum) population
+is widely exploited in the literature, but has not had a rigorous formulation,
+nor a demonstration of its key assumed properties. This paper provides the
+ﬁrst probabilistic foundation for this approach by presenting a mathemati-
+cal model of continuous-time random matching and showing its existence
+and properties. The agents’ types, which can change due to random match-
+ing and random mutation, form a continuum of independent continuous-time
+Markov chains. Using the exact law of large numbers, we show how the cross-
+sectional distribution of agent types evolves deterministically according to an
+explicit ordinary differential equation. Nonstandard analysis is used in prov-
+ing the main theorem.
+1. Introduction. Because of its tractability, continuous-time independent random
+matching among a continuum of agents is a popular modeling framework for a wide va-
+riety of applications. This literature commonly assumes that individuals search continuously
+over time for interacting partners, independently of each other. The intensity with which an
+individual of a given type interacts with counterparties of another given type is speciﬁed. The
+origins of this general approach can be traced to the 1970s, with models of evolutionary biol-
+ogy, money, and labor markets. Extensive further developments have followed over the past
+four decades, including applications in game theory and over-the-counter ﬁnancial markets.
+1
+Throughout, the research literature has exploited the intuitive idea that independence should,
+by the law of large numbers for a continuum of independent random variables, 2 lead to a
+deterministically evolving cross-sectional (population) distribution of agent types. While this
+is a natural approach, none of this literature or other work provides for the existence of the
+Received August 2023; revised December 2024.
+MSC2020 subject classiﬁcations.60J28, 91B68, 91B70.
+Key words and phrases.Independent dynamic random matching, Markov chain, exact law of large numbers,
+continuous-time, random mutation.
+1On evolutionary biology, see Maynard Smith and Price (1973), Taylor and Jonker (1978), and the monograph
+by Sigmund (2017). On monetary economics, seeHellwig (1976), Kiyotaki and Wright (1993), Trejos and Wright
+(1995)a n dZhou (1997). On labor economics, see Mortensen (1978), Diamond (1982) and the book-length treat-
+ment by Pissarides (2000). On game-theoretic models, see Benaïm and Weibull (2003), Currarini, Jackson and
+Pin (2009), and Hofbauer and Sandholm (2007). On over-the-counter ﬁnancial markets, see Dufﬁe, Gârleanu and
+Pedersen (2005), Lagos and Rocheteau (2009), Üslü (2019) and the book by Dufﬁe (2012). These are only small
+samples of the large respective literatures.
+2Mathematical models involving inﬁnitely many agents are also popular in settings that do not involve random
+matching. Recent developments include Guéant, Lasry and Lions (2011), Carmona and Delarue (2018), Delarue,
+Lacker and Ramanan (2020), Aurell, Carmona and Laurière (2022), all of which are in the mathematical literature
+on mean-ﬁeld games; and, in the economics literature,Hammond (2015), He and Yannelis(2016), Anderson et al.
+(2022), Hellwig (2022). In games with inﬁnitely many agents (such as those mentioned here as well as in many
+papers discussed in the survey chapter by Ali Khan and Sun (2002)), agents choose their optimal actions and
+have payoffs that depend on their own actions as well as some societal aggregate. Random-matching models are
+distinctly different. Though our modeled matching-intensity function θ depends on the current cross-sectional
+type distribution, the agents in our matching model do not choose actions that affect θ. Moreover, payoffs are not
+modeled in our matching setting.
+1755
+
+
+--- PAGE 2 ---
+
+1756 D. DUFFIE, L. QIAO AND Y . SUN
+underlying continuous-time models of random matching at the level of individual agents, nor
+the key dynamic properties of the population used in applications.
+This paper provides the ﬁrst probabilistic foundation for these modeling approaches, based
+on explicit modeling of random matching, and demonstrating the associated deterministic
+evolution of aggregate population properties. In particular, we prove the ﬁrst available results
+on the existence of continuous-time random matching models among a continuum of individ-
+uals, demonstrate key properties that have commonly been relied upon in the literature, and
+show new properties that link individual-level behavior in these models to population-level
+behavior.
+Our model, to be formalized later, begins with an atomless measure space of agents whose
+properties have a ﬁnite set of types. Our main contribution is to construct (with given gen-
+eral parameters) a continuous-time independent dynamical system with random mutation of
+types over time, pair-wise random matching between agents, and random match-induced type
+changes that are deﬁned at the agent level by a random type process and a random matching
+process. In particular, agents’ type processes form a continuum of independent continuous-
+time Markov chains. Using the exact law of large numbers for a continuum of independent
+stochastic processes,
+3 we show that the cross-sectional distribution pt of agents’ types at
+time t is deterministic and satisﬁes an explicit ordinary differential equation. We also show
+that there exists at least one initializing cross-sectional distribution of types for which the
+population’s cross-sectional type distributionp
+t is constant over time.
+A key primitive of the model is the matching intensity function θ, which speciﬁes the
+conditional mean rate θkl(pt) at which an individual agent of current type k at time t is
+matched to some agent of type l. This matching intensity is allowed to depend on the cross-
+sectional distribution pt of agents’ types, subject to minor technical conditions. A second key
+primitive is the probability distribution ςkl of the new type of a type- k agent that is induced
+by a match with a type-l agent.4 This form of match-induced random type change is common
+in models and in practice. For example, this approach applies when an uninfected individual
+meets another individual with a speciﬁc infectious disease, so that the former agent may
+become infected with some probability depending on their respective types. This approach
+also applies when, in some market, a potential buyer and potential seller of an asset meet to
+trade.
+Each individual may also experience type changes, unilaterally, via random mutation. For
+example, if an individual is infected by some virus, the virus may randomly mutate into
+a severe or mild variant, and the expected speed of mutation may depend on traits of the
+host individual and the virus. We introduce the third primitive η
+kl ∈[ 0,∞) specifying the
+intensity with which any type- k agent mutates on its own to type l. Mutation allows for
+random changes over time in an agent’s traits, preferences or productivity, among other types
+of properties.
+In order to prove our main results in Theorem 1, we ﬁrst analyze a general ﬁnite-period
+dynamic random matching model with ﬁnitely many agents. This is done in Section 3.T h e
+properties that we present in that section include an asymptotic Markov property, asymp-
+totic independence, and estimations of the relevant conditional probabilities and distributions.
+These properties are crucial for the construction of the associated continuous-time matching
+models. The proof of Theorem 1 makes extensive use of basic results in nonstandard analy-
+sis,
+5 of which a brief introduction is provided in Section4 for the sake of readability. Then, in
+3See Theorem 2.16 in Sun (2006).
+4 Similarly, the probability distribution of the new type of the type-l agent is ςlk . In general, ςkl need not equal
+ςlk .
+5For a comprehensive introduction to nonstandard analysis (and the construction of Loeb measures as used
+in this paper), see the ﬁrst three chapters of Loeb and Wolff (2015). Nonstandard analysis has been used to
+
+
+--- PAGE 3 ---
+
+CONTINUOUS TIME RANDOM MATCHING 1757
+Section 5, using techniques in nonstandard analysis, we transfer the ﬁnite model developed
+in Section 3 to a hyperﬁnite model with inﬁnitely many agents 6 matched during each in-
+ﬁnitesimal time interval with inﬁnitesimal probabilities. Theorem 1 is proved by eliminating
+the inﬁnitesimals. For the sake of readability, complicated proofs of technical approximation
+results regarding the general ﬁnite-matching model, as stated in Sections 3.1 and 3.3,a r e
+provided in Appendix B in the Supplementary Material, Dufﬁe, Qiao and Sun (2025).
+One of the main difﬁculties in the proof of Theorem 1 is to estimate various cumulative
+effects associated with correlations and randomness for different stochastic processes over
+inﬁnitely many periods with inﬁnitesimal time length. 7 In Appendix A, we present Lemmas
+A.1–A.3 concerning a general class of discrete-time stochastic processes, which can be ap-
+plied in different settings and help us streamline the proofs of some technical approximation
+results stated in Section 3.3. By rounding off some inﬁnitesimals, we obtain a continuous-
+time random-matching model with a standard atomless probability space as the agent space.
+The advantage of working with a limit model of continuous-time independent random match-
+ing is that these associated correlations and randomness disappear completely, leading to
+properties of the model that are simple to calculate and convenient for modeling applications
+in various ﬁelds of study.
+2. Model and results. The set of agents is speciﬁed by an atomless measure space
+(I,
+I,λ). Without loss of generality, the total mass λ(I) of agents is 1. The set of states
+of the world is given by a probability space 8 (Ω, F,P) . A key modeling concern is that for
+a continuum of random variables, independence and joint measurability with respect to the
+usual product space (I × Ω, I ⊗ F,λ ⊗ P) are in general not compatible. For applications
+such as ours, one can work instead with a Fubini extension (I × Ω, I ⊠ F,λ ⊠ P),w h i c h
+extends the usual product probability space while retaining the Fubini property, allowing a
+change in the order of iterated integrals.9
+For some ﬁnite number K ≥ 2 of agent types, let S ={ 1,2,...,K } and let Δ be the set of
+probability measures on S, which can be viewed as the simplex in the Euclidean space RK.
+The time domain R+ is the set of nonnegative real numbers (R++ denotes the set of positive
+real numbers) with its Borel σ-algebra B. The four parameters of the model are
+study calculus (see, e.g., an online textbookKeisler (2007)), continuous time stochastic processes such as Poisson
+processes in Loeb (1975), Brownian motion and Itô processes in Anderson (1976), Perkins (1981), and Keisler
+(1984), and Markov processes in Duanmu, Rosenthal and Weiss (2021). For recent applications of nonstandard
+analysis to other areas, see, for example, Jin (2015) in number theory, Loeb (2020) in potential theory, Duanmu
+and Roy (2021) in statistics. In the proof of Theorem 1, nonstandard analysis is only used in Section 5.
+6Dufﬁe, Qiao and Sun(2018, Proposition 6) shows that a hyperﬁnite index set of agents has the usual cardinality
+of the continuum.
+7Discrete-time models of random matching are considered in Dufﬁe and Sun (2007)a n d Dufﬁe, Qiao and
+Sun (2018); see also Section 5 of Dufﬁe, Qiao and Sun (2018) for a discussion of some related papers on more
+specialized models of random matching in static and discrete-time settings. Unlike the delicate analysis associated
+with continuous-time random matching in this paper, there is no need to consider the cumulative effect of multi-
+period random matching in discrete-time models.
+8We follow the convention that a probability space or other measure space such as (I, I,λ) or (Ω, F,P) is
+countably additive.
+9See Doob (1937, 1953) on the measurability issue associated with a continuum of independent random vari-
+ables. We apply a resolution of this issue that is based on the Fubini extension in Section 2 of Sun (2006). A
+probability space (I × Ω, W,Q) extending the usual product space (I × Ω, I ⊗ F,λ ⊗ P) is said to be a Fubini
+extension of (I × Ω, I ⊗ F,λ ⊗ P) if for any real-valued Q-integrable function g on (I × Ω, W), the functions
+gi = g(i, ·) and gω = g(·,ω) are integrable respectively on (Ω, F,P) for λ-almost all i ∈ I and on (I, I,λ) for
+P-almost all ω ∈ Ω; and if, moreover,
+∫
+Ω gi dP and
+∫
+I gω dλ are integrable, respectively, on (I, I,λ) and on
+(Ω, F,P) , with
+∫
+I×Ω gdQ =
+∫
+I (
+∫
+Ω gi dP)dλ =
+∫
+Ω(
+∫
+I gω dλ)dP . To reﬂect the fact that the probability space
+(I × Ω, W,Q) has (I, I,λ) and (Ω, F,P) as its marginal spaces, as required by the Fubini property, this space
+is denoted by (I × Ω, I ⊠ F,λ ⊠ P).
+
+
+--- PAGE 4 ---
+
+1758 D. DUFFIE, L. QIAO AND Y . SUN
+(i) The initial cross-sectional distribution p0 ∈ Δ of agents’ types.
+For any k and l in S:
+(ii) A mutation intensity ηkl ∈[ 0,∞) for k ̸=l specifying the intensity at which any
+type-k agent mutates to type l.
+(iii) A continuous matching intensity function θkl : Δ → R+ specifying the intensity
+θkl(p) with which any type-k agent is matched to some agent of type l, whenever the current
+cross-sectional agent type distribution is p ∈ Δ. This function satisﬁes the mass-balancing
+requirement pkθkl(p) = plθlk(p) that the total aggregate rate of matches of type-k agents to
+type l agents is of course equal to the aggregate rate of matches of type- l agents to type- k
+agents. We also require Lipschitz continuity10 for the mapping pkθkl(p) from Δ to R.
+(iv) A probability distribution ςkl ∈ Δ of the new type of a type-k agent that is induced by
+a match with a type-l agent. For expositional simplicity, we denote ςkl({r}) as ςklr or ςkl(r).
+We now introduce two main solution objects of our model: the random type processα and
+the random matching process ϕ.
+(i) The random type processα is a function from I × Ω × R+ to S such that for any
+agent i, state ω, and time t, the type of agent i is α(i,ω,t) . We assume that for any i ∈ I,
+αi is right-continuous with left limits (RCLL),11 a standard regularity property of stochastic
+processes found, for example, in Protter (2004).
+(ii) The random matching processϕ is a function from I × Ω × R+ to I. For any state ω,
+time t, and agents i and j with i ̸=j, ϕ(i,ω,t) = j means that agent i met agent j at some
+time t′ ≤ t and that no other agents met agents i or j during the interval (t′,t ]. That is, as of
+time t, in state ω, agent i is the last partner of agent j and agent j is the last partner of agent
+i. Thus, for any state ω and time t, ϕ(·,ω,t) , also denoted by ϕωt (·), is a matching (meaning
+an involution) on I, in the sense that ϕωt (ϕωt (i)) = i for any i ∈ I. We assume that for any
+i ∈ I, ϕi is right-continuous with left limits (RCLL).
+Let Tikl (ω,t) be the set of time points in [0,t ] at which agent i (with her type being k)
+meets a type-l agent. That is,12
+Tikl (ω,t) =
+{
+s ∈[ 0,t ]: ϕiω(s−) ̸=ϕiω(s) ̸=i,
+α(i,ω,s −) = k,α
+(
+ϕiω(s),ω,s −
+)
+= l
+}
+.
+Deﬁne Nikl (ω,t) to be the cardinality of the set Tikl (ω,t) if Tikl (ω,t) is ﬁnite, and ∞ if
+Tikl (ω,t) is an inﬁnite set. In other words, Nikl is the counting process for the number of
+matches by agent i, when of type k, to an agent of type l.T h e nl e tΘkl(t) be the cumulative
+total quantity of matches of agents of any given typek with agents of another given type l by
+time t.T h a ti s ,Θkl(ω,t) =
+∫
+I Nikl (ω,t)dλ(i) .
+Next, we deﬁne a mapping R from Δ to the space of K × K matrices with zero row sum
+by
+(1) Rkr (p) = ηkr +
+K∑
+l=1
+θkl(p)ςklr for k ̸=r and Rkk(p) =−
+∑
+l∈S\{k}
+Rkl(p).
+10A mapping ψ from a subsetX of a Euclidean space to another Euclidean space is said to be (globally) Lipschitz
+continuous if there is a positive real number C such that for any x,x ′ ∈ X, ∥ψ(x) − ψ(x′)∥≤ C∥x − x′∥,w h e r e
+∥·∥ is the usual Euclidean norm.
+11That is, for any P-almost all ω ∈ Ω and any t ∈ R+, there exists ϵ> 0 such that each α(i,ω, ·) is constant on
+(t − ϵ,t) and [t,t + ϵ), and likewise for ϕ(i,ω, ·) below.
+12For a function f on R+ with left limit at s ∈ R+, f( s−) denotes the left limit.
+
+
+--- PAGE 5 ---
+
+CONTINUOUS TIME RANDOM MATCHING 1759
+At a given cross-sectional distributionp of agent types, Rkr (p) can be viewed as the intensity
+of transition of a type- k agent to a type r ̸=k that arises from both mutation and match-
+induced type changing.
+We will show that the evolution of the expected cross-sectional type distribution is gov-
+e r n e db yt h eK-dimensional ordinary differential equation (ODE)
+(2) dx(t)
+dt = x(t)R
+(
+x(t)
+)
+.
+Note that for p ∈ Δ,t h erth component of pR(p) is
+∑
+k∈S
+pkRkr (p) =
+∑
+k∈S\{r}
+[
+pkηkr +
+K∑
+l=1
+pkθkl(p)ςklr
+]
+−
+∑
+k∈S\{r}
+[
+prηrk +
+K∑
+l=1
+prθrl (p)ςrlk
+]
+,
+which is Lipschitz continuous on Δ, by the Lipschitz continuity 13 of pkθkl(p).F u r t h e r ,w e
+will use the exact law of large numbers (Theorem 2.16 inSun (2006)) to show that the cross-
+sectional type distribution is deterministic almost surely and therefore solves the same ODE
+(2).
+We are now ready to deﬁne continuous-time independent dynamical systems with random
+mutation, random matching, and match-induced type changes.
+D
+EFINITION 1. For given parameters (p0,η,θ,ς) , a continuous-time independent dy-
+namical system Dwith random mutation, random matching, and match-induced type changes
+is deﬁned by a random type process α and a random matching process ϕ with the following
+properties:
+1. The random type process α : I × Ω × R+ → S is (I ⊠ F) ⊗ B-measurable.14
+2. For any t ∈ R+, ϕ(·,·,t) , also denoted by ϕt(·,·), is a random matching onI ×Ω in the
+sense that: (i) ϕt(·,·) is a measurable mapping from (I ×Ω, I ⊠F) to (I, I), (ii) for any ω ∈
+Ω, the mappingϕωt (·) = ϕ(·,ω,t) is an involution onI,t h a ti s ,f o ra n yi ∈ I, ϕωt (ϕωt (i)) = i,
+and (iii) for P-almost all ω ∈ Ω, ϕωt (·) is measure-preserving, that is, λ(ϕ−1
+ωt (A)) = λ(A) for
+any A ∈ I.
+3. The cross-sectional type distribution pt at time t is deﬁned by
+ptk = λ
+({
+i ∈ I : α(i,t) = k
+})
+,
+and has the speciﬁed initial condition p0 = p0.L e t ¯p(t) = E[p(t)] be the expected cross-
+sectional type distribution.
+4. For each agent i, the type process α(i) is a continuous-time Markov chain in S whose
+transition intensity15 at time t to any type r ̸=α(i,t) is Rα(i,t),r (pt). The probability distri-
+13By Kirszbraun’s theorem (see Kirszbraun (1934)a n d https://encyclopediaofmath.org/wiki/Kirszbraun_
+theorem), the Lipschitz continuous function pR(p) from Δ to RK can have its domain extended to RK to pre-
+serve the (global) Lipschitz continuity property. It follows from the global uniqueness result in Theorem 6.1.3
+in Applebaum (2009) that the ordinary differential equation in equation ( 2) has a unique solution with any given
+initial condition x(0) ∈ RK.I f x(0) ∈ Δ, then Theorem 1 (1) below shows the existence of a solution of equation
+(2)i n Δ (which is also unique).
+14As usual, (I ⊠ F) ⊗ B denotes the usual product σ-algebra of (I ⊠ F) and B.
+15Let Cikr denote the counting process for the cumulative number of transitions of agenti from type k to type r.
+As in Brémaud (1981), the transition intensity is deﬁned by the property that for each k and r ̸=k, a local martin-
+gale Mikr is deﬁned by Mikr (t) = Cikr (t) −
+∫t
+0 1{α(i,s)=k}Rkr (ps)ds . Because the transition intensity Rkr (ps)
+is bounded, Mikr is in fact a martingale. The fact that Rkr (ps) is the transition intensity is then equivalently
+characterized by the property that the conditional probability of the event {α(i,t + Δt) = r} given {α(i,t),p t},
+when divided by Δt, goes to Rα(i,t),r (pt) as Δt goes to zero.
+
+
+--- PAGE 6 ---
+
+1760 D. DUFFIE, L. QIAO AND Y . SUN
+bution pi(t) of the type of agent i at time t thus satisﬁes the ODE16
+dpi(t)
+dt = pi(t)R(pt).
+5. The agents’ stochastic type processes {αi : i ∈ I} are pairwise independent.T h a ti s ,f o r
+any i,j ∈ I with i ̸=j, αi and αj are independent.
+The following theorem presents the general existence and properties of a continuous-time
+independent dynamical system with random mutation, random matching, and random type
+changing.
+THEOREM 1. For any given parameters(p0,η,θ,ς) , there exists a Fubini extension(I ×
+Ω, I ⊠ F,λ ⊠ P) on which is deﬁned a continuous-time independent dynamical systemD
+(see Deﬁnition1) with random mutation, random matching and match-induced type changes,
+with these parameters, such that:
+(1) For P-almost all ω ∈ Ω, the realized cross-sectional type distributionpt(ω) at any
+time t is equal to the expected cross-sectional type distribution¯pt, with the property that the
+function deﬁned byx(t) =¯pt for allt ≥ 0 solves equation(2).
+(2) For P-almost all ω ∈ Ω, the cross-sectional type processαω, viewed as a stochastic
+process with sample space(I, I,λ), is a Markov chain inS with, at any timet, the generator
+(transition intensity matrix) R( ¯pt).
+(3) For P-almost all ω ∈ Ω and for any typesk and l, at any timet the cumulative total
+quantity Θkl(ω,t) =
+∫
+I Nikl (ω,t)dλ(i) of matches of agents of typek with agents of typel
+is equal to its ﬁnite expectationE(Θkl(t)) and grows at the rate¯ptk θkl( ¯pt).
+(4) There exists a probability distributionp∗ on S such thatp∗R(p∗) = 0.
+(5) For any p∗ ∈ Δ satisfying p∗R(p∗) = 0, the dynamical system D with parameters
+(p∗,η,θ,ς) has p∗ as a stationary type distribution. That is, with probability one the realized
+cross-sectional type distributionpt is p∗ at any timet ≥ 0 and the transition intensity matrix
+R( ¯pt) is constant and equal toR(p∗).
+Property (2) implies, in principle, the ability to empirically recover the full stochastic evo-
+lution behavior of agents’ life-time type processes (including all sample-path moments) by
+observing the cross-sectional distribution of sample paths of agents’ types in the single given
+observed state of the world. In application Property (3) can be used to compute the volumes
+of speciﬁc sorts of transactions, such as ﬁnancial trades, the velocity of circulation of money,
+quantities of job matches and layoffs, and so on.
+3. Preliminary results on ﬁnite dynamic matching models.In order to prove our main
+result, Theorem 1, we ﬁrst analyze in this section a general ﬁnite-period dynamic random-
+matching model that has ﬁnitely many agents.
+In Section 3.1, we construct a static random matching model with ˆM agents given general
+matching parameters {ˆq
+kl}k,l∈S,w h e r eˆM is a ﬁnite positive even integer. Such a static model
+will be used in the construction of a ﬁnite-period dynamic random matching model with
+ﬁnitely many agents in Section 3.2. We also provide some delicate estimates of the relevant
+matching probabilities.
+In Section 3.2, we develop a general ﬁnite-agent dynamic matching model with ˆM agents
+and M2 periods, with M being a positive integer. The time length of each period is 1
+M .I n
+16This ODE is known as the Kolmogorov forward equation. See, for instance,Stroock (2014). The matrix R(pt)
+is known as the “generator” of the associated Markov chain.
+
+
+--- PAGE 7 ---
+
+CONTINUOUS TIME RANDOM MATCHING 1761
+each period, there are three steps. The ﬁrst step involves mutations that change agents’ types
+independently. In the second step of matching, agents take part in the static random match-
+ing described in Section 3.1. The third step is the type changing step, at which agents who
+were matched in the last step experience type changes according to speciﬁc type-changing
+probabilities.
+To make the proof of Theorem 1 more accessible, we ﬁrst state in Section 3.3 some prop-
+erties of the general ﬁnite-agent dynamic matching model (Lemmas 2 through 11)t h a ta r e
+needed for proving Theorem 1. The proofs of the technical results in Lemmas 1 through 11
+are postponed to Appendix B in the Supplementary Material. In particular, Lemmas 1–4 are
+proved in Appendix B.1–B.4 respectively. In order to prove Lemmas 5–11, some additional
+technical results are presented as Lemmas B.1, B.2 and B.3 in Appendix B.5. Then, Lem-
+mas 5–11 are shown in Appendix B.6–B.12, respectively. The proofs of those lemmas are
+complicated since we need to carefully estimate the cumulative effect of correlations and
+randomness across multiple time periods.
+3.1. Finite-agent static random partial matching with general matching probabilities.
+Let I ={ 1,..., ˆM} be a ﬁnite set with ˆM an even integer in the set N of positive integers,
+I0
+the power set on I,a n dλ0 the counting probability measure on I0 with λ0(A) =| A|/|I| for
+any A ∈ I0,w h e r e|A| is the cardinality of A.
+DEFINITION 2. Let (I, I0,λ0) be given as above.
+(i) A partial matchingψ on I is an involution from I to I in the sense that ψ(ψ(i)) = i
+for any i ∈ I.W h e nψ(i) ̸=i (ψ(i) = i), agent i is matched with agent ψ(i) (agent i is not
+matched).
+(ii) A partial matching ψ is said to be a full matching onI if ψ(i) ̸=i for each i ∈ I.
+(iii) For a given probability space (Ω, F0,P0),a random (partial) matching ˆπ on I is a
+mapping from I × Ω to I such that ˆπω =ˆπ(·,ω) is a partial matching on I for P0-almost all
+ω ∈ Ω.
+(iv) A function ˆα from I to S is called a type function.
+(v) For a random matching ˆπ and a type function ˆα on I,d e ﬁ n et h eagents’ partner type
+process ˆg to be a mapping from I × Ω to S ∪{ J} such that
+ˆg(i,ω) =
+{
+ˆα
+(
+ˆπ(i,ω)
+)
+if ˆπ(i,ω) ̸=i,
+J if ˆπ(i,ω) = i,
+for any (i,ω) ∈ I × Ω,w h e r eJ is a special symbol representing “no-match”. So ˆg(i) is the
+random type of agent i’s partner.
+The following result is essential to the construction of ﬁnite matching model with multiple
+periods (for the matching steps) in Section 3.2.
+LEMMA 1. Let (I, I0,λ0) be the ﬁnite counting probability space as above. Then, there
+exists a ﬁnite setΩ with its power setF0 such that for any type functionˆα from I to S and
+any function ˆq from S ×S to R+ with ∑
+r∈S ˆqkr ≤ 1 and ρk ˆqkl = ρl ˆqlk for anyk,l ∈ S, where
+ρ = λ0(ˆα)−1 is the type distribution induced byˆα on S,17 there exists a random(partial)
+matching ˆπ from I × Ω to I and a probability measureP0 on (Ω, F0) with the following
+properties.
+17That is, for any subset C of S, ρ(C) = λ0((ˆα)−1(C)).
+
+
+--- PAGE 8 ---
+
+1762 D. DUFFIE, L. QIAO AND Y . SUN
+(i) Let ˆg be the agents’ partner type process as in Deﬁnition2 (v). Fix anyi,j ∈ I with
+i ̸=j, denote ˆα(i) and ˆα(j) by k1 and k2 respectively. For anyl1,l2 ∈ S, the random matching
+ˆπ and the associated type processˆg satisfy the inequalities:
+P0( ˆπi = j) ≤ 2
+ˆMρk1
+;
+P0(ˆgi = l1) ≤ˆqk1l1 ; if ρk1 ≥ 1
+ˆM
+1
+3
+,P0(ˆgi = l1) ≥ˆqk1l1 − 2
+ˆM
+2
+3
+;
+if ρk1 ≥ 1
+ˆM
+1
+3
+and ρk2 ≥ 1
+ˆM
+1
+3
+, ˆqk1l1 ˆqk2l2 − 5
+ˆM
+2
+3
+≤ P0(ˆgi = l1, ˆgj = l2) ≤ˆqk1l1 ˆqk2l2 + 1
+ˆM
+2
+3
+.
+(ii) For anyk,l ∈ S and P0-almost allω ∈ Ω,
+⏐⏐λ0
+({
+i ∈ I :ˆα(i) = k, ˆg(i,ω) = l
+})
+− ρk ˆqkl
+⏐⏐≤ 2
+ˆM
+.
+To reﬂect their dependence on(ˆα, ˆq), ˆπ and P0 will also be denoted byˆπ(ˆα, ˆq) and P(ˆα, ˆq)
+respectively.18
+The three inequalities in Part (i) provide respectively: (1) an upper bound on the probability
+for two agents to be matched; (2) an estimate on the distribution of the partner’s type of an
+agent; (3) the approximate pairwise independence of the random types of the partners for any
+given two agents. Part (ii) provides an estimate of the cross-sectional proportion of type- k
+agents who are matched with a type-l agent.
+3.2. Finite dynamic matching model. What we need to do is to construct a sequence of
+probability spaces, transition probabilities, and a sequence of type functions. Since we need to
+consider random mutation, random matching and, random type changing at each time period,
+three ﬁnite spaces with transition probabilities will be constructed at each time period.
+Before the formal construction, we brieﬂy describe the discrete timeline. In each period,
+there are three steps. The ﬁrst step is the mutation step, at which agents change their types
+independently. The second step is the matching step, at which agents take part in a static
+random matching described in Lemma 1. The third step is the match-induced type changing
+step, at which agents who were just matched in the last step change their types according to
+the speciﬁed type-changing probabilities.
+Denote
+¯η = max
+{
+ηkl : k,l ∈ S,k ̸=l
+}
+,
+¯θ = sup
+{
+θkl(p) : k,l ∈ S,p ∈ Δ
+}
+,
+¯a = max{¯η, ¯θ}+ 1.
+Let M be an integer in Nthat is greater than or equal to max{K ¯a, 3}.L e t ˆM be an even in-
+teger in Nwhich is sufﬁciently large relative toM (an explicit expression for ˆM will be given
+after Lemma 2). As in Section 3.1,l e tI ={ 1,2,..., ˆM}, I0 be the power set on I,a n dλ0 be
+the counting probability measure on I0.L e tT0 be the ﬁnite set {n}M2
+n=0. The corresponding
+discrete timeline is {n/M}M2
+n=0 so that the duration of each period is 1/M.
+18The above equation shows that ˆgi,i ∈ I are approximately pairwise independent. In fact, we can use similar
+techniques to prove that ˆgi,i ∈ I are approximately mutually independent. For simplicity, we only demonstrate
+the case for approximate pairwise independence.
+
+
+--- PAGE 9 ---
+
+CONTINUOUS TIME RANDOM MATCHING 1763
+We deﬁne the parameters for the dynamical system as follows. For any k,k ′,l,l ′ ∈ S,a n d
+p ∈ Δ,l e t
+ˆηkl =
+⎧
+⎪⎪⎨
+⎪⎪
+⎩
+1
+M ηkl + 1
+M2 if k ̸=l,
+1 −
+∑
+r∈(S\{k})
+ˆηkr if k = l,
+ˆqkl(p) = 1
+M θkl(p),
+ˆqk(p) = 1 −
+∑
+l∈S
+ˆqkl(p),
+ˆςkl = ςkl.
+It is clear that ˆηkl ≥ 1
+M2 for any k,l ∈ S with k ̸=l. Such a lower bound will be used in the
+proof of Lemma B.1 in Appendix B. Note that M ≥ K ¯a and ¯a = max{¯η, ¯θ}+ 1. Then, we
+can obtain that
+ˆηkl ≤ ¯a − 1
+K ¯a + 1
+K2 ¯a2 ≤ ¯a − 1
+K ¯a + 1
+K ¯a = 1
+K if k ̸=l,
+ˆηkl ≥ 1 − (K − 1) 1
+K = 1
+K if k = l,
+ˆqkl(p) ≤ ¯a
+K ¯a = 1
+K ,
+ˆqk(p) ≥ 1 − K 1
+K = 0.
+Hence, ˆη and ˆq(p) can be viewed as functions from S × S to [0,1] with ∑
+l∈S ˆηkl = 1a n d∑
+l∈S ˆqkl(p) ≤ 1f o ra n yk ∈ S and p ∈ Δ.
+For the initial stage at period 0, let ˆα0 be the initial type function from I to S and ρ0 =
+λ0(ˆα0)−1 be the initial cross-sectional type distribution on S. We assume that agents do not
+match at period 0. So the initial partial matching ˆπ0 is the identity mapping on I. Since the
+initial stage is deterministic, we can let (Ω0,E0,Q0) be the trivial probability space over the
+singleton set {0}. A function on I can be trivially viewed as a function on I × Ω0, and vice
+versa.
+Suppose that the construction for the discrete-time dynamical system ˆD has been done
+up to time period n − 1, for n ≥ 1. Thus, {(Ωm,Em,Qm)}3n−3
+m=0 and {ˆαm, ˆπm}3n−3
+m=0 have been
+constructed, where each Ωm is a ﬁnite set with its power set Em, Qm a transition probability
+from Ωm−1 = ∏ m−1
+j=0 Ωj to (Ωm,Em), ˆαm a type function from I ×Ωm−1 to the type space S,
+and ˆπm a random partial matching fromI ×Ωm−1 to I. When there is no confusion,{ωj }m
+j=0
+in Ωm = ∏ m
+j=0 Ωj will also be denoted by ωm. Denote the product transition probability
+Q0 ⊗ Q1 ⊗···⊗ Qm by Qm,a n d⨂ m
+j=0 Ej by Em (which is simply the power set on Ωm).
+Then, Qm is the product of the transition probabilityQm with the probability measureQm−1.
+We shall now consider the constructions for period n. We ﬁrst work with the random mu-
+tation step. Let Ω3n−2 = SI (the space of all functions from I to S) with its power set E3n−2.
+For each ω3n−3 ∈ Ω3n−3 and i ∈ I,i f ˆα3n−3(i,ω3n−3) = k, deﬁne a probability measure
+γω3n−3
+i on S by letting γω3n−3
+i (l) =ˆηkl for each l ∈ S. Deﬁne a probability measure Qω3n−3
+3n−2
+on (SI ,E3n−2) to be the product measure ⨂
+i∈I γω3n−3
+i .
+Let ˆα3n−2 : (I × ∏ 3n−2
+m=0 Ωm) → S be such that ˆα3n−2(i,ω3n−2) = ω3n−2(i). We assume
+that agents do not match at the random mutation step; so the partial matching ˆπ3n−2 at this
+
+
+--- PAGE 10 ---
+
+1764 D. DUFFIE, L. QIAO AND Y . SUN
+step is the identity mapping on I and the type of agent i at step 3n−2 (denoted by ˆg3n−2(i))
+is always J,w h e r eJ is a special symbol to represent “no-match”. Letρ3n−2
+ω3n−2 = λ0(ˆα3n−2
+ω3n−2 )−1
+be the cross-sectional type distribution after the random mutation step.
+Next, we consider the step of random matching, based on the result in Lemma 1.L e t
+Ω3n−1 be the ﬁnite space constructed in Lemma 1 with the power set E3n−1. For any given
+ω3n−2 ∈ Ω3n−2, the type function is ˆα3n−2
+ω3n−2 (·). We can construct a probability measureQω3n−2
+3n−1
+on Ω3n−1 and a random matchingπ′
+ω3n−2 on I ×Ω3n−1 by using ˆα3n−2
+ω3n−2 (·) as the type function
+ˆα in Lemma 1 and ˆq(ρ3n−2
+ω3n−2 ) as the function ˆq in Lemma 1. We deﬁne three functions ˆα3n−1 :
+(I ×∏ 3n−1
+m=0 Ωm) → S, ˆπ3n−1 : (I ×∏ 3n−1
+m=0 Ωm) → I,a n dˆg3n−1 : (I ×∏ 3n−1
+m=0 Ωm) → S ∪{J}
+as follows:
+ˆα3n−1(
+i,ω3n−1)
+=ˆα3n−2(
+i,ω3n−2)
+,
+ˆπ3n−1(
+i,ω3n−1)
+= π′
+ω3n−2 (i,ω3n−1),
+ˆg3n−1(
+i,ω3n−1)
+=
+{
+ˆα3n−2(
+ˆπ3n−1(
+i,ω3n−1)
+,ω3n−2)
+if ˆπ3n−1(
+i,ω3n−1)
+̸=i,
+J if ˆπ3n−1(
+i,ω3n−1)
+= i.
+Let ρ3n−1
+ω3n−1 = λ0(ˆα3n−1
+ω3n−1 )−1 be the cross-sectional type distribution after the random matching
+step.
+Now, we consider the ﬁnal step of random type changing. Let Ω3n = SI with its power
+set E3n. Deﬁne a new type function ˆα3n : (I × Ω3n) → S by letting ˆα3n(i,ω3n) = ω3n(i).F i x
+ω3n−1 ∈ Ω3n−1. For each i ∈ I:
+1. If ˆπ3n−1(i,ω3n−1) = i (i is not paired after the matching step at period n), let τω3n−1
+i
+be the probability measure on the space S that gives probability one to ˆα3n−1(i,ω3n−1) and
+zero for the rest.
+2. If ˆπ3n−1(i,ω3n−1) ̸=i (i is paired after the matching step at period n),
+ˆα3n−1(i,ω3n−1) = k, ˆπ3n−1(i,ω3n−1) = j and ˆα3n−1(j,ω 3n−1) = l, deﬁne a probability
+measure τω3n−1
+i on S such that
+τω3n−1
+i
+(
+k′)
+=ˆςkl
+(
+k′)
+.
+Deﬁne a probability measure Qω3n−1
+3n on (S ×{0,1})I to be the product measure⨂
+i∈I τω3n−1
+i .
+We assume that agents do not match at the random type changing step, so the partial matching
+ˆπ3n at this step is the identity mapping on I and the type of agent i at step 3n (denoted by
+ˆg3n(i))i sa l w a y sJ.L e tρ3n
+ω3n = λ0(ˆα3n
+ω3n)−1 be the cross-sectional type distribution after the
+step of random type changing.
+Repeating this construction, we can construct a sequence of transition probabilities
+{(Ωm,Em,Qm)}3M2
+m=0 and a sequence of functions {(ˆαm, ˆπm)}3M2
+m=0.
+Let (I ×Ω3M2
+,I0 ⊗E3M2
+,λ0 ⊗Q3M2
+) be the product probability space of(I, I0,λ0) and
+(Ω3M2
+,E3M2
+,Q3M2
+). For simplicity, we denote Ω3M2
+by Ω and Q3M2
+by P0. For a natural
+number N, any function f from (Ωm+1,Em+1,Qm+1) to RN and ωm ∈ Ωm, Eωm
+(f ) and
+Varωm
+(f )are deﬁned to be
+∫
+Ωm+1 f( ωm+1)dQ ωm
+m+1 and
+∫
+Ωm+1
+f
+(
+ωm+1)
+− Eωm
+f
+2
+∞ dQωm
+m+1,
+respectively. Note that for a vector x ∈ RN , ∥x∥∞ denotes the supremum norm of x.
+In the following, we will often work with functions or sets that are measurable in
+(Ωm,Em,Qm) for some m ≤ 3M2, which may be viewed as functions or sets based on
+(Ω3M2
+,E3M2
+,Q3M2
+) by allowing for dummy components for the tail part.
+
+
+--- PAGE 11 ---
+
+CONTINUOUS TIME RANDOM MATCHING 1765
+3.3. Properties of the ﬁnite dynamic matching model. We ﬁrst deﬁne three mappings T1,
+T2, T3 from Δ to Δ representing the transformation of the type distribution after each step of
+random mutation, random matching, and random type changing.19 For any ρ ∈ Δ and k ∈ S,
+let
+[
+T1(ρ)
+]
+k =
+∑
+k′∈S
+ρk′ ˆηk′k,
+[
+T2(ρ)
+]
+k = ρk,
+[
+T3(ρ)
+]
+k =
+∑
+k′,l′∈S
+ρk′ ˆqk′l′(ρ) ˆςk′l′(k) + ρk ˆqk(ρ).
+The following lemma shows the equicontinuity of T1, T2, T3 and ˆq.
+LEMMA 2. There exists a sequence of positive numbers{ξm}3M2+1
+m=0 with ξ0 = 1
+KM3 and
+3M2Kξm ≤ ξ1 ≤ ξ0 for any m ∈{ 2,..., 3M2 + 1} such that for anym ∈{ 0,..., 3M2}, r ∈
+{1,2,3}, ρ,ρ ′ ∈ Δ, k,l ∈ S, if ∥ρ − ρ′∥∞ ≤ ξm+1, then
+Tr(ρ) − Tr
+(
+ρ′)∞ ≤ ξm,
+⏐⏐ˆqkl(ρ) −ˆqkl
+(
+ρ′)⏐⏐≤ ξm.
+In the rest of this paper, we take ˆM to be the smallest even integer greater than ξ−9
+3M2+1.
+Let e(m) =⌊ m+2
+3 ⌋ and f( m )= m − 3e(m) + 3, where ⌊ m+2
+3 ⌋ is the integer part of m+2
+3 .
+Then for anym ∈{ 1,..., 3M2},t h emth step in the ﬁnite dynamical system is also thef( m )th
+step in thee(m)th period. For integers 1≤ m1 ≤ m2 ≤ 3M2,w eu s eUm2
+m1 to represent Tf( m2) ◦
+Tf( m2−1) ◦···◦ Tf( m1). For convenience, when 1 ≤ m2 <m 1 ≤ 3M2, Um2
+m1 is deﬁned to be
+the identity mapping on Δ. Since the terms ˆqkl(Um
+1 (ρ0)) and ˆqk(Um
+1 (ρ0)) will appear many
+times later, for notational simplicity, we denote ˆqkl(Um
+1 (ρ0)) and ˆqk(Um
+1 (ρ0)) by ¯qm
+kl and ¯qm
+k
+respectively.
+The following lemma shows that the cross-sectional type distributionρm at the end of step
+m can be approximated by Um
+1 (ρ0).
+LEMMA 3. For anym ∈{ 1,2,..., 3M2}, let
+V m =
+{
+ωm ∈ Ωm :
+ρm(
+ωm)
+− Um
+1
+(
+ρ0)∞ >ξ 1
+}
+,
+where ξ1 is deﬁned in Lemma2. Then, for anym ∈{ 1,2,..., 3M2}, we haveQm(V m) ≤ ξ1.
+The following lemma shows that ∥E(ρm) − Um
+1 (ρ0)∥∞ (the difference between the ex-
+pected type distribution at the mth step Eρm and the repeated applications of the transforma-
+tions T1, T2, T3 on the initial type distribution ρ0) goes to zero as M goes to inﬁnity.
+LEMMA 4. There exists a vanishing sequence{B1(n)}∞
+n=1 of positive real numbers such
+that for anym ∈{ 1,2,..., 3M2}, we have∥E(ρm) − Um
+1 (ρ0)∥∞ ≤ B1(M).
+19If the type distribution at the beginning of step 3 n − 2i s ρ, Equation (5) in Appendix B indicates that the
+expected type distribution at the end of step 3n − 2i s T1(ρ). Since we assume agents do not change their type in
+step 3n−1, it is clear that the expected type distribution at the end of the step isT2(ρ) = ρ if the type distribution
+at the beginning of step 3 n − 1i s ρ.H o w e v e r ,T3(ρ) is not the expected type distribution at the end of step 3 n
+if the type distribution at the beginning of step 3 n is ρ. Nevertheless, by Equation (6) in Appendix B, T3(ρ) is a
+good approximation of the expected type distribution at the end of step 3n.
+
+
+--- PAGE 12 ---
+
+1766 D. DUFFIE, L. QIAO AND Y . SUN
+The following lemma provides an approximation of the matching probabilities at step 3n−
+1 using parameter ˆq.
+LEMMA 5. For anyi ∈ I, ω3n−2 /∈ V 3n−2 and k,l ∈ S, if ˆα3n−2
+i (ω3n−2) = k,
+⏐⏐Qω3n−2
+3n−1
+(
+ˆg3n−1
+i = l
+)
+−ˆqkl
+(
+ρ3n−2(
+ω3n−2))⏐⏐≤ 1
+M2 .
+Let Fm ={ F ∈ E3M2
+: F = Fm × Π3M2
+m′=m+1Ωm′ and Fm ∈ Em}.A n ys e tF in Fm rep-
+resents an event that “happens” by step m. For example, we use (ˆα3n−3
+i = k) ∩ F3n−3 to
+represent some event that happens by step 3n − 3i nw h i c hˆα3n−3
+i = k.
+The following lemma provides an estimate of P0(ˆα3n
+i = r|(ˆα3n−3
+i = k) ∩ F3n−3),w h i c h
+is the conditional probability 20 of the event {ω ∈ Ω :ˆα3n
+i (ω) = r} given event {ω ∈ Ω :
+ˆα3n−3
+i (ω) = r}∩ F3n−3.
+LEMMA 6. For any i ∈ I, k,r ∈ S with k ̸=r, n ∈ T0, and F3n−3 ∈ F3n−3 such that
+P0((ˆα3n−3
+i = k) ∩ F3n−3) ≥ 1
+M , we have
+⏐⏐
+⏐
+⏐
+P0
+(
+ˆα3n
+i = r|
+(
+ˆα3n−3
+i = k
+)
+∩ F3n−3)
+−ˆηkr −
+∑
+l∈S
+¯q3n−2
+kl ˆςkl(r)
+⏐⏐
+⏐
+⏐
+≤ 3K2 ¯a2
+M2 .
+For any i ∈ I and m ∈{ 0,1,..., 3M2},l e tFm
+i be the algebra generated by{ˆαm′
+i , ˆgm′
+i }m
+m′=0.
+Any set in Fm
+i represents an event for agent i that happens by step m.
+An approximate Markov property for the type process {α3n
+i }M2
+n=0 is presented below.
+LEMMA 7. There exists a vanishing sequence{B2(n)}∞
+n=1 of positive real numbers such
+that for anyi ∈ I, {α3n
+i }M2
+n=0 satisﬁes the approximate Markov property in the sense that for
+any n,n′ ∈{ 0,1,...,M 2} with n>n ′, k,k ′ ∈ S, and F3n′−3
+i ∈ F3n′−3
+i ,
+⏐⏐P0
+((
+ˆα3n
+i = k, ˆα3n′
+i = k′)
+∩ F3n′−3
+i
+)
+× P0
+(
+ˆα3n′
+i = k′)
+− P0
+(
+ˆα3n
+i = k, ˆα3n′
+i = k′)
+× P0
+((
+ˆα3n′
+i = k′)
+∩ F3n′−3
+i
+)⏐⏐≤ B2(M).
+The following lemma shows that the type processes have the approximate independence
+property.
+LEMMA 8. There exists a vanishing sequence{B3(n)}∞
+n=1 of positive real numbers such
+that for anyi,j ∈ I with i ̸=j, m ∈{ 0,1,..., 3M2}, Fm
+i ∈ Fm
+i , and Fm
+j ∈ Fm
+j we have
+⏐⏐P0
+(
+Fm
+i ∩ Fm
+j
+)
+− P0
+(
+Fm
+i
+)
+P
+(
+Fm
+j
+)⏐⏐≤ B3(M).
+The remaining three lemmas provide estimates of the number of mutations and matchings
+that can happen within any time interval, as well as of the expected cross-sectional type
+distribution. For any ω ∈ Ω,d e ﬁ n e
+ˆH
+m
+i (ω) =
+⏐⏐{
+n ∈ T0 :ˆα3n−2
+i (ω) ̸= ˆα3n−3
+i (ω),3n − 2 ≤ m
+}⏐⏐,
+ˆNm
+i (ω) =
+⏐⏐{
+n ∈ T0 :ˆg3n−1
+i (ω) ̸=J, 3n − 1 ≤ m
+}⏐⏐,
+20For given events A and B with P0(A) = 0, we can deﬁne the value of the conditional probability P0(B|A) to
+be any number in [0,1] that suits a particular context.
+
+
+--- PAGE 13 ---
+
+CONTINUOUS TIME RANDOM MATCHING 1767
+as respectively the number of mutations of agenti by the mth step, and the number of match-
+ings of agent i by the mth step. Let ˆXm
+i = ˆHm
+i + ˆNm
+i .
+The following lemma provides a lower bound for the probability that there is no jump for
+the counting process ˆXi between two different steps.
+LEMMA 9. For anym,Δm ∈{ 0,..., 3M2} and Fm ∈ Fm such thatm+Δm ≤ 3M2 and
+P0(Fm)> 0, we have
+P0
+(ˆXm+Δm
+i = ˆXm
+i |Fm)
+≥ 1 − K ¯aΔm
+M .
+An estimation of the probability of changing types twice in a given time interval is pre-
+sented below.
+LEMMA 10. For anym,Δm ∈{ 0,..., 3M2} and Fm ∈ Fm such that m + Δm ≤ 3M2
+and P0(Fm)> 0, we have
+P0
+(ˆXm+Δm
+i − ˆXm
+i ≥ 2|Fm)
+≤ (K ¯a)2
+(Δm
+M
+)2
+.
+An upper bound is provided below for ∥E(ρm+Δm) − E(ρm)∥∞.
+LEMMA 11. For anym,Δm ∈{ 0,..., 3M2} such thatm + Δm ≤ 3M2, we have
+E
+(
+ρm+Δm)
+− E
+(
+ρm)∞ ≤ K ¯aΔm
+M .
+4. A brief introduction to nonstandard analysis.The proof in Section 5 makes exten-
+sive use of some basic results in nonstandard analysis. To make the proof more readable, this
+section adopts some material fromLoeb and Wolff(2015) by setting up notation and summa-
+rizing background knowledge, and presents an illustrative example on independent Markov
+chains. First, a simple construction of the nonstandard number system that extends the usual
+ordered ﬁeld of real numbers is given in Section 4.1. A more general framework of nonstan-
+dard analysis is then presented in Section 4.2. The key constructions of Loeb measure spaces
+and Loeb transition probabilities are introduced in Sections 4.3 and 4.4 respectively. For the
+readers’ convenience, we present a simple example in Section 4.5 to illustrate how nonstan-
+dard analysis can be used to construct continuous-time Markov chains based on ﬁnite-period
+Markov chains.
+4.1. Nonstandard number system. First, we extend the ordered ﬁeld of real numbers R
+to an ordered ﬁeld ∗R that contains inﬁnitesimals. To this end, we introduce the concept of a
+free ultraﬁlter.
+DEFINITION 3. A free ultraﬁlter on the set N of positive integers is a collection U ⊆
+P(N) ={ A : A ⊆ N} such that;
+1. ∅ /∈ U.
+2. A ∈ U and B ∈ U =⇒A ∩ B ∈ U.
+3. A ⊆ N and A/∈ U =⇒N\A ∈ U.
+4. A is a ﬁnite subset of N=⇒N\A ∈ U.
+
+
+--- PAGE 14 ---
+
+1768 D. DUFFIE, L. QIAO AND Y . SUN
+Fix a free ultraﬁlter U. One can deﬁne a set function ι on the power set P(N) of N such
+that ι(A) = 1i f A ∈ U,a n dι(A) = 0i f A/∈ U. It is easy to check that ι is a ﬁnitely additive
+probability measure on P(N). If a property holds on some set A ∈ U, then the property
+holds with ι-probability one; we can simply say that the property holds almost everywhere,
+expressed for brevity as “a.e.”.
+Two sequences ⟨ri⟩ and ⟨si⟩ of real numbers are said to be equivalent ifri = si a.e., that is,
+{i ∈ N: ri = si}∈ U, because equality a.e. is evidently an equivalence relation on the space
+RN of inﬁnite sequences. We write [⟨ri⟩] for the equivalence class containing the sequence
+⟨ri⟩, and we use ∗R to denote the collection of such equivalence classes. The set ∗R is called
+the set of nonstandard real numbers, or the “hyperreal” numbers. Such a construction using
+an ultraﬁlter is called an ultrapower construction. 21 We note that the set R of real numbers
+is embedded in the set of nonstandard real numbers ∗R via the map c →[ ⟨c⟩],w h e r e⟨c⟩ is
+the constant sequence with term c ∈ R. We write ∗c for [⟨c⟩], but later drop the star for con-
+venience. In contrast to hyperreal numbers in ∗R, the numbers in R are also called standard
+real numbers.
+The summation and multiplication operations +, ⬝ and the absolute value function |·|
+together with the “less than” order relation< for ∗R are deﬁned as follows.
+DEFINITION 4. Given real sequences ⟨ri⟩ and ⟨si⟩,w es e t
+1. [⟨ri⟩] + [⟨si⟩] = [⟨ri + si⟩].
+2. [⟨ri⟩] ⬝ [⟨si⟩] = [⟨ri ⬝ si⟩].
+3. |[⟨ri⟩]| = [⟨|ri|⟩].
+4. [⟨ri⟩] < [⟨si⟩] if ri <s i a.e.
+It is easy to check that the operations + and ⬝,a sw e l la s|·| and the ordering <,a r ei n -
+dependent of the choices of the representing sequences. This independence is an implication
+of the deﬁnition of ultraﬁlter, as well as the fact that any two representing sequences must
+be equal a.e., while equality a.e. is a transitive relation. The structure (∗R,+,⬝,<) forms an
+ordered ﬁeld that extends the ordered ﬁeld (R,+,⬝,<).
+Recall that for r =[ ⟨ri⟩] ∈∗R and c ∈ R, |r| <c (|r| >c ) means that |ri| <c (|ri| >c )
+holds a.e. For any r ∈ ∗R, r is inﬁnite (or unlimited)i f |r| >n for every standard positive
+integer n ∈ N; r is ﬁnite (or limited)i f |r| <n for some n ∈ N;a n dr is inﬁnitesimal if |r| < 1
+n
+for every n ∈ N.
+For x,y ∈ ∗R, we say that x and y are inﬁnitesimally close or inﬁnitely close if x − y
+is inﬁnitesimal and in that case we write x ≃ y. The equivalence class for ≃ containing x
+is called the monad of x, written as monad(x).T h a ti s ,monad(x) ={ y ∈ ∗R: y ≃ x}.F o r
+x,z ∈ ∗R,w eu s ex ≲ z (x ≳ z) to denote that there exists y ∈ ∗R with y ≃ x such that y ≤ z
+(y ≥ z).
+If ρ ∈ ∗R is ﬁnite, then the unique real number c with ρ ≃ c is called the standard part of
+ρ. We write c = st(ρ) or c = ◦ρ.
+Let ∗N={ [ ⟨ri⟩] :ri ∈ N a.e.}⊆ ∗Rbe the set of positive hyperﬁnite integers, and∗N∞ the
+set of unlimited hyperﬁnite integers.
+21See also an online elementary textbook Keisler (2007), and Chapter 7 in Part 1 of Tao (2014) on a brief in-
+troduction of ultrapower constructions and nonstandard analysis. Though the set ∗R of nonstandard real numbers
+depends on the underlying ultraﬁlter, the particular choice of such an ultraﬁlter is not an issue. When we consider
+applications of nonstandard analysis, what we use are some general properties of nonstandard models, such as the
+transfer principle in Proposition 1 and the countable saturation principle in Proposition 3 below.
+
+
+--- PAGE 15 ---
+
+CONTINUOUS TIME RANDOM MATCHING 1769
+4.2. General framework of nonstandard analysis. To develop the general framework of
+nonstandard analysis, we need to work with the concept of superstructure. Fix a set X con-
+taining R.L e t V0(X) = X, and for each positive integer n ∈ N,l e t Vn(X) = Vn−1(X) ∪
+P(Vn−1(X)),w h e r eP(Vn−1(X)) is the power set of Vn−1(X). The superstructure over X is
+the set V( X)= ⋃ ∞
+n=0 Vn(X).E l e m e n t si nX are said to be of rank 0, and for n ≥ 1, elements
+in Vn(X)\Vn−1(X) are said to be of rank n.
+For a,b ∈ Vn(X), one can deﬁne an ordered pair (a,b) as the set {{a},{a,b }}, which is an
+element in Vn+2(X). With the deﬁnition of ordered pairs, one can then deﬁne the Cartesian
+product of two sets in V( X), as well as relations and functions in V( X).F o rk ≥ 3, one can
+deﬁne ordered k-tuples (a1,a2,...,a k) as {(1,a1),(2,a2),...,(k,a k)}.T h ek-tuple versions
+of Cartesian products, relations and functions in V( X) can be similarly deﬁned. In fact, the
+superstructure can be used to cover basically all of the relevant mathematical structures that
+are useful for applications.
+We now describe the construction of formal statements, or “formulas,” in a formal lan-
+guage LX about the superstructure V( X).G i v e nX, the language LX for the superstructure
+V( X)over X has the following symbols:
+1. Logical connectives: ⌝,∨,∧,→,↔.
+2. Quantiﬁers: ∀,∃.
+3. Parentheses: ().
+4. Constant symbols: One symbol for each element in V( X).
+5. Variable symbols: A set of symbols with each symbol representing a variable.
+6. Equality symbol: Denotes equality for elements of V( X).
+7. Set membership: ∈.
+The above symbols serve as the “alphabet” of the language
+LX. The following deﬁnition
+shows how formal syntactical statements can be formed in LX.
+DEFINITION 5. A formula of LX is built up inductively with the following rules:
+(a) If x1,...,x n, x,a n dy are either constants or variables, then the following are called
+atomic formulas: x ∈ y, x = y; (x1,...,x n) ∈ y; (x1,...,x n) = y; ((x1,...,x n),x) ∈ y;
+((x1,...,x n),x) = y.
+(b) If Φ and Θ are formulas, so are (¬Φ), (Φ ∧ Θ), (Φ → Θ), (Φ ∨ Θ),a n d(Φ ↔ Θ).
+(c) If x is a variable symbol and y is either a variable symbol or a constant symbol and Φ
+is a formula, then (∀x ∈ y)Φ and (∃x ∈ y)Φ are formulas.
+The logical connectives ⌝,∨,∧,→,↔ have the usual meanings in terms of the satisﬁa-
+bility of formulas connected by them. For example, (¬Φ) means that Φ is not satisﬁed while
+∨,∧ mean “or”, “and” respectively. For the formulas(∀x ∈ y)Φ and (∃x ∈ y)Φ, the scope of
+the quantiﬁers ∀ and ∃ for x is Φ. One can deﬁne the scope of a quantiﬁer within a formula
+inductively.
+DEFINITION 6. A variable x is free in a formula Φ if it is not within the scope of any
+quantiﬁer for x. A closed formula in LX is a formula without free variables.
+For example, let C be a constant symbol for set, and suppose that x and y are variable
+symbols. The formula (∃y ∈ C)x = y has a free variable x while the scope of the quantiﬁer
+∃ for y is x = y. Thus, y is not a free variable for the formula (∃y ∈ C)x = y. On the other
+hand, both x and y are not free variables in the formula (∀x ∈ C)(∃y ∈ C)x = y,w h i c hi sa
+closed formula.
+
+
+--- PAGE 16 ---
+
+1770 D. DUFFIE, L. QIAO AND Y . SUN
+Fix a free ultraﬁlter U.A n yp a i r⟨ai⟩ and ⟨bi⟩ in the space X∞ of sequences in X is said
+to be equivalent if ai = bi a.e. For any c ∈ X,l e t∗c =[ ⟨c,c,... ⟩] be the equivalence class of
+sequences in X∞ that contains the constant sequence ⟨c,c,... ⟩. For any sequence {Ai}∞
+i=1 of
+sets in Vn(X)\X for some n ≥ 1, deﬁne the set [⟨Ai⟩] = {[⟨xi⟩] :xi ∈ Ai a.e.}.F o rA ∈ V( X),
+let ∗A =[ ⟨A,A,A,... ⟩]. In particular, ∗X is the set of equivalence classes of sequences in
+X∞.
+DEFINITION 7. If Φ is a formula inLX,t h e∗-transform of Φ, denoted ∗Φ, is the formula
+in L∗X that is obtained by replacing each constant c in Φ with ∗c.
+The following result is a basic tool in nonstandard analysis.22
+PROPOSITION 1 (Transfer principle). If Φ is a closed formula inLX that is true for
+V( X), then ∗Φ is true forV( ∗X).
+All elements in V( X), as well as all elements in V( ∗X) in the form of ∗b for some b ∈
+V( X), are called standard.A ne l e m e n ta in V( ∗X) is called internal if for some set b ∈
+V( X), a ∈ ∗b; if the element a itself is a set, then a is said to be an internal set. All other
+elements in V( ∗X) are called external. For any internal set A in V( ∗X), one can always ﬁnd
+a sequence {Ai}∞
+i=1 of sets in Vn(X)\X for some n ≥ 1 such that A is the set of equivalence
+classes {[⟨ai⟩] :ai ∈ Ai a.e.}. It is easy to see that if A and B are internal sets, then so are
+A∪B,A ∩B,A \B,a n dA×B. An internal function is a function whose graph is an internal
+set. If any kind of internal operations are applied to internal sets, one still obtains internal
+sets; see, for example, Theorem 2.8.4 in Loeb and Wolff (2015).
+The following result (Theorem 2.8.12 in Loeb and Wolff (2015)) about internal sets is
+important for applications.
+P
+ROPOSITION 2 (Spillover principle). Let A be an internal subset of∗R.
+(1) If A contains all standard natural numbers, then A contains all elements of∗N less
+than some unlimited natural number in∗N.
+(2) If A contains all unlimited positive integers in∗N, then A contains all elements of∗N
+greater than some standard natural number inN.
+(3) If A contains all the positive inﬁnitesimals, then A contains all elements of ∗R++
+smaller than some standard positive real number inR.
+(4) Assume that for each unlimited positive integerH there exists an unlimited natural
+number K<H such thatK ∈ A. Then A contains a standard natural number inN.
+For B ∈ V( X)\X,l e t PF (B) denote the ﬁnite subsets of B.A ne l e m e n tA ∈ ∗PF (B)
+will be called a hyperﬁnite set. In particular, A is the set of equivalence classes {[⟨bi⟩] :bi ∈
+Bi a.e.} for some sequence ⟨Bi⟩ of ﬁnite subsets of B. The internal cardinality of A is simply
+the hyperinteger [⟨|Bi|⟩],w h e r e|Bi| is the cardinality of the ﬁnite set Bi. When the internal
+cardinality of A is an unlimited hyperﬁnite integer, then the external cardinality of A is the
+cardinality of the continuum (see Proposition 6 in Dufﬁe, Qiao and Sun (2018)).
+The following is an important uniformity principle that transforms a local property ex-
+pressed by ﬁnite intersections into a global property described by the intersection of all the
+sets in the sequence; see, for example,Dufﬁe, Qiao and Sun(2018, Proposition 8) for a simple
+proof.
+PROPOSITION 3 (Countable saturation principle). For a sequence of nonempty internal
+sets, A1 ⊇ A2 ⊇···⊇ An ⊇ ... , we have⋂ ∞
+n∈NAn ̸=∅.
+22For a detailed proof, readers are referred to Sections 2.2–2.5 of Loeb and Wolff (2015).
+
+
+--- PAGE 17 ---
+
+CONTINUOUS TIME RANDOM MATCHING 1771
+4.3. Hyperﬁnite internal probability spaces and their Loeb spaces. Fix any unlimited
+hyperﬁnite integer M.L e t Λ ={ 1,2,...,M },a n d C be the internal power set of all the
+internal subsets of Λ.L e tw : Λ → ∗R+ be an internal function such that ∑
+i∈Λ w(i) = 1.
+Deﬁne an internal ﬁnitely-additive measureas an internal mappingμ from C to ∗[0,1] such
+that μ(A) = ∑
+i∈A w(i) for any A ∈ C.T h e n(Λ,C,μ) is called a hyperﬁnite internal proba-
+bility space.I f w(i) ≡ 1
+M for all i ∈ Λ,t h e n(Λ,C,μ) is called a hyperﬁnite counting proba-
+bility space. For an internal functionh from Λ to ∗R, the (internal) integral
+∫
+Λ hdμ of h over
+a hyperﬁnite internal probability space (Λ,C,μ) is simply the weighted sum ∑
+i∈Λ h(i)w(i).
+The integral for an internal vector-valued function with values in a Cartesian product space
+can be deﬁned componentwise.
+We let st(μ) be the function fromC into R+ deﬁned by st(μ)(A) = st(μ(A)) for any A ∈ C.
+It is clear that st(μ) is a ﬁnitely-additive measure on the algebraC. The important point is that
+st(μ) is a countably-additive measure on the algebraC. To see this, consider a sequenceA1 ⊇
+A2 ⊇ ... of internal sets in C such that ⋂
+n∈NAn = ∅. The countable saturation principle
+implies the existence ofm ∈ Nsuch that Am = ∅. It is thus clear that limn→∞ st(μ)(An) = 0.
+By Carathéodory’s well-known extension theorem (see, e.g., page 181 inLoeb (2016)), st(μ)
+can be extended to a measure μL on the σ-algebra σ(C) that is generated by C. The standard
+probability space (Λ,Lμ(C),μL) is called a Loeb space. A measure space is complete, like
+Lebesgue measure space, if subsets of measure zero sets are measurable and have measure 0.
+By including all μL-null subsets, we obtain a complete Loeb space (Λ,Lμ(C),μL).
+4.4. Transition probabilities.L e t (I, I0,λ0) be a hyperﬁnite internal probability space
+for which I0 is the internal power set on some hyperﬁnite set I.L e t Ω be a hyperﬁnite
+internal set with F0 its internal power set. Let P0 be an internal function from I to the space
+of hyperﬁnite internal probability measures on (Ω, F0), which is called aninternal transition
+probability.F o ri ∈ I, denote the hyperﬁnite internal probability measure P0(i) on (Ω, F0)
+by P0i.
+It is clear that the Cartesian product I × Ω is a hyperﬁnite set. Let I0 ⊗ F0 be the internal
+power set on I ×Ω. Deﬁne a hyperﬁnite internal probability measure τ0 on (I ×Ω, I0 ⊗F0)
+by letting τ0({(i,ω)}) = λ0({i})P0i({ω}) for (i,ω) ∈ I × Ω. The measure τ0 will be called
+the product transition probabilityof the measure λ0 and the transition probability P0.L e t
+λ, Pi and τ be the Loeb measures on (I,σ( I0)), (Ω,σ( F0)),a n d (I × Ω,σ( I0 ⊗ F0))
+corresponding respectively to the internal measures λ0, P0i,a n dτ0. The collection {Pi : i ∈
+I} of Loeb measures will be called a Loeb transition probability, and denoted by P.T h e
+measure τ will be called the Loeb product transition probability of the measure λ and the
+Loeb transition probabilityP. We shall also denoteτ0 by λ0 ⊗P0, τ by λ⊠P,a n dσ(I0 ⊗F0)
+by I ⊠ F.
+The following result presents a generalized Fubini theorem for a Loeb transition probabil-
+ity, which is proved in Section 5 of Dufﬁe and Sun (2007).23
+PROPOSITION 4. Let f be a real-valued integrable function on(I × Ω,σ( I0 ⊗ F0),τ) .
+Then,
+(1) fi = f( i ,·) is σ(F0)-measurable for eachi ∈ I and integrable on(Ω,σ( F0),Pi) for
+λ-almost alli ∈ I;
+(2)
+∫
+Ω fi(ω)dP i(ω) is integrable on(I,σ( I0),λ);
+(3)
+∫
+I
+∫
+Ω fi(ω)dP i(ω)dλ(i) =
+∫
+I×Ω f( i ,ω)dτ( i ,ω).
+23For simplicity, we only state the result in terms of the σ-algebra σ(I0 ⊗ F0). One can also re-state the result
+to the case when the underlying measure space is the completion of (I × Ω,σ( I0 ⊗ F0),τ) .
+
+
+--- PAGE 18 ---
+
+1772 D. DUFFIE, L. QIAO AND Y . SUN
+If P0i does not depend on i,t h e nτ = λ ⊠ P is called the Loeb product measure. The
+corresponding measure space (I ×Ω, I ⊠F,λ ⊠P) is called the Loeb product space. In this
+case, the symmetric position of the two probability spaces respectively on I and Ω implies
+that the properties as stated in Proposition4 also hold when the double integral is evaluated in
+the reverse order. It is clear that I ⊠ F contains the usual product σ-algebra σ(I0) ⊗ σ(F0).
+Thus, (I × Ω, I ⊠ F,λ ⊠ P) is a Fubini extension, as ﬁrst shown in Keisler (1977).24
+4.5. An illustrative example: From ﬁnite-period to continuous time. In this subsection,
+we present a simple example illustrating how, based on independent ﬁnite-period Markov
+chains in Part A, to construct independent continuous-time Markov chains in Part B, using
+nonstandard analysis.
+Part A: Fix any integer N in N. For simplicity, we consider a minimal nontrivial Markov
+chain on the type space S ={ U,D } (for “up” and “down”) that lasts forN2 + 1 periods. The
+corresponding discrete timeline is {n/N}N2
+n=0 so that the time length for each period is 1 /N.
+Let ΩN = (S × S)N2+1,a n dFN be the power set of ΩN .F o ra n yω ∈ ΩN , ω can be written
+as {ωn}N2
+n=0 with ωn ∈ S × S;l e t ˆyn
+1 (ω) ∈ S and ˆyn
+2 (ω) ∈ S be the ﬁrst and second compo-
+nents of ωn respectively. Then,{ˆyn
+1 }N2
+n=0 and {ˆyn
+2 }N2
+n=0 can be viewed as random variables from
+(ΩN,FN) to S.
+Let PN : FN →[ 0,1] be a probability measure on (ΩN,FN) such that {ˆyn
+1 }N2
+n=0 and
+{ˆyn
+2 }N2
+n=0 are independent discrete-time Markov chains on (ΩN,FN,PN) with given initial
+distributions for ˆy0
+1 and ˆy0
+2 .T h a ti s ,f o ri = 1,2, and any r ∈ N, n1,n2,...,n r in N with
+N2 ≥ n1 >n 2 > ··· >n r ≥ 0, and any types k1,k ′
+1,k2,k ′
+2,...,k r,k ′
+r in S,
+PN
+(
+ˆyn1
+i = k1, ˆyn2
+i = k2,..., ˆynr
+i = kr
+)
+PN
+(
+ˆyn2
+i = k2
+)
+(3)
+= PN
+(
+ˆyn1
+i = k1, ˆyn2
+i = k2
+)
+PN
+(
+ˆyn2
+i = k2,..., ˆynr
+i = kr
+)
+and
+PN
+(
+ˆyn1
+1 = k1, ˆyn1
+2 = k′
+1,..., ˆynr
+1 = kr, ˆynr
+2 = k′
+r
+)
+(4)
+= PN
+(
+ˆyn1
+1 = k1,..., ˆynr
+1 = kr
+)
+PN
+(
+ˆyn1
+2 = k′
+1,..., ˆynr
+2 = k′
+r
+)
+.
+In addition, we assume that for any i ∈{ 1,2} and n ∈{ 0,1,...,N 2 − 1},
+(5) PN
+(
+ˆyn+1
+i = U|ˆyn
+i = D
+)
+= PN
+(
+ˆyn+1
+i = D|ˆyn
+i = U
+)
+= 1
+N .
+Let Fr
+i be the σ-algebra generated by {ˆyn
+i }r
+n=0 and ˆZr
+i the random number of jumps of ˆyi by
+the rth period.
+Part B: The transfer principle indicates that any results about ﬁnite sets can be restated on
+hyperﬁnite sets. We shall transfer the two independent ﬁnite-period Markov chains in Part
+A to the hyperﬁnite setting. Throughout Part B, to avoid a proliferation of symbols, we will
+continue to use the symbolN to denote a ﬁxed hyperinteger in∗N∞ in Part B. By the transfer
+principle, we can deﬁne (ΩN,FN,PN), {ˆyn
+1 }N2
+n=0 and {ˆyn
+2 }N2
+n=0 in exactly the same way as
+above such that {ˆyn
+1 }N2
+n=0 and {ˆyn
+2 }N2
+n=0 still satisfy equations (3), (4), and (5).
+24For the development of Loeb (product) spaces, seeLoeb (1975), Anderson (1976), Keisler (1977), Sun (1998),
+and Section 6.2 of Loeb and Wolff (2015) (by Horst Osswald). When both λ and P have atomless parts, Proposi-
+tion 8.4.5 in Chapter 8 of Loeb and Wolff(2015) (by the third author of this paper) indicates that I ⊠ F is always
+a strict extension of σ(I0) ⊗ σ(F0).
+
+
+--- PAGE 19 ---
+
+CONTINUOUS TIME RANDOM MATCHING 1773
+Next, for any t ∈ R+ and i ∈{ 1,2},l e t yi(t) =ˆy⌊tN ⌋
+i ,w h e r e⌊tN ⌋ is the hyperinte-
+ger part of tN —that is, ⌊tN ⌋ is the greatest hyperinteger less than or equal to tN .S i n c e
+ˆy⌊tN ⌋
+i is internal, it is clear that yi(t) is measurable on the hyperﬁnite internal probability
+space (ΩN,FN,PN), and thus automatically measurable on the Loeb space (ΩN,F,P) of
+(ΩN,FN,PN).
+By equations (3)a n d(4), we know that for any i ∈{ 1,2}, r ∈ N, t1,t2,...,t r in R+ with
+t1 >t 2 > ··· >t r, and any types k1,k ′
+1,k2,k ′
+2,...,k r,k ′
+r in S,
+P
+(
+yi(t1) = k1,yi(t2) = k2,...,y i(tr) = kr
+)
+P
+(
+yi(t2) = k2
+)
+= P
+(
+ˆy⌊t1N⌋
+i = k1, ˆy⌊t2N⌋
+i = k2,..., ˆy⌊trN⌋
+i = kr
+)
+P
+(
+ˆy⌊t2N⌋
+i = k2
+)
+= P
+(
+ˆy⌊t1N⌋
+i = k1, ˆy⌊t2N⌋
+i = k2
+)
+P
+(
+ˆy⌊t2N⌋
+i = k2,..., ˆy⌊trN⌋
+i = kr
+)
+= P
+(
+yi(t1) = k1,yi(t2) = k2
+)
+P
+(
+yi(t2) = k2,...,y i(tr) = kr
+)
+,
+and
+P
+(
+y1(t1) = k1,y2(t1) = k′
+1,...,y 1(tr) = kr,y2(tr) = k′
+r
+)
+= P
+(
+ˆy⌊t1N⌋
+1 = k1, ˆy⌊t1N⌋
+2 = k′
+1,..., ˆy⌊trN⌋
+1 = kr, ˆy⌊trN⌋
+2 = k′
+r
+)
+= P
+(
+ˆy⌊t1N⌋
+1 = k1,..., ˆy⌊trN⌋
+1 = kr
+)
+P
+(
+ˆy⌊t1N⌋
+2 = k′
+1,..., ˆy⌊trN⌋
+2 = k′
+r
+)
+= P
+(
+y1(t1) = k1,...,y 1(tr) = kr
+)
+P
+(
+y2(t1) = k′
+1,...,y 2(tr) = k′
+r
+)
+.
+Therefore, y1 and y2 are independent continuous-time Markov chains.
+It remains to calculate the transition intensity of yi.F i xa n yi ∈{ 1,2} and t ∈ R+ and
+let n =⌊ tN ⌋.F o r Δt ∈ R+ with Δt > 0, let Δn =⌊ (t + Δt)N ⌋−⌊ tN ⌋, it is clear that
+Δn/N ≃ Δt.S i n c eN is an unlimited hyperinteger, we have (1 − 1
+N )N ≃ e. Recall that ˆZr
+i
+is the number of jumps of ˆyi by the rth period. A simple calculation shows that for any
+nontrivial event Fn
+i ∈ Fn
+i ,
+PN
+(ˆZn+Δn
+i = ˆZn
+i |Fn
+i
+)
+=
+(
+1 − 1
+N
+)Δn
+=
+((
+1 − 1
+N
+)N)Δn/N
+≃ e−Δt,
+PN
+(ˆZn+Δn
+i − ˆZn
+i = 1|Fn
+i
+)
+=
+n+Δn−1∑
+r=n
+PN
+(ˆZn+Δn
+i = ˆZr+1
+i = ˆZr
+i + 1, ˆZr
+i = ˆZn
+i |Fn
+i
+)
+= Δn
+N
+(
+1 − 1
+N
+)Δn−1
+≃ Δte−Δt,
+PN
+(ˆZn+Δn
+i − ˆZn
+i ≥ 2|Fn
+i
+)
+≃ 1 − e−Δt − Δte−Δt.(6)
+Note that the intensity with which yi switches from D to U is the coefﬁcient of the term Δt
+in the Taylor expansion of P(yi(t + Δt) = U|yi(t) = D). Then, we can focus on the events
+in which ˆZn+Δn
+i − ˆZn
+i = 1 since the probability of the event ˆZn+Δn
+i − ˆZn
+i ≥ 2 under P is
+1 − e−Δt − Δte−Δt, which is of order Δt2 (denoted by O(Δt2))w h e nΔt is small. Hence,
+we have
+P
+(
+yi(t + Δt) = U|yi(t) = D
+)
+= PN
+(
+ˆyn+Δn
+i = U, |ˆyn
+i = D
+)
+= PN
+(
+ˆyn+Δn
+i = U, ˆZn+Δn
+i − ˆZn
+i = 1|ˆyn
+i = D
+)
++ O
+(
+Δt2)
+=
+n+Δn−1∑
+r=n
+PN
+(ˆZr+1
+i = ˆZn+Δn
+i , ˆyr
+i = U, ˆZr
+i = ˆZn
+i |ˆyn
+i = D
+)
++ O
+(
+Δt2)
+
+
+--- PAGE 20 ---
+
+1774 D. DUFFIE, L. QIAO AND Y . SUN
+=
+n+Δn−1∑
+r=n
+(
+1 − 1
+N
+)n+Δn−r−1 1
+N
+(
+1 − 1
+N
+)r−n
++ O
+(
+Δt2)
+= Δn
+N
+(
+1 − 1
+N
+)Δn−1
++ O
+(
+Δt2)
+= Δte−Δt + O
+(
+Δt2)
+= Δt + O
+(
+Δt2)
+.
+Similarly, one can show that P(yi(t + Δt) = D|yi(t) = U) = Δt + O(Δt2). Therefore, the
+Markov chain yi switches from D to U with intensity 1, and back with intensity 1 as well.
+REMARK 1. The intuition behind this example is that continuous-time processes can be
+thought of as discrete-time processes with inﬁnitesimal increments, which also applies to the
+proof in Section 5. One of the main difﬁculties in that proof is that the discrete-time processes
+in the ﬁnite-period matching model are neither exactly Markovian nor exactly independent,
+given that correlations across agents are created in each time period. To obtain the Markov
+property and independence exactly for the continuous-time processes, we need to carefully
+estimate the cumulative effect of the correlations across multiple time periods to make sure
+that the deviation from the exact Markov property and exact independence in the ﬁnite-period
+matching model can be made arbitrarily small when the number of agents is large enough.
+5. Proof of Theorem1. As noted in Loeb and Wolff (2015), in nonstandard analysis
+hyperﬁnite sets are important objects that can be viewed as equivalence classes of sequences
+of ﬁnite sets. As noted in Section4.2, the transfer principle indicates that any results for ﬁnite
+sets can be restated for hyperﬁnite sets. In particular, the dynamic matching model and its
+properties as developed in Sections 3.2 and 3.3 can be recast in the setting with a hyperﬁnite
+number of both agents and time periods.
+To avoid the proliferation of symbols, we follow the convention in nonstandard analysis
+to adopt the same notation in the hyperﬁnite setting in this section as in the ﬁnite dynamic
+matching model in Section3. First, we take M to be an unlimited hyperﬁnite integer in ∗N∞,
+and ˆM the smallest even hyperinteger in∗N∞ which is greater than (ξ3M2+1)−9 (as described
+in the paragraph below Lemma 2).25 Then, let I be the hyperﬁnite set {1,2,..., ˆM} with
+its internal power set I0 and the internal counting probability measure λ0 on I0,a n dT0 the
+hyperﬁnite set {n}M2
+n=0 with the corresponding hyperﬁnite discretized timeline{n/M}M2
+n=0 (i.e.,
+the time length for each period is the inﬁnitesimal 1 /M). The parameters for the dynamical
+system, ˆηkl, ˆqkl, ˆςkl remain the same. As in the ﬁnite dynamic matching model, we denote
+Ω3M2
+, E3M2
+(the internal power set on Ω3M2
+)a n d Q3M2
+by Ω, F0 and P0 respectively.
+Let (I × Ω, I0 ⊗ F0,λ0 ⊗ P0) be the internal product probability space of (I, I0,λ0) and
+(Ω, F0,P0). Note that I0 ⊗ F0 is also the internal power set on I × Ω. By the transfer
+principle, we know that Lemmas 1 to 11 still hold in the hyperﬁnite setting. We will not
+distinguish the statements of Lemmas 1 to 11 in the ﬁnite and hyperﬁnite settings when there
+is no confusion.
+Let (I, I,λ), (Ω, F,P) ,a n d(I ×Ω, I ⊠F,λ ⊠P) be the standard probability spaces that
+are obtained from the internal probability spaces (I, I0,λ0), (Ω, F0,P0),a n d(I × Ω, I0 ⊗
+F0,λ0 ⊗ P0) respectively by taking their corresponding Loeb probability spaces. We need to
+prove that there exist α : I × Ω × R+ → S and ϕ : I × Ω × R+ → I satisfying the properties
+described in Section 2. Towards this end, we divide the proof into seven parts. In Section5.1,
+25As noted in Section 4.1, a positive hyperreal number is said to be inﬁnite or unlimited if it is greater than every
+standard natural number; and ∗N∞ denotes the set of unlimited hyperﬁnite integers.
+
+
+--- PAGE 21 ---
+
+CONTINUOUS TIME RANDOM MATCHING 1775
+we ﬁrst deﬁne the random type process α and discuss its basic properties. In Section 5.2,
+we prove that α is Markovian and independent. We then check that the transition-intensity
+matrix of the relevant Markov chains at time t is R(p(t)) in Section 5.3. In Section 5.4,w e
+deﬁne the random matching ϕ and prove that ϕ satisﬁes the properties described in Section2.
+In Sections 5.5, 5.6,a n d5.7, the continuous-time dynamical system that we have constructed
+are shown to satisfy Properties (1)–(2), (3), and (4)–(5) in Theorem 1 respectively.
+5.1. Construction of the agents’ type process. Recall that p0 is the initial type distri-
+bution. Let {Ik}k∈S be an internal partition of I such that |Ik|
+ˆM ≃ p0
+k for any k ∈ S.L e t ˆα0
+be an internal function from (I, I0,λ0) to S such that ˆα0(i) = k if i ∈ Ik. It is clear that
+λ0({i ∈ I :ˆα0(i) = k}) ≃ p0
+k for any k ∈ S.
+Fix any t ∈ R+, and denote the hyperinteger part ⌊tM ⌋ of tM by ¯n. Based on the hyperﬁ-
+nite dynamic system transferred from Section 3.2,l e tα′(t) =ˆα3¯n.S i n c eˆα3¯n is internal, it is
+clear that α′(t) is measurable on (I × Ω, I ⊠ F,λ ⊠ P).
+Fix any i ∈ I. The stochastic process α′
+i may not be right-continuous with left-limits
+(RCLL). We will show that up to any ﬁnite time, with probability one any agent can only
+change her type ﬁnitely many times. Recall that ˆXm
+i (ω) is deﬁned in the paragraph be-
+low Lemma 8.F o ra n yN in the set N of (standard) positive integers, let AN
+i ={ ω ∈ Ω :
+ˆXNM
+i (ω) is ﬁnite}. It is clear that
+AN
+i =
+∞⋃
+k=1
+{
+ω ∈ Ω : ˆXNM
+i (ω) ≤ k
+}
+.
+Since the set {ω ∈ Ω : ˆXNM
+i (ω) ≤ k} is internal, AN
+i is measurable in F.
+Fix any standard positive integers n and N in N.F o ra n yj ∈{ 0,1,...,n },l e tmj be the
+hyperinteger part of jNM
+n .T h e nm0 = 0, mn = NM and the standard part of mj −mj−1
+M is N
+n
+for any j ∈{ 1,...,n }.F o ra n yω/∈ AN
+i , ˆXNM
+i (ω) is inﬁnite, which implies that there exists
+j ∈{ 1,...,n } such that ˆX
+mj
+i (ω) − ˆX
+mj−1
+i (ω) ≥ 2. Therefore, we know that
+Ω \ AN
+i ⊆
+n⋃
+j=1
+{
+ω ∈ Ω : ˆX
+mj
+i (ω) − ˆX
+mj−1
+i (ω) ≥ 2
+}
+,
+which implies that
+(7) P
+(
+Ω \ AN
+i
+)
+≤
+n∑
+j=1
+P
+(ˆX
+mj
+i − ˆX
+mj−1
+i ≥ 2
+)
+.
+It follows from Lemma 10 that
+(8) P0
+(ˆX
+mj
+i − ˆX
+mj−1
+i ≥ 2
+)
+≤ (K ¯a)2
+(mj − mj−1
+M
+)2
+.
+Since the standard part of mj −mj−1
+M is N
+n , it follows from equation (8)t h a t
+(9) P
+(ˆX
+mj
+i − ˆX
+mj−1
+i ≥ 2
+)
+≤ (K ¯a)2
+(N
+n
+)2
+.
+By combining equations (7)a n d(9), we obtain that
+P
+(
+Ω \ AN
+i
+)
+≤ n(K ¯a)2
+(N
+n
+)2
+.
+
+
+--- PAGE 22 ---
+
+1776 D. DUFFIE, L. QIAO AND Y . SUN
+Now we keep the standard positive integer N ﬁxed and let the standard positive integer n go
+to inﬁnity to obtain that limn→∞ n(K ¯a)2(N
+n )2 = 0. Then P(Ω \ AN
+i ) = 0, which implies that
+P(AN
+i ) = 1. Let
+Ai =
+{
+ω ∈ Ω : ˆXm
+i (ω) is ﬁnite for any m ∈ ∗N such that m
+M is ﬁnite
+}
+.
+It is clear that Ai = ⋂ ∞
+N=1 AN
+i and
+(10) P(Ai) = P
+(∞⋂
+N=1
+AN
+i
+)
+= 1,
+which means that up to any ﬁnite time, agent i can only change her type ﬁnitely many times
+with probability one.
+Let A ={ (i,ω) ∈ I × Ω : ˆXm
+i (ω) is ﬁnite for any m ∈ ∗N such that m
+M is ﬁnite}. Then, it is
+clear that
+A =
+∞⋂
+N=1
+∞⋃
+k=1
+{
+(i,ω) ∈ I × Ω : ˆXNM
+i (ω) ≤ k
+}
+,
+which also implies that A is measurable in I ⊠ F. As noted in Section 4.4, the Loeb product
+space (I × Ω, I ⊠ F,λ ⊠ P) is a Fubini extension. Since A ={ (i,ω) ∈ I × Ω : ω ∈ Ai} and
+P(Ai) = 1f o ra n yi ∈ I, it follows from the Fubini property that
+(11) λ ⊠ P(A) =
+∫
+I
+P(Ai)dλ = 1.
+We deﬁne the random type process α from I × Ω × R+ to S as follows:
+α(i,ω,t) =
+⎧
+⎨
+⎩
+lim
+t′→t+
+α′
+i
+(
+ω,t ′)
+if (i,ω) ∈ A,
+ˆα3¯n
+i (ω) otherwise.
+Now we prove thatα is well deﬁned and measurable on(I ×Ω×R+,(I ⊠F)⊗B(R+)).F o r
+any (i,ω) ∈ A, α′
+i(ω,t ′) can only change ﬁnitely many times in the time interval [0,t + 1].
+Then there exists ϵ> 0 such that α′
+i(ω,t ′) is constant on (t,t + ϵ). Then, for any (i,ω) ∈ A,
+limt′→t+ α′
+i(ω,t ′) is well deﬁned, and the sample path αi(ω,t) is RCLL in t ∈ R+.F o ra n y
+i ∈ I,s i n c eP(Ai) = 1, the stochastic process αi is RCLL. By the deﬁnition of α,a n dt h e
+fact that A is measurable, it is clear that for any ﬁxed t ∈ R+, α(i,ω,t) is measurable on
+(I × Ω, I ⊠ F,λ ⊠ P). By Proposition 1.13 in Karatzas and Shreve (1991), α is measurable
+on (I × Ω × R+,(I ⊠ F) ⊗ B(R+)).
+5.2. Markov and independence properties of the agents’ type process.F i x a n y i ∈ I and
+t ∈ R+. Recall from the second paragraph of Section5.1 that ¯n =⌊ tM ⌋. It is clear that ¯n
+M ≃ t.
+Let Et ={ n ∈ ∗N: n
+M ∈ monad(t)};t h e n¯n ∈ Et.W ed e ﬁ n et h eF-measurable set
+(12) Bi(t) =
+{
+ω ∈ Ω : ˆX3n
+i (ω) = ˆX3¯n
+i (ω) for any n ∈ Et
+}
+.
+For any n1,n2 ∈ T0 such that st(n1
+M )<t< st(n2
+M ) for t> 0, n1 = 0a n ds t(n2
+M )> 0f o rt = 0,
+Lemma 9 implies that
+P
+(
+Ω \ Bi(t)
+)
+≤ P
+(ˆX3n1
+i ̸=ˆX3n2
+i
+)
+= 1 − P
+(ˆX3n1
+i = ˆX3n2
+i
+)
+≤ st
+(
+K ¯a3(n2 − n1)
+M
+)
+.
+Note that st(K ¯a3(n2−n1)
+M ) → 0a ss t (n2−n1
+M ) → 0. Hence, we have P(Ω \ Bi(t)) = 0, which
+implies that P(Bi(t)) = 1.
+
+
+--- PAGE 23 ---
+
+CONTINUOUS TIME RANDOM MATCHING 1777
+Fix any ω ∈ Ai ( a sd e ﬁ n e di nS e c t i o n5.1). Assume that ˆα3n
+i (ω) ≡ C for any n ∈ Et.T h e n
+the spillover principle in Section 4.2 implies that there exist n1,n2 ∈ T0 such that st(n1
+M )<
+t< st(n2
+M ) for t> 0, n1 = 0a n ds t(n2
+M )> 0f o rt = 0, and ˆα3n
+i (ω) ≡ C for any n ∈{ n1,n1 +
+1,...,n 2}. Hence for any t′ in the time interval (st(n1
+M ),st(n2
+M )), α′
+i(t′) = C. Therefore, if
+ω ∈ Ai and ˆα3n
+i (ω) ≡ C for any n ∈ Et,w eh a v e
+αi(ω,t) = lim
+t′→t+
+α′
+i
+(
+ω,t ′)
+= C =ˆα3n
+i (ω).
+Fix any n0 ∈ Et.F o ra n yω ∈ Ai,i f ˆα3n0
+i (ω) ̸=αi(ω,t) ,t h e nˆα3n
+i (ω) cannot be constant
+for n ∈ Et by the contrapositive version of the last statement in the above paragraph. In this
+case, there is either a mutation or matching at some period in Et, which implies that
+(13)
+{
+ω ∈ Ai :ˆα3n0
+i (ω) ̸=αi(ω,t)
+}
+⊆ Ω \ Bi(t).
+Since P(Ai) = 1, we have
+P
+(
+ˆα3n0
+i ̸=αit
+)
+≤ P
+(
+Ω \ Bi(t)
+)
+= 0,
+which implies that
+(14) P
+(
+ˆα3n0
+i = αit
+)
+= 1.
+By the hyperﬁnite analogue of Lemma7, we know thatB2(M) ≃ 0( s i n c eM is unlimited),
+and for any r ∈ N, n1,n2,...,n r in T0 with n1 >n 2 > ··· >n r, and any types k1,k2,...,k r
+in S,
+P
+(
+ˆα3n1
+i = k1, ˆα3n2
+i = k2,..., ˆα3nr
+i = kr
+)
+P
+(
+ˆα3n2
+i = k2
+)
+(15)
+= P
+(
+ˆα3n1
+i = k1, ˆα3n2
+i = k2
+)
+P
+(
+ˆα3n2
+i = k2,..., ˆα3nr
+i = kr
+)
+.
+For any r ∈ N, and real time sequencet1 >t 2 > ··· >t r in R+, choose nk ∈ T0 such that nk
+M ≃
+tk for 1 ≤ k ≤ r. Then, it follows from equations (14)a n d(15) that for any typesk1,k2,...,k r
+in S
+P
+(
+αi(t1) = k1,αi(t2) = k2,...,α i(tr) = kr
+)
+P
+(
+αi(t2) = k2
+)
+= P
+(
+αi(t1) = k1,αi(t2) = k2
+)
+P
+(
+αi(t2) = k2,...,α i(tr) = kr
+)
+,
+which implies that the stochastic process αi has the Markov property.
+Fix any j ∈ I with j ̸=i. By the hyperﬁnite analogue of Lemma 8, we know that
+B3(M) ≃ 0( s i n c eM is unlimited), and for any n1 >n 2 > ··· >n r in T0, and any types
+k1,l1,k2,l2,...,k r,lr in S,
+P
+(
+ˆα3n1
+i = k1, ˆα3n1
+j = l1,..., ˆα3nr
+i = kr, ˆα3nr
+j = lr
+)
+(16)
+= P
+(
+ˆα3n1
+i = k1,..., ˆα3nr
+i = kr
+)
+P
+(
+ˆα3n1
+j = l1,..., ˆα3nr
+j = lr
+)
+.
+For any r ∈ N, and real time sequence t1 >t 2 > ··· >t r in R+, choose nk ∈ T0 such
+that nk
+M ≃ tk for 1 ≤ k ≤ r. We can obtain from equations ( 14)a n d( 16) that for any types
+k1,l1,k2,l2,...,k r,lr in S,
+P
+(
+αi(t1) = k1,αj(t1) = l1,...,α i(tr) = kr,αj(tr) = lr
+)
+(17)
+= P
+(
+αi(t1) = k1,...,α i(tr) = kr
+)
+P
+(
+αj (t1) = l1,...,α j(tr) = lr
+)
+,
+which implies that the stochastic processes αi and αj are independent.
+
+
+--- PAGE 24 ---
+
+1778 D. DUFFIE, L. QIAO AND Y . SUN
+5.3. Calculation of the transition-intensity matrix.F i x a n y i ∈ I, t ∈ R+, k,r ∈ S with
+k ̸=r and P(αi(t) = k) > 0. The purpose of this part is to verify that agent i’s transition
+intensity for her types to change from k to r at time t is Rkr ( ¯pt).F o ra n yΔt in the set
+R++ of (standard) positive real numbers, let n and Δn be in ∗N such that n
+M ∈ monad(t) and
+Δn
+M ∈ monad(Δt). By equation (14), we have
+P
+(
+αi(t + Δt) = r|αi(t) = k
+)
+≃ P0
+(
+ˆα3n+3Δn
+i = r|ˆα3n
+i = k
+)
+.
+Lemma 10 says that the probability for agent i to change her type at least twice in the time
+interval [t,t + Δt] is of order Δt2. Hence, we have
+P
+(
+αi(t + Δt) = r|αi(t) = k
+)
+(18)
+= P0
+(
+ˆα3n+3Δn
+i = r, ˆX3n+3Δn
+i − ˆX3n
+i = 1|ˆα3n
+i = k
+)
++ O
+(
+Δt2)
+.
+For any m,m′ ∈{ 3n,3n + 1,..., 3M2} with m ≥ m′,l e t Cm
+m′ ={ ω ∈ Ω : ˆXm′
+i (ω) =
+ˆXm
+i (ω)}. Then, Cm
+m′ is the event that there is neither a mutation nor a matching for agent
+i between m′th step and mth step. In particular, when the event Cm
+m′ happens, agent i does
+not change her type between m′th step and mth step. The ﬁrst term in the right-hand side of
+equation (18) can be expanded as follows:
+P0
+(
+ˆα3n+3Δn
+i = r, ˆX3n+3Δn
+i − ˆX3n
+i = 1|ˆα3n
+i = k
+)
+=
+n+Δn−1∑
+r=n
+P0
+(
+C3r
+3n ∩
+(
+ˆα3r+3
+i = r
+)
+∩ C3n+3Δn
+3r+3 |ˆα3n
+i = k
+)
+=
+n+Δn−1∑
+r=n
+[
+P0
+(
+C3r
+3n ∩
+(
+ˆα3r+3
+i = r
+)
+|ˆα3n
+i = k
+)
+(19)
+× P0
+(
+C3n+3Δn
+3r+3 |
+(
+ˆα3n
+i = k
+)
+∩ C3r
+3n ∩
+(
+ˆα3r+3
+i = r
+))]
+=
+n+Δn−1∑
+r=n
+[
+P0
+(
+ˆα3r+3
+i = r|C3r
+3n ∩
+(
+ˆα3n
+i = k
+))
+P0
+(
+C3r
+3n|ˆα3n
+i = k
+)
+× P0
+(
+C3n+3Δn
+3r+3 |
+(
+ˆα3n
+i = k
+)
+∩ C3r
+3n ∩
+(
+ˆα3r+3
+i = r
+))]
+.
+It follows from Lemma 9 that
+P0
+(
+ˆα3r+3
+i = r|C3r
+3n ∩
+(
+ˆα3n
+i = k
+))
+(20)
+≤ P0
+(ˆX3r+3
+i ̸=ˆX3r
+i |C3r
+3n ∩
+(
+ˆα3n
+i = k
+))
+≤ 3K ¯a
+M .
+Lemma 9 also implies that
+P0
+(
+C3r
+3n|ˆα3n
+i = k
+)
+P0
+(
+C3n+3Δn
+3r+3 |
+(
+ˆα3n
+i = k
+)
+∩ C3r
+3n ∩
+(
+ˆα3r+3
+i = r
+))
+≥
+(
+1 − K ¯a3r − 3n
+M
+)(
+1 − K ¯a3n + 3Δn − 3r − 3
+M
+)
+(21)
+≥ 1 − K ¯a3Δn − 3
+M ≃ 1 − 3K ¯aΔt.
+By equations (19), (20), and (21), we can obtain that
+⏐⏐⏐⏐
+⏐
+P0
+(
+ˆα3n+3Δn
+i = r, ˆX3n+3Δn
+i − ˆX3n
+i = 1|ˆα3n
+i = k
+)
+
+
+--- PAGE 25 ---
+
+CONTINUOUS TIME RANDOM MATCHING 1779
+−
+n+Δn−1∑
+r=n
+P0
+(
+ˆα3r+3
+i = r|C3r
+3n ∩
+(
+ˆα3n
+i = k
+))
+⏐⏐
+⏐
+⏐⏐
+=
+n+Δn−1∑
+r=n
+P0
+(
+ˆα3r+3
+i = r|C3r
+3n ∩
+(
+ˆα3n
+i = k
+))
+(22)
+×
+⏐⏐1 − P0
+(
+C3r
+3n|ˆα3n
+i = k
+)
+P0
+(
+C3n+3Δn
+3r+3 |
+(
+ˆα3n
+i = k
+)
+∩ C3r
+3n ∩
+(
+ˆα3r+3
+i = r
+))⏐⏐
+≲
+n+Δn−1∑
+r=n
+3K ¯a
+M 3K ¯aΔt ≃ (3K ¯aΔt)2 = O
+(
+Δt2)
+.
+It follows from Lemma 6 that
+⏐⏐⏐⏐
+⏐
+n+Δn−1∑
+r=n
+P0
+(
+ˆα3r+3
+i = r|C3r
+3n ∩
+(
+ˆα3n
+i = k
+))
+−
+n+Δn−1∑
+r=n
+(
+ˆηkr +
+∑
+l∈S
+¯q3r+1
+kl ˆςkl(r)
+)⏐⏐⏐⏐
+⏐
+(23)
+≤
+n+Δn−1∑
+r=n
+3K2 ¯a2
+M2 ≃ 3K2 ¯a2Δt
+M ,
+which is an inﬁnitesimal and can be absorbed into the term O(Δt2). Therefore, equations
+(18), (22), and (23) imply that
+(24) P
+(
+αi(t + Δt) = r|αi(t) = k
+)
+=
+n+Δn−1∑
+r=n
+(
+ˆηkr +
+∑
+l∈S
+¯q3r+1
+kl ˆςkl(r)
+)
++ O
+(
+Δt2)
+.
+Recall the notation ˆηkr = 1
+M ηkr + 1
+M2 and ˆςkl(r) = ςkl(r) for any l ∈ S from Section 3.2.I t
+is clear that
+P
+(
+αi(t + Δt) = r|αi(t) = k
+)
+=
+n+Δn−1∑
+r=n
+( 1
+M ηkr + 1
+M2 +
+∑
+l∈S
+¯q3r+1
+kl ςkl(r)
+)
++ O
+(
+Δt2)
+(25)
+= ηkr Δt + Δt
+M +
+n+Δn−1∑
+r=n
+∑
+l∈S
+¯q3r+1
+kl ςkl(r) + O
+(
+Δt2)
+= ηkr Δt +
+n+Δn−1∑
+r=n
+∑
+l∈S
+¯q3r+1
+kl ςkl(r) + O
+(
+Δt2)
+,
+where some inﬁnitesimals are absorbed into the term O(Δt2). Equation ( 14) implies that
+¯pt = E(pt) ≃ E(ρ3n). By Lemma 4, U3r+1
+1 (ρ0) ≃ E(ρ3r+1). By the continuity of θkl(·),a n d
+the deﬁnitions of ¯q3r+1
+kl above Lemma 3 and ˆqkl in the beginning of Section 3.2, we obtain
+the following estimation
+1
+Δt
+⏐⏐⏐⏐
+⏐
+n+Δn−1∑
+r=n
+∑
+l∈S
+¯q3r+1
+kl ςkl(r) −
+∑
+l∈S
+θkl( ¯pt)ςkl(r)Δt
+⏐⏐⏐⏐
+⏐
+≲ 1
+Δt
+∑
+l∈S
+ςkl(r)
+⏐⏐
+⏐
+⏐
+⏐
+n+Δn−1∑
+r=n
+1
+M
+∗θkl
+(
+U3r+1
+1
+(
+ρ0))
+− ∗θkl
+(
+E
+(
+ρ3n))Δn
+M
+⏐⏐
+⏐
+⏐
+⏐
+≲ 1
+MΔt
+∑
+l∈S
+ςkl(r)
+n+Δn−1∑
+r=n
+⏐⏐∗θkl
+(
+E
+(
+ρ3r+1))
+− ∗θkl
+(
+E
+(
+ρ3n))⏐⏐
+
+
+--- PAGE 26 ---
+
+1780 D. DUFFIE, L. QIAO AND Y . SUN
+≲ K
+Δn
+n+Δn−1∑
+r=n
+⏐⏐∗θkl
+(
+E
+(
+ρ3r+1))
+− ∗θkl
+(
+E
+(
+ρ3n))⏐⏐.
+Fix any Δn′ ∈ T0 such that Δn′
+M is inﬁnitesimal. Lemma 11 implies that ∥E(ρ3r+1) −
+E(ρ3n)∥∞ is inﬁnitesimal for any r between n and n + Δn′. By the continuity of θkl(·),
+|∗θkl(E(ρ3r+1)) − ∗θkl(E(ρ3n))| is also inﬁnitesimal. Then, we obtain that
+K
+Δn′
+n+Δn′−1∑
+r=n
+⏐⏐∗θkl
+(
+E
+(
+ρ3r+1))
+− ∗θkl
+(
+E
+(
+ρ3n))⏐⏐≃ 0.
+By the spillover principle, we know that for any ϵ ∈ R++, there exists δ ∈ R++ such that for
+any Δn ∈ T0 with st(Δn
+M )<δ , the standard part of
+K
+Δn
+n+Δn−1∑
+r=n
+⏐⏐∗θkl
+(
+E
+(
+ρ3r+1))
+− ∗θkl
+(
+E
+(
+ρ3n))⏐⏐
+is less than ϵ. Therefore, we can claim that
+(26)
+⏐⏐
+⏐
+⏐
+⏐
+n+Δn−1∑
+r=n
+∑
+l∈S
+¯q3r+1
+kl ςkl(r) −
+∑
+l∈S
+θkl( ¯pt)ςkl(r)Δt
+⏐⏐
+⏐
+⏐
+⏐
+= o(Δt).
+By equations (25)a n d(26), we can obtain that
+P
+(
+αi(t + Δt) = r|αi(t) = k
+)
+= ηkr Δt +
+∑
+l∈S
+θkl( ¯pt)ςkl(r)Δt + o(Δt) = Rkr ( ¯pt)Δt + o(Δt),
+which implies that agent i’s transition intensity for her types from k to r at time t is indeed
+Rkr ( ¯pt).
+5.4. Construction of the random matching process. We ﬁrst deﬁne the random matching
+process ϕ and prove that ϕ satisﬁes all the properties described in Section 2. For any t ∈ R+,
+let ⌊tM ⌋ be the hyperinteger part of tM .F o ra n yi ∈ I, ω ∈ Ω,a n dt ∈ R+,l e t
+ϕ′(i,ω,t) =
+{
+j if ∃n ≤⌊ tM ⌋ s.t. ˆπ3n−1
+i (ω) = j ̸=i, ˆN3n
+i = ˆN3⌊tM ⌋
+i , ˆN3n
+j = ˆN3⌊tM ⌋
+j ,
+i otherwise.
+Then ϕ′(i,ω,t) = j means that i is matched with j in some period n ≤⌊ tM ⌋ and that neither
+is matched with anybody else in periodsn+1,n +2,..., ⌊tM ⌋. It is clear thatϕ′(·,ω,t) is an
+involution in the sense thatϕ′(i,ω,t) = j if and only ifϕ′(j,ω,t) = i.S i n c eϕ′
+t is internal, we
+know that: (i) ϕ′
+t(·,·) is a measurable mapping from (I × Ω, I ⊠ F) to (I, I); (ii) ϕ′(·,ω,t)
+is measure-preserving on (I, I,λ) for any ω ∈ Ω and t ∈ R+.
+Note that ϕ′
+i(t) may not be RCLL. We need to deﬁne the random matching process ϕ as a
+modiﬁcation of ϕ′ and RCLL. For any i ∈ I, ω ∈ Ω,a n dt ∈ R+,l e t
+ϕ(i,ω,t) =
+{
+j if ∃j ∈ I with j ̸=i and ϵ ∈ R++ s.t. ϕ′(
+i,ω,t ′)
+= j for any t′ ∈ (t,t + ϵ),
+i otherwise.
+Assume that ϕ(i,ω,t) = j with i ̸=j. By the deﬁnition above, there existsϵ ∈ R++ such that
+ϕ′(i,ω,t ′) = j for any t′ ∈ (t,t +ϵ). Note thatϕ′(·,ω,t) is an involution. Then,ϕ′(j,ω,t ′) =
+i for any t′ ∈ (t,t + ϵ), which implies that ϕ(j,ω,t) = i. Therefore, ϕ(·,ω,t) is also an
+involution.
+
+
+--- PAGE 27 ---
+
+CONTINUOUS TIME RANDOM MATCHING 1781
+Recall that the set
+Ai =
+{
+ω′ ∈ Ω : ˆXm
+i
+(
+ω′)
+is ﬁnite for any positive hyperinteger m such that m
+M is ﬁnite
+}
+has probability one as shown in equation ( 10) in Section 5.1.F i xa n yω ∈ Ai and t ∈ R+.
+By the deﬁnition of Ai, we know that agent i matches ﬁnitely many (say, ¯k) times up to the
+⌊(t + 1)M⌋th period; agent i’s partner in each of the ¯k matchings may ﬁnd a new partner
+before agent i’s next match.26 This means that ϕ′(i,ω, ·) may change at most 2 ¯k times in
+the real time interval [0,t + 1]. Then there exist j,j ′ ∈ I and ϵ ∈ R++ such that ϕ′(i,ω,t ′)
+is j on (t,t + ϵ) and j′ on (t − ϵ,t) .F o ra n yt′ ∈ (t,t + ϵ), we know that ϕ′(i,ω,t ′′) is
+j for t′′ ∈ (t′,t + ϵ′). According to the deﬁnition of ϕ, we obtain that ϕ(i,ω,t ′) is still j
+for t′ ∈[ t,t + ϵ). Therefore, ϕi(ω,t ′) is right continuous at real time t. Similarly, for any
+t′ ∈ (t − ϵ,t) , ϕ′(i,ω,t ′′) is j′ for t′′∈ (t′,t) . The deﬁnition of ϕ implies that ϕ(i,ω,t ′) is j′
+for any t′ ∈ (t − ϵ,t) , which means that the left limit of ϕ(i,ω,t ′) exists at time t. Therefore,
+we proved that for any i ∈ I,a n df o rP-almost all ω ∈ Ω, ϕ(i,ω, ·) is RCLL.
+Recall that the set
+A =
+{
+(i,ω) ∈ I × Ω : ˆXm
+i (ω) is ﬁnite for any positive hyperinteger m such that m
+M is ﬁnite
+}
+has probability one as shown in equation (11) in Section 5.1.F i xa n yt ∈ R+. In the paragraph
+above, we proved that for any (i,ω) ∈ A,t h e r ee x i s tj ∈ I and ϵ ∈ R++ such that ϕ′(i,ω,t ′)
+is j on (t,t + ϵ) and ϕ(i,ω,t) = j. Then, for any I1 ∈ I, we know that
+{
+(i,ω) ∈ A : ϕ(i,ω,t) ∈ I1
+}
+=
+⋃
+n∈N
+⋂
+n′∈N,n′≥n
+{
+(i,ω) ∈ A : ϕ′
+(
+i,ω,t + 1
+n′
+)
+∈ I1
+}
+∈ I ⊠ F.
+Since I ⊠ F(A) = 1, it is clear that {(i,ω) ∈ I × Ω : ϕ(i,ω,t) ∈ I1} is also in I ⊠ F for any
+I1 ∈ I, which implies that ϕt(·,·) is a measurable mapping from (I × Ω, I ⊠ F) to (I, I).
+In order to prove that for anyt ∈ R+ and P-almost all ω ∈ Ω, ϕωt (·) is measure-preserving,
+we ﬁrst show that P(ϕit = ϕ′
+it ) = 1f o ra n yi ∈ I and t ∈ R+.F i xa n yi ∈ I and t ∈ R+.F o r
+any N ∈ T0,l e tTN ={ n′ ∈ T0 :⌊ tM ⌋ <n ′ ≤⌊ tM ⌋+ N} and
+CN(i) =
+{
+ω ∈ Ω :ˆπ3n′−1(i,ω) = i, ˆπ3n′−1(
+ϕ′(i,ω,t),ω
+)
+= ϕ′(i,ω,t) for any n′ ∈ TN
+}
+.
+Then CN(i) is the event that agent i and her last partner ϕ′(i,ω,t) up to period ⌊tM ⌋ do
+not match in periods ⌊tM ⌋+ 1,⌊tM ⌋+ 2,..., ⌊tM ⌋+ N.F i xa n yN ∈ T0 such that N
+M is
+limited and st (N
+M )> 0. For any ω ∈ CN(i) and t′ ∈ (t,t + st(N
+M )), ϕ′(i,ω,t ′) = ϕ′(i,ω,t)
+and ϕ′(ϕ′(i,ω,t),ω,t ′) = i. By the deﬁnition of ϕ,w eh a v eϕ(i,ω,t) = ϕ′(i,ω,t) for any
+ω ∈ CN(i), which implies CN(i) ⊆{ ω ∈ Ω : ϕit (ω) = ϕ′
+it (ω)}. It follows from the deﬁnition
+of CN(i) that
+P0
+(
+CN(i)
+)
+=
+∑
+j∈I
+P0
+(
+ϕ′(i,ω,t) = j, ˆπ3n′−1(i) = i, ˆπ3n′−1(j) = j for any n′ ∈ TN
+)
+=
+∑
+j∈I
+P0
+(
+ϕ′(i,ω,t) = j
+)
+× P0
+(
+ˆπ3n′−1(i) = i, ˆπ3n′−1(j) = j for any n′ ∈ TN|ϕ′(i,ω,t) = j
+)
+.
+It follows from Lemma 9 that
+P0
+(
+ˆπ3n′−1(i) = i for any n′ ∈ TN|ϕ′(i,ω,t) = j
+)
+≥ 1 − 3K ¯a N
+M ,
+P0
+(
+ˆπ3n′−1(j) = j for any n′ ∈ TN|ϕ′(i,ω,t) = j
+)
+≥ 1 − 3K ¯a N
+M .
+26Note that ϕ′(i,ω, ·) changes values only if agent i or her last partner ﬁnds a new partner.
+
+
+--- PAGE 28 ---
+
+1782 D. DUFFIE, L. QIAO AND Y . SUN
+Then, we can obtain that
+P0
+(
+ˆπ3n′−1(i) = i, ˆπ3n′−1(j) = j for any n′ ∈ TN|ϕ′(i,ω,t) = j
+)
+≥ P0
+(
+ˆπ3n′−1(i) = i for any n′ ∈ TN|ϕ′(i,ω,t) = j
+)
++ P0
+(
+ˆπ3n′−1(j) = j for any n′ ∈ TN|ϕ′(i,ω,t) = j
+)
+− 1
+≥ 1 − 6K ¯a N
+M .
+Therefore, we can derive that
+P0
+(
+CN(i)
+)
+≥
+∑
+j∈I
+P0
+(
+ϕ′(i,ω,t) = j
+)(
+1 − 6K ¯a N
+M
+)
+= 1 − 6K ¯a N
+M .
+Since CN(i) ⊆{ ω ∈ Ω : ϕit (ω) = ϕ′
+it (ω)}, we obtain that
+(27) P
+(
+ϕit = ϕ′
+it
+)
+≥ st
+(
+1 − 6K ¯a N
+M
+)
+.
+Note that st(1 − 6K ¯a N
+M ) → 1a ss t(N
+M ) → 0. Therefore, we can claim that for any i ∈ I and
+t ∈ R+, P(ϕit = ϕ′
+it ) = 1.
+It follows from the Fubini property that for P-almost all ω ∈ Ω, λ(ϕωt = ϕ′
+ωt ) = 1, which
+implies that ϕωt (·) is measure-preserving (since ϕ′
+ωt (·) is measure-preserving).
+5.5. Proof for Parts (1) and (2) of Theorem 1.F i x a n y t>t 1 > ··· >t n > 0, and
+k,k ′,k1,...,k n in S with k ̸=k′.F o ra n yΔt > 0, we have
+λ ⊠ P
+(
+αt+Δt(i,ω) = k′,α t(i,ω) = k,α t1 (i,ω) = k1,...,α tn(i,ω) = kn
+)
+=
+∫
+I
+P
+(
+αt+Δt
+i (ω) = k′,α t
+i (ω) = k,α t1
+i (ω) = k1,...,α tn
+i (ω) = kn
+)
+dλ
+=
+∫
+I
+P
+(
+αt
+i = k,α t1
+i = k1,...,α tn
+i = kn
+)
+× P
+(
+αt+Δt
+i = k′|αt
+i = k,α t1
+i = k1,...,α tn
+i = kn
+)
+dλ
+=
+∫
+I
+P
+(
+αt
+i = k,α t1
+i = k1,...,α tn
+i = kn
+)
+P
+(
+αt+Δt
+i = k′|αt
+i = k
+)
+dλ.
+Because the transition intensity matrix R( ¯pt) at any time t of the Markov chain αi does not
+depend on i ∈ I, neither does the conditional probability P(α t+Δt
+i = k′|αt
+i = k).L e t
+P
+(
+αt+Δt
+i = k′|αt
+i = k
+)
+= Rkk′
+(
+¯p(t)
+)
+Δt + ¯R(Δt).
+Since R( ¯pt) is the transition intensity matrix, we know that ¯R(Δt) divided by Δt converges
+to zero whenever Δt goes to zero. Hence, we obtain that
+λ ⊠ P
+(
+αt+Δt(i,ω) = k′,α t(i,ω) = k,α t1 (i,ω) = k1,...,α tn(i,ω) = kn
+)
+=
+∫
+I
+P
+(
+αt
+i = k,α t1
+i = k1,...,α tn
+i = kn
+)(
+Rkk′
+(
+¯p(t)
+)
+Δt + o(Δt)
+)
+dλ
+=
+[
+λ ⊠ P(A)
+][
+Rkk′
+(
+¯p(t)
+)
+Δt + ¯R(Δt)
+]
+,
+where
+A =
+{
+(i,ω) ∈ I × Ω : αt(i,ω) = k,α t1 (i,ω) = k1,...,α tn(i,ω) = kn
+}
+.
+
+
+--- PAGE 29 ---
+
+CONTINUOUS TIME RANDOM MATCHING 1783
+Therefore, we have
+(28) λ ⊠ P
+({
+(i,ω) ∈ I × Ω : αt+Δt(i,ω) = k′}
+|A
+)
+= Rkk′
+(
+¯p(t)
+)
+Δt + ¯R(Δt).
+Note that equation (28) also holds in the case when n = 0, which means that
+(29) λ ⊠ P
+({
+(i,ω) ∈ I × Ω : αt+Δt(i,ω) = k′}
+|αt(i,ω) = k
+)
+= Rkk′
+(
+¯p(t)
+)
+Δt + o(Δt).
+By equations (28)a n d(29), we know that α, when viewed as a stochastic process with sam-
+ple space (I × Ω, I ⊠ F,λ ⊠ P), is a Markov chain with time- t transition intensity matrix
+R( ¯p(t)). By the Fubini property, it is clear that the distribution of αt is ¯p(t). Therefore, ¯p(t)
+satisﬁes the ordinary differential equation (2).
+Note that for any i,j ∈ I with i ̸=j, αi and αj are independent. By the exact law of
+large numbers in Theorem 2.16 of Sun (2006), we know that for P-almost all ω ∈ Ω,t h e
+processes αω and α have the same ﬁnite-dimensional distributions in the sense that for any
+0 ≤ t1 ≤···≤ tn, (αt1
+ω ,...,α tn
+ω ) and (αt1 ,...,α tn) (viewed as random vectors) have the same
+distribution. The ﬁnite-dimensional distributions of a process determines whether the process
+is a Markov chain and also its transition intensity matrix. Thus, for P-almost all ω ∈ Ω, αω
+is also a Markov chain with transition intensity matrix R( ¯p(t)) at time t. So Theorem 1 (2)
+is proven. We also know that for P-almost all ω ∈ Ω, αt
+ω and αt have the same distribution
+at any time t, which implies that p(ω,t) =¯p(t). Hence, Theorem 1 (1) is shown. This also
+implies that agent i’s transition intensity for her types to change fromk to r at time t can be
+written as Rkr (pt).
+5.6. Proof for Part(3) of Theorem1.F o r a n y k,l ∈ S,a n d1 ≤ m ≤ 3M2, the number of
+matches by agent i up to the mth step, when of type k, to an agent of type l is deﬁned to be
+ˆNm
+ikl (ω) =
+⏐⏐{
+n ∈ T0 :ˆα3n−1
+i (ω) = k, ˆπ3n−1
+i (ω) ̸=i, ˆg3n−1
+i (ω) = l, 3n − 1 ≤ m
+}⏐⏐.
+The following deﬁnes the counting process for the number of matches by agent i,w h e no f
+type k, to an agent of type l:
+Nikl (ω,t) =
+{ ˆN3⌊tM ⌋
+ikl (ω) if ω ∈ Ai,
+0i f ω/∈ Ai.
+Recall that Θkl(ω,t) =
+∫
+I Nikl (ω,t)dλ(i) denotes the cumulative total quantity of matches
+of agents of any given type k with agents of another given type l, by time t.
+Fix any t ∈ R+, k,a n dl in S, and nonnegative standard integers n and n′.F o ra n yi,j ∈ I
+with i ̸=j, it is clear that the events ( ˆN3⌊tM ⌋
+ikl = n) and ( ˆN3⌊tM ⌋
+jkl = n′) are in F3⌊tM ⌋
+i and
+F3⌊tM ⌋
+j respectively. It follows from Lemma8 that
+P
+(ˆN3⌊tM ⌋
+ikl = n, ˆN3⌊tM ⌋
+jkl = n′)
+= P
+(ˆN3⌊tM ⌋
+ikl = n
+)
+P
+(ˆN3⌊tM ⌋
+jkl = n′)
+.
+Since Ai has probability one, it is obvious that the events (Nikl (t) = n) and (Njkl (t) = n′)
+are independent. By the arbitrary choices of n and n′, we know that the random variables
+Nikl (t) and Njkl (t) are independent. By the exact law of large numbers (Corollary 2.10 in
+Sun (2006)), we have Θkl(ω,t) = EΘkl(t) for P-almost all ω ∈ Ω.
+Fix any Δt ∈ R++.L e t n and n + Δn be the hyperinteger parts of tM and (t + Δt)M
+respectively. It follows from the Fubini property and the deﬁnition of Θkl that
+1
+Δt
+(
+EΘkl(t + Δt) − EΘkl(t)
+)
+= 1
+Δt
+∫
+I
+(
+ENikl (t + Δt) − ENikl (t)
+)
+dλ
+≃ 1
+Δt
+∫
+I
+(
+E ˆN3(n+Δn)
+ikl − E ˆN3n
+ikl
+)
+dλ0 = 1
+Δt
+n+Δn∑
+n′=n+1
+∫
+I
+E
+(ˆN3n′
+ikl − ˆN3(n′−1)
+ikl
+)
+dλ0
+
+
+--- PAGE 30 ---
+
+1784 D. DUFFIE, L. QIAO AND Y . SUN
+= 1
+Δt
+n+Δn∑
+n′=n+1
+∫
+I
+E
+(ˆN3n′−1
+ikl − ˆN3n′−2
+ikl
+)
+dλ0
+(30)
+= 1
+Δt
+n+Δn∑
+n′=n+1
+∫
+I
+P0
+(ˆN3n′−1
+ikl − ˆN3n′−2
+ikl = 1
+)
+dλ0
+= 1
+Δt
+n+Δn∑
+n′=n+1
+∫
+I
+∫
+Ω3n′−2
+Qω3n′−2
+3n′−1
+(ˆN3n′−1
+ikl − ˆN3n′−2
+ikl = 1
+)
+dQ3n′−2 dλ0
+= 1
+Δt
+n+Δn∑
+n′=n+1
+∫
+Ω3n′−2
+∫
+I
+Qω3n′−2
+3n′−1
+(ˆN3n′−1
+ikl − ˆN3n′−2
+ikl = 1
+)
+dλ0 dQ3n′−2.
+For any i ∈ I and ω3n′−2 ∈ Ω3n′−2 \V 3n′−2,i f ˆα3n′−2
+i (ω3n′−2) = k, then the deﬁnition of ˆNikl
+and Lemma 5 imply that
+⏐⏐Qω3n′−2
+3n′−1
+(ˆN3n′−1
+ikl − ˆN3n′−2
+ikl = 1
+)
+−ˆqkl
+(
+ρ3n′−2(
+ω3n′−2))⏐⏐
+=
+⏐
+⏐
+Qω3n′−2
+3n′−1
+(
+ˆg3n′−1
+i = l
+)
+−ˆqkl
+(
+ρ3n′−2(
+ω3n′−2))⏐⏐≤ 1
+M2 .
+If ˆα3n′−2
+i (ω3n′−2) ̸=k, by the deﬁnition of ˆNikl , we know that
+Qω3n′−2
+3n′−1
+(ˆN3n′−1
+ikl − ˆN3n′−2
+ikl = 1
+)
+= 0.
+For any ω ∈ Ω,l e tIk(ω) ={ i ∈ I :ˆα3n′−2
+i (ω3n′−2) = k}. Then, it follows from equation (30)
+along with Lemmas 2 and 3 that
+⏐⏐
+⏐
+⏐⏐
+1
+Δt
+(
+EΘkl(t + Δt) − EΘkl(t)
+)
+− 1
+Δt
+n+Δn∑
+n′=n+1
+∫
+Ω3n′−2\V 3n′−2
+∫
+Ik(ω)
+ˆqkl
+(
+ρ3n′−2(
+ω3n′−2))
+dλ0 dQ3n′−2
+⏐⏐
+⏐⏐⏐
+≲ 1
+Δt
+n+Δn∑
+n′=n+1
+∫
+Ω3n′−2\V 3n′−2
+∫
+Ik(ω)
+1
+M2 dλ0 dQ3n′−2
++ 1
+Δt
+n+Δn∑
+n′=n+1
+∫
+V 3n′−2
+∫
+Ik(ω)
+1 dλ0 dQ3n′−2
+≤ Δn
+Δt
+1
+M2 + 1
+Δt
+n+Δn∑
+n′=n+1
+Q3n′−2(
+V 3n′−2)
+≤ Δn
+Δt
+1
+M2 + Δn
+Δt ξ1 ≤ Δn
+Δt
+1
+M2 + Δn
+Δt
+1
+KM3 ≃ 0.
+By Lemma 3, we can obtain that
+1
+Δt
+(
+EΘkl(t + Δt) − EΘkl(t)
+)
+≃ 1
+Δt
+n+Δn∑
+n′=n+1
+∫
+Ω3n′−2\V 3n′−2
+∫
+Ik(ω)
+ˆqkl
+(
+ρ3n′−2(
+ω3n′−2))
+dλ0 dQ3n′−2
+
+
+--- PAGE 31 ---
+
+CONTINUOUS TIME RANDOM MATCHING 1785
+≃ 1
+Δt
+n+Δn∑
+n′=n+1
+∫
+Ω3n′−2\V 3n′−2
+ρ3n′−2
+k
+(
+ω3n′−2)
+ˆqkl
+(
+ρ3n′−2(
+ω3n′−2))
+dQ3n′−2
+(31)
+≃ 1
+Δt
+n+Δn∑
+n′=n+1
+∫
+Ω3n′−2
+ρ3n′−2
+k
+(
+ω3n′−2)
+ˆqkl
+(
+ρ3n′−2(
+ω3n′−2))
+dQ3n′−2
+= 1
+Δt
+n+Δn∑
+n′=n+1
+E
+[
+ρ3n′−2
+k
+(
+ω3n′−2)
+ˆqkl
+(
+ρ3n′−2(
+ω3n′−2))]
+≃ 1
+Δn
+n+Δn∑
+n′=n+1
+E
+[
+ρ3n′−2
+k
+(
+ω3n′−2)∗θkl
+(
+ρ3n′−2(
+ω3n′−2))]
+.
+Fix any Δn′ ∈ T0 such that Δn′
+M is inﬁnitesimal. Let f be a real-valued function on Δ
+such that f( p)= pkθkl(p) for any p ∈ Δ. Then, it is clear that f is continuous on Δ.I tf o l -
+lows from Lemmas 3 and 4 that for any m ∈{ 1,2,..., 3M2} and ωm ∈ Ωm\V m, ρm(ωm) ≃
+Um
+1 (ρ0) ≃ Eρm.S i n c ef is continuous on the compact set Δ, ∗f( ρm(ωm)) ≃ ∗f( Eρm) for
+any ωm ∈ Ωm\V m. Then, Lemma 3 implies that for any m ∈{ 1,2,..., 3M2},
+⏐⏐E∗f
+(
+ρm)
+− ∗f
+(
+Eρm)⏐⏐=
+⏐
+⏐
+⏐
+⏐
+∫
+Ωm
+(∗f
+(
+ρm)
+− ∗f
+(
+Eρm))
+dQm
+⏐⏐
+⏐
+⏐
+≤
+⏐
+⏐⏐⏐
+∫
+Ωm\V m
+(∗f
+(
+ρm)
+− ∗f
+(
+Eρm))
+dQm
+⏐⏐⏐⏐
++
+⏐⏐⏐
+⏐
+∫
+V m
+(∗f
+(
+ρm)
+− ∗f
+(
+Eρm))
+dQm
+⏐⏐⏐
+⏐
+≃
+⏐
+⏐
+⏐⏐
+∫
+Ωm\V m
+(∗f
+(
+ρm)
+− ∗f
+(
+Eρm))
+dQm
+⏐⏐
+⏐⏐
+≃ 0,
+which means that E∗f( ρm) ≃ ∗f( Eρm).
+Fix any n′ between n+1a n dn+Δn′. Lemma 11 implies that Eρ3n′−2 ≃ Eρ3n. It follows
+from equation (14)t h a tEρ3n ≃ Ep(t) =¯p(t).S i n c ef is continuous on the compact set Δ,
+we obtain that ∗f( Eρ3n′−2) ≃ ∗f( Eρ3n) ≃ f( ¯p(t)). Therefore, we have
+(32) E
+[
+ρ3n′−2
+k
+∗θkl
+(
+ρ3n′−2)]
+= E∗f
+(
+ρ3n′−2)
+≃ ∗f
+(
+Eρ3n′−2)
+≃¯ pk(t)θkl
+(
+¯p(t)
+)
+,
+which implies that
+1
+Δn′
+n+Δn′
+∑
+n′=n+1
+E
+[
+ρ3n′−2
+k
+∗θkl
+(
+ρ3n′−2)]
+≃¯ pk(t)θkl
+(
+¯p(t)
+)
+.
+By the spillover principle and equation (31), we obtain that
+lim
+Δt→0
+1
+Δt
+(
+EΘkl(t + Δt) − EΘkl(t)
+)
+=¯pk(t)θkl
+(
+¯p(t)
+)
+.
+Hence, EΘkl(t) is differentiable and dEΘkl (t)
+dt =¯pk(t)θkl( ¯p(t)). That is, Theorem 1 (3) is
+shown.
+5.7. Proof for Parts(4) and (5) of Theorem1. Theorem 1 (4): for any p,q ∈ Δ,d e ﬁ n ea
+vector qR(p) in RK by letting its kth component be
+(
+qR(p)
+)
+k =
+∑
+k′∈S
+qk′Rk′k(p).
+
+
+--- PAGE 32 ---
+
+1786 D. DUFFIE, L. QIAO AND Y . SUN
+Since Rkk′(p) is continuous on Δ,a n dΔ is compact, we can ﬁnd a positive real number c
+such that |cRkk′(p)|≤ 1f o ra n yp ∈ Δ,a n dk,k ′ ∈ S.
+It is easy to see thatpR(p) = 0 is equivalent to the statement thatf( p)≜ p +cpR(p) has
+a ﬁxed point p = f( p).
+Next we show that f is a function from Δ to Δ. For this purpose, we need to show that
+the values of f are probabilities. Note that
+(
+f( p)
+)
+k = pk +
+∑
+k′∈S
+cpk′Rk′k(p) =
+(
+1 + cRkk(p)
+)
+pk +
+∑
+k′̸=k
+cpk′Rk′k(p).
+By the deﬁnition of R(p), we know that Rk′k(p) ≥ 0i f k′ ̸=k. The choice of c implies that
+(1 + cRkk(p)) ≥ 0. Thus, (f (p))k ≥ 0f o ra n yk ∈ S.
+It is also easy to see that
+∑
+k∈S
+(
+f( p)
+)
+k =
+∑
+k∈S
+pk +
+∑
+k∈S
+∑
+k′∈S
+(
+cpk′Rk′k(p)
+)
+= 1 + c
+∑
+k′∈S
+∑
+k∈S
+pk′Rk′k(p)
+= 1 + c
+∑
+k′∈S
+pk′
+∑
+k∈S
+Rk′k(p) = 1,
+where the last identity follows from the fact that ∑
+k∈S Rk′k(p) = 0. Hence, the values of f
+are probabilities.
+It is clear that f is continuous on Δ. By Brouwer’s ﬁxed point theorem, there exists a
+p∗ ∈ Δ such that p∗ + cp∗R(p∗) = p∗. Therefore, p∗R(p∗) = 0.
+Theorem 1 (5): Assume that p∗R(p∗) = 0. Since the function pR(p) is Lipschitz contin-
+uous in p, Footnote 13 indicates that the ordinary differential equation in equation ( 2) with
+the initial condition p0 = p∗ must have a unique solution p∗, and hence ¯p(t) = p∗ at any
+time t. Therefore, p∗ is a stationary distribution.
+APPENDIX A: CUMULATING CORRELATIONS IN STOCHASTIC PROCESSES
+In Lemmas A.1–A.3 below, we provide estimations on the cumulative effect of correla-
+tions across multiple time periods for a general class of discrete-time stochastic processes.
+The lemmas can be applied in different settings and help us streamline the proofs of Lem-
+mas 6–10. To avoid confusions with objects in the ﬁnite matching models developed in Sec-
+tion 3.2, constant symbols in this appendix are represented by letters with bars. The proofs of
+Lemmas A.1–A.3 will be given in Appendix B.7.
+Let ¯I be a nonempty ﬁnite set, ¯
+I0 be the power set on ¯I,a n d¯λ0 be the counting probability
+measure on ¯I0.L e t ¯T ={ 0,1,..., ¯N},w h e r e¯N is a standard positive integer. Let| ¯T |= ¯N +1
+be the number of elements in ¯T .L e t( ¯Ω0, ¯E0, ¯Q0) be the probability space over the singleton
+set {0}. A function on ¯I can be trivially viewed as a function on ¯I × ¯Ω0, and vice versa. Let
+{( ¯Ωm, ¯Em, ¯Qm)} ¯N
+m=1 be a sequence of transition probabilities, where each ¯Ωm is a ﬁnite set
+with its power set ¯Em, ¯Qm a transition probability from ¯Ωm−1 = ∏ m−1
+m′=0 ¯Ωm′ to ( ¯Ωm, ¯Em).
+Here, an element {ωj }m
+j=0 in ¯Ωm will also be denoted by ωm when there is no confusion.
+Denote the product transition probability ¯Q0 ⊗ ¯Q1 ⊗···⊗ ¯Qm by ¯Qm,a n d⨂ m
+j=0 ¯Ej by ¯Em
+(which is simply the power set on ¯Ωm). Then, ¯Qm is the product of the transition probability
+¯Qm with the probability measure ¯Qm−1. Note that for ωm ∈ ¯Ωm, ¯Qm+1(ωm) = ¯Qωm
+m+1 is a
+probability measure on ( ¯Ωm+1, ¯Em+1). For simplicity, we denote ¯Ω ¯N by ¯Ω and ¯Q ¯N by ¯P0.
+Let ¯Fm ={ F ∈ ¯E ¯N : F = Fm × Π ¯N
+m′=m+1 ¯Ωm′ and Fm ∈ ¯Em}.A n ys e tF in ¯Fm represents
+an event that, by step m, can be determined to have happened or to have not happened.
+In the following, we will often work with functions or sets that are measurable in
+( ¯Ωm, ¯Em, ¯Qm) for some m ≤ ¯N, which may be viewed as functions or sets based on
+( ¯Ω, ¯Fm, ¯P0) by allowing for dummy components for the tail part, and vice versa.
+
+
+--- PAGE 33 ---
+
+CONTINUOUS TIME RANDOM MATCHING 1787
+Let ¯X be a nonempty ﬁnite set with | ¯X| elements. Let f be a function from ¯I × ¯Ω × ¯T
+to ¯X such that for any i ∈ ¯I, fi is adapted to the ﬁltration { ¯Fm} ¯N
+m∈ ¯T (i.e., fi(·,m) = f m
+i (·) is
+¯Fm-measurable for each m ∈ ¯T ). For any i ∈ ¯I and m ∈ ¯T ,l e t ¯Fm
+i be the sub-σ-algebra of
+¯Fm generated by {f m′
+i }m
+m′=0.
+Let { ¯ϑm} ¯N−1
+m=0 be a sequence of | ¯X|×| ¯X| matrices with ¯ϑm(a,b) = ¯ϑm
+ab ∈[ 0,1] for any
+m ∈{ 0,1,..., ¯N − 1} and a,b ∈ ¯X. For notational simplicity, for any m,m′ ∈ ¯T with m ≤
+m′ < ¯N,w eu s e ¯Θm′
+m to denote the product of matrices27 ¯ϑm ¯ϑm+1 ... ¯ϑm′
+.
+For any m ∈{ 1,2,..., ¯N − 1},a n dε> 0, let
+¯Cm(ε) =
+{
+ωm ∈ ¯Ωm :
+⏐⏐¯Qωm
+m+1
+(
+f m+1
+i = a
+)
+− ¯ϑm(
+f m
+i
+(
+ωm)
+,a
+)⏐⏐>ε for some i ∈ ¯I and a ∈ ¯X
+}
+.
+For ωm ∈ ¯Ωm \ ¯Cm(ε), ¯ϑm(f m
+i (ωm),a) can be used to estimate ¯Qωm
+m+1(f m+1
+i = a) (with error
+at most ε). Fix a positive real number ¯ε1 such that
+(33) ¯Qm(¯Cm(¯ε1)
+)
+< ¯ε1, for any m ∈{ 1,2,..., ¯N − 1}.
+For a random variableh a n da ne v e n tG on ¯Ω, we shall use (from now onwards) the simpliﬁed
+notation (h = a,G) to represent the event (h = a) ∩ G that event G happens while h takes
+value a.
+The following lemma shows that when ¯ε1 is small, fi is approximately Markovian.
+LEMMA A.1. For anyi ∈ ¯I, any m,m′ ∈ ¯T with m′ ≥ 1 and m + m′ ≤ ¯N, any a,b ∈ ¯X,
+and anyFm ∈ ¯Fm, we have the following two inequalities:
+⏐⏐¯P0
+(
+f m+m′
+i = b,f m
+i = a,F m)
+− ¯Θm+m′−1
+m (a,b) ¯P0
+(
+f m
+i = a,F m)⏐⏐≤
+(
+2| ¯X|
+)m′
+¯ε1,
+⏐⏐¯P0
+(
+f m+m′
+i = b,f m
+i = a,F m)¯P0
+(
+f m
+i = a
+)
+− ¯P0
+(
+f m+m′
+i = b,f m
+i = a
+)¯P0
+(
+f m
+i = a,F m)⏐⏐≤
+(
+2| ¯X|
+)| ¯T |¯ε1.
+Fix any ¯ε2 > 0. For any ωm ∈ ¯Ωm, fi and fj are said to be ¯ε2-correlated at ωm if there
+exists a,b ∈ ¯X such that
+⏐⏐¯Qωm
+m+1
+(
+f m+1
+i = a,f m+1
+j = b
+)
+− ¯Qωm
+m+1
+(
+f m+1
+i = a
+)¯Qωm
+m+1
+(
+f m+1
+j = b
+)⏐⏐> ¯ε2.
+The stochastic processes fi and fj are said to be ¯ε2-correlated if there exists m ∈
+{0,1,..., ¯N − 1} such that
+(34) ¯Qm({
+ωm ∈ ¯Ωm : fi and fj are ¯ε2-correlated at ωm})
+> ¯ε2.
+The following lemma shows that if fi and fj are not ¯ε2-correlated, then fi and fj are ap-
+proximately independent.
+LEMMA A.2. Fix anyi,j ∈ ¯I such thatfi and fj are not¯ε2-correlated. For anym ∈ ¯T ,
+Fm
+i ∈ ¯Fm
+i , and Fm
+j ∈ ¯Fm
+j , we have
+⏐⏐¯P0
+(
+Fm
+i ∩ Fm
+j
+)
+− ¯P0
+(
+Fm
+i
+)¯P0
+(
+Fm
+j
+)⏐⏐≤| ¯X|3| ¯T |(7¯ε1 + 2¯ε2).
+Let Y be a counting process from ¯Ω × ¯T to N such that Y is adapted to the ﬁltration
+{ ¯Fm}m∈ ¯T (i.e., Y(·,m) = Ym(·) is ¯Fm-measurable for each m ∈ ¯T ). Following the conven-
+tion on discrete-time counting processes, we assume that Ym+1 − Ym takes value only in
+27For | ¯X|×| ¯X| matrices A and B, AB(a,b) is deﬁned to be ∑
+c∈ ¯X A(a,c)B(c,b) .
+
+
+--- PAGE 34 ---
+
+1788 D. DUFFIE, L. QIAO AND Y . SUN
+{0,1}.L e t ¯ε3 be a real number in [0,1] such that for any m ∈{ 0,1,..., ¯N − 1} and ¯Qm-
+almost all ωm ∈ ¯Ωm,
+(35) ¯Qωm
+m+1
+(
+Ym+1 = Ym + 1
+)
+≤¯ε3.
+The following lemma provides an estimate of the probability of no jump or at least two
+jumps for the counting process Y between two different periods.
+LEMMA A.3. For anym,Δm ∈ ¯T and Fm ∈ ¯Fm such thatm+Δm ≤ ¯N and ¯P0(Fm)>
+0, we have
+¯P0
+(
+Ym+Δm = Ym|Fm)
+≥ 1 −¯ε3Δm,
+¯P0
+(
+Ym+Δm − Ym ≥ 2|Fm)
+≤¯ε2
+3(Δm)2.
+Acknowledgments. Versions of this work have been presented at “Modeling Market Dy-
+namics and Equilibrium—New Challenges, New Horizons,” Hausdorff Research Institute for
+Mathematics, University of Bonn, August 19–22, 2013 (by Y .S.); the 15th SAET Conference
+on Current Trends in Economics, University of Cambridge, July 27–31, 2015 (by Y .S.); the
+11th World Congress of the Econometric Society, Montreal, August 17–21, 2015 (by Y .S.);
+Bernoulli Lecture at “Stochastic Dynamical Models in Mathematical Finance, Econometrics,
+and Actuarial Sciences,” at EPFL, May 28, 2017 (by D.D.); the Asian Meeting of the Econo-
+metric Society, Hong Kong, June 3–5, 2017 (by Y .S.); the China Meeting of the Econometric
+Society, Wuhan, June 9–11, 2017 (by Y .S.); the 18th SAET Conference on Current Trends
+in Economics, Taipei, June 11–13, 2018 (by L.Q.); and the American Mathematical Society
+Special Session “Loeb Measure after 50 Years”, San Francisco, January 3–6, 2024 (by Y .S.).
+Some work on this project was done when all three authors met at the Institute for Mathe-
+matical Sciences, National University of Singapore in July 2018.
+Funding. Lei Qiao’s research is supported by NSFC (No. 11801350 and 72394391), the
+Program for Professor of Special Appointment (Eastern Scholar) at Shanghai Institutions of
+Higher Learning, and “Chenguang Program” supported by Shanghai Education Development
+Foundation and Shanghai Municipal Education Commission (No. 17CG37).
+SUPPLEMENTARY MATERIAL
+Supplement to “Continuous time random matching” (DOI: 10.1214/25-AAP2156
+SUPP; .pdf). Supplementary information.
+REFERENCES
+ANDERSON , R. M. (1976). A non-standard representation for Brownian motion and Itô integration.Israel J. Math.
+25 15–46. MR0464380 https://doi.org/10.1007/BF02756559
+ANDERSON ,R .M . ,DUANMU ,H . ,KHAN ,M .A .a n dUYA N I K, M. (2022). On abstract economies with an arbitrary
+set of players and action sets in locally-convex topological vector spaces. J. Math. Econom. 98 Paper No.
+102581. MR4376469 https://doi.org/10.1016/j.jmateco.2021.102581
+APPLEBAUM , D. (2009). Lévy Processes and Stochastic Calculus, 2nd ed. Cambridge Studies in Advanced Math-
+ematics 116. Cambridge Univ. Press, Cambridge. MR2512800 https://doi.org/10.1017/CBO9780511809781
+AURELL ,A . ,CARMONA ,R .a n dLAURIÈRE , M. (2022). Stochastic graphon games: II. The linear-quadratic case.
+Appl. Math. Optim. 85 Paper No. 26. MR4429315 https://doi.org/10.1007/s00245-022-09839-2
+BENAÏM ,M .a n dWEIBULL , J. W. (2003). Deterministic approximation of stochastic evolution in games. Econo-
+metrica 71 873–903. MR1983230 https://doi.org/10.1111/1468-0262.00429
+BRÉMAUD , P. (1981).Point Processes and Queues: Martingale Dynamics. Springer Series in Statistics. Springer,
+New York.MR0636252
+CARMONA ,R .a n dDELARUE , F. (2018). Probabilistic Theory of Mean Field Games, V olumes I and II. Springer,
+Berlin.
+
+
+--- PAGE 35 ---
+
+CONTINUOUS TIME RANDOM MATCHING 1789
+CURRARINI ,S . ,JACKSON ,M .O .a n dPIN, P. (2009). An economic model of friendship: Homophily, minorities,
+and segregation. Econometrica 77 1003–1045. MR2547067 https://doi.org/10.3982/ECTA7528
+DELARUE ,F . ,LACKER ,D .a n dRAMANAN , K. (2020). From the master equation to mean ﬁeld game limit theory:
+Large deviations and concentration of measure. Ann. Probab. 48 211–263. MR4079435 https://doi.org/10.
+1214/19-AOP1359
+DIAMOND , P. (1982). Wage determination and efﬁciency in search equilibrium.Rev. Econ. Stud. 2 217–227.
+DOOB , J. L. (1937). Stochastic processes depending on a continuous parameter. Trans. Amer. Math. Soc. 42
+107–140. MR1501916 https://doi.org/10.2307/1989677
+DOOB , J. L. (1953). Stochastic Processes. Wiley, New York.MR0058896
+DUANMU ,H . ,ROSENTHAL ,J .a n dWEISS , W. (2021). Ergodicity of Markov processes via nonstandard analysis.
+Mem. Amer. Math. Soc. 273 1342. MR4336249 https://doi.org/10.1090/memo/1342
+DUANMU ,H .a n dROY, D. M. (2021). On extended admissible procedures and their nonstandard Bayes risk.Ann.
+Statist. 49 2053–2078. MR4319241 https://doi.org/10.1214/20-aos2026
+DUFFIE , D. (2012). Dark Markets: Asset Pricing and Information Transmission in Over-the-Counter Markets.
+Princeton University Press, Princeton.
+DUFFIE ,D . ,G ÂRLEANU ,N .a n dP EDERSEN , L. H. (2005). Over-the-counter markets. Econometrica 73
+1815–1847. MR2171326 https://doi.org/10.1111/j.1468-0262.2005.00639.x
+DUFFIE ,D . ,QIAO,L .a n dSUN, Y . (2018). Dynamic directed random matching.J. Econom. Theory 174 124–183.
+MR3759045 https://doi.org/10.1016/j.jet.2017.11.011
+DUFFIE ,D . ,QIAO,L .a n dSUN, Y . (2025). Supplement to “Continuous Time Random Matching.”https://doi.org/
+10.1214/25-AAP2156SUPP
+DUFFIE ,D .a n dS UN, Y . (2007). Existence of independent random matching. Ann. Appl. Probab. 17 386–419.
+MR2292591 https://doi.org/10.1214/105051606000000673
+GUÉANT ,O . ,L ASRY,J . - M .a n dLIONS , P.-L. (2011). Mean ﬁeld games and applications. In Paris-Princeton
+Lectures on Mathematical Finance2010. Lecture Notes in Math. 2003 205–266. Springer, Berlin.MR2762362
+https://doi.org/10.1007/978-3-642-14660-2_3
+HAMMOND , P. J. (2015). A notion of statistical equilibrium for games with many players. Working paper, Univ.
+Warwick.
+HE,W .a n dYANNELIS , N. C. (2016). Existence of Walrasian equilibria with discontinuous, non-ordered, interde-
+pendent and price-dependent preferences. Econom. Theory 61 497–513. MR3477772 https://doi.org/10.1007/
+s00199-015-0875-x
+HELLWIG , M. F. (1976). A model of monetary exchange. Econometric Research Program, Research Memoran-
+dum Number 202, Princeton Univ.
+HELLWIG , M. F. (2022). Incomplete-information games in large populations with anonymity. Theor. Econ. 17
+461–506. MR4378364 https://doi.org/10.3982/te4066
+HOFBAUER ,J .a n dSANDHOLM , W. H. (2007). Evolution in games with randomly disturbed payoffs. J. Econom.
+Theory 132 47–69. MR2285597 https://doi.org/10.1016/j.jet.2005.05.011
+JIN, R. (2015). Density problems and Freiman’s inverse problems. In Nonstandard Analysis for the Working
+Mathematician 403–441. Springer, Dordrecht. MR3409521
+KARATZAS ,I .a n dSHREVE , S. E. (1991). Brownian Motion and Stochastic Calculus, 2nd ed. Graduate Texts in
+Mathematics 113. Springer, New York.MR1121940 https://doi.org/10.1007/978-1-4612-0949-2
+KEISLER , H. J. (1977). Hyperﬁnite model theory. In Logic Colloquium 76 (Oxford, 1976) (R. O. Gandy and
+J. M. E. Hyland, eds.). Stud. Logic Found. Math., Vo l. 87 5–110. North-Holland, Amsterdam. MR0491155
+KEISLER , H. J. (1984). An inﬁnitesimal approach to stochastic analysis. Mem. Amer. Math. Soc. 48 x+184.
+MR0732752 https://doi.org/10.1090/memo/0297
+KEISLER , H. J. (2007). Foundations of Inﬁnitesimal Calculus. Online edition. Available at https://people.math.
+wisc.edu/~keisler/foundations.html.
+KHAN ,M .A .a n dSUN, Y . (2002). Noncooperative games with many players. InHandbook of Game Theory with
+Economic Applications, Vo l u m e3 1761–1808.
+KIRSZBRAUN , M. D. (1934). Über die zusammenziehende und Lipschitzsche Transformationen. Fund. Math. 22
+77–108.
+KIYOTAKI ,N .a n dWRIGHT , R. (1993). A search-theoretic approach to monetary economics.Amer. Econ. Rev. 83
+63–77.
+LAGOS ,R .a n dR OCHETEAU , G. (2009). Liquidity in asset markets with search frictions. Econometrica 77
+403–426. MR2503034 https://doi.org/10.3982/ECTA7250
+LOEB , P. A. (1975). Conversion from nonstandard to standard measure spaces and applications in probability
+theory. Trans. Amer. Math. Soc. 211 113–122. MR0390154 https://doi.org/10.2307/1997222
+LOEB , P. A. (2016). Real Analysis. Birkhäuser/Springer, Cham. MR3495356 https://doi.org/10.1007/978-3-319-
+30744-2
+
+
+--- PAGE 36 ---
+
+1790 D. DUFFIE, L. QIAO AND Y . SUN
+LOEB , P. A. (2020). An intuitive approach to the Martin boundary.Indag. Math.( N.S.) 31 879–884. MR4143510
+https://doi.org/10.1016/j.indag.2020.01.009
+LOEB ,P .A .a n dW OLFF , M. P. H., eds. (2015). Nonstandard Analysis for the Working Mathematician, 2nd ed.
+Springer, Dordrecht. MR3381849 https://doi.org/10.1007/978-94-017-7327-0
+MAYNARD SMITH ,J .a n dPRICE , G. R. (1973). The logic of animal conﬂict. Nature 246 15–18.
+MORTENSEN , D. (1978). Speciﬁc capital and labor turnover. Bell J. Econ. 9 572–586.
+PERKINS , E. (1981). A global intrinsic characterization of Brownian local time. Ann. Probab. 9 800–817.
+MR0628874
+PISSARIDES , C. (2000). Equilibrium Unemployment Theory, 2nd ed. MIT Press, Cambridge.
+PROTTER , P. E. (2004). Stochastic Integration and Differential Equations: Stochastic Modelling and Applied
+Probability, 2nd ed. Applications of Mathematics(New York) 21. Springer, Berlin. MR2020294
+SIGMUND , K. (2017). Games of Life: Explorations in Ecology, Evolution and Behavior. Dover, New York.
+STROOCK , D. W. (2014). An Introduction to Markov Processes, 2nd ed. Graduate Texts in Mathematics230.
+Springer, Heidelberg. MR3137424 https://doi.org/10.1007/978-3-642-40523-5
+SUN, Y . (1998). A theory of hyperﬁnite processes: The complete removal of individual uncertainty via exact LLN.
+J. Math. Econom. 29 419–503. MR1627287 https://doi.org/10.1016/S0304-4068(97)00036-0
+SUN, Y . (2006). The exact law of large numbers via Fubini extension and characterization of insurable risks. J.
+Econom. Theory 126 31–69. MR2195268 https://doi.org/10.1016/j.jet.2004.10.005
+TAO, T. (2014). Hilbert’s Fifth Problem and Related Topics. Graduate Studies in Mathematics153.A m e r .M a t h .
+Soc., Providence, RI. MR3237440 https://doi.org/10.1090/gsm/153
+TAYLOR ,P .D .a n dJONKER , L. B. (1978). Evolutionarily stable strategies and game dynamics. Math. Biosci. 40
+145–156. MR0489983 https://doi.org/10.1016/0025-5564(78)90077-9
+TREJOS ,A .a n dWRIGHT , R. (1995). Search, bargaining, money, and prices. J. Polit. Econ. 103 118–140.
+ÜSLÜ , S. (2019). Pricing and liquidity in decentralized asset markets. Econometrica 87 2079–2140. MR4051686
+https://doi.org/10.3982/ecta14713
+ZHOU , R. (1997). Currency exchange in a random search model. Rev. Econ. Stud. 64 289–310.
+
+
+--- PAGE 37 ---
+
+1
+Supplement to “Continuous Time Random Matching”
+Darrell Duffie1, Lei Qiao2, Yeneng Sun3
+This version: January 28, 2025
+APPENDIX B: PROOFS FOR THE PROPERTIES OF FINITE MATCHING MODELS
+The supplement provides proofs of Lemmas 1–11 in Section 3 (concerning properties
+of finite matching models) and Lemmas A.1–A.3 in Appendix A (about cumulating correla-
+tions in a general class of stochastic processes) as follows. Proofs of Lemmas 1–4 are given
+in Subsections B.1–B.4 respectively. In order to prove Lemmas 5, some additional lemmas
+are presented in Subsection B.5. Lemma 5 is then proved in Subsection B.6. Lemmas A.1–
+A.3 are proved in Subsection B.7. Lemmas 6 – 11 are then proved in Subsections B.8 – B.12
+respectively (with both Lemmas 9 and 10 proved in Subsection B.11).
+B.1. Proof of Lemma 1 in Section 3.1.The proof consists of three steps. In the
+first step, we (randomly) choose a set Akl of agents among the type- k agents, which is
+to be matched with type- l agents. We require that the cardinality |Akl| of Akl is even and
+|Akl| = |Alk|, which allow the agents in Akl and Alk to be matched. The second step is to
+randomly match the agents in Akl and Alk. In the third step, the random matching obtained
+by combining the match of agents in those groups is shown to satisfy Lemma 1 (i) and (ii).
+Step 1: For each k ∈ S, let Ik = {i ∈ I : ˆα(i) =k} be the set of type-k agents. Let
+Ω0 =
+
+(Akl)k,l∈S : ∀k,l,l ′ ∈ S,Akl ⊆ Ik, |Akl| is the largest even integer
+less than or equal to |Ik|ˆqkl,Akl and Akl′ are disjoint for different l and l′	
+.
+Note that ρk is the proportion of agents of type k, which implies that |Ik| = ˆMρk. Hence, we
+have |Ik|ˆqkl = ˆMρk ˆqkl = ˆMρl ˆqlk = |Il|ˆqlk. Then for any (Akl)k,l∈S ∈ Ω0, |Akl| = |Alk| for
+any k,l ∈ S. Let µ0 be the counting probability measure on (Ω0,A0), where A0 is the power
+set of Ω0.
+1Graduate School of Business, Stanford University, Stanford, CA 94305-5015, USA. e-mail:
+duffie@stanford.edu
+2School of Economics, Shanghai University of Finance and Economics, 777 Guoding Road, Shanghai 200433,
+China. e-mail: qiao.lei@mail.shufe.edu.cn
+3Departments of Economics and Mathematics, National University of Singapore, Singapore 119076. e-mail:
+ynsun@nus.edu.sg
+
+
+--- PAGE 38 ---
+
+2
+Step 2:For any fixed ω0 = (Akl)k,l∈S ∈ Ω0, we consider partial matchings on I that match
+agents from Akl to Alk. We only need to consider those sets Akl which are nonempty. For
+each k ∈ S, let Ωω0
+kk be the set of all the full matchings on Akk, and µω0
+kk the counting prob-
+ability measure on Ωω0
+kk. For k,l ∈ S with k < l, let Ωω0
+kl be the set of all the bijections from
+Akl to Alk, and µω0
+kl the counting probability measure on Ωω0
+kl . Let Ω1 be the set of all the
+partial matchings from I to I. Define Ωω0
+1 to be the set of ϕ ∈ Ω1 that satisfy:
+(i) {i ∈ Ik : ϕ(i) =i} = Ik\
+ 
+∪K
+l=1Akl
+
+for each k ∈ S;
+(ii) the restriction ϕ|Akk ∈ Ωω0
+kk for k ∈ S;
+(iii) for k,l ∈ S with k < l, ϕ|Akl ∈ Ωω0
+kl .
+Define a probability measure µω0
+1 on Ω1 such that such that
+(i) for ϕ ∈ Ωω0
+1 ,
+µω0
+1 (ϕ) =
+Y
+1≤k≤l≤K,Akl̸=∅
+µω0
+kl ({ϕ|Akl });
+(ii) ϕ /∈ Ωω0
+1 , µω0
+1 (ϕ) = 0, where µω0
+1 (ϕ) is a simplified notation for the probability of the
+singleton set {ϕ} under µ.
+The purpose of introducing the space Ωω0
+1 and the probability measure µω0
+1 is to match the
+agents in Akl to the agents inAlk randomly. The probability measureµω0
+1 is trivially extended
+to the common sample space Ω1.
+Define a probability measure P0 on Ω = Ω0 × Ω1 with the power set F0 by letting
+P0 ((ω0,ω1)) =µ0(ω0) × µω0
+1 (ω1).
+For (i,ω ) ∈ I × Ω, let ˆα(i,(ω0,ω1)) =ω1(i), and ˆg(i,ω ) =
+(
+ˆα(ˆα(i,ω )) if ˆα(i,ω ) ̸= i
+J if ˆα(i,ω ) =i.
+Denote the set {(ω0,ω1) ∈ Ω :ω0 ∈ Ω0, ω1 ∈ Ωω0
+1 } by ˆΩ. The definition of P0 indi-
+cates that P0
+
+ˆΩ
+
+= 1.
+Step 3: For any k,l ∈ S and ω ∈ ˆΩ, we have λ0 ({i ∈ I : ˆα(i) =k, ˆg(i,ω ) =l}) = |Akl|
+ˆM .
+Since |Akl| is the largest even integer less than or equal to |Ik|ˆqkl, we have 0 ≤ |Ik|ˆqkl −
+|Akl| ≤2. Hence,
+|λ0 ({i ∈ I : ˆα(i) =k, ˆg(i,ω ) =l}) − ρk ˆqkl| =
+
+|Akl|
+ˆM
+− |Ik|
+ˆM
+ˆqkl
+ ≤ 2
+ˆM
+,
+which implies Part (ii) of the lemma.
+To prove Part (i), fix any i,j ∈ I with i ̸= j, denote ˆα0(i) and ˆα0(j) by k1 and k2
+respectively.
+We start with the first inequality in Part (i). By the construction above, we have
+P0 (ˆαi = j) =P0 ({((Akl)k,l∈S,ω1) ∈ Ω :i ∈ Ak1k2 , j∈ Ak2k1 , ω1(i) =j}).
+
+
+--- PAGE 39 ---
+
+3
+Let ¯A = {(Akl)k,l∈S ∈ Ω0 : i ∈ Ak1k2 ,j ∈ Ak2k1 }. Then, the definition of P0 implies that
+P0 (ˆαi = j) =
+X
+(Akl)k,l∈S∈ ¯A
+µ0 ((Akl)k,l∈S)µ(Akl)k,l∈S
+1 (ω1(i) =j),
+where µ(Akl)k,l∈S
+1 (ω1(i) =j) is the measure of the set {ω1 ∈ Ω1 : ω1(i) =j}. When k1 ̸= k2,
+we know that for any (Akl)k,l∈S ∈ ¯A,
+µ(Akl)k,l∈S
+1 (ω1(i) =j) = 1
+|Ak1k2 |.
+When k1 = k2, we have for any (Akl)k,l∈S ∈ ¯A,
+µ(Akl)k,l∈S
+1 (ω1(i) =j) = 1
+|Ak1k2 | −1 ≤ 2
+|Ak1k2 |,
+since |Ak1k2 | ≥2 for any (Akl)k,l∈S ∈ ¯A. Then, µ(Akl)k,l∈S
+1 (ω1(i) =j) ≤ 2
+|Ak1k2 | always holds
+for any (Akl)k,l∈S ∈ ¯A whether or not k1 = k2. Therefore, we can obtain that
+P0 (ˆαi = j) ≤
+X
+(Akl)k,l∈S∈ ¯A
+µ0 ((Akl)k,l∈S) 2
+|Ak1k2 |
+= 2
+|Ak1k2 |µ0 ({(Akl)k,l∈S ∈ Ω0 : i ∈ Ak1k2 , j∈ Ak2k1 })
+≤ 2
+|Ak1k2 |µ0 ({(Akl)k,l∈S ∈ Ω0 : i ∈ Ak1k2 }).
+Let Mk and mkl be the cardinality ofIk and Akl respectively. Let
+ a
+b
+
+= a!
+b!(a−b)! denote
+the binomial coefficient. Then we have
+P0 (ˆαi = j) ≤ 2
+mk1k2
+  Mk1 −1
+mk1k2 −1
+
+  Mk1
+mk1k2
+ = 2
+mk1k2
+mk1k2
+Mk1
+= 2
+Mk1
+= 2
+ˆMρk1
+,
+where the last identity follows from the fact that ˆMρk1
+= |Ik| = Mk1 .
+Next, we prove the second inequality in Part (i). We have
+P0(ˆg(i) =l1) =µ0 ({(Akl)k,l∈S ∈ Ω0 : i ∈ Ak1l1 }) =
+  Mk1 −1
+mk1l1 −1
+
+  Mk1
+mk1l1
+ = mk1l1
+Mk1
+.
+It is clear that P0(ˆg(i) = l1) ≤
+Mk1 ˆqk1l1
+Mk1
+= ˆqk1l1
+. To show the lower bound for P0(ˆg(i) = l1)
+as stated in the lemma, we assume that ρk1
+≥ 1
+ˆM
+1
+3
+. Note that
+P0(ˆg(i) =l1) ≥ Mk1 ˆqk1l1
+− 2
+Mk1
+= ˆqk1l1 − 2
+Mk1
+= ˆqk1l1 − 2
+ˆMρk1
+≥ ˆqk1l1 − 2
+ˆM
+2
+3
+.
+Then, we have
+(1) ˆqk1l1 − 2
+ˆM
+2
+3
+≤ P0(ˆg(i) =l1) ≤ ˆqk1l1 .
+
+
+--- PAGE 40 ---
+
+4
+It remains to prove the third inequality in Part (i). We make the further assumption that
+ρk2
+≥ 1
+ˆM
+1
+3
+. When k1 ̸= k2, we obtain that
+P0(ˆg(i) =l1, ˆg(j) =l2) = µ0({(Akl)k,l∈S ∈ Ω0 : i ∈ Ak1l1 ,j ∈ Ak2l2 })
+=
+  Mk1 −1
+mk1l1 −1
+
+  Mk1
+mk1l1
+
+  Mk2 −1
+mk2l2 −1
+
+  Mk2
+mk2l2
+ = P0(ˆg(i) =l1)P0(ˆg(j) =l2).
+Equation (1) implies the following inequalities:
+ˆqk1l1 ˆqk2l2 ≥ P0(ˆg(i) =l1, ˆg(j) =l2)
+≥ (ˆqk1l1 − 2
+ˆM
+2
+3
+)(ˆqk2l2 − 2
+ˆM
+2
+3
+) ≥ ˆqk1l1 ˆqk2l2 − 4
+ˆM
+2
+3
+.(2)
+When k1 = k2 but l1 ̸= l2, we have
+P0(ˆg(i) =l1, ˆg(j) =l2) =µ0({(Akl)k,l∈S ∈ Ω0 : i ∈ Ak1l1 ,j ∈ Ak1l2 }) =
+  Mk1 −2
+mk1l1 −1,mk1l2 −1
+
+  Mk1
+mk1l1 ,mk1l2
+ ,
+where
+  a
+b,c
+
+= a!
+b!c!(a−b−c)! is the multinomial coefficient. It is clear that
+P0(ˆg(i) =l1, ˆg(j) =l2) = mk1l1 mk1l2
+Mk1 (Mk1 − 1) ≤ mk1l1 (mk1l2 + 1)
+M2
+k1
+≤ ˆqk1l1 ˆqk1l2 + ˆqk1l1
+1
+Mk1
+≤ ˆqk1l1 ˆqk1l2 + 1
+Mk1
+= ˆqk1l1 ˆqk1l2 + 1
+ˆMρk1
+≤ ˆqk1l1 ˆqk1l2 + 1
+ˆM
+2
+3
+.
+On the other hand, we can obtain that
+mk1l1 mk1l2
+Mk1 (Mk1 − 1)
+≥ (Mk1 ˆqk1l1
+− 2)
+Mk1
+(Mk1 ˆqk1l2
+− 2)
+Mk1
+≥ ˆqk1l1 ˆqk1l2 − 2
+Mk1
+ˆqk1l1 − 2
+Mk1
+ˆqk1l2
+≥ ˆqk1l1 ˆqk1l2 − 4
+Mk1
+= ˆqk1l1 ˆqk1l2 − 4
+ˆMρk1
+≥ ˆqk1l1 ˆqk1l2 − 4
+ˆM
+2
+3
+.
+By combining the above inequalities, we have
+ˆqk1l1 ˆqk1l2 − 4
+ˆM
+2
+3
+≤ P0(ˆg(i) =l1, ˆg(j) =l2) ≤ ˆqk1l1 ˆqk1l2 + 1
+ˆM
+2
+3
+.(3)
+
+
+--- PAGE 41 ---
+
+5
+When k1 = k2 and l1 = l2, we can obtain that
+P0(ˆg(i) =l1, ˆg(j) =l1) =µ0({(Akl)k,l∈S ∈ Ω0 : i,j ∈ Ak1l1 }) =
+  Mk1 −2
+mk1l1 −2
+
+  Mk1
+mk1l1
+ .
+It is clear that
+P0(ˆg(i) =l1, ˆg(j) =l1) = (mk1l1 )(mk1l1 − 1)
+Mk1 (Mk1 − 1) ≤ m2
+k1l1
+M2
+k1
+≤ q2
+k1l1 .
+On the other hand,
+(mk1l1 )(mk1l1 − 1)
+Mk1 (Mk1 − 1) ≥ (Mk1 ˆqk1l1
+− 2)
+Mk1
+(Mk1 ˆqk1l1
+− 3)
+Mk1
+≥ q2
+k1l1 − 5
+Mk1
+ˆqk1l1 ≥ q2
+k1l1 − 5
+Mk1
+= q2
+k1l1 − 5
+ˆMρk1
+≥ q2
+k1l1 − 5
+ˆM
+2
+3
+.
+Therefore, we obtain that
+q2
+k1l1 − 5
+ˆM
+2
+3
+≤ P0(ˆg(i) =l1, ˆg(j) =l2) ≤ q2
+k1l1 .(4)
+By combining Equations (2), (3) and (4), we know that for any (k1,l1),(k2,l2) ∈ S2,
+ˆqk1l1 ˆqk2l2 − 5
+ˆM
+2
+3
+≤ P0(ˆg(i) =l1, ˆg(j) =l2) ≤ ˆqk1l1 ˆqk2l2 + 1
+ˆM
+2
+3
+.
+B.2. Proof of Lemma 2 in Section 3.3.First, we work with T1. Since T1 is contin-
+uous on ∆, there exists a strictly increasing continuous bijection v1 on R+ with v1(0) = 0
+such that ||T1(ρ) − T1(ρ′)||∞ ≤ v1(||ρ − ρ′||∞) for any ρ,ρ′ ∈ ∆ (which is called a modulus
+of continuity of the function T1).1
+For T2, T3 and {ˆqkl}k,l∈S, we can derive their modulus of continuity in the same
+way. By taking the maximum, we can get a strictly increasing bijection v on R+ which is a
+common modulus of continuity for all these mappings.
+Recall that K denotes the number of types. Let ξ0 = 1
+KM3 and w be the inverse
+function v−1 on R+. Let ξ1 = min (w(ξ0),ξ0), ξm = min
+
+w(ξm−1), ξ1
+3M2K
+
+for any m ∈
+{2,3,..., 3M2}. Hence, it is clear that3M2Kξm ≤ ξ1 ≤ ξ0 for any m ∈ {2,3,..., 3M2 +1}.
+Fix any m ∈ {0,1,..., 3M2}, and ρ,ρ′ ∈ ∆ with ∥ρ − ρ′∥∞ ≤ ξm+1. Then, we know
+that ∥ρ − ρ′∥∞ ≤ w(ξm). The fact that v is a strictly increasing bijection on R+ implies
+1Given a continuous function f from a compact metric space (X,d X) to a metric space (Y,d Y ), f admits a
+(global) modulus of continuity ω in the sense that ω is a function from R+ to R+ with limt→0 ω(t) =ω(0) = 0,
+and for anyx,x′ ∈ X, dY
+
+f(x),f (x′)
+
+≤ ω
+
+dX(x,x′)
+
+. Since the range off is compact, we can assume with
+loss of generality that ω is a bounded function on R+. Following the Wikipedia entry “Modulus of continuity”
+(https://en.wikipedia.org/wiki/Modulus_of_continuity), let ω′(t) :=1
+t
+R2t
+t
+h
+sup0≤s′≤s ω(s′)
+i
+ds for t >0 and
+ω′(0) = 0. Then, it is easy to verify that ω′ is increasing and continuous on R+. Let ˆω(t) :=ω′(t) +t for any
+t ∈ R+, which is a modulus of continuity for f that is a strictly increasing continuous bijection on R+.
+
+
+--- PAGE 42 ---
+
+6
+that v (∥ρ − ρ′∥∞) ≤ ξm. Since v is a common modulus of continuity for T1, T2, T3 and
+{ˆqkl}k,l∈S, we obtain that for any r ∈ {1,2,3} and k,l ∈ S,
+∥Tr(ρ) − Tr(ρ′)∥∞ ≤ ξm,
+|ˆqkl(ρ) − ˆqkl(ρ′)| ≤ξm,
+which completes the proof.
+B.3. Proof of Lemma 3 in Section 3.3.Recall that T0 = {n}M2
+n=0. Fix any n ∈ T0
+and k ∈ S. For any ω3n−3 ∈ Ω3n−3, we show that
+(5) Eω3n−3
+ρ3n−2 = T1
+ 
+ρ3n−3(ω3n−3)
+
+.
+For any k′ ∈ S, let Bω3n−3
+k′ = {i ∈ I : ˆα3n−3
+i (ω3n−3) = k′}. It follows from the definition of
+ρ3n−2 that
+Eω3n−3
+ρ3n−2
+k =
+Z
+Ω3n−2
+ρ3n−2
+k (ω3n−2)dQω3n−3
+3n−2 =
+Z
+Ω3n−2
+1
+ˆM
+X
+i∈I
+1k(ˆα3n−2
+i (ω3n−2))dQω3n−3
+3n−2
+= 1
+ˆM
+X
+k′∈S
+X
+i∈Bω3n−3
+k′
+Z
+Ω3n−2
+1k(ˆα3n−2
+i (ω3n−2))dQω3n−3
+3n−2
+= 1
+ˆM
+X
+k′∈S
+X
+i∈Bω3n−3
+k′
+Qω3n−3
+3n−2
+ 
+ˆα3n−2
+i (ω3n−2) =k
+
+= 1
+ˆM
+X
+k′∈S
+X
+i∈Bω3n−3
+k′
+ˆηk′k =
+X
+k′∈S
+ρ3n−3
+k′ (ω3n−3)ˆηk′k =
+
+T1
+ 
+ρ3n−3(ω3n−3)
+
+k ,
+where 1k is the indicator function of the singleton set {k}. Thus, Equation (5) is verified.
+Next, we prove that for P0-almost all ω3n−1 ∈ Ω3n−1, we have
+(6) ||Eω3n−1
+ρ3n − T3
+ 
+ρ3n−1(ω3n−1)
+
+||∞ ≤ 2K(K + 1)
+ˆM
+.
+For any ω3n−1 ∈ Ω3n−1, k′ ∈ S and l′ ∈ S ∪ {J}, let
+Bω3n−1
+k′l′ = {i ∈ I : ˆα3n−1
+i (ω3n−1) =k′, ˆg3n−1
+i (ω3n−1) =l′}.
+It follows from the definition of ρ3n that for any ω3n−1 ∈ Ω3n−1,
+Eω3n−1
+ρ3n
+k =
+Z
+Ω3n
+ρ3n
+k (ω3n)dQω3n−1
+3n =
+Z
+Ω3n
+1
+ˆM
+X
+i∈I
+1k
+ 
+ˆα3n
+i (ω3n)
+
+dQω3n−1
+3n
+= 1
+ˆM
+X
+k′∈S,l′∈S∪{J}
+X
+i∈Bω3n−1
+k′l′
+Z
+Ω3n
+1k(ˆα3n
+i )dQω3n−1
+3n
+= 1
+ˆM
+X
+k′∈S,l′∈S∪{J}
+X
+i∈Bω3n−1
+k′l′
+Qω3n−1
+3n
+ 
+ˆα3n
+i = k
+
+
+
+--- PAGE 43 ---
+
+7
+= 1
+ˆM
+X
+k′,l′∈S
+X
+i∈Bω3n−1
+k′l′
+Qω3n−1
+3n
+ 
+ˆα3n
+i = k
+
++ 1
+ˆM
+X
+k′∈S
+X
+i∈Bω3n−1
+k′J
+Qω3n−1
+3n
+ 
+ˆα3n
+i = k
+
+= 1
+ˆM
+X
+k′,l′∈S
+X
+i∈Bω3n−1
+k′l′
+ˆςk′l′(k) + 1
+ˆM
+X
+i∈Bω3n−1
+kJ
+X
+k′∈S
+1k(k′)
+=
+X
+k′,l′∈S
+λ0
+
+Bω3n−1
+k′l′
+
+ˆςk′l′(k) +λ0
+
+Bω3n−1
+kJ
+
+.(7)
+By Part (ii) of Lemma 1, we know that for any k′,l ′ ∈ S and P0-almost all ω ∈ Ω,
+λ0
+
+Bω3n−1
+k′l′
+
+− ρ3n−1
+k′ (ω3n−1)ˆqk′l′(ρ3n−1(ω3n−1))
+
+=
+λ0
+ 
+{i ∈ I : ˆα3n−1
+i (ω3n−1) =k′, ˆg3n−1
+i (ω3n−1) =l′}
+
+−ρ3n−1
+k′ (ω3n−1)ˆqk′l′(ρ3n−1(ω3n−1))
+
+≤ 2
+ˆM
+.(8)
+It follows from the above estimation that for P0-almost all ω ∈ Ω,
+λ0
+
+Bω3n−1
+kJ
+
+− ρ3n−1
+k (ω3n−1)ˆqk(ρ3n−1)
+
+=
+ρ3n−1
+k (ω3n−1) −
+X
+l∈S
+λ0
+
+Bω3n−1
+kl
+
+− ρ3n−1
+k (ω3n−1)(1 −
+X
+l∈S
+ˆqkl(ρ3n−1(ω3n−1)))
+
+=
+
+X
+l∈S
+
+λ0
+
+Bω3n−1
+kl
+
+− ρ3n−1
+k (ω3n−1)ˆqkl(ρ3n−1(ω3n−1))
+ ≤ 2K
+ˆM
+.(9)
+By combining Equations (7), (8) and (9), we can obtain that for P0-almost all ω ∈ Ω,
+Eω3n−1
+ρ3n
+k −
+
+T3
+ 
+ρ3n−1(ω3n−1)
+
+k
+
+=
+
+X
+k′,l′∈S
+λ0
+
+Bω3n−1
+k′l′
+
+ˆςk′l′(k) +λ0
+
+Bω3n−1
+kJ
+
+−
+X
+k′,l′∈S
+ρ3n−1
+k′ (ω3n−1)ˆqk′l′(ρ3n−1(ω3n−1))ˆςk′l′(k) − ρ3n−1
+k (ω3n−1)ˆqk(ρ3n−1(ω3n−1))
+
+≤
+X
+k′,l′∈S
+2
+ˆM
+ˆςk′l′(k) + 2K
+ˆM
+≤ 2K2
+ˆM
++ 2K
+ˆM
+= 2K(K + 1)
+ˆM
+,
+which is Equation (6).
+We divide the proof for the estimation onV m into three steps. For the mutation step in
+period n, fix any ω3n−3 ∈ Ω3n−3. For any i,j ∈ I with i ̸= j, it is clear that 1k(ˆα3n−2
+i ) and
+1k(ˆα3n−2
+j ) are independent on (Ω3n−2,E3n−2,Qω3n−3
+3n−2 ). Therefore, we can obtain that
+Varω3n−3
+ρ3n−2
+k = Varω3n−3 1
+ˆM
+X
+i∈I
+1k(ˆα3n−2
+i ) = 1
+ˆM2
+X
+i∈I
+Varω3n−3
+1k(ˆα3n−2
+i ) ≤ 1
+ˆM2
+ˆM 1
+4 = 1
+4 ˆM
+.
+
+
+--- PAGE 44 ---
+
+8
+It follows from the Chebyshev Inequality and Equation (5) that
+Qω3n−3
+3n−2
+
+∥ρ3n−2 − T1
+ 
+ρ3n−3
+∥∞ ≥ 1
+ˆM
+1
+3
+
+= Qω3n−3
+3n−2
+
+∥ρ3n−2 − Eω3n−3
+ρ3n−2∥∞ ≥ 1
+ˆM
+1
+3
+
+≤
+X
+k∈S
+Qω3n−3
+3n−2
+ρ3n−2
+k − Eω3n−3
+ρ3n−2
+k
+ ≥ 1
+ˆM
+1
+3
+
+≤ K 1/4 ˆM
+1 ˆM
+2
+3
+= K
+4 ˆM
+1
+3
+.
+Let W3n−2 = {ω3n−2 ∈ Ω3n−2 : ∥ρ3n−2(ω3n−2)−T1
+ 
+ρ3n−3(ω3n−3)
+
+∥∞ ≥ 1
+ˆM
+1
+3
+}. It is clear
+that
+(10) Q3n−2(W3n−2) =
+Z
+Ω3n−3
+Qω3n−3
+3n−2 (∥ρ3n−2 − T1(ρ3n−3)∥∞ ≥ 1
+ˆM
+1
+3
+)dQ3n−3 ≤ K
+4 ˆM
+1
+3
+.
+For the random matching step in period n,
+ρ3n−1(ω3n−1) =ρ3n−2(ω3n−2) =T2
+ 
+ρ3n−2(ω3n−2)
+
+since the agents do not change their types at the random matching step. It is then clear that
+the set
+W3n−1 = {ω3n−1 ∈ Ω3n−1 : ∥ρ3n−1(ω3n−1) − T2
+ 
+ρ3n−2(ω3n−2)
+
+∥∞ ≥ 1
+ˆM
+1
+3
+}
+is empty. Hence, we have
+Q3n−1(W3n−1) =
+Z
+Ω3n−2
+Qω3n−1
+3n−2
+
+∥ρ3n−1 − T2
+ 
+ρ3n−2
+∥∞ ≥ 1
+ˆM
+1
+3
+
+dQ3n−2 = 0.(11)
+For the type changing step in period n, fix any ω3n−1 ∈ Ω3n−1. For any i,j ∈ I with
+i ̸= j, it is clear that 1k(ˆα3n
+i ) and 1k(ˆα3n
+j ) are independent on (Ω3n,E3n,Qω3n−1
+3n ). Therefore,
+we have
+Varω3n−1
+ρ3n
+k = Varω3n−1 1
+ˆM
+X
+i∈I
+1k(ˆα3n
+i ) = 1
+ˆM2
+X
+i∈I
+Varω3n−1
+1k(ˆα3n
+i ) ≤ 1
+ˆM2
+X
+i∈I
+1
+4 = 1
+4 ˆM
+.
+It follows from the Chebyshev Inequality that
+Qω3n−1
+3n
+
+∥ρ3n − Eω3n−1
+ρ3n∥∞ ≥ 1
+2 ˆM
+1
+3
+
+≤
+X
+k∈S
+Qω3n−1
+3n
+ρ3n
+k − Eω3n−1
+ρ3n
+k
+ ≥ 1
+2 ˆM
+1
+3
+
+≤ K 1/4 ˆM
+1/4 ˆM
+2
+3
+= K
+ˆM
+1
+3
+.
+Since ˆM >
+
+1
+ξ3M2+1
+9
+≥
+
+1
+ξ0
+9
+= K9M3
+, it is clear that 2K(K+1)
+ˆM < 1
+2 ˆM
+1
+3
+. Equation (6) im-
+plies that for P0-almost all ω ∈ Ω, if ∥ρ3n(ω3n) − Eω3n−1
+ρ3n∥∞ < 1
+2 ˆM
+1
+3
+holds, then
+∥ρ3n(ω3n) − T3
+ 
+ρ3n−1(ω3n−1)
+
+∥∞
+≤ ∥ρ3n(ω3n) − Eω3n−1
+ρ3n∥∞ + ∥Eω3n−1
+ρ3n − T3
+ 
+ρ3n−1(ω3n−1)
+
+∥∞
+< 1
+2 ˆM
+1
+3
++ 2K(K + 1)
+ˆM
+< 1
+2 ˆM
+1
+3
++ 1
+2 ˆM
+1
+3
+= 1
+ˆM
+1
+3
+.
+
+
+--- PAGE 45 ---
+
+9
+Let W3n = {ω3n ∈ Ω3n : ∥ρ3n(ω3n) − T3
+ 
+ρ3n−1(ω3n−1)
+
+∥∞ ≥ 1
+ˆM
+1
+3
+}. It is clear that
+Q3n(W3n) =
+Z
+Ω3n−1
+Qω3n−1
+3n
+
+∥ρ3n − T3
+ 
+ρ3n−1
+∥∞ ≥ 1
+ˆM
+1
+3
+
+dQ3n−1
+≤
+Z
+Ω3n−1
+Qω3n−1
+3n
+
+∥ρ3n − Eω3n−1
+ρ3n∥∞ ≥ 1
+2 ˆM
+1
+3
+
+dQ3n−1 ≤ K
+ˆM
+1
+3
+.(12)
+For any m ∈ T0, let
+W
+m
+= {ωm ∈ Ωm : ωm′
+∈ Wm′
+for some m′ between 1 and m}.
+By Equations (10), (11) and (12), we have
+Qm(W
+m
+) ≤
+mX
+m′=0
+Qm′
+(Wm′
+) ≤ 3M2K
+ˆM
+1
+3
+.
+The definition of ˆM implies that 1
+ˆM
+1
+3
+≤ 1
+ˆM
+1
+9
+≤ ξ3M2+1 ≤ 1
+3M2K ξ1. Then, Qm(W
+m
+) ≤ ξ1.
+Fix any m ∈ {0,1,..., 3M2} and ωm /∈ W
+m
+. We have
+∥ρm(ωm) − Um
+1 (ρ0)∥∞
+≤ ∥ρm(ωm) − Um
+m (ρm−1(ωm−1))∥∞ + ∥Um
+m (ρm−1(ωm−1)) − Um
+1 (ρ0)∥∞
+≤
+mX
+j=1
+∥Um
+j+1(ρj(ωj)) − Um
+j (ρj−1(ωj−1))∥∞
+=
+mX
+j=1
+
+
+
+Um
+j+1(ρj(ωj)) − Um
+j+1
+
+Uj
+j (ρj−1(ωj−1))
+
+
+
+
+∞
+.
+The fact that ωm /∈ W
+m
+leads to ωj /∈ Wj for any j ∈ {0,1,...,m }. The definition of Wj
+implies that
+∥ρj(ωj) − Uj
+j (ρj−1(ωj−1))∥∞ < 1
+ˆM
+1
+3
+≤ ξ3M2+1.
+By Lemma 2, we have
+∥ρm(ωm) − Um
+1 (ρ0)∥∞ ≤
+m−1X
+j=0
+ξ3M2+1−j ≤
+m−1X
+j=0
+1
+3M2K ξ1 ≤ ξ1,
+which implies that ωm /∈ V m = {ωm ∈ Ωm : ∥ρm(ωm) − Um
+1 (ρ0)∥∞ > ξ1}. Since ωm is
+an arbitrarily fixed element in Ωm \ W
+m
+, the fact that ωm /∈ V m implies that V m ⊆ W
+m
+.
+Therefore, we have Qm(V m) ≤ ξ1.
+B.4. Proof of Lemma 4 in Section 3.3.Fix any m ∈ {0,1,..., 3M2}. Recall that
+V m = {ωm ∈ Ωm : ∥ρm(ωm) − Um
+1 (ρ0)∥∞ > ξ1}. By Lemma 3, we know that P0 (V m) ≤
+ξ1. Then, we can obtain that
+∥E(ρm) − Um
+1 (ρ0)∥∞ =
+
+
+
+
+
+Z
+Ωm
+ 
+ρm − Um
+1 (ρ0)
+
+dQm
+
+
+
+
+
+∞
+≤
+Z
+Ωm
+∥ρm − Um
+1 (ρ0)∥∞dQm
+
+
+--- PAGE 46 ---
+
+10
+≤
+Z
+V m
+∥ρm − Um
+1 (ρ0)∥∞dQm +
+Z
+Ωm\V m
+∥ρm − Um
+1 (ρ0)∥∞dQm
+≤ ξ1 + ξ1 ≤ 2ξ0 = 2
+KM3 .
+Let B1(M) = 2
+KM3 . It is clear that limM→∞ B1(M) = 0.
+B.5. Additional Lemmas B.1–B.3. This subsection presents three additional lem-
+mas. Lemma B.1 (Lemma B.2) is used to prove Lemma B.2 (Lemma B.3), while Lemma B.3
+is used in the proof of Lemmas 5 and 6 of the main text.
+The following lemma shows that 1
+M2 is a lower bound for
+
+U3n−2
+1 (ρ0)
+
+k.
+LEMMA B.1. For anyn ∈ {1,2,...,M 2} and k ∈ S, we have
+
+U3n−2
+1 (ρ0)
+
+k ≥ 1
+M2 .
+PROOF. Note that ˆηkl ≥ 1
+M2 for any k,l ∈ S by its definition. The definition of T1
+implies that for any k ∈ S,
+
+U3n−2
+1 (ρ0)
+
+k =
+
+T1
+ 
+U3n−3
+1 (ρ0)
+
+k
+=
+X
+l∈S
+
+U3n−3
+1 (ρ0)
+
+l ˆηlk ≥ 1
+M2
+X
+l∈S
+
+U3n−3
+1 (ρ0)
+
+l = 1
+M2 ,
+which is the required inequality in the lemma.
+The following lemma shows that, ifω3n−2 is not in V 3n−2, then 1
+2M2 is a lower bound
+for the population of type-k agents after step 3n − 2.
+LEMMA B.2. For any n ∈ {1,2,...,M 2}, ω3n−2 /∈ V 3n−2 and k ∈ S, we have
+ρ3n−2
+k (ω3n−2) ≥ 1
+2M2 .
+PROOF. Fix any n ∈ T0 = {1,2,...,M 2} and ω3n−2 /∈ V 3n−2. By the definition of
+V 3n−2 in Lemma 3, we know that ∥ρ3n−2(ω3n−2) − U3n−2
+1 (ρ0)∥∞ ≤ ξ1. It follows from
+Lemma B.1 that
+ρ3n−2
+k (ω3n−2) ≥ [U3n−2
+1 (ρ0)]k − ξ1 ≥ 1
+M2 − ξ0.
+Note that ξ0 = 1
+KM3 . It is clear that ξ0 ≤ 1
+2M2 . Therefore, we have
+ρ3n−2
+k (ω3n−2) ≥ 1
+M2 − 1
+2M2 = 1
+2M2 ,
+which is the required inequality in the lemma.
+The following lemma provides an approximation of the matching probabilities at step
+3n − 1 using parameter ˆq.
+
+
+--- PAGE 47 ---
+
+11
+LEMMA B.3. For anyi,j ∈ I with i ̸= j, anyω3n−2 /∈ V 3n−2 and anyk1,l1,k2,l2 ∈
+S, ifˆα3n−2
+i
+ 
+ω3n−2
+= k1 and ˆα3n−2
+j
+ 
+ω3n−2
+= k2, then
+Qω3n−2
+3n−1 (ˆg3n−1
+i = l1) − ˆqk1l1
+ 
+ρ3n−2  
+ω3n−2 < 1
+ˆM
+1
+9
+,
+Qω3n−2
+3n−1 (ˆg3n−1
+i = J) − ˆqk1
+ 
+ρ3n−2  
+ω3n−2 < 1
+ˆM
+1
+9
+,
+Qω3n−2
+3n−1 (ˆg3n−1
+i = l1, ˆg3n−1
+j = l2) − ˆqk1l1
+ 
+ρ3n−2  
+ω3n−2
+ˆqk2l2
+ 
+ρ3n−2  
+ω3n−2 < 1
+ˆM
+1
+9
+,
+Qω3n−2
+3n−1 (ˆg3n−1
+i = J, ˆg3n−1
+j = l2) − ˆqk1
+ 
+ρ3n−2  
+ω3n−2
+ˆqk2l2
+ 
+ρ3n−2  
+ω3n−2 < 1
+ˆM
+1
+9
+,
+Qω3n−2
+3n−1 (ˆg3n−1
+i = J, ˆg3n−1
+j = J) − ˆqk1
+ 
+ρ3n−2  
+ω3n−2
+ˆqk2
+ 
+ρ3n−2  
+ω3n−2 < 1
+ˆM
+1
+9
+.
+PROOF. Fix any i,j ∈ I with i ̸= j, ω3n−2 /∈ V 3n−2 and k1,l1,k2,l2 ∈ S. Assume that
+ˆα3n−2
+i
+ 
+ω3n−2
+= k1 and ˆα3n−2
+j
+ 
+ω3n−2
+= k2. Since ˆM >
+
+1
+ξ3M2+1
+9
+≥
+
+1
+ξ0
+9
+= K9M3
+, it
+is clear that 5K2 + 2K < ˆM
+5
+9 . By Lemma B.2, we have ρ3n−2
+k1
+ 
+ω3n−2
+≥ 1
+2M2 > 1
+ˆM
+1
+3
+, and
+ρ3n−2
+k2
+ 
+ω3n−2
+≥ 1
+2M2 > 1
+ˆM
+1
+3
+. It follows from Lemma 1 that
+Qω3n−2
+3n−1 (ˆg3n−1
+i = l1) − ˆqk1l1
+ 
+ρ3n−2  
+ω3n−2 ≤ 2
+ˆM
+2
+3
+= 2
+ˆM
+5
+9
+1
+ˆM
+1
+9
+< 1
+ˆM
+1
+9
+.
+Lemma 1 also implies that
+Qω3n−2
+3n−1
+
+ˆg3n−1
+i = l1, ˆg3n−1
+j = l2
+
+− ˆqk1l1
+ 
+ρ3n−2  
+ω3n−2
+ˆqk2l2
+ 
+ρ3n−2  
+ω3n−2
+≤ 5
+ˆM
+2
+3
+= 5
+ˆM
+5
+9
+1
+ˆM
+1
+9
+< 1
+ˆM
+1
+9
+.
+Next, we consider the case when agent i is not matched. We can obtain
+Qω3n−2
+3n−1 (ˆg3n−1
+i = J) − ˆqk1
+ 
+ρ3n−2  
+ω3n−2
+=
+
+X
+l1∈S
+Qω3n−2
+3n−1 (ˆg3n−1
+i = l1) −
+X
+l1∈S
+ˆqk1l1
+ 
+ρ3n−2  
+ω3n−2
+
+≤ 2K
+ˆM
+2
+3
+= 2K
+ˆM
+5
+9
+1
+ˆM
+1
+9
+< 1
+ˆM
+1
+9
+.
+Similarly, we can prove that
+Qω3n−2
+3n−1
+
+ˆg3n−1
+i = J, ˆg3n−1
+j = l2
+
+− ˆqk1
+ 
+ρ3n−2  
+ω3n−2
+ˆqk2l2
+ 
+ρ3n−2  
+ω3n−2
+=
+Qω3n−2
+3n−1
+
+ˆg3n−1
+j = l2
+
+−
+X
+l′∈S
+Qω3n−2
+3n−1
+
+ˆg3n−1
+i = l′, ˆg3n−1
+j = l2
+
+−
+−ˆqk2l2
+ 
+ρ3n−2  
+ω3n−2
++
+X
+l′∈S
+ˆqk1l′
+ 
+ρ3n−2  
+ω3n−2
+ˆqk2l2
+ 
+ρ3n−2  
+ω3n−2
+
+≤ 5K + 2
+ˆM
+2
+3
+= 5K + 2
+ˆM
+5
+9
+1
+ˆM
+1
+9
+< 1
+ˆM
+1
+9
+.
+
+
+--- PAGE 48 ---
+
+12
+It remains to consider the case when agents i and j are not matched. We have
+Qω3n−2
+3n−1
+
+ˆg3n−1
+i = J, ˆg3n−1
+j = J
+
+− ˆqk1
+ 
+ρ3n−2  
+ω3n−2
+ˆqk2
+ 
+ρ3n−2  
+ω3n−2
+=
+Qω3n−2
+3n−1
+ 
+ˆg3n−1
+i = J
+
+−
+X
+l′∈S
+Qω3n−2
+3n−1
+
+ˆg3n−1
+i = J, ˆg3n−1
+j = l′
+
+−ˆqk1
+ 
+ρ3n−2  
+ω3n−2
++
+X
+l′∈S
+ˆqk1
+ 
+ρ3n−2  
+ω3n−2
+ˆqk2l′
+ 
+ρ3n−2  
+ω3n−2
+
+≤ 5K2 + 2K
+ˆM
+2
+3
+= 5K2 + 2K
+ˆM
+5
+9
+1
+ˆM
+1
+9
+< 1
+ˆM
+1
+9
+.
+The proof is thus completed.
+B.6. Proof of Lemma 5 in Section 3.3.By Lemma B.3 and the fact that 1
+ˆM
+1
+9
+< 1
+M2 ,
+it is clear that
+Qω3n−2
+3n−1 (ˆg3n−1
+i = l) − ˆqkl
+ 
+ρ3n−2  
+ω3n−2 ≤ 1
+ˆM
+1
+9
+< 1
+M2
+for any i ∈ I, ω3n−2 /∈ V 3n−2 and k,l ∈ S with ˆα3n−2
+i
+ 
+ω3n−2
+= k.
+B.7. Proofs of Lemmas A.1–A.3 in Appendix A.
+B.7.1. Proof of Lemma A.1. Fix any i ∈ ¯I. We first show that for any m ∈
+{0,1,,..., ¯N − 1}, a,b ∈ ¯X and Fm ∈ ¯Fm,
+ ¯P0
+ 
+fm+1
+i = b,f m
+i = a,F m
+− ¯ϑm
+ab ¯P0 (fm
+i = a,F m)
+ ≤ 2¯ε1.
+Let
+A =
+
+ωm ∈ ¯Ωm : fm
+i (ωm) =a
+	
+∩ Fm.
+It is clear that
+¯P0
+ 
+fm+1
+i = b,f m
+i = a,F m
+=
+Z
+ωm∈A
+¯Qωm
+m+1
+ 
+fm+1
+i = b
+
+d ¯Qm.
+Recall that ¯Qm   ¯Cm(¯ε1)
+
+< ¯ε1 and for any ωm ∈ A\ ¯Cm(¯ε1),
+ ¯Qωm
+m+1
+ 
+fm+1
+i = b
+
+− ¯ϑm
+ab
+ ≤ ¯ε1.
+We can then obtain that
+ ¯P0
+ 
+fm+1
+i = b,f m
+i = a,F m
+− ¯ϑm
+ab ¯P0 (fm
+i = a,F m)
+
+=
+
+Z
+A
+  ¯Qωm
+m+1
+ 
+fm+1
+i = b
+
+− ¯ϑm
+ab
+
+d ¯Qm
+
+
+--- PAGE 49 ---
+
+13
+≤
+Z
+A∩ ¯Cm(¯ε1)
+ ¯Qωm
+m+1
+ 
+fm+1
+i = b
+
+− ¯ϑm
+ab
+d ¯Qm
++
+Z
+A\ ¯Cm(¯ε1)
+ ¯Qωm
+m+1
+ 
+fm+1
+i = b
+
+− ¯ϑm
+ab
+d ¯Qm
+≤ ¯Qm( ¯Cm(¯ε1)) + ¯Qm(A\ ¯Cm(¯ε1))¯ε1
+≤ ¯ε1 + ¯ε1 = 2¯ε1 ≤ 2| ¯X|¯ε1.(13)
+Proceeding inductively, assume that for a positive integerm′,
+(14)
+ ¯P0
+
+fm+m′
+i = b,f m
+i = a,F m
+
+− ¯Θm+m′−1
+m (a,b) ¯P0 (fm
+i = a,F m)
+ ≤ (2| ¯X|)m′
+¯ε1
+for any a,b ∈ ¯X , m ∈ {0,1,..., ¯N − m′}, and Fm ∈ ¯Fm. Note that
+¯P0
+
+fm+m′+1
+i = b,f m
+i = a,F m
+
+=
+X
+c∈ ¯X
+¯P0
+
+fm+m′+1
+i = b,f m+m′
+i = c,f m
+i = a,F m
+
+=
+X
+c∈ ¯X
+¯P0
+
+fm+m′+1
+i = b
+fm+m′
+i = c,f m
+i = a,F m
+
+× ¯P0
+
+fm+m′
+i = c,f m
+i = a,F m
+
+and
+¯Θm+m′
+m (a,b) =
+X
+c∈ ¯X
+¯Θm+m′−1
+m (a,c) ¯ϑm+m′
+(c,b).
+We can then obtain that
+ ¯P0
+
+fm+m′+1
+i = b,f m
+i = a,F m
+
+− ¯Θm+m′
+m (a,b) ¯P0 (fm
+i = a,F m)
+
+≤
+
+¯P0
+
+fm+m′+1
+i = b,f m
+i = a,F m
+
+−
+X
+c∈ ¯X
+¯ϑm+m′
+c,b ¯P0
+
+fm+m′
+i = c,f m
+i = a,F m
+
+
++
+
+X
+c∈ ¯X
+¯ϑm+m′
+c,b ¯P0
+
+fm+m′
+i = c,f m
+i = a,F m
+
+−
+X
+c∈ ¯X
+¯ϑm+m′
+c,b ¯Θm+m′−1
+m (a,c) ¯P0 (fm
+i = a,F m)
+
+≤
+X
+c∈ ¯X
+ ¯P0
+
+fm+m′+1
+i = b
+fm+m′
+i = c,f m
+i = a,F m
+
+− ¯ϑm+m′
+c,b
+ ¯P0
+
+fm+m′
+i = c,f m
+i = a,F m
+
++
+X
+c∈ ¯X
+ϑm+m′
+c,b
+ ¯P0
+
+fm+m′
+i = c,f m
+i = a,F m
+
+− ¯Θm+m′−1
+m (a,c) ¯P0 (fm
+i = a,F m)
+.
+By Equations (13) and (14), we know that
+ ¯P0
+
+fm+m′+1
+i = b,f m
+i = a,F m
+
+− ¯Θm+m′
+m (a,b) ¯P0 (fm
+i = a,F m)
+
+≤ 2| ¯X|¯ε1 + | ¯X|(2| ¯X|)m′
+¯ε1 ≤ (2| ¯X|)m′+1¯ε1.
+
+
+--- PAGE 50 ---
+
+14
+Hence, the first inequality of the lemma holds.
+For the second inequality of the lemma, we only need to consider the case when
+¯P0 (fm
+i = a,F m) > 0. The first inequality implies that
+ ¯P0
+
+fm+m′
+i = b
+fm
+i = a,F m
+
+− ¯Θm+m′−1
+m (a,b)
+ ≤ (2| ¯X|)m′
+¯ε1
+¯P0 (fm
+i = a,F m),
+ ¯P0
+
+fm+m′
+i = b
+fm
+i = a
+
+− ¯Θm+m′−1
+m (a,b)
+ ≤ (2| ¯X|)m′
+¯ε1
+¯P0 (fm
+i = a).
+By the triangle inequality, we know that
+ ¯P0
+
+fm+m′
+i = b
+fm
+i = a,F m
+
+− ¯P0
+
+fm+m′
+i = b
+fm
+i = a
+
+≤ (2| ¯X|)m′
+¯ε1
+¯P0 (fm
+i = a,F m) + (2| ¯X|)m′
+¯ε1
+¯P0 (fm
+i = a),
+which implies that
+ ¯P0
+
+fm+m′
+i = b,f m
+i = a,F m
+
+¯P0 (fm
+i = a) − ¯P0
+
+fm+m′
+i = b,f m
+i = a
+
+¯P0 (fm
+i = a,F m)
+
+≤ (2| ¯X|)m′
+¯ε1
+  ¯P0 (fm
+i = a,F m) + ¯P0 (fm
+i = a)
+
+≤ 2(2| ¯X|)
+¯N ¯ε1 ≤ (2| ¯X|)| ¯T|¯ε1.
+Hence,the second inequality of the lemma holds.
+B.7.2. Proof of Lemma A.2. When | ¯X| = 1, the inequality in the lemma holds triv-
+ially. Without loss of generality, assume that| ¯X| ≥2 in rest of this proof. We need to provide
+a sequence of estimations {dm}m∈ ¯T such that for any m ∈ ¯T, a,b ∈ ¯X and Fm−1
+i ∈ ¯Fm−1
+i
+and Fm−1
+j ∈ ¯Fm−1
+j , we have
+(15)
+ ¯P0(fm
+i = a,F m−1
+i ,f m
+j = b,F m−1
+j ) − ¯P0(fm
+i = a,F m−1
+i ) ¯P0(fm
+j = b,F m−1
+j )
+ ≤ dm.
+Fix any m ∈ ¯T. When m = 0, we can take d0 to be 0. Suppose that we have already
+defined dm, we need to define dm+1 using dm.
+Fix any a1,a2,b1,b2 ∈ ¯X, Fm−1
+i ∈ ¯Fm−1
+i and Fm−1
+j ∈ ¯Fm−1
+j . We need to estimate
+the following difference
+ ¯P0
+
+fm+1
+i = b1,f m+1
+j = b2,f m
+i = a1,f m
+j = a2,F m−1
+i ,F m−1
+j
+
+− ¯P0
+ 
+fm+1
+i = b1,f m
+i = a1,F m−1
+i
+ ¯P0
+
+fm+1
+j = b2,f m
+j = a2,F m−1
+j
+.
+For notational simplicity, let
+B =
+
+ωm ∈ ¯Ωm : fm
+i = a1,f m
+j = a2
+	
+∩ Fm−1
+i ∩ Fm−1
+j ,
+B′ = {ωm ∈ ¯Ωm : fm
+i = a1} ∩Fm−1
+i ,
+B′′ = {ωm ∈ ¯Ωm : fm
+j = a2} ∩Fm−1
+j .
+
+
+--- PAGE 51 ---
+
+15
+We can obtain that
+¯P0
+
+fm+1
+i = b1,f m+1
+j = b2,f m
+i = a1,f m
+j = a2,F m−1
+i ,F m−1
+j
+
+=
+Z
+B
+¯Qωm
+m+1
+
+fm+1
+i = b1,f m+1
+j = b2
+
+d ¯Qm.
+Since fi and fj are not ¯ε2-correlated, the probability of the event
+{ωm ∈ ¯Ωm : fi and fj are ¯ε2-correlated at ωm}
+is less than or equal to ¯ε2. Let
+Dm = {ωm ∈ ¯Ωm : there exists a,b ∈ ¯X such that
+ ¯Qωm
+m+1
+
+fm+1
+i = a,f m+1
+j = b
+
+− ¯Qωm
+m+1
+ 
+fm+1
+i = a
+ ¯Qωm
+m+1
+
+fm+1
+j = b
+ ≥ ¯ε2}
+It is clear that ¯Qm(Dm) ≤ ¯ε2. Then, we have
+ ¯P0
+
+fm+1
+i = b1,f m+1
+j = b2,f m
+i = a1,f m
+j = a2,F m−1
+i ,F m−1
+j
+
+−
+Z
+B
+¯Qωm
+m+1
+ 
+fm+1
+i = b1
+ ¯Qωm
+m+1
+
+fm+1
+j = b2
+
+d ¯Qm
+
+=
+
+Z
+B
+
+¯Qωm
+m+1(fm+1
+i = b1,f m+1
+j = b2) − ¯Qωm
+m+1
+ 
+fm+1
+i = b1
+ ¯Qωm
+m+1
+
+fm+1
+j = b2
+
+d ¯Qm
+
+≤
+Z
+B\Dm
+ ¯Qωm
+m+1(fm+1
+i = b1,f m+1
+j = b2) − ¯Qωm
+m+1
+ 
+fm+1
+i = b1
+ ¯Qωm
+m+1
+
+fm+1
+j = b2
+d ¯Qm
++ ¯Qm(Dm)
+≤ ¯ε2 + ¯ε2 = 2¯ε2.(16)
+Next, we estimate the difference
+
+Z
+B
+¯Qωm
+m+1
+ 
+fm+1
+i = b1
+ ¯Qωm
+m+1
+
+fm+1
+j = b2
+
+d ¯Qm − ¯P0(B)¯ϑm
+a1b1
+¯ϑm
+a2b2
+.
+Recall the definition of ¯Cm(¯ε1) above Equation (33) in the main text. that
+¯Cm(¯ε1) ={ωm ∈ ¯Ωm :
+ ¯Qωm
+m+1(fm+1
+i = a) − ¯ϑm(fm
+i (ωm),a)
+ > ¯ε1 for some i ∈ ¯I and a ∈ ¯X}.
+By Equation (33) in the main text, ¯Qm( ¯Cm(¯ε1)) ≤ ¯ε1. Then, we can obtain that
+
+Z
+B
+¯Qωm
+m+1
+ 
+fm+1
+i = b1
+ ¯Qωm
+m+1
+
+fm+1
+j = b2
+
+d ¯Qm − ¯P0(B)¯ϑm
+a1b1
+¯ϑm
+a2b2
+
+≤
+Z
+B
+ ¯Qωm
+m+1
+ 
+fm+1
+i = b1
+ ¯Qωm
+m+1
+
+fm+1
+j = b2
+
+− ¯ϑm
+a1b1
+¯ϑm
+a2b2
+d ¯Qm
+≤
+Z
+B\ ¯Cm(¯ε1)
+ ¯Qωm
+m+1
+ 
+fm+1
+i = b1
+ ¯Qωm
+m+1
+
+fm+1
+j = b2
+
+− ¯ϑm
+a1b1
+¯ϑm
+a2b2
+d ¯Qm + ¯Qm( ¯Cm(¯ε1))
+=
+Z
+B\ ¯Cm(¯ε1)
+ ¯Qωm
+m+1
+ 
+fm+1
+i = b1
+ ¯Qωm
+m+1
+
+fm+1
+j = b2
+
+− ¯ϑm
+a1b1
+¯Qωm
+m+1
+
+fm+1
+j = b2
+d ¯Qm
+
+
+--- PAGE 52 ---
+
+16
++
+Z
+B\ ¯Cm(¯ε1)
+¯ϑm
+a1b1
+¯Qωm
+m+1
+
+fm+1
+j = b2
+
+− ¯ϑm
+a1b1
+¯ϑm
+a2b2
+d ¯Qm + ¯ε1
+≤
+Z
+B\ ¯Cm(¯ε1)
+ ¯Qωm
+m+1
+ 
+fm+1
+i = b1
+
+− ¯ϑm
+a1b1
+d ¯Qm
++
+Z
+B\ ¯Cm(¯ε1)
+ ¯Qωm
+m+1
+
+fm+1
+j = b2
+
+− ¯ϑm
+a2b2
+d ¯Qm + ¯ε1
+≤ ¯ε1 + ¯ε1 + ¯ε1 = 3¯ε1.(17)
+By Equations (16) and (17), we have
+ ¯P0
+
+fm+1
+i = b1,f m+1
+j = b2,f m
+i = a1,f m
+j = a2,F m−1
+i ,F m−1
+j
+
+− ¯P0(B)¯ϑm
+a1b1
+¯ϑm
+a2b2
+ ≤ 3¯ε1 + 2¯ε2.(18)
+It follows from the definition of ¯Cm(¯ε1) and Equation (33) in the main text again that
+ ¯P0
+ 
+fm+1
+i = b1,f m
+i = a1,F m−1
+i
+
+− ¯P0(B′)¯ϑm
+a1b1
+
+=
+
+Z
+B′
+  ¯Qωm
+m+1(fm+1
+i = b1) − ¯ϑm
+a1b1
+
+d ¯Qm
+
+≤
+Z
+B′\ ¯Cm(¯ε1)
+ ¯Qωm
+m+1(fm+1
+i = b1) − ¯ϑm
+a1b1
+d ¯Qm + ¯Qm( ¯Cm(¯ε1))
+≤ ¯ε1 + ¯ε1 = 2¯ε1.(19)
+Equation (19) states an inequality for a general index i, which can be restated for index j as
+follows:
+ ¯P0
+
+fm+1
+j = b2,f m
+j = a2,F m−1
+j
+
+− ¯P0(B′′)¯ϑm
+a2b2
+ ≤ 2¯ε1.(20)
+Based on Equations (19) and (20), we can obtain that
+ ¯P0
+ 
+fm+1
+i = b1,f m
+i = a1,F m−1
+i
+ ¯P0
+
+fm+1
+j = b2,f m
+j = a2,F m−1
+j
+
+− ¯P0(B′) ¯P0(B′′)¯ϑm
+a1b1
+¯ϑm
+a2b2
+
+≤
+ ¯P0(fm+1
+i = b1,f m
+i = a1,F m−1
+i ) ¯P0(fm+1
+j = b2,f m
+j = a2,F m−1
+j )
+− ¯P0(B′)¯ϑm
+a1b1
+¯P0(fm+1
+j = b2,f m
+j = a2,F m−1
+j )
+
++
+ ¯P0(B′)¯ϑm
+a1b1
+¯P0(fm+1
+j = b2,f m
+j = a2,F m−1
+j ) − ¯P0(B′) ¯P0(B′′)¯ϑm
+a1b1
+¯ϑm
+a2b2 |
+≤
+ ¯P0(fm+1
+i = b1,f m
+i = a1,F m−1
+i ) − ¯P0(B′)¯ϑm
+a1b1
+
++
+ ¯P0(fm+1
+j = b2,f m
+j = a2,F m−1
+j ) − ¯P0(B′′)¯ϑm
+a2b2 |
+≤ 4¯ε1.(21)
+
+
+--- PAGE 53 ---
+
+17
+The induction hypothesis indicates that
+ ¯P0(B) − ¯P0(B′) ¯P0(B′′)
+ ≤ dm. By Equations (18)
+and (21), we have
+ ¯P0
+
+fm+1
+i = b1,f m+1
+j = b2,f m
+i = a1,f m
+j = a2,F m−1
+i ,F m−1
+j
+
+− ¯P0
+ 
+fm+1
+i = b1,f m
+i = a1,F m−1
+i
+ ¯P0
+
+fm+1
+j = b2,f m
+j = a2,F m−1
+j
+
+≤
+ ¯P0(B)¯ϑm
+a1b1
+¯ϑm
+a2b2 − ¯P0(B′) ¯P0(B′′)¯ϑm
+a1b1
+¯ϑm
+a2b2
+ + +7¯ε1 + 2¯ε2
+≤
+ ¯P0(B) − ¯P0(B′) ¯P0(B′′)
+ + 7¯ε1 + 2¯ε2 ≤ 7¯ε1 + 2¯ε2 + dm.(22)
+Fix any Fm
+i ∈ ¯Fm
+i . There exists Fm−1
+ic ∈ ¯Fm−1
+i for any c ∈ ¯X such that
+Fm
+i =
+[
+c∈ ¯X
+ 
+(fm
+i = c) ∩ Fm−1
+ic
+
+.
+Similarly, for any fixed Fm
+j ∈ ¯Fm
+j , there exists Fm−1
+jc ∈ ¯Fm−1
+j for any c ∈ ¯X such that
+Fm
+j =
+[
+c∈ ¯X
+ 
+fm
+j = c
+
+∩ Fm−1
+jc
+
+.
+Therefore, it follows from Equation (22) that
+ ¯P0
+
+fm+1
+i = b1,f m+1
+j = b2,F m
+i ,F m
+j
+
+− ¯P0
+ 
+fm+1
+i = b1,F m
+i
+ ¯P0
+
+fm+1
+j = b2,F m
+j
+
+≤
+X
+c1,c2∈ ¯X
+ ¯P0
+
+fm+1
+i = b1,f m+1
+j = b2,f m
+i = c1,f m
+j = c2,F m−1
+ic1
+,F m−1
+jc2
+
+− ¯P0
+ 
+fm+1
+i = b1,f m
+i = c1,F m−1
+ic1
+ ¯P0
+
+fm+1
+j = b2,f m
+j = c2,F m−1
+jc2
+
+≤ |¯X|2 (7¯ε1 + 2¯ε2 + dm).(23)
+Thus, we can define dm+1 to be | ¯X|2 (7¯ε1 + 2¯ε2 + dm).
+Next, we prove that for any m ∈ ¯T,
+dm ≤ |¯X|3m (7¯ε1 + 2¯ε2).(24)
+Since d0 = 0, it is clear that Equation (24) holds form = 0. Suppose that Equation (24) holds
+for m = m′. Then, we have
+dm′+1 = | ¯X|2 (7¯ε1 + 2¯ε2 + dm′)
+≤ |¯X|2 (7¯ε1 + 2¯ε2) +| ¯X|3m+2 (7¯ε1 + 2¯ε2)
+≤ |¯X|3m+3 (7¯ε1 + 2¯ε2).
+Therefore, Equation (24) holds for any m ∈ ¯T by mathematical induction.
+Fix any Fm
+i ∈ ¯Fm
+i and Fm
+j ∈ ¯Fm
+j . Equations (15) and (24) imply that
+ ¯P0
+ 
+Fm
+i ∩ Fm
+j
+
+− ¯P0 (Fm
+i ) ¯P0
+ 
+Fm
+j
+
+
+
+--- PAGE 54 ---
+
+18
+=
+
+X
+b1,b2∈ ¯X
+¯P0
+
+fm
+i = b1,f m
+j = b2,F m−1
+ib1
+,F m−1
+jb2
+
+−
+X
+b1,b2∈ ¯X
+¯P0
+ 
+fm
+i = b1,F m−1
+ib1
+ ¯P0
+
+fm
+j = b2,F m−1
+jb2
+
+
+≤ |¯X|2dm ≤ |¯X|3m+2 (7¯ε1 + 2¯ε2) ≤ |¯X|3 ¯N+2 (7¯ε1 + 2¯ε2)
+≤ |¯X|3| ¯T| (7¯ε1 + 2¯ε2),
+which is the required inequality in the lemma.
+B.7.3. Proof of Lemmas A.3.Fix any m ∈ ¯T. For any m′ ∈ {m,m + 1,..., ¯N − 1},
+let
+Bm′
+= {ωm′
+∈ Ωm′
+: Y m′
+(ωm′
+) =Y m(ωm′
+)} ∩Fm.
+If ¯P0(Bm′
+) > 0, then it follows from Equation (35) in the main text that
+¯P0(Y m′+1 = Y m′
+|Y m′
+= Y m,F m) =
+R
+Bm′ ¯Qωm′
+m′+1
+ 
+Y m′+1 = Y m′
+d ¯Qm′
+¯P0(Bm′
+)
+≥
+R
+Bm′ (1 − ¯ε3)d ¯Qm′
+¯P0(Bm′
+) = (1− ¯ε3).
+If ¯P0(Y m′
+= Y m,F m) > 0, then
+¯P0(Y m′+1 = Y m|Fm) = ¯P0(Y m′+1 = Y m′
+|Y m′
+= Y m,F m) ¯P0(Y m′
+= Y m|Fm)
+≥ (1 − ¯ε3) ¯P0(Y m′
+= Y m|Fm).(25)
+If ¯P0(Y m′
+= Y m,F m) = 0, then the above inequality is trivially satisfied.
+By Equation (25), we can derive
+¯P0(Y m+∆m = Y m|Fm) ≥ ¯P0(Y m+∆m−1
+i = Y m
+i |Fm) (1− ¯ε3) ≥ (1 − ¯ε3)∆m .
+One can easily prove by induction that for any x ∈ [0,1] and n ∈ N, (1 − x)n ≥ 1 − nx.
+Recall that ¯ε3 ∈ [0,1]. It is then clear that
+¯P0(Y m+∆m = Y m|Fm) ≥ 1 − ¯ε3∆m,
+which is the first inequality in the lemma.
+To prove the second inequality in the lemma, we first note that
+¯P0
+ 
+Y m+∆m − Y m ≥ 2
+Fm
+=
+m+∆m−1X
+m′=m+1
+¯P0
+
+Y m+∆m − Y m′
+≥ 1,Y m′
+= Y m′−1 + 1,Y m′−1 = Y m Fm
+
+.(26)
+
+
+--- PAGE 55 ---
+
+19
+Fix any m′ ∈ {m + 1,m + 2,...,m + ∆m − 1}. Assume that
+¯P0
+
+Y m′
+= Y m′−1 + 1,Y m′−1 = Y m,F m
+
+> 0.
+By the first inequality in the lemma, we can obtain that
+¯P0
+
+Y m+∆m = Y m′ Y m′
+= Y m′−1 + 1,Y m′−1 = Y m,F m
+
+≥ 1 − ¯ε3(m + ∆m − m′) ≥ 1 − ¯ε3∆m,
+which implies that
+¯P0
+
+Y m+∆m − Y m′
+≥ 1
+Y m′
+= Y m′−1 + 1,Y m′−1 = Y m,F m
+
+≤ ¯ε3∆m.
+It follows from the above inequality that
+¯P0
+
+Y m+∆m − Y m′
+≥ 1,Y m′
+= Y m′−1 + 1,Y m′−1 = Y m Fm
+
+= ¯P0
+
+Y m+∆m − Y m′
+≥ 1
+Y m′
+= Y m′−1 + 1,Y m′−1 = Y m,F m
+
+× ¯P0
+
+Y m′
+= Y m′−1 + 1,Y m′−1 = Y m Fm
+
+≤ ¯ε3∆m ¯P0
+
+Y m′
+= Y m′−1 + 1,Y m′−1 = Y m Fm
+
+.(27)
+When ¯P0
+ 
+Y m′
+= Y m′−1 + 1,Y m′−1 = Y m,F m
+= 0, the inequality in Equation (27) is triv-
+ially satisfied. Hence, Equations (26) and (27) together with the first inequality in the lemma
+imply that
+¯P0
+ 
+Y m+∆m − Y m ≥ 2
+Fm
+≤ ¯ε3∆m
+m+∆m−1X
+m′=m+1
+¯P0
+
+Y m′
+= Y m′−1 + 1,Y m′−1 = Y m Fm
+
+≤ ¯ε3∆m ¯P0
+ 
+Y m+∆m ≥ Y m + 1
+Fm
+= ¯ε3∆m
+ 
+1 − ¯P0
+ 
+Y m+∆m = Y m Fm
+≤ ¯ε2
+3 (∆m)2 ,
+which is the second inequality in the lemma.
+B.8. Proof of Lemma 6 in Section 3.3.The statement of Lemma 6 provides an
+estimate on the conditional probability for an agent to change type in the next period. Since
+each period has a random matching step, we will need to consider the joint process(ˆαm, ˆgm).
+For notational simplicity, we denoteS ×(S ∪ {J}) and (ˆαm, ˆgm) by ˆS and ˆβm respectively.
+We need to apply Lemma A.1 in the main text to the case that f is the function ˆβ :
+I × Ω × {0,1,..., 3M2} →ˆS by choosing suitable parameters (including ¯I, ¯Ω, ¯T, ¯P0, ¯X,
+¯ϑm and ¯ε1), which are introduced in Appendix A before Lemma A.1. Apparently, we should
+
+
+--- PAGE 56 ---
+
+20
+take ¯I, ¯Ω, ¯T, ¯P0, ¯X to be I, Ω, {0,1,..., 3M2}, P0, ˆS respectively. It remains to define ¯ϑm
+and ¯ε1.
+We first consider the case whenm = 3n−3 for some n ∈ T0 \{0}. Then, the (m+1)-
+th step is the mutation step in the n-th period. Let
+¯ϑ3n−3(a,b) =
+(
+ˆηkl if a = (k,J ) and b = (l,J )
+0 otherwise.
+By the construction of the mutation step in the finite-agent dynamic matching model in Sub-
+section 3.2, for any ω3n−3 ∈ Ω3n−3 and any b ∈ ˆS
+Qω3n−3
+3n−2 (ˆβ3n−2
+i = b) = ¯ϑ3n−3(ˆβ3n−3
+i (ω3n−3),b).(28)
+Next, we consider the case whenm = 3n−1 for some n ∈ T0 \{0}. Then, the(m+1)-
+th step is the type-changing step in the n-th period.
+¯ϑ3n−1(a,b) =
+
+
+
+ˆςkl(k′) if a = (k,l ),b = (k′,J )
+1 if a = (k,J ),b = (k,J )
+0 otherwise.
+By the construction of the type-changing step in the finite-agent dynamic matching model in
+Subsection 3.2, for any ω3n−1 ∈ Ω3n−1 and any b ∈ ˆS
+Qω3n−1
+3n (ˆβ3n
+i = b) = ¯ϑ3n−1(ˆβ3n−1
+i (ω3n−1),b).(29)
+It remains to consider the case when m = 3n − 2 for some n ∈ T0 \ {0}. Then, the
+m-th step and the (m + 1)-th step are the mutation and matching steps in the n-th period
+respectively.
+¯ϑ3n−2(a,b) =
+
+
+
+¯q3n−2
+kl if a = (k,J ) and b = (k,l )
+¯q3n−2
+k if a = (k,J ) and b = (k,J )
+0 otherwise,
+where ¯q3n−2
+kl and ¯q3n−2
+k are introduced three lines above Lemma 3. Recall that agents do
+not match at the mutation step. We can focus on the case when ˆβ3n−2(ω3n−2) = (k,J ) (i.e.,
+ˆα3n−2(ω3n−2) =k) for some k ∈ S. By Lemma B.3, ifω3n−2 /∈ V 3n−2 and ˆβ3n−2(ω3n−2) =
+(k,J ),
+Qω3n−2
+3n−1 (ˆg3n−1
+i = l) − ˆqkl
+ 
+ρ3n−2  
+ω3n−2 < 1
+ˆM
+1
+9
+,
+Qω3n−2
+3n−1 (ˆg3n−1
+i = J) − ˆqk
+ 
+ρ3n−2  
+ω3n−2 < 1
+ˆM
+1
+9
+.
+By the definition ofV 3n−2 in Lemma 3, we know that for anyω3n−2 /∈ V 3n−2, ∥ρ3n−2(ω3n−2)−
+U3n−2
+1 (ρ0)∥∞ ≤ ξ1. Then, Lemma 2 implies that for any ω3n−2 /∈ V 3n−2,
+ˆqkl
+ 
+ρ3n−2(ω3n−2)
+
+− ¯q3n−2
+kl
+ =
+ˆqkl
+ 
+ρ3n−2(ω3n−2)
+
+− ˆqkl
+ 
+U3n−2
+1 (ρ0)
+ ≤ ξ0,
+
+
+--- PAGE 57 ---
+
+21
+ˆqk
+ 
+ρ3n−2(ω3n−2)
+
+− ¯q3n−2
+k
+ =
+
+X
+l∈S
+ 
+ˆqkl
+ 
+ρ3n−2(ω3n−2)
+
+− ˆqkl
+ 
+U3n−2
+1 (ρ0)
+
+ ≤ Kξ0.
+Therefore, for any k ∈ S, ω3n−2 /∈ V 3n−2 with ˆβ3n−2(ω3n−2) = (k,J ), if a = (k,l ) for some
+l ∈ S, then
+Qω3n−2
+3n−1 (ˆβ3n−1
+i = a) − ¯ϑ3n−2(ˆβ3n−2
+i (ω3n−2),a)
+
+=
+Qω3n−2
+3n−1 (ˆβ3n−1
+i = (k,l )) − ¯q3n−2
+kl
+ ≤ ξ0 + 1
+ˆM
+1
+9
+;
+if a = (k,J ), then
+Qω3n−2
+3n−1 (ˆβ3n−1
+i = a) − ¯ϑ3n−2(ˆβ3n−2
+i (ω3n−2),a)
+
+=
+Qω3n−2
+3n−1 (ˆβ3n−1
+i = (k,J )) − ¯q3n−2
+k
+ ≤ Kξ0 + 1
+ˆM
+1
+9
+;
+if a /∈ {k} ×(S ∪ {J}),
+Qω3n−2
+3n−1 (ˆβ3n−1
+i = a) − ¯ϑ3n−2(ˆβ3n−2
+i (ω3n−2),a)
+ = |0 − 0| = 0.
+To sum up, for any i ∈ I, any ω3n−2 /∈ V 3n−2 and any a ∈ ˆS,
+Qω3n−2
+3n−1 (ˆβ3n−1
+i = a) − ¯ϑ3n−2(ˆβ3n−2
+i (ω3n−2),a)
+ ≤ Kξ0 + 1
+ˆM
+1
+9
+.
+In other words, if
+(30)
+Qω3n−2
+3n−1 (ˆβ3n−1
+i = a) − ¯ϑ3n−2(ˆβ3n−2
+i (ω3n−2),a)
+ > Kξ0 + 1
+ˆM
+1
+9
+.
+for some i ∈ I and a ∈ ˆS, then ω3n−2 ∈ V 3n−2.
+For m ∈ {1,2,..., 3M2 −1} and ε >0, recall the definition of ¯Cm(ε) above Equation
+(33) in the main text that
+¯Cm(ε) ={ωm ∈ Ωm :
+Qm+1
+ωm (ˆβm+1
+i = a) − ¯ϑm(ˆβm
+i (ωm),a)
+ > εfor some i ∈ I and a ∈ ˆS}.
+It follows from Equation (30) that ¯C3n−2
+
+Kξ0 + 1
+ˆM
+1
+9
+
+⊆ V 3n−2, which implies that
+(31) Qm
+
+¯Cm
+
+Kξ0 + 1
+ˆM
+1
+9
+
+≤ Qm(V m)
+holds for m = 3n − 2. By Equations (28) and (29), Equation (31) holds trivially for m =
+3n − 3 or 3n − 1 since the left side of the inequality is zero. By Lemma 3, Qm(V m) ≤ ξ1. It
+is clear that
+Qm
+
+¯Cm
+
+Kξ0 + 1
+ˆM
+1
+9
+
+≤ ξ1 ≤ ξ0 < Kξ0 + 1
+ˆM
+1
+9
+.
+Then, we can take ¯ε1 as introduced in Equation (33) in the main text to be Kξ0 + 1
+ˆM
+1
+9
+.
+
+
+--- PAGE 58 ---
+
+22
+It follows from Lemma A.1 for the casem = 3n−3, m′ = 3, a = (k,J ) and b = (r,J )
+that
+P0
+ 
+ˆα3n
+i = r
+ ˆα3n−3
+i = k,F 3n−3
+− ¯Θ3n−1
+3n−3((k,J ),(r,J ))
+
+=
+P0
+
+ˆβ3n
+i = (r,J )
+ ˆβ3n−3
+i = (k,J ),F 3n−3
+
+− ¯Θ3n−1
+3n−3((k,J ),(r,J ))
+
+≤
+ 
+2| ¯X|
+3 ¯ε1
+P0
+
+ˆβ3n−3
+i = (k,J ),F 3n−3
+ =
+
+2|ˆS|
+3
+¯ε1
+P0
+ 
+ˆα3n−3
+i = k,F 3n−3.
+It is straightforward to verify that
+¯Θ3n−1
+3n−3((k,J ),(r,J )) = [¯ϑ3n−3 ¯ϑ3n−2 ¯ϑ3n−1]((k,J ),(r,J ))
+=
+X
+k′∈S
+X
+l∈S
+ 
+ˆηkk′ ¯q3n−2
+k′l ˆςk′l(r)
+
++ ˆηkr ¯q3n−2
+r .
+Then, we can obtain that
+P0
+ 
+ˆα3n
+i = r
+ ˆα3n−3
+i = k,F 3n−3
+− ˆηkr −
+X
+l∈S
+¯q3n−2
+kl ˆςkl(r)
+
+≤
+
+¯Θ3n−1
+3n−3((k,J ),(r,J )) − ˆηkr −
+X
+l∈S
+¯q3n−2
+kl ˆςkl(r)
+ + (2|ˆS|)3¯ε1
+P0
+ 
+ˆα3n−3
+i = k,F 3n−3
+=
+
+X
+k′∈S
+X
+l∈S
+ 
+ˆηkk′ ¯q3n−2
+k′l ˆςk′l(r)
+
++ ˆηkr ¯q3n−2
+r − ˆηkr −
+X
+l∈S
+¯q3n−2
+kl ˆςkl(r)
+
++ (2|ˆS|)3¯ε1
+P0
+ 
+ˆα3n−3
+i = k,F 3n−3
+≤
+ˆηkr(1 − ¯q3n−2
+r )
+ +
+
+X
+k′̸=k
+X
+l∈S
+ˆηkk′ ¯q3n−2
+k′l ˆςk′l(r)
+
++
+
+X
+l∈S
+(1 − ˆηkk)¯q3n−2
+kl ˆςkl(r)
+
++ (2|ˆS|)3¯ε1
+P0
+ 
+ˆα3n−3
+i = k,F 3n−3.
+Recall from the beginning of Subsection 3.2 that ¯a = max{¯η, ¯θ} + 1. It is clear that
+ˆηkl = 1
+M ηkl + 1
+M2 ≤ ¯a
+M for any k,l ∈ S with k ̸= l,
+1 − ˆηkk =
+X
+l̸=k
+ˆηkl ≤ K¯a
+M for any k ∈ S,
+¯q3n−2
+kl = 1
+M θkl
+ 
+U3n−2
+1 (ρ0)
+
+≤ ¯a
+M for any k,l ∈ S,
+1 − ¯q3n−2
+k =
+X
+l∈S
+¯q3n−2
+kl ≤ K¯a
+M for any k ∈ S.
+
+
+--- PAGE 59 ---
+
+23
+Then, we have
+P0
+ 
+ˆα3n
+i = r
+ ˆα3n−3
+i = k,F 3n−3
+− ˆηkr −
+X
+l∈S
+¯q3n−2
+kl ˆςkl(r)
+
+≤ K¯a2
+M2 + K(K − 1)¯a2
+M2 + K2¯a2
+M2 + (2|ˆS|)3¯ε1
+P0
+ 
+ˆα3n−3
+i = k,F 3n−3
+= 2K2¯a2
+M2 + (2|ˆS|)3¯ε1
+P0
+ 
+ˆα3n−3
+i = k,F 3n−3.(32)
+It is clear that (2|ˆS|)3¯ε1 = (2K(K + 1))3(Kξ0 + 1
+ˆM
+1
+9
+). By Lemma 2 and the definition of
+ˆM, we have 1
+ˆM
+1
+9
+≤ ξ3M2+1 ≤ ξ0 = 1
+KM3 , which implies that
+(2|ˆS|)3¯ε1 ≤ (2K)3(K + 1)4 1
+KM3 .
+Since K ≥ 2 and M ≥ 3, we know that
+(2K)3(K + 1))4M3 ≤ (K2)3(K2)4K3logKM ≤ K14+3log2M < KM3
+,
+which implies that
+(33) (2|ˆS|)3¯ε1 ≤ (2K)3(K + 1)4 1
+KM3 < 1
+M3 .
+Since P0
+ 
+ˆα3n−3
+i = k,F 3n−3
+≥ 1
+M , it follows from Equations (32) and (33) that
+P0
+ 
+ˆα3n
+i = r
+ ˆα3n−3
+i = k,F 3n−3
+− ˆηkr −
+X
+l∈S
+¯q3n−2
+kl ˆςkl(r)
+
+< 2K2¯a2
+M2 + 1
+M2 < 3K2¯a2
+M2 .
+The proof is thus completed.
+B.9. Proof of Lemma 7 in Section 3.3. We need to apply Lemma A.1 to the
+case that f is the function ˆβ = (ˆα, ˆg). As in the proof of Lemma 6, let ¯I = I, ¯Ω = Ω,
+¯T = {0,1,..., 3M2}, ¯P0 = P0, ¯X = ˆS = S × (S ∪ {J}) and ¯ε1 = Kξ0 + 1
+ˆM
+1
+9
+.
+By the second inequality in Lemma A.1, we obtain that for any i ∈ I, any n,n1 ∈
+{1,2,...,M 2} with n > n1, any types k,k 1 ∈ S, and any F3n1−3
+i ∈ F3n1−3
+i ⊆ F3n1−3,
+P0
+ 
+ˆα3n
+i = k, ˆα3n1
+i = k1,F 3n1−3
+i
+
+P0
+ 
+ˆα3n1
+i = k1
+
+−P0
+ 
+ˆα3n
+i = k, ˆα3n1
+i = k1
+
+P0
+ 
+ˆα3n1
+i = k1,F 3n1−3
+i
+
+=
+P0
+
+ˆβ3n
+i = (k,J ), ˆβ3n1
+i = (k1,J ),F 3n1−3
+i
+
+P0
+
+ˆβ3n1
+i = (k1,J )
+
+−P0
+
+ˆβ3n
+i = (k,J ), ˆβ3n1
+i = (k1,J )
+
+P0
+
+ˆβ3n1
+i = (k1,J ),F 3n1−3
+i
+
+≤ (2| ¯X|)| ¯T|¯ε1 = (2K(K + 1))3M2+1
+
+Kξ0 + 1
+ˆM
+1
+9
+
+.
+
+
+--- PAGE 60 ---
+
+24
+Let B2(M) = (2K(K + 1))3M2+1
+
+Kξ0 + 1
+ˆM
+1
+9
+
+. Since 1
+ˆM
+1
+9
+< ξ3M2+1 ≤ ξ0 = 1
+KM3 ,
+we know that
+B2(M) ≤ (2K(K + 1))3M2+1(K + 1)
+KM3 ,
+which implies that limM→∞ B2(M) = 0. Hence, Lemma 7 is proved.
+B.10. Proof of Lemma 8 in Section 3.3.We need to apply Lemma A.2 to the
+case that f is the function ˆβ = (ˆα, ˆg). As in the proof of Lemma 6, let ¯I = I, ¯Ω = Ω,
+¯T = {0,1,..., 3M2}, ¯P0 = P0, ¯X = ˆS = S × (S ∪ {J}) and ¯ε1 = Kξ0 + 1
+ˆM
+1
+9
+. We only
+need to choose an appropriate value for ¯ε2.
+When m = 3n − 3 or 3n − 1, the (m + 1)-th step is the mutation step or the type
+changing step. By the construction of these two steps in Subsection 3.2, agents change their
+types independently. Therefore, for any n ∈ T0 \ {0}, a,b ∈ ˆS, ω3n−3 ∈ Ω3n−3 and ω3n−1 ∈
+Ω3n−1,
+(34) Qω3n−3
+3n−2
+
+ˆβ3n−2
+i = a, ˆβ3n−2
+j = b
+
+= Qω3n−3
+3n−2
+
+ˆβ3n−2
+i = a
+
+Qω3n−3
+3n−2
+
+ˆβ3n−2
+j = b
+
+,
+(35) Qω3n−1
+3n
+
+ˆβ3n
+i = a, ˆβ3n
+j = b
+
+= Qω3n−1
+3n
+
+ˆβ3n
+i = a
+
+Qω3n−1
+3n
+
+ˆβ3n
+j = b
+
+.
+For step of random matching, we need estimate the difference
+Qω3n−2
+3n−1
+
+ˆβ3n−1
+i = a, ˆβ3n−1
+j = b
+
+− Qω3n−2
+3n−1
+
+ˆβ3n−1
+i = a
+
+Qω3n−2
+3n−1
+
+ˆβ3n−1
+j = b
+.
+for any n ∈ T0 \ {0}, a,b ∈ ˆS, ω3n−2 ∈ Ω3n−2. Fix any k1,k2 ∈ S and ω3n−2 /∈ V 3n−2
+(introduced in Lemma 3) with ˆβ3n−2
+i (ω3n−2) = (k1,J ) and ˆβ3n−2
+j (ω3n−2) = (k2,J ). The
+inequalities in Lemma B.3 give symmetric treatment for the cases l ∈ S and l = J. For
+the simplicity of applying this lemma, we introduce the notation ˆqkJ to represent ˆqk in
+the rest of the proof for Lemma 8. For notational simplicity in the following displayed
+formula, we use Qij
+3n−2(a,b) and Qi
+3n−2(a) to denote Qω3n−2
+3n−1
+
+ˆβ3n−1
+i = a, ˆβ3n−1
+j = b
+
+and
+Qω3n−2
+3n−1
+
+ˆβ3n−1
+i = a
+
+respectively. Note that for any l1,l2 ∈ S ∪ {J},
+Qij
+3n−2 ((k1,l1),(k2,l2)) − Qi
+3n−2 ((k1,l1))Qj
+3n−2 ((k2,l2))
+
+≤
+Qij
+3n−2 ((k1,l1),(k2,l2)) − ˆqk1l1
+ 
+ρ3n−2  
+ω3n−2
+ˆqk2l2
+ 
+ρ3n−2  
+ω3n−2
++
+ˆqk1l1
+ 
+ρ3n−2  
+ω3n−2
+ˆqk2l2
+ 
+ρ3n−2  
+ω3n−2
+− ˆqk1l1
+ 
+ρ3n−2  
+ω3n−2
+Qj
+3n−2 ((k2,l2))
+
++
+ˆqk1l1
+ 
+ρ3n−2  
+ω3n−2
+Qj
+3n−2 ((k2,l2)) − Qi
+3n−2 ((k1,l1))Qj
+3n−2 ((k2,l2))
+
+≤
+Qij
+3n−2 ((k1,l1),(k2,l2)) − ˆqk1l1
+ 
+ρ3n−2  
+ω3n−2
+ˆqk2l2
+ 
+ρ3n−2  
+ω3n−2
++
+ˆqk2l2
+ 
+ρ3n−2  
+ω3n−2
+− Qj
+3n−2 ((k2,l2))
+
++
+ˆqk1l1
+ 
+ρ3n−2  
+ω3n−2
+− Qi
+3n−2 ((k1,l1))
+.
+
+
+--- PAGE 61 ---
+
+25
+Lemma B.3 then implies that for any l1,l2 ∈ S ∪ {J},
+Qij
+3n−2 ((k1,l1),(k2,l2)) − Qi
+3n−2 ((k1,l1))Qj
+3n−2 ((k2,l2))
+ ≤ 3
+ˆM
+1
+9
+.(36)
+Note that for any a /∈ {k1} ×(S ∪ {J}),
+Qij
+3n−2 (a,b) =Qi
+3n−2 (a)Qj
+3n−2 (b) = 0(37)
+for any b ∈ ˆS. By combining Equations (36) and (37), we know that for any a,b ∈ ˆS and
+ωm /∈ V 3n−2,
+Qij
+3n−2 (a,b) − Qi
+3n−2 (a)Qj
+3n−2 (b)
+ ≤ 3
+ˆM
+1
+9
+.(38)
+Equations (34), (35) and (38) imply that for any m ∈ {0,1,..., 3M2 − 1}, a,b ∈ ˆS
+and ωm /∈ V m,
+Qωm
+m+1
+
+ˆβm+1
+i = a, ˆβm+1
+j = b
+
+− Qωm
+m+1
+
+ˆβm+1
+i = a
+
+Qωm
+m+1
+
+ˆβm+1
+j = b
+ ≤ 3
+ˆM
+1
+9
+.(39)
+Let ¯ε2 = 3ξ0. Since 1
+ˆM
+1
+9
+< ξ3M2+1 ≤ ξ0 = 1
+KM3 , we have 3
+ˆM
+1
+9
+≤ 3ξ0 = ¯ε2. Then, Equation
+(39) implies that for any ωm /∈ V m, ˆβi and ˆβj are not ¯ε2-correlated at ωm. Therefore, it
+follows from Lemma 3 that for any m ∈ {0,1,..., 3M2 − 1},
+Qm
+
+{ωm ∈ Ωm : ˆβi and ˆβj are ¯ε2 -correlated at ωm}
+
+≤ Qm(V m) ≤ ξ1 ≤ ξ0 < ¯ε2,
+which implies that ˆβi and ˆβj are not ¯ε2-correlated. Recall that | ¯X| = |ˆS| = K(K + 1) and
+¯ε1 = Kξ0 + 1
+ˆM
+1
+9
+. Lemma A.2 implies that for any m ∈ {0,1,..., 3M2}, Fm
+i ∈ Fm
+i , and
+Fm
+j ∈ Fm
+j ,
+P0
+ 
+Fm
+i ∩ Fm
+j
+
+− P0 (Fm
+i )P
+ 
+Fm
+j
+
+≤ |¯X|3| ¯T| (7¯ε1 + 2¯ε2)
+= K9M2+3(K + 1)9M2+3((7K + 6)ξ0 + 7
+ˆM
+1
+9
+).
+Let B3(M) = K9M2+3(K + 1)9M2+3((7K + 6)ξ0 + 7
+ˆM
+1
+9
+). Since 1
+ˆM
+1
+9
+≤ ξ0 = 1
+KM3 ,
+we know that
+B3(M) ≤ (7K + 13)K9M2+3(K + 1)9M2+3
+KM3 ,
+which implies that limM→∞ B3(M) = 0. Hence, Lemma 8 is proved.
+B.11. Proofs of Lemmas 9 and 10 in Section 3.3.We need to apply Lemma A.3
+to the case that the counting process Y in the lemma is the process ˆXi in Lemmas 9 and 10.
+As in the proof of Lemma 6, let ¯I = I, ¯Ω = Ω, ¯T = {0,1,..., 3M2}, ¯P0 = P0 and ¯X = ˆS =
+S × (S ∪ {J}). We only need to choose an appropriate value for ¯ε3.
+Fix any i ∈ I, m ∈ {0,1,..., 3M2}, k ∈ S and ωm ∈ Ωm with ˆαm
+i (ωm) =k.
+
+
+--- PAGE 62 ---
+
+26
+We first consider the case whenm = 3n−3 for some n ∈ T0 \{0}. Then, the (m+1)-
+th step is the mutation step in the n-th period. By the construction of the mutation step in the
+finite-agent dynamic matching model in Subsection 3.2, we have
+Qω3n−3
+3n−2
+
+ˆX3n−2
+i = ˆX3n−3
+i + 1
+
+=
+X
+l∈S\{k}
+ˆηkl.
+Recall that
+ˆηkl = 1
+M ηkl + 1
+M2 ≤ ¯a
+M for any k,l ∈ S with k ̸= l.
+It is clear that
+Qω3n−3
+3n−2
+
+ˆX3n−2
+i = ˆX3n−3
+i + 1
+
+< K¯a
+M .(40)
+Next, we consider the case whenm = 3n−2 for some n ∈ T0 \{0}. Then, the(m+1)-
+th step is the matching step in the n-th period. The construction of the matching step in the
+finite-agent dynamic matching model in Subsection 3.2 and Lemma 1 allows us to claim that
+Qω3n−2
+3n−1
+
+ˆX3n−1
+i = ˆX3n−2
+i + 1
+
+=
+X
+l∈S
+Qω3n−2
+3n−1
+ 
+ˆg3n−1
+i = l
+
+≤
+X
+l∈S
+ˆqkl(ρ3n−2(ω3n−2)).
+Recall that
+ˆqkl(p) = 1
+M θkl(p) ≤ ¯a
+M for any k,l ∈ S and p ∈ ∆.
+It is then clear that
+Qω3n−2
+3n−1
+
+ˆX3n−1
+i = ˆX3n−2
+i + 1
+
+≤
+X
+l∈S
+ˆqkl(ρ3n−2(ω3n−2)) ≤ K¯a
+M .(41)
+It remains to consider the case when m = 3n − 1 for some n ∈ T0 \ {0}. Then the
+(m + 1)-th step is the type changing step in the n-th period. Note that ˆXi only counts the
+number of mutations and matchings. It is clear that
+Qω3n−1
+3n
+
+ˆX3n
+i = ˆX3n−1
+i + 1
+
+= 0< K¯a
+M .(42)
+By Equations (40), (41) and (42), we can take ¯ε3 to be K¯a
+M . By Lemma A.3, for any
+m,∆m ∈ {0,..., 3M2} and Fm ∈ Fm such that m + ∆m ≤ 3M2 and P0(Fm) > 0,
+P0( ˆXm+∆m
+i = ˆXm
+i |Fm) ≥ 1 − ¯ε3∆m = 1− K¯a∆m
+M ,
+P0( ˆXm+∆m
+i ≥ ˆXm
+i + 2|Fm) ≤ ¯ε2
+3 (∆m)2 = (K¯a)2
+∆m
+M
+2
+,
+which are the required inequalities in Lemmas 9 and 10.
+
+
+--- PAGE 63 ---
+
+27
+B.12. Proof of Lemma 11 in Section 3.3.Fix any k ∈ S. By the definition of ρm,
+we obtain that
+E
+
+ρm+∆m
+k
+
+− E(ρm
+k )
+
+=
+E
+ 
+1
+ˆM
+X
+i∈I
+1k
+
+ˆαm+∆m
+i
+!
+− E
+ 
+1
+ˆM
+X
+i∈I
+1k (ˆαm
+i )
+!
+≤ 1
+ˆM
+X
+i∈I
+E
+1k
+
+ˆαm+∆m
+i
+
+− 1k (ˆαm
+i )
+
+= 1
+ˆM
+X
+i∈I
+P0
+1k
+
+ˆαm+∆m
+i
+
+− 1k (ˆαm
+i )
+ = 1
+
+.(43)
+For any ω ∈ Ω, if
+1k
+
+ˆαm+∆m
+i (ω)
+
+− 1k (ˆαm
+i (ω))
+ = 1, then ˆXm+∆m
+i (ω) > ˆXm
+i (ω). Thus,
+we can obtain from Equation (43) that
+E
+
+ρm+∆m
+k
+
+− E(ρm
+k )
+ ≤ 1
+ˆM
+X
+i∈I
+P0
+
+ˆXm+∆m
+i > ˆXm
+i
+
+.
+By Lemma 9, we have
+P0
+
+ˆXm+∆m
+i > ˆXm
+i
+
+= 1− P0
+
+ˆXm+∆m
+i = ˆXm
+i
+
+≤ K¯a∆m
+M .
+Hence, we can obtain that
+E
+
+ρm+∆m
+k
+
+− E(ρm
+k )
+ ≤ K¯a∆m
+M ,
+which implies that
+∥E
+ 
+ρm+∆m
+− E(ρm)∥∞ ≤ K¯a∆m
+M .
+Therefore, Lemma 11 is proved.

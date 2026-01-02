@@ -1,0 +1,1533 @@
+SOURCE: papers/Duffie-ExistenceIndependentRandom-2007.pdf
+PAGES: 35
+META /CreationDate: D:20251215110325Z
+META /ModDate: D:20251215110325Z
+META /Producer: iText® 5.5.13.4 ©2000-2024 iText Group NV (AGPL-version); modified using iText® 5.5.13.4 ©2000-2024 iText Group NV (AGPL-version)
+META /Source: SEQ
+META /Title: Existence of Independent Random Matching
+
+================================================================================
+
+
+--- PAGE 1 ---
+
+Existence of Independent Random Matching
+Author(s): Darrell Duffie and  Yeneng Sun
+Source: The Annals of Applied Probability, Vol. 17, No. 1 (Feb., 2007), pp. 386-419
+Published by: Institute of Mathematical Statistics
+Stable URL: https://www.jstor.org/stable/25449853
+Accessed: 15-12-2025 11:03 UTC
+ 
+JSTOR is a not-for-profit service that helps scholars, researchers, and students discover, use, and build upon a wide
+range of content in a trusted digital archive. We use information technology and tools to increase productivity and
+facilitate new forms of scholarship. For more information about JSTOR, please contact support@jstor.org.
+ 
+Your use of the JSTOR archive indicates your acceptance of the Terms & Conditions of Use, available at
+https://about.jstor.org/terms
+ 
+Institute of Mathematical Statistics is collaborating with JSTOR to digitize, preserve and
+extend access to The Annals of Applied Probability
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms
+
+
+--- PAGE 2 ---
+
+The Annals of Applied Probability
+ 2007, Vol. 17, No. 1,386-419
+ DOI: 10.1214/105051606000000673
+ ? Institute of Mathematical Statistics, 2007
+ EXISTENCE OF INDEPENDENT RANDOM MATCHING
+ By Darrell Duffie and Yeneng Sun
+ Stanford University and National University of Singapore
+ This paper shows the existence of independent random matching of a
+ large (continuum) population in both static and dynamic systems, which
+ has been popular in the economics and genetics literatures. We construct
+ a joint agent-probability space, and randomized mutation, partial matching
+ and match-induced type-changing functions that satisfy appropriate indepen
+ dence conditions. The proofs are achieved via nonstandard analysis. The
+ proof for the dynamic setting relies on a new Fubini-type theorem for an infi
+ nite product of Loeb transition probabilities, based on which a continuum of
+ independent Markov chains is derived from random mutation, random partial
+ matching and random type changing.
+ 1. Introduction. Economists and geneticists, among others, have implicitly
+ or explicitly assumed the exact law of large numbers for independent random
+ matching in a continuum population, by which we mean a nonatomic measure
+ space of agents. This result is relied upon in large literatures within general equi
+ librium theory, game theory, monetary theory, labor economics, illiquid financial
+ markets and biology, as discussed in [15], which provides extensive references.
+ Such a law of large numbers allows a dramatic simplification of the dynamics of
+ the cross-sectional distribution of properties among a large population of randomly
+ interacting agents. Mathematical foundations, however, have been lacking, as has
+ been noted by Green and Zhou [19].
+ Given the fundamental measurability problems associated with modeling a con
+ tinuum of independent random variables,1 there has, up to now, been no theoreti
+ cal treatment of the exact law of large numbers for independent random matching
+ among a continuum population. In [40], various versions of the exact law of large
+ numbers and their converses are proved by applying simple measure-theoretic
+ methods to an extension of the usual product probability space that has the Fubini
+ property.2 The measure-theoretic framework of [40] is adopted in our companion
+ Received September 2004; revised July 2006.
+ AMS 2000 subject classifications. Primary 60J05, 91B68; secondary 60A10.
+ Key words and phrases. Random matching, independence, types, Markov chains, mutation.
+ *See, for example, [12, 13, 24] and detailed discussions in [38] and [40].
+ 2These results were originally stated on Loeb measure spaces in [38]. However, as noted in [40],
+ they can be proved for an extension of the usual product space that has the Fubini property; see also
+ Chapter 7 in [34] (and in particular, Sections 7.5 and 7.6), written by Sun.
+ 386
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms
+
+
+--- PAGE 3 ---
+
+INDEPENDENT RANDOM MATCHING  387
+ paper [15] to obtain an exact law of large numbers for random pairwise matching
+ by formulating a suitable independence condition in types.3
+ In particular, assuming independent random matching in a continuum popula
+ tion, and some related independence assumptions regarding random mutation and
+ match-induced type changing, we prove in [15] that there is an almost sure deter
+ ministic cross-sectional distribution of types in a large population for both static
+ and dynamic systems, a property that had been widely used without a proper foun
+ dation. In addition, we show in [15] that the time evolution of the cross-sectional
+ distribution of types can be completely determined from the agent-level Markov
+ chain for type, with known transition matrices.
+ The main aim of this paper is to provide the first theoretical treatment of the
+ existence of independent random matching in a continuum population. In partic
+ ular, we construct a joint agent-probability space, and randomized mutation, par
+ tial matching and match-induced type-changing functions that satisfy the indepen
+ dence conditions in [15]. Though the existence results of this paper are stated using
+ common measure-theoretic terms, their proofs make extensive use of nonstandard
+ analysis. One can pick up some background knowledge on nonstandard analysis
+ from the first three chapters of the book [34].
+ Since our dynamic system of independent random matching generates a de
+ pendence structure across time (in particular, a continuum of independent Markov
+ chains of agents' type), we need to construct an infinite product of Loeb transition
+ probabilities. Our proof of the existence result for the dynamic setting is based on
+ such an infinite product and an associated Fubini-type theorem that is derived from
+ Keisler [26]. Specifically, in order to prove the Fubini-type property of an infinite
+ product of Loeb transition probabilities, we first generalize Keisler's Fubini theo
+ rem for the product of two Loeb probability measures, from [26], to the setting of
+ a Loeb transition probability (i.e., a class of Loeb measures) in Theorem 5.1. In
+ constructing the internal transition probabilities for the step of random mutation in
+ Section 6, we use a hyperfinite product space and its coordinate functions, which
+ are closely related to those of Keisler [26], and in particular to the law of large
+ numbers for a hyperfinite sequence of *-independent random variables, as noted
+ in [26], page 56.
+ Historically, reliance on the exact law of large numbers for independent ran
+ dom matching dates back at least to 1908, when G. H. Hardy [20] and W. Wein
+ berg (see [6]) independently proposed that random mating in a large population
+ 3The independence condition that we propose in [15] is natural, but may not be obvious. For ex
+ ample, random matching in a finite population may not allow independence among agents since the
+ matching of agent / to agent j implies of course that j is also matched to /, implying some correlation
+ among agents. The effect of this correlation is reduced to zero in a continuum population. In other
+ words, one may obtain standard independence by rounding infinitesimals but not *-independence
+ for a hyperfinite population (see Section 4 below). A new concept, "Markov conditional indepen
+ dence in types," is proposed in [15] for dynamic matching, under which the transition law at each
+ randomization step depends on only the previous one or two steps of randomization.
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms
+
+
+--- PAGE 4 ---
+
+388  D. DUFFIE AND Y. SUN
+ leads to constant and easily calculated fractions of each al?ele in the population.
+ Hardy wrote: "suppose that the numbers are fairly large, so that the mating may
+ be regarded as random," and then used, in effect, an exact law of large numbers
+ for random matching to deduce his results. Consider, for illustration, a continuum
+ population of gametes consisting of two al?eles, A and B, in initial proportions p
+ and q = 1 ? p. Then, following the Hardy-Weinberg approach, the new population
+ would have a fraction p2 whose parents are both of type A, a fraction q2 whose
+ parents are both of type B, and a fraction 2pq whose parents are of mixed type
+ (h?t?rozygotes). These genotypic proportions asserted by Hardy and Weinberg are
+ already, implicitly, based on an exact law of large numbers for independent random
+ matching in a large population. We provide a suitable existence framework.
+ Going from a static to a dynamic environment, we also provide an existence
+ result that allows the computation of a steady-state constant deterministic popula
+ tion distribution of types. For illustration, suppose in the Hardy-Weinberg setting
+ above that with both parents of al?ele A, the offspring are of al?ele A, and that with
+ both parents of al?ele B, the offspring are of al?ele B. Suppose that the offspring
+ of parents of different al?eles are, say, equally likely to be of al?ele A or al?ele B.
+ The Hardy-Weinberg equilibrium for this special case is a population with steady
+ state constant proportions p ? 60% of al?ele A and q = 40% of al?ele B. With the
+ law of large numbers for independent random matching, this is verified by check
+ ing that, if generation k has this cross-sectional distribution, then the fraction of
+ al?ele A in generation k + 1 is almost surely 0.62 + 0.5 x (2 x 0.6 x 0.4) = 0.6.
+ Our existence results for a dynamic model of random matching provide a mathe
+ matical foundation for this Hardy-Weinberg law governing steady-state allelic and
+ genotypic frequencies.
+ In the field of economics, Hellwig [21] is the first, to our knowledge, to have re
+ lied on the effect of the exact law of large numbers for random pairwise matching
+ in a market, in a 1976 study of a monetary exchange economy.4 Since the 1970s,
+ a large economics literature has routinely relied on an exact law of large numbers
+ for independent random matching in a continuum population. This implicit use
+ of this result occurs in general equilibrium theory (e.g., [17, 18, 35, 41]), game
+ theory (e.g., [4, 5, 8, 16, 22]), monetary theory (e.g., [11, 19, 21, 31]), labor eco
+ nomics (e.g., [10, 23, 36, 37]) and financial market theory (e.g., [14, 32]). Mathe
+ matical foundations, however, have been lacking, as has been noted by Green and
+ Zhou [19]. In almost all of this literature, dynamics are crucial. For example, in the
+ Diamond [9] had earlier treated random matching of a large population with, in effect, finitely
+ many employers, but not pairwise matching within a large population. The matching of a large pop
+ ulation with a finite population can be treated directly by the exact law of large numbers for a contin
+ uum of independent random variables. For example, let N(i) be the event that worker i is matched
+ with an employer of a given type, and suppose this event is pairwise independent and of the same
+ probability p, in a continuum population of such workers. Then, under the conditions of [40], the
+ fraction of the population that is matched to this type of employer is p, almost surely.
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms
+
+
+--- PAGE 5 ---
+
+INDEPENDENT RANDOM MATCHING
+ 389
+ monetary and finance literature cited above, each agent in the economy solves a
+ dynamic programming problem that is based in part on the conjectured dynamics
+ of the cross-sectional distribution of agent types. An equilibrium has the property
+ that the combined effect of individually optimal dynamic behavior is consistent
+ with the conjectured population dynamics. In order to simplify the analysis, much
+ of the literature relies on equilibria with a stationary distribution of agent types.
+ The remainder of the paper is organized as follows. Section 2 considers exis
+ tence of independent random matching, both full and partial, in a static setting,
+ after a brief introduction of the measure-theoretic framework in Section 2.1. The
+ orem 2.4 of Section 2.2 shows the existence of random full matching with inde
+ pendent types, meaning roughly that, for essentially every pair (/, j) of agents, the
+ type of the agent to be randomly matched with agent i is independent of the type
+ of the agent to be randomly matched with agent j. Theorem 2.6 of Section 2.3 then
+ considers existence for the case of random search and matching, that is, for random
+ partial matchings that are independent in types. Proofs of Theorems 2.4 and 2.6,
+ which use nonstandard analysis extensively in the computations, are given in Sec
+ tion 4.
+ Section 3 considers a dynamical system for agent types, allowing for random
+ mutation, partial matching and match-induced random type changes. We borrow
+ from our companion paper [15] the inductive definition of such a dynamical sys
+ tem given in Section 3.1, and the condition of Markov conditional independence
+ found in Section 3.2. The latter condition captures the idea that at every time pe
+ riod, there are three stages: (1) an independent random mutation, (2) an indepen
+ dent random partial matching, and (3) for those agents matched, an independent
+ random type change induced by matching. In economics applications, for exam
+ ple, match-induced type changes arise from productivity shocks, changes in asset
+ holdings induced by trade between the matched agents, changes in credit positions,
+ or changes in money holdings. Theorem 3.1 of Section 3.3 shows the existence of
+ a dynamical system D with random mutation, partial matching and type changing
+ that is Markov conditionally independent in types with any given parameters. The
+ orem 3 of [15] then implies that the type processes of individual agents in such
+ a dynamical system D form a continuum of independent Markov chains, and that
+ the time evolution of the cross-sectional distribution of types is deterministic and
+ completely determined from a Markov chain with explicitly calculated transition
+ matrices.5
+ We prove Theorems 2.4 and 2.6 in Section 4. Turning to Section 5, we first prove
+ in Section 5.1a generalized Fubini theorem for a Loeb transition probability. Then,
+ a generalized Ionescu-Tulcea theorem for an infinite sequence of Loeb transition
+ 5The models in [27, 28] and [29] assume that there is a set of individual agents and a single mar
+ ketmaker. At each time, a randomly chosen individual agent trades with the marketmaker. References
+ [1] and [2] formalize a link between matching and informational constraints, which do not consider
+ random matching under the independence assumption as in the model here.
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms
+
+
+--- PAGE 6 ---
+
+390  D. DUFFIE AND Y. SUN
+ probabilities is shown in Section 5.2. Finally, a Fubini extension based on Loeb
+ product transition probability systems is constructed in Section 5.3. Based on the
+ results in Section 5, we prove Theorem 3.1 in Section 6.
+ Finally, we emphasize again that we must work with extensions of the usual
+ product measure spaces (of agents and states of the world), since a process formed
+ by a continuum of independent random variables is never measurable with respect
+ to the completion of the usual product a-algebra, except in the trivial case that
+ almost all of the random variables in the process are constants.6
+ 2. Existence of independent random matchings in the static case. In this
+ section, we first give some background definitions in Section 2.1. Then, we con
+ sider the existence of random matchings that are independent in types, for full and
+ partial matchings, in Sections 2.2 and 2.3, respectively. Proofs of the two exis
+ tence theorems, Theorems 2.4 and 2.6, are given in Sections 4.1 and 4.2. The full
+ and partial matching models in Theorems 2.4 and 2.6 satisfy the respective con
+ ditions in Theorems 1 and 2 in [15], which means that the respective conclusions
+ of Theorems 1 and 2 in [15], characterizing the implications of the law of large
+ numbers for process describing the cross-sectional distribution of types, hold for
+ these matching models.
+ 2.1. Some background definitions. Let probability spaces (I,i,X) and (?2,
+ 7, P) be our index and sample spaces, respectively.7 In our applications, (/, 1, X)
+ is an atomless probability space that indexes the agents.8 Let (/ xQ, l(g)!F,X?P)
+ be the usual product probability space. For a function f on I x Q (not necessarily
+ i ? !F-measurable), and for (i, co) e I x Q, f represents the function f(i, ) on Q,
+ and fu the function f(-,a>) on I.
+ In order to work with independent type processes arising from random match
+ ing, we need to work with an extension of the usual measure-theoretic product that
+ retains the Fubini property. A formal definition, as in [40], is as follows.
+ Definition 2.1. A probability space (/ x Q,W,Q) extending the usual
+ product space (/ x Q, i ? !F, X <g) P) is said to be a Fubini extension of (I x Q,
+ 1 ? 7, X (g> P) if for any real-valued (^-integrable function g on(I x Q, TV), the
+ functions gi = g(i, ) and g^ = /( , co) are integrable respectively on (Q, 3r, P)
+ 6 See, for example, Proposition 1.1 in [39].
+ 7 All measures in this paper are countably additive set functions defined on a -algebras.
+ 8A probability space (/, I, X) is atomless if there does not exist A e i such that X(A) > 0, and
+ for any i-measurable subset C of A, X(C) ? 0 or k(C) = A. (A). For those interested in the case of
+ a literal continuum of agents, it is noted in the beginning of Section 4 that one can indeed take / to
+ be the unit interval with some atomless probability measure. Corollary 4.3 in [40] shows, however,
+ that, in general, it makes no sense to impose the Lebesgue measure structure when an independent
+ process is considered.
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms
+
+
+--- PAGE 7 ---
+
+INDEPENDENT RANDOM MATCHING
+ 391
+ for ?-almost all i e i and on (/, 1, ?) for P-almost all co e Q; and if, moreover,
+ fQ gi dP and f? gcjdk are integrable respectively on (7, 1, ?) and on (Q, *F, P),
+ with ?Ix?1gdQ = fjdngi dP)dk = ?q(?j goJdk)dP. To reflect the fact that the
+ probability space (7 x Q,W,Q) has (7,1, A.) and (Q,F,P) as its marginal
+ spaces, as required by the Fubini property, it will be denoted by (7 x Q, IIEI !F,
+ ? HP).
+ An i El ^-measurable function / will also be called a process, while f is called
+ a random variable of the process and f is called a sample function of the process.
+ We now introduce the following crucial independence condition. We state the
+ definition using a complete separable metric space X for the sake of generality; in
+ particular, a finite space or a Euclidean space is a complete separable metric space.
+ Definition 2.2. An i Kl !F-measurable process / from 7 x ?2 to a com
+ plete separable metric space X is said to be essentially pairwise independent if for
+ ?-almost all i e I, the random variables f and fj are independent for ?-almost all
+ ye/.
+ 2.2. Existence of independent random full matchings. We follow the notation
+ in Section 2.1. Below is a formal definition of random full matching.
+ Definition 2.3 (Full matching).
+ 1. Let S = {1, 2,..., K) be a finite set of types, a : I -> S an i-measurable type
+ function of agents and p its distribution on 5. For 1 < k < K, let 7? = {/ e I :
+ a(i) = k) and pk = X(h) for each 1 < k < K.
+ 2. A full matching 0 is a bijection from 7 to 7 such that for each / e I, </>(/) / /
+ and 0(0(0) = i.
+ 3. A random full matching tc is a mapping from 7 x Q to 7 such that (i) tz^ is a
+ full matching for each e ?2; (ii) if we let g be the type process a(n), then g
+ is measurable from (7 x Q,lMJr,kMP)toS\ (iii) for ?-almost all i el, gi
+ has distribution p.
+ 4. A random full matching n is said to be independent in types if the type process
+ g is essentially pairwise independent.
+ Condition (1) of this definition says that a fraction pk of the population is of
+ type k. Condition (2) says that there is no self-matching, and that if i is matched
+ to j = (/>(/), then j is matched to /. Condition (3)(iii) means that for almost every
+ agent i, the probability that / is matched to a type-fc agent is p^, the fraction of
+ type-/; agents in the population. Condition (4) says that for almost all agents i and
+ j e I, the event that agent / is matched to a type-/: agent is independent of the
+ event that agent j is matched to a type-/ agent for any k,l e S.
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms
+
+
+--- PAGE 8 ---
+
+392  D. DUFFIE AND Y SUN
+ The following theorem shows the existence of an independent random full
+ matching model that satisfies a few strong conditions that are specified in foot
+ note 4 of [35], and is universal in the sense that it does not depend on particular
+ type functions.9 Note that condition (l)(ii) below implies that for any i, j e I,
+ P(tc? = j) = 0 since X({j}) = 0, which means that the probability that agent i is
+ matched with a given agent j is zero.
+ THEOREM 2.4. There exists an atomless probability space (1,1, X) of agents,
+ a sample probability space (Q, !F, P), a Fubini extension (I x?l, l^QF ,X^&P)
+ of the usual product probability space, anda random full matching n from (I xQ,
+ i^3T,X^P)to I such that
+ 1. (i) for each co Q, X(n~l(A)) ? X(A) for any A e 1, (ii) for each i e I,
+ P(n?~l(A)) = X(A)forany A el, (Hi) for any Ai,A2e i, X(Ax Pitt"1^)) =
+ X(Ax)X(A2) holds for P-almost all co eQ',
+ 2. it is independent in types with respect to any given type function a from I to
+ any finite type space S.
+ 2.3. The existence of independent random partial matchings. We shall now
+ consider the case of random partial matchings. The following is a formal definition.
+ Definition 2.5. Let a : I -> S be an i-measurable type function with type
+ distribution p = (px,..., Pk) on S. Let n be a mapping from / x ?2 to / U {/},
+ where J denotes "no match."
+ 1. We say that n is a random partial matching with no-match probabilities
+ qx,.-.,qK in[0, 1] if:
+ (i) For each co Q, the restriction of n^ to / ? n~l ({J}) is a full matching
+ onI-7T-l({J}).10
+ (ii) After extending the type function a to / U {J} such that a(J) = J, and
+ letting g = a(n), we have g measurable from (/ x ?2, i 13 F, X El P) to S U {/}.
+ (iii) For ?-almost ail i e h, P(gi = J) = qk and11
+ (1 -qk)pi(\ -qi) P(gi=D
+ Er=lPr(^-C1r)
+ 9When (/, i, ?) is taken to be the unit interval with the Borel algebra and Lebesgue measure,
+ property (l)(iii) of Theorem 2.4 can be restated as "for P-almost all cd e Q, H^x ^ 7r?71(^2)) =
+ k(A\)X(A2) holds for any A\, A2 i" by using the fact that the countable collection of rational
+ intervals in [0, 1] generates the Borel algebra. Footnote 4 of [35] shows the nonexistence of a random
+ full matching tc that satisfies (i)-(iii) of part (1).
+ ?This means that an agent / with 7^(0 = J is not matched, while any agent in / ? n~^({J}) is
+ matched. This produces a partial matching on /.
+ 11 If an agent of type k is matched, its probability of being matched to a type-/ agent should be
+ proportional to the type distribution of matched agents. The fraction of the population of matched
+ agents among the total population is X^Lj Pr^ ~ Qr)- Thus, the relative fraction of type-/ matched
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms
+
+
+--- PAGE 9 ---
+
+independent random matching 
+ 393
+ 2. A random partial matching n is said to be independent in types if the process g
+ (taking values in S U {/}) is essentially pairwise independent.12
+ The following theorem generalizes Theorem 2.4 to the case of random partial
+ matchings. Because the given parameters for no-matching probabilities may be
+ type-dependent, it is not possible to produce a universal matching model for ran
+ dom partial matchings as in the case of full matchings.
+ THEOREM 2.6. There is an atomless probability space (I,i,X) of agents
+ such that for any given 1-measurable type function ? from I to S, and for any
+ q e [0,l]s, (1) there exists a sample space (Q, F, P) and a Fubini extension
+ (I x Q, 113 3r, X 13 P) of the usual product probability space; (2) there exists an
+ independent-in-types random partial matching n from (I x Q, 1\Z?!F ,X\Z1 P) to I
+ with q = (qx,... ,q?c) eis the no-match probabilities.
+ 3. The existence of a dynamical system with random mutation, partial
+ matching and type changing that is Markov conditionally independent in
+ types. A discrete-time dynamical system D with random mutation, partial match
+ ing and type changing that is Markov conditionally independent in types is intro
+ duced in Section 4 of our companion paper [15]. The purpose of this section is
+ to show the existence of such a dynamical system D with any given parameters.
+ In Sections 3.1 and 3.2, we reproduce respectively the inductive definition of a
+ dynamical system with random mutation, partial matching and type changing and
+ the condition of Markov conditional independence, which originated with [15].
+ The general existence of the dynamical system B is presented in Theorem 3.1 in
+ Section 3.3 and its proof in Section 6.
+ 3.1. Definition of a dynamical system with random mutation, partial matching
+ and type changing. Let 5 = {1, 2,..., K) be a finite set of types. A discrete-time
+ dynamical system D with random mutation, partial matching and type changing in
+ each period can be defined intuitively as follows. The initial distribution of types
+ is p?. That is, p?(k) (denoted by p?) is the initial fraction of agents of type k.
+ In each time period, each agent of type k first goes through a stage of random
+ mutation, becoming an agent of type / with probability bkh In models such as [14],
+ for example, this mutation generates new motives for trade. Then, each agent of
+ type k is either not matched, with probability qk, or is matched to a type-/ agent
+ agents to that of all matched agents is (/?/ ( 1 - q\ ))/ ?*= l pr ( 1 - qr ). This implies that the probabil
+ ity that a type-Zc agent is matched to a type-/ agent is (1 - qk)(pi (1 - <?/))/ EJLi Pr (1 ? #r)- When
+ Hf-\ Pr(l - Qr) = 0, we have p?(l - q^) = 0 for all 1 < k < K, in which case almost no agents
+ are matched, and we can interpret the ratio ((1 - ^)P/(1 ? qi))l Y,r-\ Pr 0 - <2V) as zero.
+ ^This means that for almost all agents /, j e /, whether agent / is unmatched or matched to a
+ type-/: agent is independent of a similar event for agent j.
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms
+
+
+--- PAGE 10 ---
+
+394  D. DUFFIE AND Y. SUN
+ with a probability proportional to the fraction of type-/ agents in the population
+ immediately after the random mutation step. When an agent is not matched, she
+ keeps her type. Otherwise, when a pair of agents with respective types k and / are
+ matched, each of the two agents changes types; the type-/: agent becomes type r
+ with probability v?/(r), where v?/ is a probability distribution on S, and similarly
+ for the type-/ agent.
+ We shall now define formally a dynamical system D with random mutation,
+ partial matching and type changing. As in Section 2, let (7,1, ?) be an atomless
+ probability space representing the space of agents, (Q, 3r, P) a sample probabil
+ ity space, and (7 x ?2, i E3 .F, ? ISI P) a Fubini extension of the usual product
+ probability space.
+ Let a0 :1 -> S = {1,..., K} be an initial i-measurable type function with dis
+ tribution p? on S. For each time period n > 1, we first have a random mutation that
+ is modeled by a process hn from (7 x Q, 1 IE] 7, ? E? P) to S, then a random partial
+ matching described by a function nn from (7xi2,ilEI5r,?lEIP)to7U{7} (where
+ J represents no matching), followed by type changing for the matched agents that
+ is modeled by a process an from (7 x Q, 1 S F, ?13 P) to 5.
+ For the random mutation step at time n, given a K x K probability transition
+ matrix13 b, we require that, for each agent i e I,
+ (1) P(h*=l\a?-l=k) = bkh
+ the specified probability with which an agent i of type k at the end of time period
+ n ? 1 mutates to type /.
+ For the random partial matching step at time n, we let ~pn~ll2 be the expected
+ cross-sectional type distribution immediately after random mutation. That is,
+ (2) 7?r1/2 = Pn~l/2(k) = [ ?({/ e I : hnJi) = k}) dP(co).
+ The random partial matching function jrn at time n is defined by:
+ 1. For any co e ?2, #?( ) is a full matching on 7 - (n^)~l({J}), as defined in
+ Section 2.3.
+ 2. Extending hn so that hn(J, co) = J for any co e Q, we define gn : I x Q -^
+ SU{J}hy
+ gn(i,co) = hn(7Tn(i,co),co),
+ and assume that gn is i IEI F-measurable.
+ 3. Let <j [0, l]5. For each agent i el,
+ P(g'? = J\hni=k) = qk,
+ (3) _
+ ?r=l(l-9r)Pr
+ 13Here, ???/ is in [0, 1], with J^jLj b\a = 1 for each k.
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms
+
+
+--- PAGE 11 ---
+
+INDEPENDENT RANDOM MATCHING  395
+ Equation (3) means that for any agent whose type before the matching is k, the
+ probability of being unmatched is q^, and the probability of being matched to
+ a type-Z agent is proportional to the expected cross-sectional type distribution for
+ matched agents. When gn is essentially pairwise independent (as under the Markov
+ conditional independence condition in Section 3.2 below), the exact law of large
+ numbers in [38] and [40] implies that the realized cross-sectional type distrib
+ ution X(hn )~x after random mutation at time n is indeed the expected distribu
+ tion ~pn~1/2, P-almost surely.14
+ Finally, for the step of random type changing for matched agents at time n,
+ a given v : S x S ? A specifies the probability distribution v\a = v(k, I) of the new
+ type of a type-/: agent who has met a type-/ agent. When agent / is not matched
+ at time n, she keeps her type hnt with probability 1. We thus require that the type
+ function an after matching satisfies, for each agent i e I,
+ P(a?=r\hfl=k,g? = J) = 8rk,
+ (4)
+ P(a?=r\h?=k,gf=l) = vkl(r),
+ where <5? is 1 if r = k, and zero otherwise.
+ Thus, we have inductively defined a dynamical system D with random mutation,
+ partial matching and match-induced type changing with parameters (p?, b, q, v).
+ 3.2. Markov conditional independence in types. In this subsection, we con
+ sider a suitable independence condition on the dynamical system D. For n > 1,
+ to formalize the intuitive idea that given their type function an~l, the agents ran
+ domly mutate to other types independently at time n, and that their types in earlier
+ periods have no effect on this mutation, we say that the random mutation is Markov
+ conditionally independent in types if, for ?-almost all / / and ?-almost all j e I,
+ P(h^=k9hni=l\al...faf'l;a%...9anrl)
+ (5) J J 
+ = P(hnt = k\a?-l)P(hnj = l\otnj~l)
+ holds for all types k, I e S.15
+ Intuitively, the random partial matching at time n should depend only on agents'
+ types immediately after the random mutation. One may also want the random par
+ tial matching to be independent across agents, given events that occurred in the
+ first n ? 1 time periods and the random mutation at time n. We say that the random
+ 14 As noted in Footnote 11, if the denominator in (3) is zero, then almost no agents will be matched
+ and we can simply interpret the ratio as zero.
+ 15We could include the functions hm and gm for 1 < m < n ? 1 as well. However, it is not necessary
+ to do so since we only care about the dependence structure across time for the type functions at the
+ end of each time period.
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms
+
+
+--- PAGE 12 ---
+
+396  D. DUFFIE AND Y. SUN
+ partial matching nn is Markov conditionally independent in types if, for ?-almost
+ all i e 7 and ?-almost all j el,
+ P(g? = c,gnj=d\a?,...,ar\h?;u?j,...,anj-\hnj)
+ (6) J J J 
+ = P{gtl=c\hni)P(gnj=d\hnj) 
+ holds for all types c, d e S U {/}. 
+ The agents' types at the end of time period n should depend on the agents' 
+ types immediately after the random mutation stage at time n, as well as the results 
+ of random partial matching at time n, but not otherwise on events that occurred in 
+ previous periods. This motivates the following definition. The random type chang 
+ ing after partial matching at time n is said to be Markov conditionally independent 
+ in types if for ?-almost all / e I and ?-almost all j el, and for each n > 1, 
+ P(^=k,a]=l\al...,ar\hlg^;a?j,...,a]-\hnj,gnj) 
+ = P(at/=k\hni,gt/)P(anj=l\hnj,gnj) 
+ holds for all types k,l e S. 
+ The dynamical system D is said to be Markov conditionally independent in types 
+ if, in each time period n, each random step (random mutation, partial matching and 
+ type changing) is so. 
+ 3.3. The existence theorem. The following theorem shows the existence of a 
+ dynamical system with random mutation, partial matching and type changing that 
+ is Markov conditionally independent in types. Its proof will be given in Section 6 
+ after the development of a generalized Fubini theorem for a Loeb transition prob 
+ ability and a Loeb product transition probability system in Section 5. 
+ THEOREM 3.1. Fixing any parameters p? for the initial cross-sectional type 
+ distribution, b for mutation probabilities, q e [0, l]s for no-match probabilities 
+ and v for match-induced type-change probabilities, there exists a Fubini extension 
+ of the usual product probability space on which is defined a dynamical system D 
+ with random mutation, partial matching and type changing that is Markov condi 
+ tionally independent in types with these parameters (p?, b,q,v). 
+ Note that the dynamic matching model D described in Theorem 3.1 above sat 
+ isfies the conditions in Theorem 3 of [15]. Thus, the conclusions of Theorem 3 
+ in [15] also hold for the matching model D, including the statements that the type 
+ processes of individual agents in such a dynamical system D form a continuum 
+ of independent Markov chains, and that the time evolution of the cross-sectional 
+ type process is completely determined from a Markov chain with known transition 
+ matrices.
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms
+
+
+--- PAGE 13 ---
+
+INDEPENDENT RANDOM MATCHING  397
+ 4. Proofs of Theorems 2.4 and 2.6. In this section, we give the proofs for
+ Theorems 2.4 and 2.6 in Sections 4.1 and 4.2, respectively.
+ The space of agents used from this section onward will be based on a hyperfinite
+ Loeb counting probability space (/, i, X) that is the Loeb space (see [33] and [34])
+ of internal probability space (I, io,Xo), where / is a hyperfinite set, !o its internal
+ power set, and Xo(A) = |A|/|/| for any A e io (i.e., Xo is the internal counting
+ probability measure on /). Using the usual ultrapower construction as in [34], the
+ hyperfinite set / itself can be viewed as an equivalence class of a sequence of finite
+ sets whose sizes go to infinity, and the external cardinality of / is the cardinality
+ of the continuum. Thus, one can also take the unit interval [0,1] as the space
+ of agents, endowed with a a-algebra and an atomless probability measure via a
+ bijection between / and the unit interval.
+ All of the internal probability spaces to be discussed from this section onward
+ are hyperfinite internal probability spaces. A general hyperfinite internal probabil
+ ity space is an ordered triple (Q, !Fo, Po), where Q = {cox, co2,..., coy} for some
+ unlimited hyperfinite natural number y, !Fo is the internal power set on Q, and
+ Po(B) = T,\<j<yta>j B Podcoj}) for any B e !F0. When the weights P0({coj}),
+ 1 < 7 < y, are all infinitesimals, (Q, !Fo, Po) is said to be atomless, and its Loeb
+ space (?2, !F, P), as a standard probability space, is atomless in the usual sense of
+ Footnote 8. Note that nonstandard analysis is used extensively from this section
+ onward. The reader is referred to the first three chapters of [34] for more details.
+ 4.1. Proof of Theorem 2.4. Fix an even hyperfinite natural number in the
+ set *Nqo of unlimited hyperfinite natural numbers. Let / = {1, 2,..., N}, let io
+ be the collection of all the internal subsets of /, and let Xo be the internal counting
+ probability measure on io. Let (/, i, X) be the Loeb space of the internal proba
+ bility space (/, io, Xo). Note that (/, i, X) is obviously atomless.
+ We can draw agents from I in pairs without replacement, and then match them
+ in these pairs. The procedure can be the following. Take one fixed agent; this agent
+ can be matched with N ? 1 different agents. After the first pair is matched, there
+ are TV ? 2 agents. We can do the same thing to match a second pair with N ? 3
+ possibilities. Continue this procedure to produce a total number of 1 x 3 x x
+ (N - 3) x (N - 1), denoted by (N - 1)!!, different matchings. Let Q be the space
+ of all such matchings, !Fo the collection of all internal subsets of Q and Po the
+ internal counting probability measure on ?Fq. Let (Q, 5r, P) be the Loeb space of
+ the internal probability space (Q, !Fo, Po).
+ Let (/ x Q, io <g) ^o^o ? Po) be the internal product probability space of
+ (/, io, Xo) and (Q, Fo, Po)- Then io ? Fo is actually the collection of all the in
+ ternal subsets of I x Q and Xo (8) Po is the internal counting probability measure
+ on io ? 5b. Let (/ x Q, 1 3 F, X 3 P) be the Loeb space of the internal product
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms
+
+
+--- PAGE 14 ---
+
+398  D. DUFFIE AND Y. SUN
+ (7 x Q, !o ? ?0, ^o ? Po), which is indeed a Fubini extension of the usual product
+ probability space.16
+ Now, for a given matching co e Q and a given agent i, let n(i, co) be the unique j
+ such that the pair (/, j) is matched under co. For each co e Q, since tt^ is an internal
+ bijection on 7, it is obvious that n is measure-preserving from the Loeb space
+ (7,1, ?) to itself. Thus, (i) of part (1) is shown.
+ It is obvious that for any agent i e I,
+ (8) P0{{coe Q:iXi(co) = j}) = ^-^
+ for any j ^i; that is, the ith agent is matched with equal chance to other agents.
+ Fix any i e I. For any internal set C e io, (8) implies that Pq(co e Q : j??(co) e
+ C) is \C\/(N- 1) if 1 i C, and (\C\ - \)/(N- 1) if 1 C, where \C\ is the internal
+ cardinality of C. This means17 that
+ (9) Po(nrl(C)) - ^ =?0(C) -?(C).
+ Therefore, 777 is a measure-preserving mapping from (?2,,!F(), P) to (7, io,?),
+ and is measure-preserving from the Loeb space (Q, Jr, P) to the Loeb space
+ (7, i, ?).18 Thus, (ii) of part (1) is shown.
+ We can also obtain that
+ (10) (?o?Po)(7r-1(C))= f Po(nr\c))dko(i)mo(C)~k(C).
+ A proof similar to that of Footnote 18 shows that n is a measure-preserving map
+ ping from (7 x Q, I SI F, k IS P) to (7,1, k).
+ 16For any given two Loeb spaces (/, i, X) and (?2, Jr, P), it is shown in [30] that the Loeb product
+ space (/ x Q, i ?? ^, X ?3 P) is uniquely defined by the marginal Loeb spaces. Anderson noted in [3]
+ that (/ x , i ?? ^, X El P) is an extension of the usual product (/xfiJigi^^igiP). Keisler proved
+ in [26] (see also [34]) that the Fubini property still holds on (/ x Q, i [gi F, X IE1 P). Thus, the Loeb
+ product space is a Fubini extension of the usual product probability space. In addition, it is shown in
+ Theorem 6.2 of [38] that when both X and P are atomless, (/ x ?2, i IE! T, X 1EI P) is rich enough to
+ be endowed with a process h whose random variables are essentially pairwise independent and can
+ take any variety of distributions (and in particular the uniform distribution on [0, 1]).
+ 17For two hyperreals a and ?, a ~ ? means that the difference a ? ? is an infinitesimal; see [34].
+ 18 For any Loeb measurable set B e i and for any standard positive real number e, there are internal
+ sets C and D in i0 such that C ? B ? D and X0(D -C)<s. Thus tt?~1(C) c nrl (B) ? tt?~1(D),
+ and
+ PoK"1 (D> - ^r1 (c? - ?o(? - c) < e,
+ which implies that n?~ (B) is Loeb measurable in ?. Also, ?(C) < P(tt?~ (B)) < X(D), and thus
+ \P(7T^(B)) ? X(B)\ < X(D ? C) < s for any standard positive real number s. This means that
+ P(Ttrl(B)) = X(B).
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms
+
+
+--- PAGE 15 ---
+
+INDEPENDENT RANDOM MATCHING
+ 399
+ Next, for i / j, consider the joint event
+ (11) E = {co G Q : {7Ti(C0), 7Tj(co)) = (if, /)},
+ that is, the ith agent is matched to the /'th agent and the jth agent is matched to
+ the /th agent. In order to show the measure-preserving property of the mapping
+ (jti, Ttj) in the following paragraph, we need to know the value of Po(E) in three
+ different cases. The first case is (/', /) = (7, i), that is, the ith agent is matched to
+ the 7th agent and the y'th agent is matched to the ith agent. In this case, Po(E) =
+ l/(N ? 1). The second case is that of Po(E) = 0, which holds when /' = i or
+ / = j (the ith agent is matched to herself, or the jth agent is matched to herself),
+ or when if = j but / ^ i (the ith agent is matched to the jth agent, but the 7th
+ agent is not matched to the ith agent), or when / = / but if ^ j (the jth agent
+ is matched to the ith agent, but the ith agent is not matched to the 7th agent), or
+ when V = / (both the ith agent and the 7th agent are matched to the same agent).
+ The third case applies if the indices /, 7 and ir, j' are completely distinct. In this
+ third case, after the pairs (/, /'), (7, /) are drawn, there are N ? 4 agents left, and
+ hence there are (N ? 5) ! ! ways to draw the rest of the pairs in order to complete the
+ matching. This means that P0(E) = (N - 5)\\/(N - 1)!! = l/((N - l)(N - 3)).
+ Let (/ x /, io <8> io. ^0 ? ^0) be the internal product of (/, io, Xo) with itself,
+ and (/ x /, i 13 i, X 13 X) the Loeb space of the internal product. Fix any i, j e I
+ with i t? 7. Let D be the diagonal {(if,if)\if e I}. The third case of the above
+ paragraph implies that for any internal set G e io ? io>
+ P0({co Q : (tt?(co), 7tj(co)) eG-(DU ({/, 7} x /) U (/ x {/, j}))})
+ (12) |G-(DU({/,7}x/)U(/x{/,7}))| \G\ ^..^ = (Xo<g>Xo)(G).
+ (N -\)(N -3) (N)2 
+ By using the formula for Po(E) in the first two cases, we can obtain that 
+ P0({o; G Q : {m(co), ttj (co)) G (D U ({/, 7} x /) U (/ x {/, j}))}) 
+ (13)
+ =-~0. 
+ N-l 
+ Equations (12) and (13) imply that 
+ (14) P0{{co G Q : (m(co), 7Tj(co)) G G}) - (Xo (8) X0)(G). 
+ A proof similar to that of Footnote 18 shows that (717, ttj) is a measure-preserving 
+ mapping from (?2, F, P) to (/ x /, i 3 i, X S X). 
+ Let a be an i-measurable type function with a distribution p on S, h = 
+ a-1({&}) and pk = X(Ik) for 1 < k < K. Let g = a(n). Then, for any 1 < k < K, 
+ g~l({k}) = 7r-1(4), which is Loeb product measurable in i 13 F with 
+ X 3 P-measure pk because of the measure-preserving property of n. Hence, g is 
+ i M ^-measurable. For each i el, the measure-preserving property of iX[ implies 
+ that g i has the same distribution p as a. 
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms
+
+
+--- PAGE 16 ---
+
+400  D. DUFFIE AND Y. SUN
+ Fix any i, j e I with i ^ j. For any 1 <k,l< K, the measure-preserving prop
+ erty of (7Ti,7tj) implies that
+ P(gi=k,gj=l) = P({co eQ:{7?i(co),7Tj(co)) e Ik x 7/})
+ = (? M k)(Ik x 7/) = P(gi = k) - P(gj = I),
+ which means that the random variables g? and gj are independent.19 Hence,
+ part (2) is shown.
+ Finally, take any A\,A2 i, and let f(i,co) = 1a2(jt(?, ?y)) for all (i,co) e
+ I x Q. Then, / is an i.i.d. process with a common distribution on {0,1} with
+ probabilities k(Ai) on {1} and 1 ? k(A2) on {0}. By the exact law of large numbers
+ in Theorem 5.2 of [38] or Theorem 3.5 of [40],20 one has for P-almost all coeQ,
+ ?AlU^V?l}) = HA2), which implies that k(A2) = k(Ax H 7t-l(A2))/k(Ax).
+ Hence, (iii) of part (1) follows.
+ 4.2. Proof of Theorem 2.6. Let M be any fixed unlimited hyperfinite natural
+ number in *N , and let 7 = {1, 2,..., M} be the space of agents. Let J?o be the
+ collection of all the internal subsets of 7, and ?o the internal counting probability
+ measure on !o- Let (I, i,k) be the Loeb space of the internal probability space
+ (/,io,*o).
+ Let ? be any i-measurable type function from I to S = {I,..., K}. We can
+ find an internal type function a from 7 to 5 such that k({i e I : a(i) ^ ?(i)}) = 0.
+ Let Ak = a~l(k) and \Ak\ = Mk for 1 < k < K with ?f=i Mk = M. Then
+ k(Ak) = pk 2^ Mk/M for I < k < K. Without loss of generality, we can assume
+ that Mk e *Noo21 For each k in {1,..., K}, pick a hyperfinite natural number mk
+ such that Mk?mke *Noo and qk ~ mk/Mk, and such that N = Yf=x(Mi ? mi)
+ is an unlimited even hyperfinite natural number. It is easy to see that
+ N V^M^i mA V- n 
+ (16) m = E^(i-^J-Emi-./). 
+ 19When the type function a is internal, the type process is internal as well. However, the computa 
+ tions in (12)?(14) indicate that the random variables g?, i e I, are in general not *-independent; see, 
+ for example, [3] for the definition of *-independence. 
+ 20What we need in this paper is a special case of Theorem 3.5 in [40]. Let / be a process from 
+ (7xQ,iK^r,?KP)toa complete separable metric space X. Assume that the random variables //, 
+ / e I are pairwise independent. Then, for P -almost all oj e Q, the sample function f has the same 
+ distribution as / in the sense that for any Borel set B in X, k(f~l(B)) = (A. El P)(f~l(B)). Fix 
+ any A G i with k(A) > 0. Let fA be the restriction of/toAx?, Xa and Xa ^ P the probability 
+ measures rescaled from the restrictions of ? and ?I3 P to {D e 1 : D ?. A} and [C e i^!F :C c Ax 
+ Q], respectively. Then, for the case that the random variables f? ,iel have a common distribution ? 
+ on X, the sample function (fA)o) also has distribution /x for P-almost all co e . 
+ 21 When pk = 0, we may still need to divide some number m? by M? so that the ratio is infinitely 
+ close to a real number qk. We can take M? *Nqo with M^/M ~ 0. We then take an internal subset 
+ of / with Mk many points as A? and adjust the rest A/, / ^ k, on some ?-null internal sets. This will 
+ produce a new internal type function a with the desired properties. 
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms
+
+
+--- PAGE 17 ---
+
+INDEPENDENT RANDOM MATCHING
+ 401
+ For each k in {1, 2,..., K}, let Bk be an arbitrary internal subset of Ak with
+ mk elements, and let ?Pmk(Ak) be the collection of all such internal subsets. For
+ given Bk e ?Pm?((Ak) f or k = 1, 2,..., K, let nB\^2,...,BK be a (full) matching on
+ 7 ? UfLi Bk produced by the method described in the proof of Theorem 2.4; there
+ are (TV ? 1)!! = lx3x-"X(JV-3)x(iV-l) such matchings.
+ Our sample space Q is the set of all ordered tuples (B\, B2,.-., Bk,
+ 7Tbub2,...,bk) such that Bk e ?pmk(Ak) for each k = 1,..., K, and nB^B2^^BK
+ is a matching on 7 - ULi Bk- Then, Q, has ((N - 1)!!) Y[k=x {?k) many elements
+ in total. Let Pq be the internal counting probability measure defined on the collec
+ tion !Fo of all the internal subsets of ?2. Let (Q, ?, P) be the Loeb space of the
+ internal probability space (Q, !Fo, Po). Note that both (7, !o, ??>) and (Q, 5^, Po)
+ are atomless. Let (7 x Q, 1 E? !F, ? IEI P) be the Loeb space of the internal prod
+ uct (7 x Q, !o <8> 5b, ?o ? Po), which is a Fubini extension of the usual product
+ probability space by Footnote 16.
+ Let J represent nonmatching. Define a mapping n from 7 x ?2 to 7 U {J}.
+ For / eAk and co = (B\, B2,..., Bk,ttb^B2?Bk), if/ e Bk, then 7r(i,<y) = J
+ (agent i is not matched); if i ? Bk, then i e I ? U^Li #r, agent i is to be matched
+ with agent itBuB2?Bk(?), and let n(i,co) = ttb^B2?Bk(?). It is obvious that
+ nZX ({J}) = Ur=\ Br and that the restriction of n^ to 7 ? U?Li #r is a full match
+ ing on the set. Let g? be the matched type process from 7 x Q to 5 U {/} under
+ the type function ?; that is, g^(i, co) = ?(n(i, co)) with ?(J) ? J.
+ When J2r=\ Pr(\ - <lr) ? 0, we know that N/M ~ 0. For those / e Ak with
+ pk > 0, it is clear that Po({co e Q : tt?(co) = /}) = mk/Mk ^qk = 1, and thus ? Kl
+ P(tt(i, co)?J) = 0, which means that ? H P(g^(i, ?>) 7^ J) = 0, and gf (<y) = J
+ for P-almost all co e Q. Thus conditions (1) and (2) in Definition 2.5 are satisfied
+ trivially; that is, one has a trivial random partial matching that is independent in
+ types.
+ For the rest of the proof, assume that J2r=x PrO- ~ Qr) > 0. Let g be the
+ matched type process from 7 x ?2 to S U {/}, defined by g(i, co) = a(tt(i, co)),
+ where a(J) = J. Since both a and n are internal, the fact that lo <8> ^b is the
+ internal power set on 7 x ?2 implies that g is Iq (8) ^b-measurable, and thus
+ I IE ^-measurable.
+ Fix an agent i e Ak for some 1 < k < K. For any 1 < / < K, and for any Br e
+ Pmr(Ar), r = 1, 2,..., K, let nBi,b2,...,bk be the number of full matchings on
+ U?Li (^r - 5r) such that agent / is matched to some agent in A1 ? B1. It is obvious
+ that N?u 2' ' K depends only on the numbers of points in the sets Ar ? Br, r =
+ I,..., K, which are Mr - mr, r = 1,..., K, respectively. Hence, ^?b^b^-bk ?s
+ independent of the particular choices of B\, B2,..., Bk, and so can simply be
+ denoted by Nu. Then, (9) implies that
+ ,^x Nu Mi ?mi
+ (17)-?^?--. 
+ (N-l)\\ N 
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms
+
+
+--- PAGE 18 ---
+
+402  D. DUFFIE AND Y. SUN
+ It can be checked that the internal cardinality of the event {gt =1} is
+ (18)
+ \{coeQ:ieAk- Bk,nBuBl-BK(co) e (A/ - B?)}\
+ -(V)(n(?)h
+ r^k
+ for co = (Bu B2,..., BK, 7TBuB2,...,bk^ Hence (17) and (18) imply that
+ zw ^ Mk~mk Nu ,. Mi-mi 
+ Po(g'=/)= Mk (N-iy.^(l-qk)-^r 
+ (19)  (1 - mi/Mi)Mi/M (1 - tt)P/(l - g/)
+ **' (iV/M) ErilPrd-ir)'
+ It is also easy to see that Po({co G ?2 : g? (co) = J}) = mk/Mk ~ qk. This means that
+ for i G Ak,
+ t>< n (l-qk)pi(l-qi)
+ Er=lPr(l-^r)
+ and that P(g? = J) = qk. Hence, the distribution condition on g? is satisfied for
+ each / g /.
+ We need to show that the random partial matching n is independent in types. Fix
+ agents i, j e I with i ^ j. For any 1 < /, t < K, and for any Br e tPmr(Ar), r =
+ l,2,...,K, let NU};*2'""8* be the number of full matchings on \jf=x(Ar - Br) such that agents / and j are matched to some agents respectively in A/ ? 5/ and
+ At - Bt. As in the case of A^1'*2' '**, N??JIB2""'Bk is independent of the par ticular choices of 2?i, Z?2,..., Bk and can simply be denoted by Nnjt. By taking
+ G = (Ai - Bi) x (At - Bt), (14) implies that
+ Nnjt _Mi-miMt- mt
+ K (N-\)\\ N N 
+ We first consider the case that both / and j belong to Ak for some k in 
+ {1,..., K). It is easy to see that P0(gi = J, gj = J) = mk(mk - \)/(Mk(Mk - 1)), 
+ and hence that 
+ (21) P(gi = J, gj = J) = P(gi = J)P(gj = J)= q?. 
+ As above, it can be checked that the internal cardinality of the event {g? = I, 
+ gj = J) is
+ \{coeQ:ieAk- Bk, j g Bk, ttBu~>Bk(co) g (A/ - B{)}\
+ (22)
+ -(?S:?)(n(?))?
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms
+
+
+--- PAGE 19 ---
+
+INDEPENDENT RANDOM MATCHING  403
+ for co = (Bx,..., Bk,7tBu'Bk)- Hence (17) and (22) imply that
+ mk(Mk-mk) Nn Po(gi=l,gj = J) = Mk(Mk-l) (N-l)\\
+ Mi ? mi
+ (23) -qk(\-qk) N
+ ^ qk(\ -qk)pi(\ -qi)
+ T.f=xPr(\~qr)
+ which implies that
+ (24) P(gi = I, gj = J) = P(gi = l)P(gj = J).
+ Similarly, the events (gi = J) and (gj = I) are independent.
+ The event {gi = I, gj ? t} is actually the set of all the co = (j?i,..., Bk,
+ nB\,...,BK^ ^^ ^at bQih i an(j j are jn Ak _ ?k an(j agents / and j are matched
+ to some agents in A/ ? /?/ and At ? Bt, respectively. Thus, the internal cardinality
+ of{gi=l,gj=t}is
+ SO) <25> {Mim~2)\\\\zr m?
+ Hence (20) and (25) imply that
+ (Mk - mk){Mk -mk-\) Nujt Poigi = I, gj =t) =
+ Mk(Mk-l) (N-W 
+ 2Mi-mi Mt -mt 
+ (26) ~(l-ot)
+ H N N 
+ _ (1 - qk)2pi(l - qi)pt(l - qt) 
+ (E*=l Prd - qr))2 
+ which implies that 
+ (27) P(gi = I, gj =t) = P(gi = l)P(gj = t). 
+ Hence the random variables gi and gj are independent. 
+ For the case that / e Ak and j e An with 1 < k ^ n < K, one can first observe 
+ that
+ D . j (Mk- mk)mn Nu  P0(gi =l,gj = J) = -TZ-TZ-TT7-7777,  MkMn (N-\)\\ 
+ (28)
+ D , j ^ (Mk - mk)(Mn - mn) Nujt
+ Po(gi = I, gj = t) =-??- J  MkMn (TV ? 1)!! 
+ In this case, one can use computations similar to those of the above two para 
+ graphs to show that the random variables g? and gj are independent. The details 
+ are omitted here. 
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms
+
+
+--- PAGE 20 ---
+
+404  D. DUFFIE AND Y. SUN
+ We have proved the result for the type function a. We still need to prove it for ?
+ [and for g& = ?(n)]. Fix any agent i e Ak, for some 1 < k < K. For any internal
+ set A g io, and for any Br e ?Pmr(Ar), r = I, 2,..., K, let a^1'*2"-** be the
+ number of full matchings on U?=i C^r ? Br) such that agent / is matched to some
+ agent in A - IJ^Li Br. Then, (9) implies that
+ (29) N^-^^IA-U^BA
+ (N-l)U N 
+ The internal event n~\A) is, for co = (Bu B2,..., Bk,ttBi'Bi.Bk), 
+ (30) \co g ?:i e A* - Bk,n?uB2-'BK{a>) e (A - \J Br)
+ Hence (29) and (30) imply that
+ NBUB2,...,BK
+ Po(nr\A))= ? K (Mr) ^_1)tt ^ ^(AA{/}),5/ ^m/(A/)for///:llr=l Ur/ V ;
+ (31)
+ BkePmk(Ak\{i]),BiePmi(Ai) for Z#* 1 lr=l Uri
+ iAi(V)(n^C;)) = M,-m.iAi 1
+ N Ur=l CO Mk M (N/M)
+ (\-qk)Xo(A)
+ Let
+ Er=lPrd-ir)
+ c = max 
+ Then, for each i e I and any A g i0, P(n~l(A)) < c ?(A). Thus, Keisler's Fu 
+ bini property as in [26] and [34] also implies that (A. IS P)(n~l(A)) < c X(A). 
+ Let B = {iel:a(i)^?(i)}. We know that X(B) = 0, (AS P)(7r"1(5)) = 
+ P(n?~l(B)) = 0 for each/ g /. Since g andg^ agree on / x ?2 ?^"^?), ^ must 
+ be i IE1 ^-measurable. For each i e I, g? and gf agree on Q ? n^x(B), and hence
+ the relevant distribution and independence conditions are also satisfied by g&.
+ Remark 4.1. The sample space Q in the proof of Theorem 2.6 depends on
+ the choice of the internal type function a. In the proof of Theorem 3.1 in Section 6
+ below, it will be more convenient to construct a sample space Q that depends only
+ on the agent space /, and not on the type function a.
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms
+
+
+--- PAGE 21 ---
+
+INDEPENDENT RANDOM MATCHING  405
+ Let ? be the set of all internal bijections o from 7 to 7 such that for each i el,
+ a(i) = i or a(o(i)) = i, and let Fq be its internal power set. Let qk G [0,1] for
+ each 1 < k < K. We can define an internal one-to-one mapping (pa from Q to Q
+ by letting <pa(Bx, 7?2,..., Bk,ttBuB2,",Bk) be the internal bijection a on 7 such
+ that a(i) = i for i e \JL\ Bk and o(i) = jtb\^-bk (/) for ; / _ (j*=1 ^. The
+ mapping cp01 also induces an internal probability measure Pq on (?2, !Fo).
+ Define a mapping ir : (7 x ?) ? (7 U 7) by letting ?(i, co) ? J if co(i) ? i, and
+ ?(f, ?j) = ?>(/) if ?>(0 ^ /. Extend a so that a(7) = / and define ga : (I x ?) ->
+ (S U{/}) by letting
+ ga(i, co) = a(7r(/, ?>), ?>).
+ Then it is obvious that ? is still an independent-in-types random partial match
+ ing n from (7 x ?, 1 E F, ? IS Pa) to 7 with <? = (q\,..., qK) as the no-match
+ probabilities.
+ 5. Generalized Fubini and Ionescu-TWcea theorems for Loeb transition
+ probabilities. For the proof of Theorem 3.1 to follow in Section 6, we need to
+ work with a Loeb product transition probability system for a sequence of inter
+ nal transition probabilities, based on the Loeb space construction in [33]. We first
+ prove a generalized Fubini theorem for a Loeb transition probability in Section 5.1.
+ Then, a generalized Ionescu-Tulcea theorem for an infinite sequence of Loeb tran
+ sition probabilities is shown in Section 5.2. Finally, a Fubini extension based on
+ Loeb product transition probability system is constructed in Section 5.3.
+ 5.1. A generalized Fubini theorem for a Loeb transition probability. Let
+ (7, !o, ?o) be a hyperfinite internal probability space with !o the internal power
+ set on a hyperfinite set 7, and Q a hyperfinite internal set with Fo its internal
+ power set. Let Po be an internal function from 7 to the space of hyperfinite internal
+ probability measures on (Q, 5b), which is called an internal transition probability.
+ For i e I, denote the hyperfinite internal probability measure Po(0 by Po/. De
+ fine a hyperfinite internal probability measure to on (7 x Q, lo ? ^b) by letting
+ r0({(i,co)}) = k0({i})Poi({co}) for (i,co) e I x Q. Let (I,l,k), (?, ?-,/> ) and
+ (7 x Q, 1 M !F, t) be the Loeb spaces corresponding respectively to (7, Iq, ?o),
+ (Q, To, Po,-) and (7 x Q, lo? ^o? ^o)- The collection {P/ : / e 7} of Loeb measures
+ will be called a Loeb transition probability, and denoted by P. The measure r will
+ be called the Loeb product of the measure ? and the Loeb transition probability P.
+ We shall also denote To by ?o ? Po and r by ? Kl P.
+ When Po; = Pq for some hyperfinite internal probability measure Pq on
+ (Q, !Fo), to is simply the internal product of ?o and Pq, and r the Loeb prod
+ uct measure ? Kl P', where Pr is the Loeb measure of Pq. A Fubini-type theorem
+ for this special case was shown by Keisler in [26], which is often referred to as
+ Keisler's Fubini theorem. The following theorem presents a Fubini-type theorem
+ for the general case.
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms
+
+
+--- PAGE 22 ---
+
+406  D. DUFFIE AND Y. SUN
+ THEOREM 5.1. Let f be a real-valued integrable function on (I xQ,a (io ?
+ Fo),r). Then, (1) f is a(Fo)-measurable for each i G / and integrable on
+ (?l,a(Fo), Pi) for X-almost all i e T, (2) fQfi(co)dPi(co) is integrable on
+ (I,a(io),X)',(3)fIfQfi(co)dPi(co)dX(i) = fIxQf(i,co)dT(i,co).
+ Proof. Let H be the class of functions g from / x Q to R+ U {+00}
+ that satisfy (1) for every i g /, #,-( ) is a(5ro)-measurable; (2) the integral
+ J?igi(u>)dPi(co) as a function from / to K+ U {+00} is cr(io)-measurable;
+ (3) fj fQ gi (co) dPi (co) dX(i) = fjXQg(i, co) dx(i, co). It is obvious that M is closed
+ under nonnegative linear combinations and monotone convergence.
+ Now, we consider E e io <8> Fo and g = \E. Then, for each i e I, gi is
+ the indicator function of the internal set E{ ? {co e Q : (i, co) e E}, which is
+ Fo-measurable [and hence a(!Fo)-measurable]. The integral fQgi(co)dP?(co) =
+ Pi (Ei) is the standard part ?(Po/ (E?)). Since Po?(E?) is io-measurable as a func
+ tion on /, Pi(Ei) is thus a(io)-measurable as a function on /. Thus, the usual
+ result on S-integrability (see, e.g., [34], Theorem 5.3.5, page 155) implies that
+ (32) [ f gi(co)dPi(co)dX(i) = i?Poi(Ei)dX(i)
+ JiJq Ji
+ (33) =?J Poi(Ei) dXo(i)
+ (34) =?T0(E)=[ g dr.
+ Thus, g G M, and hence M contains the algebra io ? Fo.
+ Therefore H is a monotone class. Then Theorem 3 on page 16 of [7] implies
+ that M must contain all the nonnegative cr(io ? ^?)-measurable functions.22
+ Since / is integrable on (/ x Q,a(io ? ^o). t), so are both /+ and /~.
+ Now the fact that /?fa f^(co)dPi(co)dX(i) < 00 implies that for ?-almost all
+ i G /, fQ ff(co) dPi(co) < 00, and thus the a (Fo) -measurable function f+ is in
+ tegrable. Similarly, the a(io)-measurable function fQ f^(co) dP?(co) is integrable
+ since f? fQ f^(co) dP[ (co) dX(i) < 00. We have similar results for /~. The rest is
+ clear. D 
+ For any B e cr(Fo), apply Theorem 5.1 to / = l/x# to obtain that Pi(B) is 
+ a(io)-measurable for each i g /. This means that P = {P; :i e 1} is indeed a tran 
+ sition probability in the usual sense (see [25]). One can define its usual product 
+ X <g> P with X by letting X?P(E) = f? P/ (Et)dX(i) for each E in the usual prod 
+ uct a-algebra a(io) ? cr(Fo). It is clear that (/ x Q, cr(i0 ? Fo),X ?3 P) is an 
+ extension of (I x Q, a(lo) ?cj(Fo), X <g> P). 
+ 22There is a typo in Theorem 3 on page 16 of [7]; ?D should be an algebra (not a a-algebra as 
+ stated).
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms
+
+
+--- PAGE 23 ---
+
+INDEPENDENT RANDOM MATCHING  407
+ The following result extends Theorem 5.1 to integrable functions on (7 x Q, 1 M
+ T', x), which is the completion of (7 x Q, cr(lo ? To), r).
+ PROPOSITION 5.2. Let f be a real-valued integrable function on (I x Q,
+ 1 M T, x). Then, (I) for k-almost all i e I, f is integrable on the Loeb space
+ (Q, Ti, Pi); (2) fQ fi(co)dPi(co) is integrable on (1,1, k); and (3) we have
+ f [ fi(co)dPl(co)dk(i)= [ f(i,co)dr(i,co).
+ JIJO, JIxQ 
+ Proof. First, let E e 1 K T with x(E) = 0. Then there is a set A e cr(io ? 
+ ^o) such that E ?. A and x(A) = 0. By Theorem 5.1, for ?-almost all i e I, 
+ Pi (Ai) = 0, which implies that P? (?;) = 0. 
+ There is a real-valued a (lo ? J^)-measurable function g on 7 x Q such that the 
+ set E = {(i, co) e I x ?2 : /(/, co) ^ g(i, co)} has r-measure zero. The above result 
+ implies that for ?-almost all i e I, f is the same as gi. The rest is clear. D 
+ Let (I', <lfQ,kf0) be a hyperfinite internal probability space with i'Q the inter 
+ nal power set on a hyperfinite set V. One can define a new transition proba 
+ bility, {?q ? Po, :/ /}. Define a hyperfinite internal probability measure Tq1 on
+ (V x 7 x Q, l(j ? lo ? To) by letting
+ Tq1 ({(/', ?, CO)}) = k0({i})(k'0 ? P0i)({(?f, CO)}) = k0({i})k{)({i'})Pb({<o})
+ for (/', /, co) e V x 7 x Q. Then it is clear that Tq1 is exactly the same as ?q ? ro. Let
+ kf IEI x be the Loeb measure of ?q ? to. By applying Theorem 5.1, we can obtain
+ the following corollary.
+ COROLLARY 5.3. Let h be a real-valued integrable function on (V x 7 x Q,
+ <j(1q ? lo ? To), kf Kl r). Then, the following results hold.
+ (1) hi is ct(1q ? To)-measurable for each i e I and integrable on (Q, ct(1q ?
+ ^o). k' ?3 Pi) for k-almost all i e I, where kf Kl P/ is the Loeb measure ofkf0 ? Po;.
+ (2) fJfx?lhi(?, co)dkf K Pi(if, co) is integrable on (I, a(l0), ?).
+ (3) fIfrxQhi(i\ )d(k^Pi)(i\ )dk(i) = frxIxQh(i\i,co)d(k^x)(if,
+ i, co).
+ One can also view {Po/ : i e 1} as a transition probability from I' x 7 to Q. Then
+ the following corollary is obvious.
+ COROLLARY 5.4. Let h be a real-valued integrable function on (V x 7 x Q,
+ cj(if0 ? lo ? ^o). kf ^x). Then, the following results hold.
+ (1) Ay,/) is a (To)-measurable for each (i\i) e V x 7 and integrable on
+ (?l,o(To), Pi) far kf M k-almost all (?, i) e I' x I, where kf B ? is the Loeb
+ measure ofkf0 ? ?q.
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms
+
+
+--- PAGE 24 ---
+
+408  D. DUFFIE AND Y. SUN
+ (2) fQ h(i>j)(co)dPi(co) is integrable on (V x I, cr(l'0 ? i0), Xr El X).
+ (3) /j<x//aV,o(^)^/("W
+ i,co).
+ By applying Proposition 5.2, one can also extend the results in Corollaries
+ 5.3 and 5.4 to integrable functions on the Loeb space of (V x I x ?2,I'0 ? io ? Fo,
+ 5.2. A generalized lonescu-Tulcea theorem for a Loeb product transition prob
+ ability system. In Section 5.1, the subscript 0 is used to distinguish internal mea
+ sures and algebras with their corresponding Loeb measures and Loeb algebras.
+ In this subsection, we need to work with infinitely many internal measure spaces
+ and the corresponding Loeb spaces. To avoid confusion with the notation, we shall
+ use Q with subscripts or superscripts to represent internal measures; when their
+ corresponding Loeb measures are considered, we use P to replace Q. Internal al
+ gebras are denoted by Fr with subscripts or superscripts, and their external versions
+ by A with subscripts or superscripts.
+ For each m > 1, let Qm be a hyperfinite set with its internal power set Fm.
+ We shall use Qn, Q?? and Q to denote Y\nm=x ^m, Um=i Qm and Y\m=n ^m,
+ respectively; also {com}^^, {com} =l and {com}^=n will be denoted respectively
+ by con, co?? and co when there is no confusion.
+ For each n > 1, let Qn be an internal transition probability from Qn~x to
+ (Sln, Fn); that is, for each con~l g Qn~l, Qn(con~l) (also denoted by Qf~l) is a
+ hyperfinite internal probability measure on (?2n, Fn). In particular, Qx is simply a
+ hyperfinite internal probability measure on (Qx, ?^l), and Q2 an internal transition
+ probability from Qx to ( 2, F2). Thus, Qx ? ?2 defines an internal probability
+ measure on (Qx x ?22, Fr\ ? F7). By induction, ?i ? 02 ? ? ?/i defines an in
+ ternal probability measure on (Qn, ?m=i Fm)P Denote Qx ? 02 ? ? ??
+ by ?", and <g)^=1 ^m by 5rn. Then Qn is the internal product of the inter
+ nal transition probability Qn with the internal probability measure Qn~l. Let
+ Pn and Pn(con~l) (also denoted by P*f ) be the corresponding Loeb measures,
+ which are defined respectively on o(Fn) and a(Fn). Using the notation in Sec
+ tion 5.1, Pn is the Loeb product Pi Kl P2 El El P? of the Loeb transition proba
+ bilities Pi, P2,...,P?.
+ Theorem 5.1 implies that for any set E e a(Fn),
+ (35) Pn(E)= ? Pf-\E(?n-x)dPn~\con-x).
+ JQn~l
+ In fact, for each con e$2n, we have
+ n n 
+ (8>Qm({(m>.--><On)})= JI Gm(?>i,...,?>m-i)({ufc,}). 
+ m=l ra=l 
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms
+
+
+--- PAGE 25 ---
+
+INDEPENDENT RANDOM MATCHING  409
+ That is, Pn is the product of the transition probability Pn with the probability
+ measure Pn~l. Thus, we can also denote Pn by Pn~x IEI Pn, and furthermore by
+ W , Pm.
+ Let n"~x be the projection mapping from Qn to Qn~l; that is, 7r^-1(&>i,...,
+ ?>?) = (<yi,..., con-x)' Let F be any subset of Qn~l and E = F x Qn. Then,
+ E^-i = ?? when co"'1 e F, and ?^-1 = 0 when c^"1 ? F. If ? g a(Fn),
+ then Theorem 5.1 implies that Pf~ (E^n-x) = If is a(Tn~^-measurable [i.e.,
+ F e a(Tn~1)], and Pn(E) = Pn-[(F). On the other hand, if F G a(Tn-x), then
+ it is obvious that E e a(Tn) and Pn(E) ? Pn~x(F). This means that the measure
+ space (Qn-{,a(Tn~l), Pn~x) is the projection of (QT, a(Tn), Pn) under jr^"1.
+ Similarly, let nk be the projection mapping from Qn to Qk for some k < n\ then
+ (S2*, o(Tk), Pk) is the projection of (Qn, a(Tn), Pn) under nk.
+ For a collection <?> of sets and a set F, we use <?) x F to denote the collec
+ tion [D x F : D e <?>} of sets when there is no confusion. Thus, a(Tn) x Q +1
+ denotes {En x ^+l:En e a(5r,f)}. Let 8 = U^LiM^) x Si +1]9 which is
+ an algebra of sets in Q??. One can define a measure P?? on this algebra by
+ letting P??(En x n~ j) = P"(??) for each En e a(Tn). The projection prop
+ erty stated in the above paragraph implies that P?? is well defined. Let T?? =
+ \J%L\[Fn x n~ j]. Then, it is clear that a(T??) = or(S).
+ The point is how to extend P?? to a countably additive probability mea
+ sure on the a-algebra a(T??). This is possible by using a proof similar to
+ that of Proposition 3.3 of [39]. The result is a version of the Ionescu-Tulcea
+ theorem (see [25], page 93) for the Loeb product transition probability system
+ THEOREM 5.5. There is a unique countably additive probability measure on
+ a(T??) that extends the set function P?? on 8; such a unique extension is still
+ denoted by P?? and by M =1 Pm.
+ Proof. Let {Cn]<^Ll be a decreasing sequence of sets in T?? with empty in
+ tersection. By the construction of T??, one can find a sequence of internal sets
+ {An}(^=l and a nondecreasing sequence {kn} =l of nonnegative integers such that
+ Cn = An x ??+1 and An e Tkn. For i < n, let 7r*z be the mapping from Qkn
+ to Qkl by projecting a tuple in Qkn to its first k? coordinates; then nkl (An) ? A?
+ because {Cn}^Ll is a decreasing sequence of sets. Take the transfer {^}?g*n of the
+ sequence {kn}^Lx, and the respective internal extensions {A?}we*N and {^w}? *n
+ of the internal sequences {An} =l and {i2n}?GN. By spillover and Ni -saturation
+ (see [34]), one can obtain h e *Noc such that for all n < h, An ? ?** and
+ 7ikln(An) ? Ai for all I e *N with I <n, where nkl is defined in exactly the same
+ way as in the case of finite n.
+ We claim that An = 0 for all n e *Noo with n < h\ if not, one can find such an
+ n with cokn = (cox, ., con) G An. Then cokl e A/ for any I e N. If kn e *Noo, then
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms
+
+
+--- PAGE 26 ---
+
+410  D. DUFFIE AND Y SUN
+ it is obvious that {com} =l is in C? for all I e N, which contradicts the assumption
+ that the intersection of all the C? is empty. If kn e N, one can choose com arbitrarily
+ for any m > kn to obtain the same contradiction. Hence the claim is proven.
+ By spillover, we know that for some n e N, An = 0, and so is Cn. Thus, we ob
+ tain a trivial limit, lim?_+oo P??(Cn) = 0. This means that P?? is indeed countably
+ additive on F??. As in [33], the Carath?odory extension theorem implies that P00
+ can be extended to the a -algebra o (F??) generated by F??, and we are done. D
+ The following result considers sectional measurability for sets in o(F??).
+ PROPOSITION 5.6. Let G be a a(F??)-measurable subset ofQ??. Then, for
+ any {com} =l G Q??, the set G oo+] = [cofn G Qn : (co[,..., co(n, con+x,con+2, . ) e
+ G} belongs to a(!Fn), while the set
+ G n = [co^x e ^h-i '-(coi,...,con, conjrX,con^1,...) eG}
+ belongs to a(U =n+i[(?k=n+i ft) x Q~+1]).
+ Proof. The collection of those sets G in a (F ??) with the properties is clearly
+ a monotone class of sets and contains the algebra F??; and hence it is o(F??)
+ itself by Theorem 1 on page 7 of [7]. D
+ The following corollary follows from Proposition 5.6 immediately.
+ COROLLARY 5.7. Let nn be the projection mapping from Q?? to Qn [i.e.,
+ 7tn(co??) = co11]. Then the measure space (Qn, o(Fn), Pn) is the projection of the
+ measure space (Q??, a(!F??), P??) under nn in the sense that for any F ? Qn,
+ F G a(Fn) if and only if (nn)-l(F) = F x Q +1 e a(F??) with Pn(F) =
+ Poc((Ttn)-l(F)).
+ 5.3. Fubini extensions based on a Loeb product transition probability system.
+ Let (/, io, Xo) be a hyperfinite internal probability space with io the internal power
+ set on a hyperfinite set /. We follow the notation and construction in Section 5.2.
+ Denote (i2o, Fo, Qo) = (I, io> ^-o) and repeat the process of constructing a count
+ ably additive measure ^=0pm on (/ x ?2??, or(U?LiUo ? 3th) x ?^)).
+ The following lemma is a restatement of Keisler's Fubini theorem to the particu
+ lar setting. Since the marginals of EI^=0Pm on / and Qn are respectively X and Pn,
+ we can write E^=0Pm as X E Pn.
+ LEMMA 5.8. For any n>\, the space (I x Qn, a(i0 ? Fn), E^=0Pm) is a
+ Fubini extension over the usual product of (I, a(io), X) and (Qn, cr(Fn), Pn).
+ The following is a Fubini-type result for the infinite product.
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms
+
+
+--- PAGE 27 ---
+
+INDEPENDENT RANDOM MATCHING
+ 411
+ Proposition 5.9. The space (I x ft??,a(U?Li(!o ? Fn) x ??n)>
+ K^LqPw) is a Fubini extension over the usual product of the probability spaces
+ (1,1, k) and (Q??, o(T??), P??).
+ Proof. We only check that the Fubini-type property holds for any set E e
+ U^LiUo ? Tn) x Q^x- The rest of the Pro?fis essentially the same as that of
+ Theorem 5.1.
+ It is clear that there exists a set F e lo ? Tn such that E = F x S2 +v By
+ definition, ^=0Pm(E) = ^=0Pm(F). By Lemma 5.8,
+ I Pm(F) = k^Pn(F)= [ Pn(Fi)dk(i)= f k(FMn)dPn(con).
+ ra=0 JI JQn 
+ On the other hand, E{ = F? x Q +1 and E^oc = F^n. By the fact that P??(?/) = 
+ Pn(Fi), the projection property in Corollary 5.7 implies that 
+ i Pm(F)= ? P??(Fi)dk(i)= [ HF^dP00^00). 
+ m=0 Jl Jqoo 
+ This means that the Fubini property does hold for sets in U^Li Uo ? 3th) x ^^j_i 
+ D 
+ For simplicity, we denote a(l0), o(Tn), a(l0 ? Tn), cr(Tn), a(i0 ? Tn), 
+ a(T??) and cj(\J =1(1o ? Fn) x ?2^), respectively by 1, An, 1 B An, An, 
+ lMAn,A?? andl^A00. 
+ We restate some of the above results using the new notation. Corollary 5.7 im 
+ plies that (Qn, An, Pn) and (7 x Qn, 1 B An, k B Pn) are the respective pro 
+ jections of (Q??, A??, P??) and (7 x Q??, 1 B A??, k M P??). Since (7 x Qn, 
+ 1 ?3 An, k IE Pn) is the Loeb product of two Loeb probability spaces (7,1, ?) and 
+ (Qn, An, Pn), it is a Fubini extension of the usual product probability space. In ad 
+ dition, the Fubini property in Proposition 5.9 says that (I xQ ,iM A??, k M P??) 
+ is a Fubini extension of the usual product of the probability spaces (7,1, ?) and 
+ 6. Proof of Theorem 3.1. Let (p?, b,q,v) be the given parameters for the 
+ dynamical system D. Let M be a fixed unlimited hyperfinite natural number in 
+ *Noo, 7 = {1, 2,..., M}, lo the internal power set on 7, and ?o the internal count 
+ ing probability measure on lo. Let a0 : 7 - S ? {1, 2,..., K} be an internal initial 
+ type function such that ?o(a? = k) ^ pk for each k = 1,..., K.24 What we need 
+ to do is to construct a sequence of internal transition probabilities and a sequence 
+ of internal type functions. The results in Sections 5.2 and 5.3 can then be applied 
+ to obtain a Loeb product transition probability system. Since we need to consider 
+ random mutation, random partial matching and random type changing at each time 
+ This is possible since X is atomless. 
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms
+
+
+--- PAGE 28 ---
+
+412  D. DUFFIE AND Y. SUN
+ period, three internal measurable spaces with internal transition probabilities will
+ be constructed at each time period.
+ Adopt the notation used in Section 5.2. Suppose that the construction for the
+ dynamical system D has been done up to time period n ? 1. Thus, {(Qm, !Fm,
+ Qm)}^=x and {a1}"^ have been constructed, where each Qm is a hyperfinite
+ internal set with its internal power set Fm, Qm an internal transition probability
+ from Qm~l to (Qm, Fm), and a1 an internal function from / x Q31 to the type
+ space S.
+ We shall now consider the constructions for time n. We first work with the ran
+ dom mutation step. For each 1 < k < K, pk is a distribution on S with pk(l) = bki,
+ the probability for a type-/: agent to mutate to a type-/ agent. Let S23W_2 = S1 (the
+ space of all internal functions from / to S) with its internal power set F^n-2
+ For each i e I, co3n~3 e Q3n~3, let yfn~^ = ?V-i0>3n-3). That is, if an~l(i,
+ ct)3n~3) = k, then y?? = pk. Define an internal probability measure Q%n-2
+ on (S1, F^n-i) to be the internal product measure \\ieI y?? n ,25 Let hn : (I x
+ U^=x ??) - S be such that hn(i, co3n~2) = co3n-2(i)
+ Next, we consider the step of random partial matching. Let (Qin-i, F3n-x) be
+ the internal sample measurable space (Q, Fo) in Remark 4.1.
+ For any given co3n~2 G Q3n~2, the type function is hn3n_2(-), denoted by a for
+ short. Let Q%n_x be ^ internal probability measure corresponding to the internal
+ probability measure P$ in Remark 4.1. Define a mapping nn : (I x Q3n~l) ? (/ U
+ /) by letting irn(i,co3n~x) = ?(i,co3n-x); thus, nn(i,co3n~l) = J if &>3n_i(/) = i,
+ and nn(i, co3n~l) = co3n-\(i) if <?3W-i(i) ^ i. Extend hn so that hn(J, co3"-2) = /
+ for any co3n~2 G Q3n~2. Define gn : (I x Q3n~l) -> (S U {/}) by letting
+ gw(/, a;3""1) = hn(nn(i, co3n~l), co3n~2),
+ which means that gn(i, co3n~l) = ga(i, co3n-x).
+ Finally, we consider the step of random type changing for matched agents. Let
+ Q3n = S1 with its internal power set F3n\ each point co3n e Q3n is an internal
+ function from / to S. For any given co3n~l e Q3n~l, the space / of agents is divided
+ into K2 + K classes: those in type k who are not matched, or matched to some
+ type-/ agents. For 1 <k,l< K, vki is a distribution on S and vki(r) the probability
+ for a type-A: agent to change to a type-r agent when the type-/: agent meets a type-/
+ agent.
+ A hyperfinite product space is a common construction in nonstandard analysis, whose coordi
+ nate functions also give a hyperfinite sequence of *-independent random variables. In general, for
+ a hyperfinite collection {X?}?=1 (with n infinitely large) of *-independent random variables on an
+ internal probability space ( , Fq, Po) wim mean zero and variances bounded by a common stan
+ dard positive number C, the elementary Chebyshev's inequality says that for any positive hyperreal
+ number e, Pod^l H-\- Xn\/n>e) < C/ne2. By taking s = 1/t?1/4, it implies that for nearly all
+ co e ?2, \X\ H-h Xn \/n ~ 0, which was also noted in [26], page 56.
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms
+
+
+--- PAGE 29 ---
+
+INDEPENDENT RANDOM MATCHING  413
+ Define a new type function an : (I x Q3n) -> S by letting an(i, co5n) = co3n(i).
+ Fix co3n~x G Q3n~x. For each / g /, (1) if co3n-x(i) = i (i is not matched at
+ time n), let xf n be the probability measure on the type space S that gives prob
+ ability 1 to the type hn(i, co3n~2) and zero for the rest; (2) if co3n-x(i) ^ i (i is
+ matched at time n), hn(i, co3"'2) = k and hn(co3n-\ (0, co3n~2) = I, let xfn~X be
+ the distribution vki on S. Define an internal probability measure Q^n" on S1 to
+ be the internal product measure Yliei ri?
+ By induction, we can construct a sequence {(Qm,Fm, ?m)}^=i of internal
+ transition probabilities and a sequence {o?l}fZo ?f tyPe functions. By using the
+ constructions in Sections 5.2 and 5.3 via an infinite product of Loeb transition
+ probabilities, we can obtain a corresponding probability space (/ x Q??, i E A??,
+ ?EP00).
+ From now on, we shall also use (Q, F, P) and (/ x ?2, i E ^, ? E P) to denote
+ (Q??, A??, P??) and (/ x Q??, 1 E A??, X E P??), respectively. Note that all the
+ functions, hn, nn, gn, an, fovn = 1,2,..., can be viewed as functions on / x Q,
+ and hn,gn, an are i E ^-measurable for each n > 1.
+ We still need to check that our internal constructions above lead to a dynam
+ ical system D with random mutation, partial matching and type changing that is
+ Markov conditionally independent in types. We assume that the conditions for ran
+ dom mutation, partial matching and type changing as well as Markov conditional
+ independence in types are satisfied up to time n ? 1. As in the proof of Lemma 6
+ in [15], Lemma 5 in [15] implies that the random variables a"~ and otn-~x are
+ independent for / / j. It remains to check the conditions for random mutation,
+ partial matching and type changing as well as Markov conditional independence
+ in types for time n.
+ For the step of random mutation at time period n, we have for each agent i e I,
+ and k,l e S,
+ P(h?=l,a?-X =k)
+ = P3n-2(A3n-2)
+ (36) = P3n-2({co3n-3 G Q3n~3 :a?-x(co3n~3) = k} x (SJ-[i} x {/}<<>))
+ = [ Pk(l)dP3n-3(co3n-3) = bkiP(a?-x=k),
+ where
+ A3?_2 = {(<?n-\ ^n-2) e ?23""2 : <-' (a;3""3) = jfc,
+ hn(i, CO3"'3, C03n-2) = C03n-2(i) = /},
+ which implies that (1) is satisfied.
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms
+
+
+--- PAGE 30 ---
+
+414 D. DUFFIE AND Y. SUN
+ When i ^ j e I, it is obvious that for any l,r e S, and any (af,..., af-1) and
+ (a?j,..., a'j'1) in 5", for the event
+ Bi = {h?=l,hHj=r,(a?,...,cl?-1) = (a?,...,a?-1),
+ (a(j,...,a"j-1) = (a?j,...,a"j-1)},
+ we have
+ P(fii) = P3n-2(B2)
+ (37) = P3n'2(B3 x (/ x S7-^'1 x {/}<''> x {r}w))
+ = P3"-3(?4)-pari(/)-Pur.(r),
+ where
+ ?2 = {(o,3?-3, t?3?-2) Q3"-2 : (a?,..., a!-1)^3"-3) = (a?,..., a?"1),
+ (a0j,...,anri)(co3n-3) = (a?j,...,anrl),
+ c?3?-2(i) = l, ?J3/1-2O') = r},
+ ?3 = {a,3""3 e ^3"-3 : (a?,..., <-1)(a,3'-3) = (a?,..., a?"1),
+ (a5,...,a;-1)(a)3'-3) = (a;,...,fl;-1)},
+ and
+ ?4 = {a)3""3 ft3""3 :(<,..., <" V-3) = (a?m,..., <"'), m = i, j}.
+ Equations (36) and (37) imply that for any l,r e S,
+ P(h?=l,hnj=r\(a?m,...,anm-l),m = iJ)
+ = P(h?=:l\a?-l)P(hnj=r\anj-1).
+ Hence (5) in the definition of Markov conditional independence for random muta
+ tion is satisfied.
+ Equation (37) together with the independence of a"~l and a"-1 implies that
+ h"(-) and hn-(>) are independent. As in (2), ~pn~xl2 is the expected cross-sectional
+ type distribution immediately after random mutation. The exact law of large num
+ bers in [38] and [40] (see Footnote 20 above) implies that for P3"~2-almost all
+ co3"-2 e Q3n-2,
+ (38) k{{ifel:hl3n_Ai) = l})=-p?~X'2
+ for any / e S.
+ For the step of random partial matching, the definition of nn clearly shows that
+ for each co e Q, the restriction of tt?() to 7 ? (tt^)~x({J}) is a full matching on
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms
+
+
+--- PAGE 31 ---
+
+INDEPENDENT RANDOM MATCHING  415
+ that set. We need to check that the function g":(/x?)^(/U(/}) satisfies the
+ required distribution and Markov conditional independence conditions.
+ For any given co3n~2 G Q3n~2, take a = hn3n_2(-) as in the construction Q%?_x
+ above. Then, for each / G / and c e S U {/},
+ ?3n-T({^3n-1 ^ fi3?-l g"(h C03n~l) = c})
+ (39)
+ = P$({co Q:ga(i,co) = c}).
+ Moreover, for each j el with j ^ i and d e S U {/},
+ Qfnn^({co3n^ ?3n-]:gn(i,co3n-i) = c,gn(j,co3"-l)^d})
+ (40) = P0"(??> e ? : ?<*(i, ?>) = c, ?a(;, ?>) = d})
+ ~Pg(gf = c).Pg(g']=d).
+ For each agent i e I,k,l e S, (39) implies that
+ P(g? = J,h?=k)
+ = P3n-\{co3n-] eQ3n-l:hn(i,co3n-2) = k,gn(i,co^1) = J})
+ = f qkdP3n-2(co2n-2) J{h"(i,?)in-2)=k)
+ (41)
+ l{h"(i,?>in-2)=k)
+ = qkP(h1=k).
+ In addition, we obtain from (38) that
+ P(g?=l,h?=k)
+ = P3n-l({co3"-1 e ?23"-1 :hn(i, co3"-2) = k, gn(i, co3"'1) = I})
+ = f Ph^"-2{{co ?:ghn^n-2(i^) = l\)dP3n-2(co3n~2) ^(/?"(i,ft)3"-2)=yt)
+ (42) = / /-^-?-M --dP3n-2(co3"-2)
+ -/
+ (l-^)(l-?/)pr1/2?/p3n-2(w3?-2) {A?0>3?-2)=?| Ef=,(l-9r)p? 1/2
+ P(A?=*)  (1 -<?*)(! - #/)/>,
+ E# ,. .???1/2
+ r=\Q-<Ir)Pr
+ Hence, (41) and (42) imply that (3) holds.
+ Fix / # y e /. Take any (a?,...,^-1), (aj, ...,a]?_1) e 5", l,r S, and
+ cdeSD {J}. Let D be the set of all co3"-2 Q3n~2 such that A?(<w3n-2) = /,
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms
+
+
+--- PAGE 32 ---
+
+416 D. DUFFIE AND Y. SUN
+ h"j(co3n~2) = r, (af,...,a?-l)(co3"-3) = (af,..., a^x) and (a?,...,
+ a"rl)(?)3n-3) = (a?j,..., anrl). Then, (38) and (40) imply that
+ P(gf = c,g?j=d,h'!=l,httJ=r,
+ (a?m,...,anm-l) = (a?m,...,anm-l),m = ij)
+ (43) = f P?"Si2(DUdP3n-2(a>3n-2) Jd
+ = f Phn^-2{D2) Phli"-2(D3)dP3n-2{(?3n-2)
+ Jd
+ = P3n~2(D)P(g^ = c\h1 = l)P(g] = d\hnj = r),
+ where
+ Di = {<W3?_i n3?-i :?"(i, ^""') = c, gn(j, to0"'1) = <*},
+ D2 = {coeQ\g o>3n~2(i,co) = c},
+ D3 = {coe ?:gh?3n-2(j, ?b)=d],
+ which means that the Markov conditional independence condition as formulated
+ in (6) for random partial matching is satisfied.
+ Finally, we consider the step of random type changing for matched agents at
+ time n. For k e S, let vkj be the Dirac measure at k on S, that is, vkj(r) = S[ for
+ each reS.lf hn(i, co3n~2) = kforkeS and g?(co3n-x) = cforceSU {J}, then
+ the measure xf in the definition of Q%n on S1 is simply vkc.
+ For each agent / e I, and for any r,k e S, and c e S U {J}, we have
+ P(a?=r,h?=k,g?=c)
+ = P3n({(co3n-x,co3n) e Q3n :h?(co3n-2) = k,
+ (44) g?(co3n-x) = c,co3n(i) = r})
+ L
+ vkc(r)dP3n~\(o3n-x) w3"-i ?23"-' : h"(co3n-2)=k,g?(<u3?-')=c}
+ = vkc{r)P(hni=k,g1 = c),
+ which implies that (4) is satisfied.
+ Fix i # y 6 /. Take any (af,..., af-1), (aj,..., a"'1) e Sn, k, l,r,t e 5, and
+ c,? SU {7}. Let ? be the set of all co3"'1 e SI3"'1 such that g?(co3n-1) =
+ c, gnj(co3"-1) = d, hni(o?n-2) = k, hnj(a)3n-2) = I, (af, ...,af-1)(o>3n-3) =
+ (af,...,a?-1) and (aj,...,anrl)(co3n-3) = (a?,...,a"rl). Then, letting
+ El={an=rtan=tfgn=Ctgn=dthn=kthn=lt
+ (afn,...,anm-l) = (afn,...,anm-l),m = i,j},
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms
+
+
+--- PAGE 33 ---
+
+INDEPENDENT RANDOM MATCHING
+ 417
+ (44) implies that
+ P(Ex)= ? P^n~\{co3neQ3n: 3n(i) = r,mn(j) = t})dP3n-x( 3^ Je
+ (45) = f vkc(r)vid(t)dP3n-x(co3n-x)
+ JE 
+ = P(E)P(a?=rW=k,g?=c)P(a^ = t\hnj=l,gnj=d), 
+ which means that the Markov conditional independence condition as formulated 
+ in (7) for match-induced random type changing is satisfied. 
+ Therefore, we have shown that D is a dynamical system with random mutation, 
+ partial matching and type changing that is Markov conditionally independent in 
+ types.
+ Acknowledgments. This work was initiated in July 2000 while the second
+ author visited Stanford University. This work was presented in the annual meet
+ ing of the American Mathematical Society in Phoenix, Arizona on January 7-10,
+ 2004 and in the "Workshop on Markov Processes and Related Topics" in Bei
+ jing Normal University on August 10-14, 2004. We are grateful to Bob Anderson,
+ Ward Henson, Jerry Keisler, Horst Osswald, Peter Loeb and Jiang-Lun Wu for
+ useful conversations, and to two anonymous referees of this journal for helpful
+ comments.
+ REFERENCES
+ [1] Aliprantis, CD., Camera, G. and Puzzello, D. (2006). Matching and anonymity.
+ Econom. Theory 29 415-432. MR2248038
+ [2] Aliprantis, C. D., Camera, G. and Puzzello, D. (2006). A random matching theory.
+ Games and Economic Behavior. To appear.
+ [3] Anderson, R. M. (1976). A nonstandard representation for Brownian motion and It? inte
+ gration. Israel]. Math. 25 15-46. MR0464380
+ [4] BINMORE, K. and Samuelson, L. (1999). Evolutionary drift and equilibrium selection. Re
+ view of Economic Studies 66 363-393. MR 1686403
+ [5] Burdzy, K., Frankel, D.M. and Pauzner, A. (2001). Fast equilibrium selection by ratio
+ nal players living in a changing world. Econometrica 69 163-189. MR1806537
+ [6] Cavalli-Sforza, L. L. and BODMER, W. F. (1971). The Genetics of Human Population.
+ Freeman, San Francisco.
+ [7] Chow, Y. S. and TEICHER, H. (1997). Probability Theory: Independence, Interchangeability,
+ Martingales, 3rd. ed. Springer, New York. MR 1476912
+ [8] Dekel, E. and Scotchmer, S. (1999). On the evolution of attitudes towards risk in winner
+ take-all games. Journal of Economic Theory 87 125-143. MR 1705 307
+ [9] DIAMOND, P. (1971). A model of price adjustment. Journal of Economic Theory 3 156-168.
+ MR0452520
+ [10] Diamond, P. (1982). Aggregate demand management in search equilibrium. Journal of Polit
+ ical Economy 90 881-894.
+ [11] Diamond, P. and Yellin, J. (1990). Inventories and money holdings in a search economy.
+ Econometrica 58 929-950.
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms
+
+
+--- PAGE 34 ---
+
+418 D. DUFFIE AND Y. SUN
+ [12] DOOB, J. L. (1937). Stochastic processes depending on a continuous parameter. Trans. Amer.
+ Math. Soc. 42 107-140. MR1501916
+ [13] DOOB, J. L. (1953). Stochastic Processes. Wiley, New York. MR0058896
+ [14] Duffie, D., G?RLEANU, N. and PEDERSEN, L. H. (2005). Over-the-counter markets. Econo
+ metrica 73 1815-1847. MR2171326
+ [15] Duffie, D. and Sun, Y N. (July 2004). The exact law of large numbers for independent
+ random matching. Working paper. Available at http://www.stanford.edu/~duffie/lln-I.pdf.
+ [16] Fudenberg, D. and LEVINE, D. (1993). Steady-state learning and Nash equilibrium. Econo
+ metrica 61 547-573. MR1217835
+ [17] Gale, D. (1986). Bargaining and competition. Characterization. Econometrica 54 785-806.
+ MR0853983
+ [18] Gale, D. (1986). Bargaining and competition. Existence. Econometrica 54 807-818.
+ MR0853984
+ [19] Green, E. J. and Zhou, R. (2002). Dynamic monetary equilibrium in a random matching
+ economy. Econometrica 70 929-970. MR1910408
+ [20] Hardy, G. H. (1908). Mendelian proportions in a mixed population. Science 28 49-50.
+ [21] Hellwig, M. (1976). A model of monetary exchange. Econometric Research Program, Re
+ search Memorandum Number 202, Princeton Univ.
+ [22] HARRINGTON, J. E. (1998). The social selection of flexible and rigid agents. American Eco
+ nomic Review 88 63-82.
+ [23] Hosios, A. (1990). On the efficiency of matching and related models of search and unemploy
+ ment. Rev. Econom. Stud. 57 279-298.
+ [24] Judd, K. L. (1985). The law of large numbers with a continuum of iid random variables.
+ Journal of Economic Theory 35 19-25. MR0786985
+ [25] KALLENBERG, O. (1997). Foundations of Modern Probability. Springer, New York.
+ MR1464694
+ [26] KEISLER, H. J. (1977). Hyperfinite model theory. In Logic Colloquium 76 (R. O. Gandy and
+ J. M. E. Hyland, eds.) 5-110. North-Holland, Amsterdam. MR0491155
+ [27] Keisler, H. J. (1992). A law of large numbers for fast price adjustment. Trans. Amer. Math.
+ Soc. 332 1-51. MR1046836
+ [28] Keisler, H. J. (1996). Getting to a competitive equilibrium. Econometrica 64 29-49.
+ [29] Keisler, H. J. (1995). Approximate t?tonnement processes. Econom. Theory 5 127-173.
+ MR1309566
+ [30] Keisler, H. J. and Sun, Y. N. (2004). A metric on probabilities, and products of Loeb spaces.
+ J. London Math. Soc. 69 258-272. MR2025340
+ [31] Kiyotaki, N. and Wright, R. (1993). A search-theoretic approach to monetary economics.
+ American Economic Review 83 63-71.
+ [32] Krainer, J. and LeRoy, S. (2002). Equilibrium valuation of illiquid assets. Econom. Theory
+ 19 223-242.
+ [33] Loeb, P. A. (1975). Conversion from nonstandard to standard measure spaces and applications
+ in probability theory. Trans. Amer. Math. Soc. 211 113-122. MR0390154
+ [34] LOEB, P. A. and WOLFF, M., eds. (2000). Nonstandard Analysis for the Working Mathemati
+ cian. Kluwer, Dordrecht. MR1790871
+ [35] McLennan, A. and Sonnenschein, H. (1991). Sequential bargaining as a noncooperative
+ foundation for Walrasian equilibrium. Econometrica 59 1395-1424. MR1133040
+ [36] MORTENSEN, D. (1982). Property rights and efficiency in mating, racing, and related games.
+ American Economic Review 72 968-979.
+ [37] Mortensen, D. and Pissarides, C. (1994). Job creation and job destruction in the theory
+ of unemployment. Rev. Econom. Stud. 61 397-415.
+ [38] Sun, Y N. (1998). A theory of hyperfinite processes: the complete removal of individual
+ uncertainty via exact LLN. J. Math. Econom. 29 419-503. MR 1627287
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms
+
+
+--- PAGE 35 ---
+
+INDEPENDENT RANDOM MATCHING 419
+ [39] Sun, Y. N. (1998). The almost equivalence of pairwise and mutual independence and the
+ duality with exchangeability. Probab. Theory Related Fields 112 425-456. MR1660898
+ [40] Sun, Y. N. (2006). The exact law of large numbers via Fubini extension and characterization
+ of insurable risks. J. Econom. Theory 126 31-69. MR2195268
+ [41] WOLINSKY, A. (1990). Information revelation in a market with pairwise meetings. Economet
+ rica 58 1-23.MR1046917
+ Graduate School of Business
+ Stanford University
+ Stanford, California 94305
+ USA 
+ E-mail: duffie@stanford.edu 
+ Departments of Economics and Mathematics 
+ National University of Singapore 
+ 1 Arts Link 
+ Singapore 117570 
+ E-mail: matsuny@nus.edu.sg 
+This content downloaded from 129.105.215.146 on Mon, 15 Dec 2025 11:03:25 UTC
+All use subject to https://about.jstor.org/terms

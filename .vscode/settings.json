@@ -1,0 +1,23 @@
+{
+  "latex-workshop.latex.outDir": "tex/build",
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk (pdf)",
+      "tools": ["latexmk"]
+    }
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk",
+      "command": "latexmk",
+      "args": [
+        "-pdf",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-outdir=tex/build",
+        "%DOC%"
+      ]
+    }
+  ],
+  "latex-workshop.view.pdf.viewer": "tab"
+}
