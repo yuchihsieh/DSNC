@@ -26,10 +26,28 @@
 \section{Fubini extensions for instantaneous matching (Loeb-space construction)}
 \label{sec:fubini-extension-instantaneous-matching}
 
+\subsection{Quick map to the source papers (Sun 2006; Duffie--Sun 2007)}
+\label{subsec:quick-map}
+\noindent
+This note is distilled primarily from:
+\begin{itemize}
+  \item Y.\ Sun (2006), \emph{The exact law of large numbers via Fubini extension and characterization of insurable risks} (JET 126), and
+  \item D.\ Duffie and Y.\ Sun (2007), \emph{Existence of independent random matching} (AAP 17).
+\end{itemize}
+\noindent
+To make it easy to find the original statements, we record the main correspondences:
+\begin{itemize}
+  \item \textbf{Fubini extension definition}: this note's Definition~\ref{subsec:fubini-extension-def} is \textbf{Sun (2006), Definition 2.2} (and also \textbf{Duffie--Sun (2007), Definition 2.1}).
+  \item \textbf{Incompatibility (usual product measurability + independence)}: mentioned in \S\ref{sec:fubini-extension-instantaneous-matching}\,\S\ref{subsec:fubini-extension-def} is \textbf{Sun (2006), Proposition 2.1}.
+  \item \textbf{Rich product probability space}: this note's informal ``richness'' definition in \S\ref{subsec:richness} corresponds to \textbf{Sun (2006), Definition 5.1}.
+  \item \textbf{Universality via uniform r.v.'s}: the ``uniform is enough'' remark in \S\ref{subsec:richness} is backed by \textbf{Sun (2006), Proposition 5.3}.
+  \item \textbf{Random full matching \& independence-in-types}: the matching construction in \S\ref{subsec:instantaneous-matching} is modeled on \textbf{Duffie--Sun (2007), Definition 2.3} and \textbf{Theorem 2.4}.
+\end{itemize}
+
 \subsection{Aim and scope}
 Many economic and probabilistic models posit a \emph{continuum} of agents, indexed by an atomless probability space $(I,\mathcal I,\lambda)$, together with \emph{instantaneous random matching} at a given time (or a single random matching draw), typically represented as a random involution $\varphi:I\times\Omega\to I$ satisfying $\varphi(\varphi(i,\omega),\omega)=i$.
 
-The foundational difficulty is that, for nontrivial processes $(f_i)_{i\in I}$, \emph{independence} of the family and \emph{joint measurability} of the mapping $(i,\omega)\mapsto f_i(\omega)$ with respect to the usual product $\sigma$-algebra $\mathcal I\otimes\mathcal F$ are, in general, incompatible except in degenerate cases. This obstruction goes back at least to Doob and is made precise in the modern literature via results such as: if $f:I\times\Omega\to X$ is $\mathcal I\otimes\mathcal F$-measurable and essentially pairwise independent, then almost all coordinates $f_i$ are essentially constant (cf.\ Sun (2006), Proposition 2.1).
+The foundational difficulty is that, for nontrivial processes $(f_i)_{i\in I}$, \emph{independence} of the family and \emph{joint measurability} of the mapping $(i,\omega)\mapsto f_i(\omega)$ with respect to the usual product $\sigma$-algebra $\mathcal I\otimes\mathcal F$ are, in general, incompatible except in degenerate cases. This obstruction goes back at least to Doob and is made precise in the modern literature via results such as: if $f:I\times\Omega\to X$ is $\mathcal I\otimes\mathcal F$-measurable and essentially pairwise independent, then almost all coordinates $f_i$ are essentially constant (\textbf{Sun (2006), Proposition 2.1}).
 
 \medskip
 \noindent
@@ -58,6 +76,7 @@ is a \emph{Fubini extension} of the usual product $(I\times\Omega,\mathcal I\oti
   =\int_\Omega\Big(\int_I g_\omega\,d\lambda\Big)\,dP.
   \]
 \end{enumerate}
+This is exactly \textbf{Sun (2006), Definition 2.2}. The same definition is also used in \textbf{Duffie--Sun (2007), Definition 2.1}.
 Following Sun (2006), we often denote such a space by $(I\times\Omega,\ \mathcal I\boxtimes\mathcal F,\ \lambda\boxtimes P)$ to emphasize the retention of Fubini's theorem beyond $\mathcal I\otimes\mathcal F$.
 \end{definition}
 
@@ -140,7 +159,7 @@ The key point is that $\mathcal I\boxtimes\mathcal F$ typically strictly contain
 \subsection{Instantaneous (static) random matching on a continuum: hyperfinite construction}
 \label{subsec:instantaneous-matching}
 
-We now construct an \emph{instantaneous} random full matching with strong measure-preserving properties and the independence-in-types feature used in applications. This follows the Loeb-space proof scheme used in Duffie--Sun (2007, Section 4.1) for Theorem 2.4.
+We now construct an \emph{instantaneous} random full matching with strong measure-preserving properties and the independence-in-types feature used in applications. This follows the Loeb-space proof scheme used in \textbf{Duffie--Sun (2007, Section 4.1)}, which proves \textbf{Duffie--Sun (2007), Theorem 2.4}.
 
 \subsubsection{Step 1: hyperfinite agents}
 Fix an unlimited even hyperinteger $N\in{}^\ast\mathbb N$ and let $I\coloneqq\{1,2,\dots,N\}$ with internal counting measure $\lambda_0$. Let $(I,\mathcal I,\lambda)$ be the Loeb space (atomless).
@@ -167,7 +186,7 @@ Define the induced \emph{partner-type} process $g:I\times\Omega\to S$ by
 \[
 g(i,\omega)\coloneqq a(\varphi(i,\omega)).
 \]
-The crucial property established in Duffie--Sun (2007, Theorem 2.4) is that $g$ can be constructed so as to be \emph{essentially pairwise independent}: for $\lambda$-a.e.\ $i$, the random variables $g_i$ and $g_j$ are independent for $\lambda$-a.e.\ $j$. This is the exact independence notion that is compatible with continuum indexing and sufficient for exact law of large numbers arguments.
+In the terminology of \textbf{Duffie--Sun (2007)}, $g$ is the ``type process'' induced by a random full matching (cf.\ \textbf{Definition 2.3}) and ``independent in types'' means that $g$ is essentially pairwise independent (cf.\ \textbf{Definition 2.2} and \textbf{Definition 2.3(4)}). The crucial existence result is \textbf{Duffie--Sun (2007), Theorem 2.4}, which provides a random full matching that is independent in types (indeed, ``universal'' across finite type functions).
 
 \subsection{From Loeb products to Fubini extensions suitable for independent processes}
 \label{subsec:from-loeb-to-fubini}
@@ -188,7 +207,7 @@ A Fubini extension $(I\times\Omega,\mathcal I\boxtimes\mathcal F,\lambda\boxtime
 \end{definition}
 
 \begin{remark}[Why ``uniform'' is enough]
-Given such a uniform family, one can generate essentially pairwise independent families with \emph{any prescribed distributions} by measurable transforms (inverse CDF method), provided the target distributions are Borel on a Polish space. This is the practical meaning of ``rich enough.''
+Sun formalizes richness as: existence of an essentially pairwise independent family of uniform $[0,1]$ random variables on the Fubini extension (\textbf{Sun (2006), Definition 5.1}). The universality claim---constructing essentially pairwise independent processes with essentially arbitrary prescribed marginal laws on a Polish space---is \textbf{Sun (2006), Proposition 5.3}. Practically: given a uniform family, one can generate essentially pairwise independent families with \emph{any prescribed distributions} by measurable transforms (inverse CDF method), provided the target distributions are Borel on a Polish space.
 \end{remark}
 
 \subsection{Putting it together for instantaneous matching}
