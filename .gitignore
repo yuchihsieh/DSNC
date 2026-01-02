@@ -356,3 +356,6 @@ Papers
 # PDFs (Google Drive symlink)
 Papers/
 Papers
+
+# Python virtual environment
+.venv/
