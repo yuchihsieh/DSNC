@@ -1,0 +1,216 @@
+\documentclass[11pt]{article}
+
+% Standalone note (NOT part of the main paper).
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage[hidelinks]{hyperref}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+% Theorem environments
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{remark}{Remark}[section]
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+
+\title{Notes: Fubini extensions for instantaneous matching (Loeb-space construction)}
+\author{Yu-Chi Hsieh}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\newpage
+\section{Fubini extensions for instantaneous matching (Loeb-space construction)}
+\label{sec:fubini-extension-instantaneous-matching}
+
+\subsection{Aim and scope}
+Many economic and probabilistic models posit a \emph{continuum} of agents, indexed by an atomless probability space $(I,\mathcal I,\lambda)$, together with \emph{instantaneous random matching} at a given time (or a single random matching draw), typically represented as a random involution $\varphi:I\times\Omega\to I$ satisfying $\varphi(\varphi(i,\omega),\omega)=i$.
+
+The foundational difficulty is that, for nontrivial processes $(f_i)_{i\in I}$, \emph{independence} of the family and \emph{joint measurability} of the mapping $(i,\omega)\mapsto f_i(\omega)$ with respect to the usual product $\sigma$-algebra $\mathcal I\otimes\mathcal F$ are, in general, incompatible except in degenerate cases. This obstruction goes back at least to Doob and is made precise in the modern literature via results such as: if $f:I\times\Omega\to X$ is $\mathcal I\otimes\mathcal F$-measurable and essentially pairwise independent, then almost all coordinates $f_i$ are essentially constant (cf.\ Sun (2006), Proposition 2.1).
+
+\medskip
+\noindent
+The goal of this note is to give a \emph{minimalist, self-contained, rigorous} construction of a probability space rich enough to support:
+\begin{itemize}
+  \item a continuum of (essentially) independent random objects with the \emph{Fubini property}, and
+  \item an \emph{instantaneous} random matching map with the independence-in-types properties used in economics and genetics.
+\end{itemize}
+The construction is based on \emph{nonstandard analysis} and \emph{Loeb measures}, following the approach underlying Sun (2006) and Duffie--Sun (2007).
+
+\subsection{Measure-theoretic target: Fubini extensions}
+\label{subsec:fubini-extension-def}
+
+\begin{definition}[Fubini extension]
+Let $(I,\mathcal I,\lambda)$ and $(\Omega,\mathcal F,P)$ be probability spaces. A probability space
+\[
+(I\times\Omega,\ \mathcal W,\ Q)
+\]
+is a \emph{Fubini extension} of the usual product $(I\times\Omega,\mathcal I\otimes\mathcal F,\lambda\otimes P)$ if:
+\begin{enumerate}
+  \item $\mathcal I\otimes\mathcal F\subseteq \mathcal W$ and $Q$ extends $\lambda\otimes P$; and
+  \item for every $Q$-integrable $g:I\times\Omega\to\mathbb R$, the sections $g_i(\omega)\coloneqq g(i,\omega)$ and $g_\omega(i)\coloneqq g(i,\omega)$ are integrable for $\lambda$-a.e.\ $i$ and $P$-a.e.\ $\omega$, and
+  \[
+  \int g\,dQ
+  =\int_I\Big(\int_\Omega g_i\,dP\Big)\,d\lambda
+  =\int_\Omega\Big(\int_I g_\omega\,d\lambda\Big)\,dP.
+  \]
+\end{enumerate}
+Following Sun (2006), we often denote such a space by $(I\times\Omega,\ \mathcal I\boxtimes\mathcal F,\ \lambda\boxtimes P)$ to emphasize the retention of Fubini's theorem beyond $\mathcal I\otimes\mathcal F$.
+\end{definition}
+
+\begin{remark}[Why we need an extension]
+If we insist on $\mathcal W=\overline{\mathcal I\otimes\mathcal F}$ (the completion of the usual product) then, for many independence hypotheses that economists want (e.g.\ i.i.d.\ types, independent match outcomes), one cannot have a jointly measurable process unless it is essentially constant. A Fubini extension enlarges the measurable sets on $I\times\Omega$ so that one can have \emph{joint measurability} of useful processes while retaining the ability to interchange integrals.
+\end{remark}
+
+\subsection{A minimalist introduction to nonstandard analysis}
+\label{subsec:nsa-minimal}
+We give a concrete ``toolkit'' sufficient for Loeb measures and hyperfinite constructions.
+
+\subsubsection{Ultrafilters and ultrapowers (one standard construction)}
+Let $\mathbb N$ be the natural numbers. A (free) \emph{ultrafilter} $\mathcal U$ on $\mathbb N$ is a collection of subsets of $\mathbb N$ satisfying:
+\begin{enumerate}
+  \item $\emptyset\notin\mathcal U$, and if $A\in\mathcal U$ and $A\subseteq B$, then $B\in\mathcal U$;
+  \item if $A,B\in\mathcal U$, then $A\cap B\in\mathcal U$;
+  \item for every $A\subseteq\mathbb N$, exactly one of $A$ and $\mathbb N\setminus A$ lies in $\mathcal U$;
+  \item $\mathcal U$ is \emph{free}: no finite subset of $\mathbb N$ is in $\mathcal U$.
+\end{enumerate}
+Fix such a $\mathcal U$. The \emph{ultrapower} ${}^\ast\mathbb R$ is defined as the quotient $\mathbb R^{\mathbb N}/\sim$, where $(x_n)\sim(y_n)$ iff $\{n:x_n=y_n\}\in\mathcal U$. We write ${}^\ast x$ for the class of the constant sequence $(x,x,\dots)$, identifying $\mathbb R$ with a subfield of ${}^\ast\mathbb R$.
+
+\subsubsection{Infinitesimals and unlimited hyperintegers}
+A hyperreal $\varepsilon\in{}^\ast\mathbb R$ is \emph{infinitesimal} if $|\varepsilon|<1/n$ for all $n\in\mathbb N$. A hyperinteger $N\in{}^\ast\mathbb N$ is \emph{unlimited} if $N>n$ for all $n\in\mathbb N$. Existence of unlimited hyperintegers follows from the freeness of $\mathcal U$.
+
+\subsubsection{Standard part}
+Every finite hyperreal $x\in{}^\ast\mathbb R$ (i.e.\ $|x|<n$ for some $n\in\mathbb N$) is infinitely close to a unique real number, called its \emph{standard part} and denoted $\operatorname{st}(x)\in\mathbb R$.
+
+\subsubsection{Internal sets and hyperfinite sets}
+In the ultrapower approach, an \emph{internal set} is (informally) a set that is represented by a sequence of standard sets modulo $\mathcal U$.
+Of special importance are \emph{hyperfinite} sets: internal sets that behave like finite sets internally. For example, for an unlimited hyperinteger $N\in{}^\ast\mathbb N$, the set
+\[
+I\coloneqq\{1,2,\dots,N\}\subset{}^\ast\mathbb N
+\]
+is hyperfinite: internally it has $N$ elements, although (externally) it has the cardinality of the continuum.
+
+\subsubsection{Transfer principle (informal statement)}
+The \emph{transfer principle} says that any first-order statement true of the standard structure (e.g.\ $\mathbb R$, $\mathbb N$) is also true for its nonstandard extension (e.g.\ ${}^\ast\mathbb R$, ${}^\ast\mathbb N$) when all objects are replaced by their star-images. In practice, this lets one use finite combinatorial/probabilistic reasoning on hyperfinite sets as if they were genuinely finite.
+
+\subsection{Loeb measures}
+\label{subsec:loeb-measure}
+
+\subsubsection{Internal finitely additive measures}
+Let $I$ be hyperfinite and let $\mathcal I_0$ be its \emph{internal power set} (the family of internal subsets of $I$). Define the internal counting probability measure $\lambda_0:\mathcal I_0\to{}^\ast[0,1]$ by
+\[
+\lambda_0(A)\coloneqq \frac{|A|}{|I|} = \frac{|A|}{N}.
+\]
+This is internally countably additive (in the internal sense) and behaves like the uniform distribution on a finite set.
+
+\subsubsection{Loeb's theorem (construction of a standard probability space)}
+\begin{theorem}[Loeb measure]
+From an internal probability space $(I,\mathcal I_0,\lambda_0)$ one can construct a \emph{standard} probability space $(I,\mathcal I,\lambda)$, called its \emph{Loeb space}, such that:
+\begin{itemize}
+  \item $\mathcal I$ is a $\sigma$-algebra on the underlying set $I$ containing $\mathcal I_0$;
+  \item $\lambda$ is a countably additive probability measure on $\mathcal I$; and
+  \item for every $A\in\mathcal I_0$, one has $\lambda(A)=\operatorname{st}(\lambda_0(A))$.
+\end{itemize}
+\end{theorem}
+
+\begin{remark}[Atomlessness]
+If $N$ is unlimited, then the Loeb counting measure $\lambda$ is atomless: singleton sets have Loeb measure $0$. Thus Loeb counting spaces provide canonical atomless probability spaces of agents.
+\end{remark}
+
+\subsection{Loeb products and the Fubini property (Keisler's theorem)}
+\label{subsec:keisler-fubini}
+
+Let $(I,\mathcal I_0,\lambda_0)$ and $(\Omega,\mathcal F_0,P_0)$ be internal probability spaces with hyperfinite underlying sets. Their internal product space is $(I\times\Omega,\mathcal I_0\otimes\mathcal F_0,\lambda_0\otimes P_0)$. Let $(I,\mathcal I,\lambda)$ and $(\Omega,\mathcal F,P)$ be the corresponding Loeb spaces.
+
+\begin{theorem}[Keisler's Fubini theorem for Loeb products, informal]
+The Loeb measure of the internal product measure, denoted $\lambda\boxtimes P$, makes
+\[
+(I\times\Omega,\ \mathcal I\boxtimes\mathcal F,\ \lambda\boxtimes P)
+\]
+into a \emph{Fubini extension} of the usual product $(I\times\Omega,\mathcal I\otimes\mathcal F,\lambda\otimes P)$. In particular, for every $\lambda\boxtimes P$-integrable function $g$ that is $\mathcal I\boxtimes\mathcal F$-measurable, iterated integrals exist and satisfy the Fubini equalities.
+\end{theorem}
+
+\begin{remark}[What is extended?]
+The key point is that $\mathcal I\boxtimes\mathcal F$ typically strictly contains $\mathcal I\otimes\mathcal F$. This is \emph{exactly} what allows us to accommodate independent processes and random matchings that cannot live on the usual product $\sigma$-algebra.
+\end{remark}
+
+\subsection{Instantaneous (static) random matching on a continuum: hyperfinite construction}
+\label{subsec:instantaneous-matching}
+
+We now construct an \emph{instantaneous} random full matching with strong measure-preserving properties and the independence-in-types feature used in applications. This follows the Loeb-space proof scheme used in Duffie--Sun (2007, Section 4.1) for Theorem 2.4.
+
+\subsubsection{Step 1: hyperfinite agents}
+Fix an unlimited even hyperinteger $N\in{}^\ast\mathbb N$ and let $I\coloneqq\{1,2,\dots,N\}$ with internal counting measure $\lambda_0$. Let $(I,\mathcal I,\lambda)$ be the Loeb space (atomless).
+
+\subsubsection{Step 2: hyperfinite sample space of perfect matchings}
+Let $\Omega$ be the internal set of all \emph{perfect matchings} of $I$, meaning fixed-point-free involutions $\omega:I\to I$ satisfying $\omega(\omega(i))=i$ and $\omega(i)\neq i$ for all $i$. (Equivalently, partitions of $I$ into $N/2$ disjoint unordered pairs.)
+Endow $\Omega$ with internal counting probability $P_0$ (uniform over matchings), and let $(\Omega,\mathcal F,P)$ be its Loeb space.
+
+\subsubsection{Step 3: the matching map and measurability}
+Define $\varphi:I\times\Omega\to I$ by $\varphi(i,\omega)\coloneqq \omega(i)$. This map is internal, hence Loeb measurable with respect to the Loeb product $\sigma$-algebra $\mathcal I\boxtimes\mathcal F$.
+Moreover, for each fixed $\omega$, the section $\varphi_\omega(\cdot)=\omega(\cdot)$ is a bijection of $I$ preserving $\lambda$.
+
+\subsubsection{Step 4: measure-preservation and ``no mass on individuals''}
+Because $\lambda$ is atomless, for fixed $i\in I$ and fixed $j\in I$, one has $P(\varphi(i,\cdot)=j)=0$. Intuitively, in the hyperfinite model,
+\[
+P_0(\varphi(i,\cdot)=j)=\frac{1}{N-1}\quad (j\neq i),
+\]
+and taking standard parts yields $0$.
+This formalizes the economic intuition that in a continuum population, the probability of matching with any \emph{particular} counterparty is zero.
+
+\subsubsection{Step 5: independence in types (how it emerges)}
+Let $S=\{1,\dots,K\}$ be a finite type set, and let $a:I\to S$ be any (Loeb) measurable type function with type distribution $\rho\in\Delta(S)$ given by $\rho(k)=\lambda(\{i:a(i)=k\})$.
+Define the induced \emph{partner-type} process $g:I\times\Omega\to S$ by
+\[
+g(i,\omega)\coloneqq a(\varphi(i,\omega)).
+\]
+The crucial property established in Duffie--Sun (2007, Theorem 2.4) is that $g$ can be constructed so as to be \emph{essentially pairwise independent}: for $\lambda$-a.e.\ $i$, the random variables $g_i$ and $g_j$ are independent for $\lambda$-a.e.\ $j$. This is the exact independence notion that is compatible with continuum indexing and sufficient for exact law of large numbers arguments.
+
+\subsection{From Loeb products to Fubini extensions suitable for independent processes}
+\label{subsec:from-loeb-to-fubini}
+The Loeb product construction above yields a probability space $(I\times\Omega,\mathcal I\boxtimes\mathcal F,\lambda\boxtimes P)$ that:
+\begin{itemize}
+  \item extends the usual product $(I\times\Omega,\mathcal I\otimes\mathcal F,\lambda\otimes P)$;
+  \item satisfies the Fubini property by Keisler's theorem; and
+  \item supports a jointly measurable matching map $\varphi$.
+\end{itemize}
+This is precisely a \emph{Fubini extension} in the sense of Definition~\ref{subsec:fubini-extension-def}.
+
+\subsection{Richness: hosting essentially i.i.d.\ families (Sun 2006)}
+\label{subsec:richness}
+For applications beyond matching (e.g.\ idiosyncratic shocks, heterogeneous Markov chains), we need the product space to be \emph{rich} enough to support measurable processes with essentially pairwise independent coordinates and prescribed marginals.
+
+\begin{definition}[Rich product probability space (informal)]
+A Fubini extension $(I\times\Omega,\mathcal I\boxtimes\mathcal F,\lambda\boxtimes P)$ is called \emph{rich} if it supports an $\mathcal I\boxtimes\mathcal F$-measurable process $U:I\times\Omega\to[0,1]$ such that $(U_i)_{i\in I}$ is essentially pairwise independent and each $U_i$ is uniformly distributed on $[0,1]$.
+\end{definition}
+
+\begin{remark}[Why ``uniform'' is enough]
+Given such a uniform family, one can generate essentially pairwise independent families with \emph{any prescribed distributions} by measurable transforms (inverse CDF method), provided the target distributions are Borel on a Polish space. This is the practical meaning of ``rich enough.''
+\end{remark}
+
+\subsection{Putting it together for instantaneous matching}
+The Loeb-space construction gives a concrete recipe for building the probability space used for instantaneous matching:
+\begin{enumerate}
+  \item Choose an unlimited hyperfinite even $N$ and set $I=\{1,\dots,N\}$; take its Loeb space $(I,\mathcal I,\lambda)$ as the agent space.
+  \item Let $\Omega$ be the hyperfinite set of perfect matchings of $I$, with uniform internal counting measure, and take its Loeb space $(\Omega,\mathcal F,P)$ as the sample space.
+  \item Form the Loeb product space $(I\times\Omega,\mathcal I\boxtimes\mathcal F,\lambda\boxtimes P)$, which is a Fubini extension.
+  \item Define the matching map $\varphi(i,\omega)=\omega(i)$ (jointly measurable on the extension) and, for any type function $a$, define partner-type process $g(i,\omega)=a(\varphi(i,\omega))$.
+  \item Use the essential pairwise independence properties of $g$ (Duffie--Sun, 2007) and the exact law of large numbers on a Fubini extension (Sun, 2006) to deduce deterministic aggregation results (e.g.\ deterministic cross-sectional partner-type frequencies).
+\end{enumerate}
+
+\subsection{Bibliographic notes (minimal)}
+The definition and systematic use of Fubini extensions and exact law of large numbers are developed in:
+\begin{quote}
+Y.\ Sun, \emph{The exact law of large numbers via Fubini extension and characterization of insurable risks}, Journal of Economic Theory 126 (2006), 31--69.
+\end{quote}
+The Loeb-space (nonstandard) existence construction of independent random matching in a continuum population is developed in:
+\begin{quote}
+D.\ Duffie and Y.\ Sun, \emph{Existence of independent random matching}, Annals of Applied Probability 17 (2007), 386--419.
+\end{quote}
+
+\end{document}
+
+
