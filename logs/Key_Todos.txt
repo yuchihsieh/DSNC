@@ -1,0 +1,4 @@
+To Kelvin
+
+* Understand Fubini extension and brief.
+* Brief why PA is exact.
