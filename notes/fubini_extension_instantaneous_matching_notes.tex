@@ -5,7 +5,7 @@
 \usepackage{mathtools}
 \usepackage[hidelinks]{hyperref}
 \usepackage{geometry}
-\geometry{margin=1in}
+\geometry{margin=1.7in}
 
 % Theorem environments
 \theoremstyle{definition}
@@ -90,6 +90,24 @@ If we insist on $\mathcal W=\overline{\mathcal I\otimes\mathcal F}$ (the complet
 We give a concrete ``toolkit'' sufficient for Loeb measures and hyperfinite constructions.
 
 \subsubsection{Ultrafilters and ultrapowers (one standard construction)}
+\begin{definition}[Filter on a set]
+Let $S$ be a nonempty set. A \emph{filter} $\mathcal F$ on $S$ is a nonempty collection of subsets of $S$ such that:
+\begin{enumerate}
+  \item $\emptyset\notin\mathcal F$;
+  \item if $A\in\mathcal F$ and $A\subseteq B\subseteq S$, then $B\in\mathcal F$ (upward closed);
+  \item if $A,B\in\mathcal F$, then $A\cap B\in\mathcal F$ (closed under finite intersections).
+\end{enumerate}
+\end{definition}
+
+\begin{remark}[Existence of free ultrafilters (via Zorn/AC)]
+There is no explicit ``formula'' example of a free ultrafilter on $\mathbb N$.
+Its existence is usually proved using the \emph{Ultrafilter Lemma} (every proper filter extends to an ultrafilter), which follows from Zorn's lemma and hence from the Axiom of Choice.
+Concretely, start from the \emph{Fr\'echet filter} of cofinite sets
+$\mathcal F_{\mathrm{cof}}=\{A\subseteq\mathbb N:\mathbb N\setminus A\text{ is finite}\}$,
+extend it to an ultrafilter $\mathcal U\supseteq\mathcal F_{\mathrm{cof}}$, and then $\mathcal U$ must be \emph{free} (non-principal) because it contains no finite sets.
+For the purposes of this note, the key point is simply: we may \emph{fix} one free ultrafilter $\mathcal U$ and treat its elements as ``$\mathcal U$-large'' subsets of $\mathbb N$.
+\end{remark}
+
 Let $\mathbb N$ be the natural numbers. A (free) \emph{ultrafilter} $\mathcal U$ on $\mathbb N$ is a collection of subsets of $\mathbb N$ satisfying:
 \begin{enumerate}
   \item $\emptyset\notin\mathcal U$, and if $A\in\mathcal U$ and $A\subseteq B$, then $B\in\mathcal U$;
@@ -97,21 +115,90 @@ Let $\mathbb N$ be the natural numbers. A (free) \emph{ultrafilter} $\mathcal U$
   \item for every $A\subseteq\mathbb N$, exactly one of $A$ and $\mathbb N\setminus A$ lies in $\mathcal U$;
   \item $\mathcal U$ is \emph{free}: no finite subset of $\mathbb N$ is in $\mathcal U$.
 \end{enumerate}
-Fix such a $\mathcal U$. The \emph{ultrapower} ${}^\ast\mathbb R$ is defined as the quotient $\mathbb R^{\mathbb N}/\sim$, where $(x_n)\sim(y_n)$ iff $\{n:x_n=y_n\}\in\mathcal U$. We write ${}^\ast x$ for the class of the constant sequence $(x,x,\dots)$, identifying $\mathbb R$ with a subfield of ${}^\ast\mathbb R$.
+Fix such a (free) ultrafilter $\mathcal U$. Intuitively, members of $\mathcal U$ are the subsets of $\mathbb N$ that we declare to be \emph{$\mathcal U$-large} (a strengthened notion of ``for almost all $n$'').
+
+The \emph{ultrapower} ${}^\ast\mathbb R$ is defined as the quotient $\mathbb R^{\mathbb N}/\sim$, where for two real sequences $(x_n)$ and $(y_n)$ we declare
+\[
+(x_n)\sim(y_n)\quad\Longleftrightarrow\quad \{n\in\mathbb N: x_n=y_n\}\in\mathcal U.
+\]
+Note that this definition uses \emph{one specific subset} of $\mathbb N$, namely the equality set $\{n:x_n=y_n\}$; it does \emph{not} require any condition to hold for all sets in $\mathcal U$.
+
+We write ${}^\ast x$ for the equivalence class of the constant sequence $(x,x,\dots)$. This gives an embedding $\mathbb R\hookrightarrow {}^\ast\mathbb R$.
+Moreover, we can add and multiply equivalence classes by doing so coordinatewise on representative sequences, making ${}^\ast\mathbb R$ into a field containing $\mathbb R$ as a subfield (hence the phrase ``identifying $\mathbb R$ with a subfield of ${}^\ast\mathbb R$'').
 
 \subsubsection{Infinitesimals and unlimited hyperintegers}
 A hyperreal $\varepsilon\in{}^\ast\mathbb R$ is \emph{infinitesimal} if $|\varepsilon|<1/n$ for all $n\in\mathbb N$. A hyperinteger $N\in{}^\ast\mathbb N$ is \emph{unlimited} if $N>n$ for all $n\in\mathbb N$. Existence of unlimited hyperintegers follows from the freeness of $\mathcal U$.
 
 \subsubsection{Standard part}
-Every finite hyperreal $x\in{}^\ast\mathbb R$ (i.e.\ $|x|<n$ for some $n\in\mathbb N$) is infinitely close to a unique real number, called its \emph{standard part} and denoted $\operatorname{st}(x)\in\mathbb R$.
+Every finite hyperreal $x\in{}^\ast\mathbb R$ (i.e.\ $|x|<n$ for some $n\in\mathbb N$) is infinitely close to (i.e., their difference is infinitesimal) a unique real number, called its \emph{standard part} and denoted $\operatorname{st}(x)\in\mathbb R$.
+See Appendix~\ref{app:standard-part} for a complete existence-and-uniqueness proof (using the completeness of $\mathbb R$).
 
 \subsubsection{Internal sets and hyperfinite sets}
-In the ultrapower approach, an \emph{internal set} is (informally) a set that is represented by a sequence of standard sets modulo $\mathcal U$.
-Of special importance are \emph{hyperfinite} sets: internal sets that behave like finite sets internally. For example, for an unlimited hyperinteger $N\in{}^\ast\mathbb N$, the set
+The ultrapower construction applies not only to numbers but also to sets.
+We record a concrete ``sequence-mod-$\mathcal U$'' description that will be used later for Loeb measures and random matching.
+
+\medskip
+\noindent\textbf{Internal sets via sequences.}
+Fix a base set $S$ (e.g.\ $S=\mathbb N$ or $S=\mathbb R$).
+Consider sequences of subsets $(A_n)_{n\in\mathbb N}$ with $A_n\subseteq S$.
+Define an equivalence relation on such sequences by
 \[
-I\coloneqq\{1,2,\dots,N\}\subset{}^\ast\mathbb N
+(A_n)\approx (B_n)
+\quad\Longleftrightarrow\quad
+\{n\in\mathbb N:\ A_n=B_n\}\in\mathcal U.
 \]
-is hyperfinite: internally it has $N$ elements, although (externally) it has the cardinality of the continuum.
+An \emph{internal subset} of ${}^\ast S$ is, informally, an equivalence class $[(A_n)]$ of such a sequence.
+This is the set-analogue of defining hyperreals as equivalence classes of real sequences.
+
+\medskip
+\noindent\textbf{Membership is also ``$\mathcal U$-almost sure''.}
+Elements of ${}^\ast S$ are themselves equivalence classes of sequences $(s_n)$ with $s_n\in S$.
+If $x=[(s_n)]\in{}^\ast S$ and $A=[(A_n)]$ is an internal subset of ${}^\ast S$, then the intended meaning of
+\[
+x\in A
+\]
+is:
+\[
+\{n\in\mathbb N:\ s_n\in A_n\}\in\mathcal U.
+\]
+Thus internal sets are precisely those for which membership can be checked coordinatewise on representatives, ``for $\mathcal U$-almost all $n$''.
+
+\medskip
+\noindent\textbf{Hyperfinite sets.}
+The special internal sets that behave like finite sets are called \emph{hyperfinite}.
+
+\begin{definition}[Hyperfinite set]
+A set $H$ is \emph{hyperfinite} if:
+\begin{enumerate}
+  \item $H$ is \emph{internal}, and
+  \item there exists some $N\in{}^\ast\mathbb N$ and an \emph{internal bijection}
+  \[
+  f:\{1,2,\dots,N\}\longrightarrow H.
+  \]
+\end{enumerate}
+Equivalently, $H$ is internal and has an \emph{internal cardinality} $|H|\in{}^\ast\mathbb N$.
+\end{definition}
+
+\medskip
+\noindent\textbf{The canonical hyperfinite initial segment \(I=\{1,\dots,N\}\).}
+Let $N=[(N_n)]\in{}^\ast\mathbb N$ be a (possibly unlimited) hyperinteger.
+Define a sequence of standard finite sets
+\[
+I_n:=\{1,2,\dots,N_n\}\subseteq\mathbb N.
+\]
+Then the internal set
+\[
+I:=\{1,2,\dots,N\}\subset{}^\ast\mathbb N
+\]
+can be represented concretely as the equivalence class $I=[(I_n)]$.
+Membership becomes: for $k=[(k_n)]\in{}^\ast\mathbb N$,
+\[
+k\in I
+\quad\Longleftrightarrow\quad
+\{n:\ 1\le k_n\le N_n\}\in\mathcal U.
+\]
+Internally, $I$ is finite-like: by transfer, $|\{1,\dots,N\}|=N$ in the internal sense, so $I$ is hyperfinite with internal cardinality $N$.
+If $N$ is unlimited, then externally (in ordinary set theory) $I$ is not a finite set, but it retains enough finite combinatorics to support uniform counting, random matchings, etc., which will later be converted to standard measure-theoretic objects via Loeb measure.
 
 \subsubsection{Transfer principle (informal statement)}
 The \emph{transfer principle} says that any first-order statement true of the standard structure (e.g.\ $\mathbb R$, $\mathbb N$) is also true for its nonstandard extension (e.g.\ ${}^\ast\mathbb R$, ${}^\ast\mathbb N$) when all objects are replaced by their star-images. In practice, this lets one use finite combinatorial/probabilistic reasoning on hyperfinite sets as if they were genuinely finite.
@@ -230,6 +317,60 @@ The Loeb-space (nonstandard) existence construction of independent random matchi
 \begin{quote}
 D.\ Duffie and Y.\ Sun, \emph{Existence of independent random matching}, Annals of Applied Probability 17 (2007), 386--419.
 \end{quote}
+
+\appendix
+
+\section{Existence and uniqueness of the standard part}
+\label{app:standard-part}
+
+In the main text we used the fact that every \emph{finite} hyperreal is infinitely close to a unique real number.
+For completeness, we record a standard proof based on the least-upper-bound property of $\mathbb R$.
+
+\begin{theorem}[Standard part of a finite hyperreal]
+Let $x\in{}^\ast\mathbb R$ be finite, i.e.\ $|x|<n$ for some $n\in\mathbb N$.
+Then there exists a unique $r\in\mathbb R$ such that $x-{}^\ast r$ is infinitesimal.
+We denote this real number by $\operatorname{st}(x)=r$.
+\end{theorem}
+
+\begin{proof}
+Define
+\[
+A:=\{q\in\mathbb Q:\ {}^\ast q < x\}.
+\]
+We first check that $A$ is nonempty and bounded above in $\mathbb R$.
+Since $|x|<n$ for some $n\in\mathbb N$, we have ${}^\ast(-n)<x$, hence $-n\in A$, so $A\neq\emptyset$.
+Also ${}^\ast q < x$ implies $q<n$, so $A\subset (-\infty,n)$, hence $A$ is bounded above.
+By completeness of $\mathbb R$, the supremum
+\[
+r:=\sup A \in \mathbb R
+\]
+exists.
+
+\medskip
+\noindent\emph{Claim: $x\approx {}^\ast r$, i.e.\ $|x-{}^\ast r|<1/m$ for every $m\in\mathbb N$.}
+Fix $m\in\mathbb N$.
+
+\smallskip
+\noindent\emph{(i) Show $x<{}^\ast(r+1/m)$.}
+If instead $x\ge {}^\ast(r+1/m)$, choose a rational $q$ with $r<q<r+1/m$ (density of $\mathbb Q$).
+Then ${}^\ast q \le x$, so $q\in A$, contradicting $q>r=\sup A$.
+Hence $x<{}^\ast(r+1/m)$, equivalently $x-{}^\ast r<1/m$.
+
+\smallskip
+\noindent\emph{(ii) Show $x>{}^\ast(r-1/m)$.}
+If instead $x\le {}^\ast(r-1/m)$, then for every rational $q<r-1/m$ we have ${}^\ast q < x$, so $q\in A$.
+This would force $\sup A \le r-1/m$, contradicting $\sup A=r$.
+Hence $x>{}^\ast(r-1/m)$, equivalently ${}^\ast r-x<1/m$.
+
+\smallskip
+Combining (i) and (ii) gives $|x-{}^\ast r|<1/m$.
+Since $m$ was arbitrary, $x-{}^\ast r$ is infinitesimal, proving existence.
+
+\medskip
+\noindent\emph{Uniqueness.}
+If $x\approx {}^\ast r$ and $x\approx {}^\ast s$ for $r,s\in\mathbb R$, then ${}^\ast(r-s)=({}^\ast r- x)+(x-{}^\ast s)$ is infinitesimal.
+But $r-s$ is a real number, and the only real infinitesimal is $0$, so $r=s$.
+\end{proof}
 
 \end{document}
 
