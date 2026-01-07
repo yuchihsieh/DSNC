@@ -9,15 +9,16 @@
       "command": "latexmk",
       "args": [
         "-pdf",
+        "-synctex=1",
         "-interaction=nonstopmode",
         "-halt-on-error",
-        "-outdir=build",
+        "-outdir=%OUTDIR%",
         "%DOC%"
       ]
     }
   ],
   "latex-workshop.view.pdf.viewer": "tab",
-  "latex-workshop.view.pdf.color.dark.backgroundColor": "#D4D4D4",
+  "latex-workshop.view.pdf.color.dark.backgroundColor": "#111111",
   "latex-workshop.view.pdf.color.dark.pageColorsBackground": "#1E1E1E",
   "latex-workshop.view.pdf.color.dark.pageColorsForeground": "#D4D4D4",
   "latex-workshop.view.pdf.color.dark.pageBorderColor": "#333333"
