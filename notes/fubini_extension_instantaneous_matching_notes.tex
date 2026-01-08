@@ -4,6 +4,7 @@
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{mathtools}
 \usepackage[hidelinks]{hyperref}
+\usepackage{cleveref}
 \usepackage{geometry}
 \geometry{margin=1.7in}
 
@@ -37,11 +38,11 @@ This note is distilled primarily from:
 \noindent
 To make it easy to find the original statements, we record the main correspondences:
 \begin{itemize}
-  \item \textbf{Fubini extension definition}: this note's Definition~\ref{subsec:fubini-extension-def} is \textbf{Sun (2006), Definition 2.2} (and also \textbf{Duffie--Sun (2007), Definition 2.1}).
-  \item \textbf{Incompatibility (usual product measurability + independence)}: mentioned in \S\ref{sec:fubini-extension-instantaneous-matching}\,\S\ref{subsec:fubini-extension-def} is \textbf{Sun (2006), Proposition 2.1}.
-  \item \textbf{Rich product probability space}: this note's informal ``richness'' definition in \S\ref{subsec:richness} corresponds to \textbf{Sun (2006), Definition 5.1}.
-  \item \textbf{Universality via uniform r.v.'s}: the ``uniform is enough'' remark in \S\ref{subsec:richness} is backed by \textbf{Sun (2006), Proposition 5.3}.
-  \item \textbf{Random full matching \& independence-in-types}: the matching construction in \S\ref{subsec:instantaneous-matching} is modeled on \textbf{Duffie--Sun (2007), Definition 2.3} and \textbf{Theorem 2.4}.
+  \item \textbf{Fubini extension definition}: this note's \cref{subsec:fubini-extension-def} is \textbf{Sun (2006), Definition 2.2} (and also \textbf{Duffie--Sun (2007), Definition 2.1}).
+  \item \textbf{Incompatibility (usual product measurability + independence)}: mentioned in \S\cref{sec:fubini-extension-instantaneous-matching}\,\S\cref{subsec:fubini-extension-def} is \textbf{Sun (2006), Proposition 2.1}.
+  \item \textbf{Rich product probability space}: this note's informal ``richness'' definition in \S\cref{subsec:richness} corresponds to \textbf{Sun (2006), Definition 5.1}.
+  \item \textbf{Universality via uniform r.v.'s}: the ``uniform is enough'' remark in \S\cref{subsec:richness} is backed by \textbf{Sun (2006), Proposition 5.3}.
+  \item \textbf{Random full matching \& independence-in-types}: the matching construction in \S\cref{subsec:instantaneous-matching} is modeled on \textbf{Duffie--Sun (2007), Definition 2.3} and \textbf{Theorem 2.4}.
 \end{itemize}
 
 \subsection{Aim and scope}
@@ -131,7 +132,7 @@ A hyperreal $\varepsilon\in{}^\ast\mathbb R$ is \emph{infinitesimal} if $|\varep
 
 \subsubsection{Standard part}
 Every finite hyperreal $x\in{}^\ast\mathbb R$ (i.e.\ $|x|<n$ for some $n\in\mathbb N$) is infinitely close to (i.e., their difference is infinitesimal) a unique real number, called its \emph{standard part} and denoted $\operatorname{st}(x)\in\mathbb R$.
-See Appendix~\ref{app:standard-part} for a complete existence-and-uniqueness proof (using the completeness of $\mathbb R$).
+See \cref{app:standard-part} for a complete existence-and-uniqueness proof (using the completeness of $\mathbb R$).
 
 \subsubsection{Internal sets and hyperfinite sets}
 The ultrapower construction applies not only to numbers but also to sets.
@@ -253,7 +254,7 @@ We now construct an \emph{instantaneous} random full matching with strong measur
 Fix an unlimited even hyperinteger $N\in{}^\ast\mathbb N$ and let $I\coloneqq\{1,2,\dots,N\}$ with internal counting measure $\lambda_0$. Let $(I,\mathcal I,\lambda)$ be the Loeb space (atomless).
 
 \subsubsection{Step 2: hyperfinite sample space of perfect matchings}
-Let $\Omega$ be the internal set of all \emph{perfect matchings} of $I$, meaning fixed-point-free involutions $\omega:I\to I$ satisfying $\omega(\omega(i))=i$ and $\omega(i)\neq i$ for all $i$. (Equivalently, partitions of $I$ into $N/2$ disjoint unordered pairs.)
+Let $\Omega$ be the internal set of all \emph{perfect matchings} of $I$\footnote{One way to see that this collection is internal is via the sequence/ultrapower representation: if $I=[(I_n)]$ with finite $I_n$, let $\Omega_n$ be the (finite) set of perfect matchings of $I_n$ and define $\Omega=[(\Omega_n)]$. Equivalently, since $I$ is internal, the set $I^I$ of internal maps $I\to I$ is internal and the condition ``$\omega$ is a fixed-point-free involution'' is an internal (first-order) property, so the set of such $\omega$ is an internal subset of $I^I$.}, meaning fixed-point-free involutions $\omega:I\to I$ satisfying $\omega(\omega(i))=i$ and $\omega(i)\neq i$ for all $i$. (Equivalently, partitions of $I$ into $N/2$ disjoint unordered pairs.)
 Endow $\Omega$ with internal counting probability $P_0$ (uniform over matchings), and let $(\Omega,\mathcal F,P)$ be its Loeb space.
 
 \subsubsection{Step 3: the matching map and measurability}
@@ -274,7 +275,17 @@ Define the induced \emph{partner-type} process $g:I\times\Omega\to S$ by
 \[
 g(i,\omega)\coloneqq a(\varphi(i,\omega)).
 \]
-In the terminology of \textbf{Duffie--Sun (2007)}, $g$ is the ``type process'' induced by a random full matching (cf.\ \textbf{Definition 2.3}) and ``independent in types'' means that $g$ is essentially pairwise independent (cf.\ \textbf{Definition 2.2} and \textbf{Definition 2.3(4)}). The crucial existence result is \textbf{Duffie--Sun (2007), Theorem 2.4}, which provides a random full matching that is independent in types (indeed, ``universal'' across finite type functions).
+In the terminology of \textbf{Duffie--Sun (2007)}, $g$ is the ``type process'' induced by a random full matching (cf.\ \textbf{Definition 2.3}), and ``independent in types'' means that the family $(g_i)_{i\in I}$ is \emph{essentially pairwise independent} (cf.\ \textbf{Definition 2.2} and \textbf{Definition 2.3(4)}). 
+
+The main existence result, \textbf{Duffie--Sun (2007), Theorem 2.4}, constructs (on a suitable Loeb/Fubini product space) a random full matching $\varphi$ such that for \emph{any} given finite type assignment $a:I\to S$, the induced partner-type process $g=a\circ\varphi$ is independent in types. At a high level, the proof uses finite matching combinatorics to show that dependence across distinct agents' partner-type events is of order $1/N$ in an $N$-agent uniform matching model; passing to a hyperfinite $N$ makes these errors infinitesimal; and the Loeb/standard-part step then yields the exact ``almost-everywhere'' (essential) pairwise independence statement in the continuum limit.
+
+To situate this precisely, the construction is carried out on the \emph{Loeb product (joint) space}
+\[
+(I\times\Omega,\ \mathcal I\boxtimes\mathcal F,\ \lambda\boxtimes P),
+\]
+obtained by Loeb-izing the internal product $(I\times\Omega,\mathcal I_0\otimes\mathcal F_0,\lambda_0\otimes P_0)$; here $I$ is a hyperfinite agent set, $\Omega$ is the hyperfinite set of perfect matchings of $I$, and $\varphi(i,\omega)=\omega(i)$ and $g(i,\omega)=a(\varphi(i,\omega))$ are internal maps (hence $\mathcal I\boxtimes\mathcal F$-measurable after Loeb-ization). Keisler's Fubini theorem implies that $(I\times\Omega,\mathcal I\boxtimes\mathcal F,\lambda\boxtimes P)$ is a \emph{Fubini extension} of the usual product $(I\times\Omega,\mathcal I\otimes\mathcal F,\lambda\otimes P)$, so iterated integrals over agents and randomness can be interchanged for $\lambda\boxtimes P$-integrable functions.
+
+The remaining substantive point in \textbf{Duffie--Sun (2007), Theorem 2.4} is the \emph{independence-in-types} property for $g$. The proof proceeds by (i) analyzing a genuinely finite $N$-agent uniform random perfect matching and obtaining explicit bounds showing that cross-agent dependence of partner-type events is of order $1/N$; (ii) transferring these bounds to a hyperfinite $N$, making the dependence \emph{infinitesimal}; and (iii) passing to the Loeb product measure on $I\times I$ (equivalently, using $\lambda\times\lambda$-almost-every pair $(i,j)$) to conclude that the limiting statement holds \emph{exactly} in the essential sense: for $\lambda$-a.e.\ $i$, the random variables $g_i$ and $g_j$ are independent for $\lambda$-a.e.\ $j$.
 
 \subsection{From Loeb products to Fubini extensions suitable for independent processes}
 \label{subsec:from-loeb-to-fubini}
@@ -284,7 +295,7 @@ The Loeb product construction above yields a probability space $(I\times\Omega,\
   \item satisfies the Fubini property by Keisler's theorem; and
   \item supports a jointly measurable matching map $\varphi$.
 \end{itemize}
-This is precisely a \emph{Fubini extension} in the sense of Definition~\ref{subsec:fubini-extension-def}.
+This is precisely a \emph{Fubini extension} in the sense of \cref{subsec:fubini-extension-def}.
 
 \subsection{Richness: hosting essentially i.i.d.\ families (Sun 2006)}
 \label{subsec:richness}
