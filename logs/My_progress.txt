@@ -1,2 +1,8 @@
 26.01.02
 Fubini extension: Sun 2006 and DS 2007
+
+26.01.07
+* discussed with GPT about internal sets --- why they are important to nonstandard analysis
+* 1st round understanding DS 2007 --- Fubini extension (By Keisler's thm) and then show essential pairwise independence: finite combinatorics -> hyperfinite O(1/N) -> infinitisimals -> independence
+* Goal tmr: DLS 2025, continuous time matching!
+
