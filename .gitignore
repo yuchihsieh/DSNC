@@ -366,3 +366,20 @@ __pycache__/
 .ipynb_checkpoints/
 
 tex/build/
+
+
+
+# build outputs
+notes/build/
+tex/build/
+build/
+**/*.synctex.gz
+**/*.aux
+**/*.log
+**/*.out
+**/*.bbl
+**/*.blg
+
+# local python packages / env
+.python_packages/
+.venv/
