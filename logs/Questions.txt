@@ -1,0 +1,18 @@
+* CTMC and Kolmogorov forward equation
+- Individual level: If each agent's type process $\alpha_i(t)$ is a CTMC (with some generator), then its law satisfies the Kolmogorov forward equation. This part is purely single-agent CTMC theory.
+- Coupling to the population: In DLQ, the agent's generator at time $t$ is $R\left(p_t\right)$, where $p_t$ is the cross-sectional type distribution at time $t$.
+- Two real mathematical problems:
+1) Existence of a continuum of independent CTMCs with the right joint measurability (and matching) on a joint space $I \times \Omega$.
+
+→ This is where the Fubini extension / Loeb-space construction matters (otherwise independence + joint measurability collapses).
+2) Deterministic aggregation: show that the random cross-sectional distribution $p_t(\omega)$ is actually equal a.s. to its expectation $\bar{p}_t$.
+
+→ This is where the exact law of large numbers for a continuum of stochastic processes (Sun 2006's result) is used. It's the "continuous-time version" in the sense that it applies to processes indexed by time, not just single random variables.
+- Conclusion: With $(1)+(2)$, you get the closed deterministic ODE:
+
+$$
+\frac{d}{d t} \bar{p}_t=\bar{p}_t R\left(\bar{p}_t\right),
+$$
+
+and $p_t(\omega)=\bar{p}_t$ for almost every $\omega$.
+Nuance: it's not a separate "continuous-time ELLN theorem" that's fundamentally different; rather it's an ELLN for a continuum of stochastic processes (timeindexed objects), which is why it delivers a statement for all $t$ (typically via finitedimensional distributions / regularity).

@@ -1,0 +1,190 @@
+\documentclass[11pt]{article}
+
+% Standalone learning note (NOT part of the main paper).
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage[hidelinks]{hyperref}
+\usepackage{cleveref}
+\usepackage{geometry}
+\geometry{margin=1.7in}
+
+% Theorem environments
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{remark}{Remark}[section]
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+
+\title{Notes: Continuous-time random matching (Duffie--Qiao--Sun 2025)}
+\author{Yu-Chi Hsieh}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\newpage
+\section{Purpose and a quick map to the paper}
+\label{sec:dlq-purpose}
+
+These notes summarize the setup and construction strategy of:
+\begin{quote}
+D.\ Duffie, L.\ Qiao, and Y.\ Sun (2025), \emph{Continuous time random matching}, The Annals of Applied Probability 35(3), 1755--1790.
+\end{quote}
+The goal is to understand (i) the continuous-time model objects, (ii) the deterministic ODE law for cross-sectional type distributions, and (iii) the probability-space/Fubini-extension construction used to make the model rigorous.
+
+\medskip
+\noindent\textbf{Where to look in DLQ (2025).} In the extracted text `paper\_text/aap\_2025\_dqs\_extracted.txt`:
+\begin{itemize}
+  \item Model primitives and objects $(p_0,\eta,\theta,\varsigma)$, definition of $R(p)$, and ODE: around ``Model and results'' and equation (2).
+  \item Formal model definition (random type process $\alpha$ and matching process $\varphi$, measurability, RCLL, etc.): \textbf{Definition 1}.
+  \item Main existence/properties theorem: \textbf{Theorem 1}.
+  \item Nonstandard machinery overview: \textbf{Section 4}.
+  \item The ``generalized Keisler'' ingredient (Loeb transition probabilities and generalized Fubini): \textbf{Section 4.4 and Section 5}, with explicit reference to Duffie--Sun (2007) for the generalized Fubini theorem for Loeb transition probabilities.
+\end{itemize}
+
+\section{Minimal background: CTMCs, generators, and intensities (as used in DLQ)}
+\label{sec:ctmc-background}
+
+DLQ's model is built so that each agent's type evolves as a \emph{continuous-time Markov chain} (CTMC) on a finite state space $S=\{1,\dots,K\}$. We record the minimal definitions used in their statements.
+
+\begin{definition}[Generator / intensity matrix on a finite state space]
+Let $S=\{1,\dots,K\}$. A \emph{generator} (or \emph{intensity matrix}) is a matrix $R=(R_{kr})_{k,r\in S}$ such that
+\begin{itemize}
+  \item $R_{kr}\ge 0$ for $k\neq r$,
+  \item $R_{kk}=-\sum_{r\neq k}R_{kr}$ (row sums equal $0$).
+\end{itemize}
+For a CTMC $X(t)$ on $S$ with generator $R$, the instantaneous transition rate from state $k$ to $r\neq k$ at time $t$ is $R_{kr}$.
+\end{definition}
+
+\begin{remark}[Kolmogorov forward equation]
+If $\pi(t)$ is the row vector of state probabilities $\pi_k(t)=\mathbb P(X(t)=k)$, then $\pi(t)$ solves the ODE
+\[
+\frac{d}{dt}\pi(t)=\pi(t)R.
+\]
+DLQ uses a version of this equation with a \emph{state-dependent} generator $R(p_t)$ that depends on the cross-sectional distribution $p_t$.
+\end{remark}
+
+\begin{remark}[Counting processes and martingale characterization (informal)]
+DLQ encodes ``$k\to r$ transitions occur at intensity $R_{kr}(p_t)$'' via counting processes $C_{ikr}(t)$ and compensated processes
+\[
+M_{ikr}(t)=C_{ikr}(t)-\int_0^t \mathbf 1\{\alpha(i,s)=k\}R_{kr}(p_s)\,ds,
+\]
+which are (local) martingales. You do not need deep martingale theory for the big picture; this is mainly a standard way to define/verify intensities.
+\end{remark}
+
+\section{DLQ (2025) model: primitives, processes, and the ODE}
+\label{sec:dlq-model}
+
+\subsection{Agent space, sample space, and Fubini extension}
+DLQ assumes an atomless agent space $(I,\mathcal I,\lambda)$ with $\lambda(I)=1$ and a probability space $(\Omega,\mathcal F,P)$ for randomness. Because joint measurability and independence are incompatible on the usual product, they work on a \emph{Fubini extension}
+\[
+(I\times\Omega,\ \mathcal I\boxtimes\mathcal F,\ \lambda\boxtimes P),
+\]
+in the sense of Sun (2006, Definition 2.2) (DLQ repeats the definition early in Section 2).
+
+\subsection{Primitives}
+Fix $K\ge 2$ and let $S=\{1,\dots,K\}$ and let $\Delta$ be the simplex of probability measures on $S$.
+DLQ's primitives are:
+\begin{itemize}
+  \item An initial cross-sectional type distribution $p_0\in\Delta$.
+  \item Mutation intensities $\eta_{kl}\in[0,\infty)$ for $k\neq l$.
+  \item Matching intensities $\theta_{kl}:\Delta\to\mathbb R_+$ satisfying mass-balance
+  \[
+  p_k\theta_{kl}(p)=p_l\theta_{lk}(p),
+  \]
+  and a Lipschitz condition on $p_k\theta_{kl}(p)$ (DLQ uses this to ensure well-posedness of the ODE).
+  \item Match-induced type-change distributions $\varsigma_{kl}\in\Delta$ (the new type distribution for a type-$k$ agent matched to a type-$l$ agent).
+\end{itemize}
+
+\subsection{The induced generator $R(p)$ and the deterministic ODE}
+Define $R(p)$ (a generator on $S$) by combining mutation and match-induced type change:
+\[
+R_{kr}(p)=\eta_{kr}+\sum_{l=1}^K \theta_{kl}(p)\,\varsigma_{kl}(r),\qquad k\neq r,
+\quad
+R_{kk}(p)=-\sum_{r\neq k}R_{kr}(p).
+\]
+DLQ's key deterministic law is that the (expected, and in fact realized) cross-sectional type distribution solves
+\[
+\frac{d}{dt}x(t)=x(t)R(x(t)).
+\]
+
+\section{Continuous-time matching objects (DLQ Definition 1) and main result (Theorem 1)}
+\label{sec:dlq-def1-thm1}
+
+DLQ defines two coupled processes on $I\times\Omega\times\mathbb R_+$:
+\begin{itemize}
+  \item a \emph{type process} $\alpha:I\times\Omega\times\mathbb R_+\to S$ (RCLL in $t$),
+  \item a \emph{matching process} $\varphi:I\times\Omega\times\mathbb R_+\to I$ (RCLL in $t$),
+\end{itemize}
+such that for each fixed $(\omega,t)$ the map $i\mapsto \varphi(i,\omega,t)$ is an involution (pairwise matching) and is measure-preserving in $i$ for $\lambda$.
+
+\begin{remark}[Interpretation of $\varphi(i,\omega,t)$]
+DLQ's $\varphi(i,\omega,t)=j$ means: as of time $t$ in state $\omega$, agent $j$ is the \emph{last} partner met by $i$ (and symmetrically $i$ is the last partner met by $j$), with no intervening meetings since that last meeting time.
+\end{remark}
+
+\medskip
+\noindent DLQ's \textbf{Theorem 1} asserts existence of such a system on some Fubini extension, and that:
+\begin{itemize}
+  \item the realized cross-sectional distribution $p_t(\omega)$ is almost surely equal to its expectation and solves the ODE,
+  \item the cross-sectional type process is a Markov chain with generator $R(\bar p_t)$,
+  \item match counts aggregate deterministically at rate $\bar p_{t,k}\theta_{kl}(\bar p_t)$,
+  \item there exist stationary distributions $p^\ast$ satisfying $p^\ast R(p^\ast)=0$.
+\end{itemize}
+
+\section{How DLQ constructs the model (roadmap)}
+\label{sec:dlq-roadmap}
+
+At a high level, DLQ proceeds in three layers:
+\begin{enumerate}
+  \item \textbf{Finite agent, discrete time approximation.} Build a finite-agent dynamic matching model over many short periods (Sections 3.1--3.3), and derive quantitative bounds controlling dependence and cumulative errors across periods.
+  \item \textbf{Hyperfinite time grid via nonstandard analysis.} Replace the number of periods by a hyperfinite integer $M^2$ and the step length by an infinitesimal $1/M$, producing a hyperfinite-time internal model (Section 5).
+  \item \textbf{Loeb-ization and exact LLN.} Take Loeb measures to obtain a standard atomless agent space and a Fubini extension; then apply the exact law of large numbers for a continuum of stochastic processes (Sun 2006, Theorem 2.16) to obtain deterministic cross-sectional evolution.
+\end{enumerate}
+
+\section{The ``generalized Keisler'' ingredient: Loeb transition probabilities}
+\label{sec:dlq-generalized-keisler}
+
+Continuous time (built from hyperfinite discrete time) naturally leads to an \emph{iterated} randomization across periods. This is most cleanly handled by \emph{transition probabilities} and their products. DLQ introduces Loeb transition probabilities (Section 4.4) and uses a generalized Fubini theorem for them. The generalized Fubini result they need is proved in Duffie--Sun (2007) (DLQ cites this explicitly).
+
+\begin{definition}[Internal transition probability (informal)]
+Let $(X,\mathcal X_0)$ and $(Y,\mathcal Y_0)$ be internal measurable spaces (typically hyperfinite with internal power sets). An \emph{internal transition probability} is an internal map that assigns to each $x\in X$ an internal probability measure on $(Y,\mathcal Y_0)$.
+\end{definition}
+
+\begin{lemma}[Generalized Fubini for Loeb transition probabilities (informal)]
+Let $\lambda$ be a Loeb measure on an internal space $I$ and let $P=\{P_i:i\in I\}$ be a \emph{Loeb transition probability} (a family of Loeb measures induced from an internal transition probability). Let $\tau=\lambda\boxtimes P$ denote the associated Loeb product measure on $I\times\Omega$. Then for every $\tau$-integrable function $f$ on $I\times\Omega$,
+\[
+\int_{I\times\Omega} f\,d\tau
+=\int_I\left(\int_\Omega f(i,\omega)\,dP_i(\omega)\right)\,d\lambda(i),
+\]
+with appropriate measurability/integrability of sections. (This is the transition-probability analogue of Keisler's Fubini theorem for two Loeb measures.)
+\end{lemma}
+
+\begin{remark}[Why this is needed beyond Keisler (two-factor) Fubini]
+In static matching, the sample measure on $\Omega$ does not depend on $i$, and Keisler's Loeb-product Fubini theorem suffices. In dynamic/hyperfinite-time constructions, the period-$n$ randomization may depend on past states (hence on the current ``state'' variable), leading naturally to transition kernels. One then needs a Fubini theorem compatible with \emph{kernel products}, and eventually an Ionescu--Tulcea type theorem to build the product/path measure.
+\end{remark}
+
+\section{Connections to Duffie--Sun (2007) and Sun (2006)}
+\label{sec:dlq-connections}
+
+DLQ (2025) is continuous-time, but the logic is consistent with the earlier discrete-time/static program:
+\begin{itemize}
+  \item Duffie--Sun (2007) provides the Loeb-space construction for static/discrete-time matching and develops generalized Fubini/Ionescu--Tulcea type results for Loeb transition probabilities (their Section 5), which DLQ cites and builds on.
+  \item Sun (2006) provides the Fubini extension framework and the exact LLN for a continuum of stochastic processes (Theorem 2.16), which DLQ invokes to pass from independent agent-level dynamics to deterministic cross-sectional dynamics.
+\end{itemize}
+
+\section{What to read next in DLQ (2025)}
+\label{sec:dlq-next}
+
+For a first deep read focused on construction:
+\begin{itemize}
+  \item \textbf{Section 2}: formal definition of the model objects and Fubini extension.
+  \item \textbf{Section 3}: finite-agent discrete approximation (where the technical estimates live; many proofs are in the supplement).
+  \item \textbf{Section 4.4 and Section 5}: Loeb transition probabilities and the hyperfinite-time-to-continuous-time construction (the ``generalized Keisler'' part).
+  \item \textbf{Sun (2006), Theorem 2.16}: exact LLN for stochastic processes, used to deduce that cross-sectional paths are deterministic almost surely.
+\end{itemize}
+
+\end{document}
+
+
