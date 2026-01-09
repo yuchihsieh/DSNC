@@ -84,6 +84,25 @@ DLQ assumes an atomless agent space $(I,\mathcal I,\lambda)$ with $\lambda(I)=1$
 \]
 in the sense of Sun (2006, Definition 2.2) (DLQ repeats the definition early in Section 2).
 
+\subsection{Time domain and measurability conventions}
+\label{subsec:dlq-time-domain}
+DLQ's time domain is $\mathbb R_+=[0,\infty)$ equipped with its Borel $\sigma$-algebra $\mathcal B(\mathbb R_+)$.
+The model's primitive objects and solution objects are formulated on the \emph{triple} product
+\[
+I\times \Omega \times \mathbb R_+,
+\]
+with measurability taken with respect to the product $\sigma$-algebra $(\mathcal I\boxtimes\mathcal F)\otimes \mathcal B(\mathbb R_+)$.
+
+\begin{remark}[Which measure do we use on $\mathbb R_+$?]
+There are two distinct roles of time:
+\begin{itemize}
+  \item \textbf{Measurability/topology:} for processes like $\alpha(i,\omega,t)$ and $\varphi(i,\omega,t)$ one only needs the Borel $\sigma$-algebra and path regularity (RCLL/c\`adl\`ag).
+  \item \textbf{Integration over time:} whenever DLQ writes $\int_0^t(\cdots)\,ds$, the measure is the \emph{Lebesgue measure} $ds$ on $\mathbb R_+$.
+\end{itemize}
+Since Lebesgue measure on $\mathbb R_+$ is $\sigma$-finite, all time-integrals can be understood locally on each finite horizon $[0,T]$ and then extended by letting $T\uparrow\infty$.
+This is also the natural setup for DSNC: prove measurability/LLN/ODE claims on finite horizons and then take an increasing limit.
+\end{remark}
+
 \subsection{Primitives}
 Fix $K\ge 2$ and let $S=\{1,\dots,K\}$ and let $\Delta$ be the simplex of probability measures on $S$.
 DLQ's primitives are:
@@ -98,7 +117,7 @@ DLQ's primitives are:
   \item Match-induced type-change distributions $\varsigma_{kl}\in\Delta$ (the new type distribution for a type-$k$ agent matched to a type-$l$ agent).
 \end{itemize}
 
-\subsection{The induced generator $R(p)$ and the deterministic ODE}
+\subsection{\texorpdfstring{The induced generator $R(p)$}{The induced generator R(p)} and the deterministic ODE}
 Define $R(p)$ (a generator on $S$) by combining mutation and match-induced type change:
 \[
 R_{kr}(p)=\eta_{kr}+\sum_{l=1}^K \theta_{kl}(p)\,\varsigma_{kl}(r),\qquad k\neq r,
@@ -120,6 +139,11 @@ DLQ defines two coupled processes on $I\times\Omega\times\mathbb R_+$:
 \end{itemize}
 such that for each fixed $(\omega,t)$ the map $i\mapsto \varphi(i,\omega,t)$ is an involution (pairwise matching) and is measure-preserving in $i$ for $\lambda$.
 
+\begin{remark}[Measurability level for the processes (as in DLQ Definition 1)]
+DLQ's Definition 1 imposes $(\mathcal I\boxtimes\mathcal F)\otimes \mathcal B(\mathbb R_+)$-measurability for $\alpha$ (and appropriate measurability for $\varphi$), and RCLL/c\`adl\`ag path regularity in $t$ for almost every agent/sample point.
+For each fixed $t$, the section $\varphi_t(\cdot,\cdot)\coloneqq \varphi(\cdot,\cdot,t)$ is a random matching on the Fubini extension $(I\times\Omega,\mathcal I\boxtimes\mathcal F,\lambda\boxtimes P)$: for $P$-a.e.\ $\omega$, the map $i\mapsto \varphi(i,\omega,t)$ is a measure-preserving involution.
+\end{remark}
+
 \begin{remark}[Interpretation of $\varphi(i,\omega,t)$]
 DLQ's $\varphi(i,\omega,t)=j$ means: as of time $t$ in state $\omega$, agent $j$ is the \emph{last} partner met by $i$ (and symmetrically $i$ is the last partner met by $j$), with no intervening meetings since that last meeting time.
 \end{remark}
@@ -136,33 +160,105 @@ DLQ's $\varphi(i,\omega,t)=j$ means: as of time $t$ in state $\omega$, agent $j$
 \section{How DLQ constructs the model (roadmap)}
 \label{sec:dlq-roadmap}
 
-At a high level, DLQ proceeds in three layers:
-\begin{enumerate}
-  \item \textbf{Finite agent, discrete time approximation.} Build a finite-agent dynamic matching model over many short periods (Sections 3.1--3.3), and derive quantitative bounds controlling dependence and cumulative errors across periods.
-  \item \textbf{Hyperfinite time grid via nonstandard analysis.} Replace the number of periods by a hyperfinite integer $M^2$ and the step length by an infinitesimal $1/M$, producing a hyperfinite-time internal model (Section 5).
-  \item \textbf{Loeb-ization and exact LLN.} Take Loeb measures to obtain a standard atomless agent space and a Fubini extension; then apply the exact law of large numbers for a continuum of stochastic processes (Sun 2006, Theorem 2.16) to obtain deterministic cross-sectional evolution.
-\end{enumerate}
+DLQ's existence proof is long because \emph{continuous time} forces you to control the cumulative effect of small dependence across \emph{many} periods.
+Here is a more detailed roadmap than the one-page overview typically given in summaries.
+
+\subsection{Layer 1: a finite-agent, small-step discrete-time model (DLQ Section 3; proofs in the supplement)}
+\label{subsec:dlq-roadmap-finite}
+Fix a large integer $M$, a finite population of $\bar M$ agents, and a finite type space $S=\{1,\dots,K\}$.
+DLQ constructs a discrete-time model on a fine grid with step size on the order of $1/M$.
+Within each ``period'' there are three sequential stages:
+\begin{itemize}
+  \item \textbf{Mutation step:} each type-$k$ agent mutates to type $l$ with probability $O(1/M)$ so that mutation becomes a Poisson intensity $\eta_{kl}$ in the limit.
+  \item \textbf{Matching step:} conditional on the current cross-sectional distribution, each type-$k$ agent meets a type-$l$ partner with probability $O(1/M)$, scaled to approximate the intended matching intensity $\theta_{kl}(p)$.
+  \item \textbf{Match-induced type change:} conditional on partner types $(k,l)$, an agent's post-meeting type is drawn from $\varsigma_{kl}$.
+\end{itemize}
+
+\medskip
+\noindent\textbf{What must be proved in the finite model.}
+Because matching is \emph{without replacement} and repeats over many periods, partner draws are not independent across agents, and dependence can accumulate across time.
+DLQ therefore proves a collection of quantitative lemmas in Section 3, with proofs in the supplement:
+\begin{itemize}
+  \item \textbf{Within-period matching accuracy:} the realized type-by-type matching frequencies are close to their targets (up to vanishing rounding errors).
+  \item \textbf{Approximate conditional independence / approximate Markov property:} one-step conditional laws of finite-agent observables factorize up to small errors.
+  \item \textbf{Cumulative error control across many steps:} Appendix A provides general lemmas for controlling the probability of multiple ``rare'' events over many steps; the supplement applies them to the model's jump counts and dependence terms.
+\end{itemize}
+This is the technical core: the errors must be small enough that when you later take a hyperfinite limit (infinitely many steps), they still wash out.
+
+\subsection{Layer 2: transfer to a hyperfinite time grid (DLQ Section 5)}
+\label{subsec:dlq-roadmap-hyperfinite}
+Replace the large integer $M$ by an \emph{unlimited hyperinteger} and transfer the entire finite construction to obtain an \emph{internal} model on:
+\begin{itemize}
+  \item a hyperfinite agent set $I$ with internal counting measure $\lambda_0$, and
+  \item a hyperfinite time grid with infinitesimal step length $1/M$.
+\end{itemize}
+At this stage, DLQ has an internally well-defined discrete-time system whose one-step transition probabilities encode the intended continuous-time intensities, up to infinitesimal errors.
+
+\subsection{Layer 3: Loeb-ization + generalized Fubini + exact LLN (DLQ Section 4.4; DS07 Section 5; Sun 2006)}
+\label{subsec:dlq-roadmap-loeb}
+Convert the internal (hyperfinite) probability objects into standard ones via Loeb measures.
+The key technical ingredients are:
+\begin{itemize}
+  \item \textbf{Generalized Fubini for Loeb transition probabilities (DLQ Section 4.4):} this yields a joint agent--sample measure even when the sample law depends on an agent/state via a kernel.
+  \item \textbf{Infinite kernel products (generalized Ionescu--Tulcea) for Loeb transition probabilities (Duffie--Sun 2007, Section 5):} this constructs a path-space law from a sequence of kernels.
+  \item \textbf{Exact LLN for stochastic processes on a Fubini extension (Sun 2006, Theorem 2.16):} once essential pairwise independence is obtained, cross-sectional paths become deterministic a.s., and the deterministic limit solves the ODE.
+\end{itemize}
 
 \section{The ``generalized Keisler'' ingredient: Loeb transition probabilities}
 \label{sec:dlq-generalized-keisler}
 
-Continuous time (built from hyperfinite discrete time) naturally leads to an \emph{iterated} randomization across periods. This is most cleanly handled by \emph{transition probabilities} and their products. DLQ introduces Loeb transition probabilities (Section 4.4) and uses a generalized Fubini theorem for them. The generalized Fubini result they need is proved in Duffie--Sun (2007) (DLQ cites this explicitly).
+Continuous time (built from hyperfinite discrete time) naturally leads to an \emph{iterated} randomization across periods.
+This is cleanly expressed using \emph{transition probabilities} (kernels) rather than a single product measure.
+DLQ therefore uses the Loeb-transition-probability technology developed in Duffie--Sun (2007, Section 5).
 
-\begin{definition}[Internal transition probability (informal)]
-Let $(X,\mathcal X_0)$ and $(Y,\mathcal Y_0)$ be internal measurable spaces (typically hyperfinite with internal power sets). An \emph{internal transition probability} is an internal map that assigns to each $x\in X$ an internal probability measure on $(Y,\mathcal Y_0)$.
+\subsection{Internal transition probabilities and their Loeb product (DLQ Section 4.4)}
+\label{subsec:dlq-loeb-transition}
+We keep this section at the level needed for DLQ, and refer to the static DS07 note for nonstandard basics (internal sets, Loeb measures, etc.).
+
+\begin{definition}[Internal transition probability]
+Let $(I,\mathcal I_0,\lambda_0)$ be a hyperfinite internal probability space where $\mathcal I_0$ is the internal power set on a hyperfinite set $I$.
+Let $\Omega$ be a hyperfinite internal set with internal power set $\mathcal F_0$.
+An \emph{internal transition probability} is an internal function $P_0$ that assigns to each $i\in I$ a hyperfinite internal probability measure $P_{0i}$ on $(\Omega,\mathcal F_0)$.
 \end{definition}
 
-\begin{lemma}[Generalized Fubini for Loeb transition probabilities (informal)]
-Let $\lambda$ be a Loeb measure on an internal space $I$ and let $P=\{P_i:i\in I\}$ be a \emph{Loeb transition probability} (a family of Loeb measures induced from an internal transition probability). Let $\tau=\lambda\boxtimes P$ denote the associated Loeb product measure on $I\times\Omega$. Then for every $\tau$-integrable function $f$ on $I\times\Omega$,
+\begin{definition}[Internal product transition probability]
+Given $\lambda_0$ and an internal transition probability $P_0=\{P_{0i}\}_{i\in I}$, define an internal probability measure $\tau_0$ on $(I\times\Omega,\ \mathcal I_0\otimes\mathcal F_0)$ by
 \[
-\int_{I\times\Omega} f\,d\tau
-=\int_I\left(\int_\Omega f(i,\omega)\,dP_i(\omega)\right)\,d\lambda(i),
+\tau_0(\{(i,\omega)\}) \coloneqq \lambda_0(\{i\})\,P_{0i}(\{\omega\}).
 \]
-with appropriate measurability/integrability of sections. (This is the transition-probability analogue of Keisler's Fubini theorem for two Loeb measures.)
-\end{lemma}
+\end{definition}
+
+Let $\lambda$ be the Loeb measure associated with $\lambda_0$, let $P_i$ be the Loeb measure associated with $P_{0i}$, and let $\tau$ be the Loeb measure associated with $\tau_0$.
+The collection $P=\{P_i\}_{i\in I}$ is called a \emph{Loeb transition probability}, and $\tau$ is the \emph{Loeb product transition probability} of $\lambda$ and $P$ (DLQ's terminology).
+DLQ also denotes $\tau$ by $\lambda\boxtimes P$.
+
+\subsection{Generalized Fubini theorem (DLQ Proposition 4; proved in Duffie--Sun 2007)}
+\label{subsec:dlq-generalized-fubini}
+\begin{theorem}[Generalized Fubini for a Loeb transition probability (DLQ Proposition 4, informal)]
+Let $f$ be a real-valued $\tau$-integrable function on $(I\times\Omega,\ \sigma(\mathcal I_0\otimes \mathcal F_0),\ \tau)$.
+Then:
+\begin{enumerate}
+  \item for $\lambda$-a.e.\ $i$, the section $f_i(\cdot)=f(i,\cdot)$ is $\sigma(\mathcal F_0)$-measurable and integrable on $(\Omega,\sigma(\mathcal F_0),P_i)$;
+  \item the function $i\mapsto \int_\Omega f_i(\omega)\,dP_i(\omega)$ is integrable on $(I,\sigma(\mathcal I_0),\lambda)$;
+  \item the Fubini identity holds:
+  \[
+  \int_{I\times\Omega} f(i,\omega)\,d\tau(i,\omega)
+  =
+  \int_I\left(\int_\Omega f(i,\omega)\,dP_i(\omega)\right)\,d\lambda(i).
+  \]
+\end{enumerate}
+\end{theorem}
 
 \begin{remark}[Why this is needed beyond Keisler (two-factor) Fubini]
 In static matching, the sample measure on $\Omega$ does not depend on $i$, and Keisler's Loeb-product Fubini theorem suffices. In dynamic/hyperfinite-time constructions, the period-$n$ randomization may depend on past states (hence on the current ``state'' variable), leading naturally to transition kernels. One then needs a Fubini theorem compatible with \emph{kernel products}, and eventually an Ionescu--Tulcea type theorem to build the product/path measure.
+\end{remark}
+
+\begin{remark}[How this ensures existence of a suitable extension (big picture)]
+For a \emph{single} kernel $P=\{P_i\}$, the generalized Fubini theorem above ensures that $\lambda\boxtimes P$ behaves like a ``product'' measure with respect to iterated integration, even though the second factor depends on the first.
+
+For \emph{dynamic} matching, one needs an \emph{infinite} composition of kernels (one per randomization step) to construct a path-space probability measure.
+Duffie--Sun (2007, Section 5) proves a generalized Ionescu--Tulcea theorem for Loeb transition probabilities and shows that the resulting infinite product yields a Fubini extension on the joint agent--path space.
+This is the core existence machinery DLQ calls ``generalized Keisler.''
 \end{remark}
 
 \section{Connections to Duffie--Sun (2007) and Sun (2006)}

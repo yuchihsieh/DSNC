@@ -8,3 +8,7 @@ Fubini extension: Sun 2006 and DS 2007
 
 26.01.08
 * Brief understanding of DLS 2025. More work to do to understand the details next week!
+
+26.01.09
+* Setup PROJECT.md
+* 

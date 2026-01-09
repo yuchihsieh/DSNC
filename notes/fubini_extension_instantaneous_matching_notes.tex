@@ -15,7 +15,7 @@
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
 
-\title{Notes: Fubini extensions for instantaneous matching (Loeb-space construction)}
+\title{Notes: Fubini extensions for static random matching (Duffie--Sun 2007)\\(Loeb-space construction)}
 \author{Yu-Chi Hsieh}
 \date{\today}
 
@@ -24,7 +24,7 @@
 \tableofcontents
 
 \newpage
-\section{Fubini extensions for instantaneous matching (Loeb-space construction)}
+\section{Fubini extensions for static random matching (Loeb-space construction)}
 \label{sec:fubini-extension-instantaneous-matching}
 
 \subsection{Quick map to the source papers (Sun 2006; Duffie--Sun 2007)}
@@ -40,22 +40,22 @@ To make it easy to find the original statements, we record the main corresponden
 \begin{itemize}
   \item \textbf{Fubini extension definition}: this note's \cref{subsec:fubini-extension-def} is \textbf{Sun (2006), Definition 2.2} (and also \textbf{Duffie--Sun (2007), Definition 2.1}).
   \item \textbf{Incompatibility (usual product measurability + independence)}: mentioned in \S\cref{sec:fubini-extension-instantaneous-matching}\,\S\cref{subsec:fubini-extension-def} is \textbf{Sun (2006), Proposition 2.1}.
-  \item \textbf{Rich product probability space}: this note's informal ``richness'' definition in \S\cref{subsec:richness} corresponds to \textbf{Sun (2006), Definition 5.1}.
-  \item \textbf{Universality via uniform r.v.'s}: the ``uniform is enough'' remark in \S\cref{subsec:richness} is backed by \textbf{Sun (2006), Proposition 5.3}.
-  \item \textbf{Random full matching \& independence-in-types}: the matching construction in \S\cref{subsec:instantaneous-matching} is modeled on \textbf{Duffie--Sun (2007), Definition 2.3} and \textbf{Theorem 2.4}.
+  \item \textbf{Random full matching \& independence-in-types}: the static matching model in \S\cref{subsec:instantaneous-matching} follows \textbf{Duffie--Sun (2007), Definitions 2.2--2.3} and \textbf{Theorem 2.4}.
+  \item \textbf{Random partial matching}: the static search/partial-matching result summarized in \S\cref{subsec:partial-matching} follows \textbf{Duffie--Sun (2007), Definition 2.5} and \textbf{Theorem 2.6}.
+  \item \textbf{(Optional) exact LLN on a Fubini extension}: the aggregation principle in \S\cref{subsec:elln} is from \textbf{Sun (2006)} (and is used throughout the matching literature once essential pairwise independence is available).
 \end{itemize}
 
 \subsection{Aim and scope}
-Many economic and probabilistic models posit a \emph{continuum} of agents, indexed by an atomless probability space $(I,\mathcal I,\lambda)$, together with \emph{instantaneous random matching} at a given time (or a single random matching draw), typically represented as a random involution $\varphi:I\times\Omega\to I$ satisfying $\varphi(\varphi(i,\omega),\omega)=i$.
+Many economic and probabilistic models posit a \emph{continuum} of agents, indexed by an atomless probability space $(I,\mathcal I,\lambda)$, together with \emph{static random matching} at a given time (a single random matching draw), typically represented as a random involution $\varphi:I\times\Omega\to I$ satisfying $\varphi(\varphi(i,\omega),\omega)=i$.
 
 The foundational difficulty is that, for nontrivial processes $(f_i)_{i\in I}$, \emph{independence} of the family and \emph{joint measurability} of the mapping $(i,\omega)\mapsto f_i(\omega)$ with respect to the usual product $\sigma$-algebra $\mathcal I\otimes\mathcal F$ are, in general, incompatible except in degenerate cases. This obstruction goes back at least to Doob and is made precise in the modern literature via results such as: if $f:I\times\Omega\to X$ is $\mathcal I\otimes\mathcal F$-measurable and essentially pairwise independent, then almost all coordinates $f_i$ are essentially constant (\textbf{Sun (2006), Proposition 2.1}).
 
 \medskip
 \noindent
-The goal of this note is to give a \emph{minimalist, self-contained, rigorous} construction of a probability space rich enough to support:
+The goal of this note is to give a \emph{minimalist, self-contained, rigorous} construction of a probability space large enough to support:
 \begin{itemize}
   \item a continuum of (essentially) independent random objects with the \emph{Fubini property}, and
-  \item an \emph{instantaneous} random matching map with the independence-in-types properties used in economics and genetics.
+  \item a \emph{static} (one-shot) random matching map with the \emph{independence-in-types} properties used in economics and genetics.
 \end{itemize}
 The construction is based on \emph{nonstandard analysis} and \emph{Loeb measures}, following the approach underlying Sun (2006) and Duffie--Sun (2007).
 
@@ -84,7 +84,17 @@ Following Sun (2006), we often denote such a space by $(I\times\Omega,\ \mathcal
 \begin{remark}[Why we need an extension]
 If we insist on $\mathcal W=\overline{\mathcal I\otimes\mathcal F}$ (the completion of the usual product) then, for many independence hypotheses that economists want (e.g.\ i.i.d.\ types, independent match outcomes), one cannot have a jointly measurable process unless it is essentially constant. A Fubini extension enlarges the measurable sets on $I\times\Omega$ so that one can have \emph{joint measurability} of useful processes while retaining the ability to interchange integrals.
 \end{remark}
-% This remark is great.
+
+\subsection{(Optional) Exact law of large numbers (ELLN) on a Fubini extension}
+\label{subsec:elln}
+This note's focus is \emph{existence} of a Fubini extension supporting static random matching.
+Once one has an essentially pairwise independent process on a Fubini extension, Sun (2006) provides an \emph{exact} law of large numbers: sample cross-sections aggregate deterministically almost surely.
+
+\begin{remark}[What ELLN buys in static matching, informally]
+Let $f:I\times\Omega\to X$ be $\mathcal I\boxtimes\mathcal F$-measurable with values in a Polish space $X$ and assume $(f_i)_{i\in I}$ is essentially pairwise independent.
+Then for $P$-a.e.\ $\omega$, the sample function $i\mapsto f(i,\omega)$ has the \emph{same distribution} (under $\lambda$) as the random variable $f$ (under $\lambda\boxtimes P$).
+Applied to matching, this means: once the partner-type process is essentially pairwise independent, the realized cross-sectional frequencies of partner types equal their expectations \emph{exactly}, a.s.
+\end{remark}
 
 \subsection{A minimalist introduction to nonstandard analysis}
 \label{subsec:nsa-minimal}
@@ -245,10 +255,47 @@ into a \emph{Fubini extension} of the usual product $(I\times\Omega,\mathcal I\o
 The key point is that $\mathcal I\boxtimes\mathcal F$ typically strictly contains $\mathcal I\otimes\mathcal F$. This is \emph{exactly} what allows us to accommodate independent processes and random matchings that cannot live on the usual product $\sigma$-algebra.
 \end{remark}
 
-\subsection{Instantaneous (static) random matching on a continuum: hyperfinite construction}
+\subsection{Static random full matching on a continuum: hyperfinite construction}
 \label{subsec:instantaneous-matching}
 
-We now construct an \emph{instantaneous} random full matching with strong measure-preserving properties and the independence-in-types feature used in applications. This follows the Loeb-space proof scheme used in \textbf{Duffie--Sun (2007, Section 4.1)}, which proves \textbf{Duffie--Sun (2007), Theorem 2.4}.
+We now construct a \emph{static random full matching} with the measure-preservation and independence-in-types properties formalized by Duffie--Sun (2007). This follows the Loeb-space proof scheme in \textbf{Duffie--Sun (2007, Section 4.1)}, proving \textbf{Theorem 2.4}.
+
+\subsubsection{The matching and ``independence-in-types'' definitions}
+We state Duffie--Sun's definitions in a notation aligned with this note.
+
+\begin{definition}[Essential pairwise independence (Duffie--Sun 2007, Definition 2.2)]
+Let $(I\times\Omega,\mathcal I\boxtimes\mathcal F,\lambda\boxtimes P)$ be a Fubini extension and let $X$ be a complete separable metric space.
+An $\mathcal I\boxtimes\mathcal F$-measurable process $f:I\times\Omega\to X$ is \emph{essentially pairwise independent} if for $\lambda$-a.e.\ $i$, the random variables $f_i$ and $f_j$ are independent for $\lambda$-a.e.\ $j$.
+\end{definition}
+
+\begin{definition}[Random full matching and independence in types (Duffie--Sun 2007, Definition 2.3)]
+Fix a finite type space $S=\{1,\dots,K\}$ and an $\mathcal I$-measurable type function $a:I\to S$, with cross-sectional distribution $p\in\Delta(S)$ given by $p(k)=\lambda(a^{-1}(\{k\}))$.
+
+A \emph{(deterministic) full matching} is a bijection $\phi:I\to I$ such that $\phi(i)\neq i$ and $\phi(\phi(i))=i$ for all $i$ (a fixed-point-free involution).
+
+A \emph{random full matching} is an $\mathcal I\boxtimes\mathcal F$-measurable map $\varphi:I\times\Omega\to I$ such that for each $\omega$, the section $\varphi_\omega(\cdot):i\mapsto \varphi(i,\omega)$ is a full matching.
+The induced \emph{matched-type process} (or partner-type process) is $g:I\times\Omega\to S$ defined by
+\[
+g(i,\omega)\coloneqq a(\varphi(i,\omega)).
+\]
+The random full matching $\varphi$ is \emph{independent in types} (w.r.t.\ $a$) if $g$ is essentially pairwise independent and, for $\lambda$-a.e.\ $i$, the distribution of $g_i$ is $p$.
+\end{definition}
+
+\subsubsection{Duffie--Sun's static existence theorem (Theorem 2.4)}
+\begin{theorem}[Existence of universal independent-in-types random full matching (Duffie--Sun 2007, Theorem 2.4, informal)]
+There exist:
+\begin{itemize}
+  \item an atomless probability space $(I,\mathcal I,\lambda)$ of agents,
+  \item a sample probability space $(\Omega,\mathcal F,P)$,
+  \item a Fubini extension $(I\times\Omega,\mathcal I\boxtimes\mathcal F,\lambda\boxtimes P)$ of the usual product,
+  \item and an $\mathcal I\boxtimes\mathcal F$-measurable random full matching $\varphi:I\times\Omega\to I$
+\end{itemize}
+such that:
+\begin{enumerate}
+  \item \textbf{(Measure preservation in $i$ and in $\omega$)} For each $\omega$, $\varphi_\omega$ preserves $\lambda$ (equivalently $\lambda(\varphi_\omega^{-1}(A))=\lambda(A)$ for all $A\in\mathcal I$). For each $i$, the random variable $\varphi(i,\cdot)$ has law $\lambda$ (equivalently $P(\varphi(i,\cdot)\in A)=\lambda(A)$ for all $A\in\mathcal I$). Moreover, for any $A_1,A_2\in\mathcal I$, one has $\lambda(A_1\cap \varphi_\omega^{-1}(A_2))=\lambda(A_1)\lambda(A_2)$ for $P$-a.e.\ $\omega$.
+  \item \textbf{(Universality in the type function)} For \emph{any} finite type space $S$ and \emph{any} $\mathcal I$-measurable type function $a:I\to S$, the induced partner-type process $g=a\circ\varphi$ is independent in types (in the essential pairwise sense).
+\end{enumerate}
+\end{theorem}
 
 \subsubsection{Step 1: hyperfinite agents}
 Fix an unlimited even hyperinteger $N\in{}^\ast\mathbb N$ and let $I\coloneqq\{1,2,\dots,N\}$ with internal counting measure $\lambda_0$. Let $(I,\mathcal I,\lambda)$ be the Loeb space (atomless).
@@ -259,14 +306,15 @@ Endow $\Omega$ with internal counting probability $P_0$ (uniform over matchings)
 
 \subsubsection{Step 3: the matching map and measurability}
 Define $\varphi:I\times\Omega\to I$ by $\varphi(i,\omega)\coloneqq \omega(i)$. This map is internal, hence Loeb measurable with respect to the Loeb product $\sigma$-algebra $\mathcal I\boxtimes\mathcal F$.
-Moreover, for each fixed $\omega$, the section $\varphi_\omega(\cdot)=\omega(\cdot)$ is a bijection of $I$ preserving $\lambda$.
+Moreover, for each fixed $\omega$, the section $\varphi_\omega(\cdot)=\omega(\cdot)$ is a fixed-point-free involution and (after Loeb-ization) preserves $\lambda$.
 
 \subsubsection{Step 4: measure-preservation and ``no mass on individuals''}
-Because $\lambda$ is atomless, for fixed $i\in I$ and fixed $j\in I$, one has $P(\varphi(i,\cdot)=j)=0$. Intuitively, in the hyperfinite model,
+In Duffie--Sun's Theorem 2.4, the key implication is that for each fixed $i$, the law of $\varphi(i,\cdot)$ is exactly $\lambda$. In particular, since $\lambda$ is atomless, for any fixed $j$ one has $P(\varphi(i,\cdot)=j)=\lambda(\{j\})=0$.
+In the underlying hyperfinite model one sees this from the exact finite computation
 \[
 P_0(\varphi(i,\cdot)=j)=\frac{1}{N-1}\quad (j\neq i),
 \]
-and taking standard parts yields $0$.
+whose standard part is $0$ when $N$ is unlimited.
 This formalizes the economic intuition that in a continuum population, the probability of matching with any \emph{particular} counterparty is zero.
 
 \subsubsection{Step 5: independence in types (how it emerges)}
@@ -275,9 +323,10 @@ Define the induced \emph{partner-type} process $g:I\times\Omega\to S$ by
 \[
 g(i,\omega)\coloneqq a(\varphi(i,\omega)).
 \]
-In the terminology of \textbf{Duffie--Sun (2007)}, $g$ is the ``type process'' induced by a random full matching (cf.\ \textbf{Definition 2.3}), and ``independent in types'' means that the family $(g_i)_{i\in I}$ is \emph{essentially pairwise independent} (cf.\ \textbf{Definition 2.2} and \textbf{Definition 2.3(4)}). 
+In the terminology of \textbf{Duffie--Sun (2007)}, $g$ is the matched-type process induced by a random full matching (Definition 2.3), and ``independent in types'' means $g$ is essentially pairwise independent (Definition 2.2) and has the correct marginal distribution.
 
-The main existence result, \textbf{Duffie--Sun (2007), Theorem 2.4}, constructs (on a suitable Loeb/Fubini product space) a random full matching $\varphi$ such that for \emph{any} given finite type assignment $a:I\to S$, the induced partner-type process $g=a\circ\varphi$ is independent in types. At a high level, the proof uses finite matching combinatorics to show that dependence across distinct agents' partner-type events is of order $1/N$ in an $N$-agent uniform matching model; passing to a hyperfinite $N$ makes these errors infinitesimal; and the Loeb/standard-part step then yields the exact ``almost-everywhere'' (essential) pairwise independence statement in the continuum limit.
+The main existence result, \textbf{Duffie--Sun (2007), Theorem 2.4}, shows that one can choose $\varphi$ so that for \emph{any} given measurable type assignment $a$, the induced $g=a\circ\varphi$ is independent in types.
+At a high level, the proof uses explicit finite-$N$ calculations for uniform random perfect matchings to show that the relevant dependence terms are infinitesimal for a hyperfinite $N$, and then passes to Loeb measures to obtain the essential pairwise independence conclusion \emph{exactly}.
 
 To situate this precisely, the construction is carried out on the \emph{Loeb product (joint) space}
 \[
@@ -297,26 +346,25 @@ The Loeb product construction above yields a probability space $(I\times\Omega,\
 \end{itemize}
 This is precisely a \emph{Fubini extension} in the sense of \cref{subsec:fubini-extension-def}.
 
-\subsection{Richness: hosting essentially i.i.d.\ families (Sun 2006)}
-\label{subsec:richness}
-For applications beyond matching (e.g.\ idiosyncratic shocks, heterogeneous Markov chains), we need the product space to be \emph{rich} enough to support measurable processes with essentially pairwise independent coordinates and prescribed marginals.
+\subsection{Random partial matching (static search): statement}
+\label{subsec:partial-matching}
+Duffie--Sun (2007) also treat \emph{partial} matchings (random search): some agents draw ``no match''.
+Formally, one extends the range to $I\cup\{J\}$, where $J$ denotes no match, and requires that the restriction of the matching on $I\setminus \varphi_\omega^{-1}(\{J\})$ is a full matching (paired without self-matching).
+The corresponding partner-type process then takes values in $S\cup\{J\}$.
 
-\begin{definition}[Rich product probability space (informal)]
-A Fubini extension $(I\times\Omega,\mathcal I\boxtimes\mathcal F,\lambda\boxtimes P)$ is called \emph{rich} if it supports an $\mathcal I\boxtimes\mathcal F$-measurable process $U:I\times\Omega\to[0,1]$ such that $(U_i)_{i\in I}$ is essentially pairwise independent and each $U_i$ is uniformly distributed on $[0,1]$.
-\end{definition}
+\begin{theorem}[Existence of independent-in-types random partial matching (Duffie--Sun 2007, Theorem 2.6, informal)]
+Fix an atomless agent space $(I,\mathcal I,\lambda)$.
+For any given measurable type function $a:I\to S$ and any prescribed no-match probabilities $q\in[0,1]^S$, there exist a sample space and a Fubini extension on which one can define an independent-in-types random partial matching with those no-match probabilities.
+\end{theorem}
 
-\begin{remark}[Why ``uniform'' is enough]
-Sun formalizes richness as: existence of an essentially pairwise independent family of uniform $[0,1]$ random variables on the Fubini extension (\textbf{Sun (2006), Definition 5.1}). The universality claim---constructing essentially pairwise independent processes with essentially arbitrary prescribed marginal laws on a Polish space---is \textbf{Sun (2006), Proposition 5.3}. Practically: given a uniform family, one can generate essentially pairwise independent families with \emph{any prescribed distributions} by measurable transforms (inverse CDF method), provided the target distributions are Borel on a Polish space.
-\end{remark}
-
-\subsection{Putting it together for instantaneous matching}
-The Loeb-space construction gives a concrete recipe for building the probability space used for instantaneous matching:
+\subsection{Putting it together for static matching}
+The Loeb-space construction gives a concrete recipe for building the probability space used for static matching:
 \begin{enumerate}
   \item Choose an unlimited hyperfinite even $N$ and set $I=\{1,\dots,N\}$; take its Loeb space $(I,\mathcal I,\lambda)$ as the agent space.
   \item Let $\Omega$ be the hyperfinite set of perfect matchings of $I$, with uniform internal counting measure, and take its Loeb space $(\Omega,\mathcal F,P)$ as the sample space.
   \item Form the Loeb product space $(I\times\Omega,\mathcal I\boxtimes\mathcal F,\lambda\boxtimes P)$, which is a Fubini extension.
   \item Define the matching map $\varphi(i,\omega)=\omega(i)$ (jointly measurable on the extension) and, for any type function $a$, define partner-type process $g(i,\omega)=a(\varphi(i,\omega))$.
-  \item Use the essential pairwise independence properties of $g$ (Duffie--Sun, 2007) and the exact law of large numbers on a Fubini extension (Sun, 2006) to deduce deterministic aggregation results (e.g.\ deterministic cross-sectional partner-type frequencies).
+  \item Use the independence-in-types property of $g$ (Duffie--Sun, 2007) and (optionally) Sun's exact law of large numbers on a Fubini extension (Sun, 2006) to deduce deterministic aggregation results (e.g.\ deterministic cross-sectional partner-type frequencies).
 \end{enumerate}
 
 \subsection{Bibliographic notes (minimal)}

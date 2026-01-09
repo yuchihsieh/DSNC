@@ -1,0 +1,1145 @@
+
+
+--- PAGE 1 ---
+
+Continuous Time Random Matching∗
+Darrell Duﬃe†, Lei Qiao‡, Yeneng Sun§
+This version: December 20, 2020
+Abstract
+Models of labor markets, money, and over-the-counter ﬁnancial markets are often based
+on continuous-time search by a continuum of agents. This paper presents a general for-
+mulation of continuous-time random matching and its properties, which provide the ﬁrst
+supporting mathematical foundations for these search-based models. We allow matching
+intensities to be directed by types and to depend on the current cross-sectional type distri-
+bution, covering a wide range of existing applications. The agents’ types form a continuum
+of independent continuous-time Markov chains. Agent-level type changes can be caused by
+random mutation, random matching, and random break-up. We show that the exact law of
+large numbers applies, and thus that the cross-sectional distribution of agent types evolves
+deterministically, according to an explicit ordinary diﬀerential equation. We also provide
+conditions for a stationary cross-sectional distribution of agents’ types.
+KEYWORDS: Independent dynamic random matching, directed search, enduring part-
+nerships, exact law of large numbers, continuous-time, random mutation.
+∗Versions of this work have been presented at “Modeling Market Dynamics and Equilibrium – New Challenges,
+New Horizons,” Hausdorﬀ Research Institute for Mathematics, University of Bonn, August 19-22, 2013; The
+15th SAET Conference on Current Trends in Economics, University of Cambridge, July 27-31, 2015; The 11th
+World Congress of the Econometric Society, Montreal, August 17-21, 2015; Bernoulli Lecture at “Stochastic
+Dynamical Models in Mathematical Finance, Econometrics, and Actuarial Sciences,” at EPFL, May 28, 2017;
+The Asian Meeting of the Econometric Society, Hong Kong, June 3-5, 2017; and The China Meeting of the
+Econometric Society, Wuhan, June 9-11, 2017. Some work on this project was done when the authors met at
+the Institute for Mathematical Sciences, National University of Singapore in July, 2018.
+†Graduate School of Business, Stanford University, Stanford, CA 94305-5015, USA. e-mail:
+duﬃe@stanford.edu
+‡School of Economics, Shanghai University of Finance and Economics, 777 Guoding Road, Shanghai 200433,
+China. e-mail: qiao.lei@mail.shufe.edu.cn
+§Departments of Economics and Mathematics, National University of Singapore, Singapore 119076. e-mail:
+ynsun@nus.edu.sg
+
+--- PAGE 2 ---
+
+Contents
+1 Introduction 2
+2 The Basic Model and Results 3
+A Random Matching with Enduring Partnerships 12
+B Illustrative Applications 16
+B.1 The Diamond (1982) model of labor markets . . . . . . . . . . . . . . . . . . . 16
+B.2 Over-the-counter ﬁnancial markets . . . . . . . . . . . . . . . . . . . . . . . . . 19
+C Proofs of Propositions A.1 and A.2 21
+C.1 Proof of Proposition A.1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+C.2 Proof of Proposition A.2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+D Sketch for the Proof of Theorem A.1 25
+
+--- PAGE 3 ---
+
+1 Introduction
+Because of its tractability, continuous-time independent random matching among a continuum
+of agents is a popular modeling framework for a wide variety of applications in economics.1
+This literature commonly assumes that agents search continuously over time for trad-
+ing partners, independently of each other. The intensity with which an agent of a given type
+contacts counterparties of another given type can be speciﬁed or determined endogenously.
+The origins of this general approach can be traced to monetary and labor-market models of
+the 1970s.2This approach was subsequently applied to models of over-the-counter ﬁnancial
+markets, general macroeconomics, and other areas of economics. Throughout, the research lit-
+erature has exploited the intuitive idea that independence should, by the law of large numbers,
+lead to a deterministic cross-sectional (population) distribution of agent types. While this is
+a natural approach, none of this literature has shown the existence and required properties of
+the underlying continuous-time dynamic matching models. This paper provides the ﬁrst math-
+ematical foundations for this general modeling approach and for the associated deterministic
+aggregate behavior. In particular, we prove the existence of continuous-time random search
+models among a continuum of agents for the ﬁrst time, demonstrate key properties that have
+commonly been relied upon in the literature, and show new properties that link individual-level
+behavior in these models to population-level behavior.
+Our basic model, to be formalized later, begins with an atomless measure space of agents
+and a ﬁnite set of agent types. We construct a joint agent-probability space on which the
+agents’ type processes form a continuum of independent continuous-time Markov chains, re-
+specting properties derived structurally from random type mutation over time, pair-wise ran-
+dom matching between agents, and random match-induced type changes. Using the exact law
+of large numbers, we show that the cross-sectional distribution ptof agents’ types at time tis
+deterministic and satisﬁes an explicit ordinary diﬀerential equation. We also show that there
+is an initializing cross-sectional distribution of types for which the population’s cross-sectional
+1See, for example, Diamond (1993), Diamond and Yellin (1990), Hellwig (1976), Rupert, Schindler, and
+Wright (2001), Shi (1996), Shi (1997), Trejos and Wright (1995) and Zhou (1997) in monetary theory; Ace-
+moglu and Shimer (1999), Battalio, Samuelson and Huyck (2001), Flinn (2006), Hosios (1990), Kiyotaki and
+Lagos (2007), Mortensen (1982), Moscarini (2005), Mortensen and Pissarides (1994), Postel-Vinay and Robin
+(2002), Rogerson, Shimer and Wright (2005), Shi and Wen (1999), and Shimer (2005) in labor economics; Duﬃe,
+Gˆ arleanu, and Pedersen (2005), Hugonnier, Lester and Weill (2018), Lagos and Rocheteau (2009), Lester, Ro-
+cheteau and Weill (2015), ¨Usl¨ u (2019), Vayanos and Wang (2007), Weill (2008) in over-the-counter ﬁnancial
+markets; Bena¨ ım and Weibull (2003), Currarini, Jackson and Pin (2009), and Hofbauera and Sandholmb (2007)
+in game theory; and Amador and Weill (2012), B¨ orgers and Sarin (1997), Hopkins (1999), and Duﬃe, Malamud
+and Manso (2009) in social learning theory. The same sort of “ansatz” is also applied without mathematical
+foundations in the natural sciences, including genetics and biological molecular dynamics, as explained by Bomze
+(1983), Eigen (1971), and Schuster and Sigmund (1983).
+2See, for example, Hellwig (1976) and Mortensen (1978).
+2
+
+--- PAGE 4 ---
+
+type distribution ptis constant over time.
+A key primitive of the model is the matching intensity function θ, which speciﬁes the
+conditional mean rate θkl(pt) at which an individual agent of current type kat timetis matched
+to some agent of type l. This matching intensity is allowed to depend on the cross-sectional
+distribution ptof agents’ types, subject to minor technical conditions. This accommodates the
+“matching-function” approach that is popular in labor economics.3A second key primitive is
+the probability distribution ςklof the new type of a type- kagent that is induced by a match
+with a type- lagent. Finally, ηkl∈[0,∞) is a primitive specifying the intensity with which any
+type-kagent mutates on its own to type l. Mutation allows for random changes over time in
+an agent’s preferences or productivity, among other type properties.
+In many practical applications, for example in labor markets, once two agents are
+matched they may form a long-term relationship rather than immediately break up. For in-
+stance, when a worker and a ﬁrm meet, they may form a job match. At this point, the worker
+might stop or slow down searching for new jobs until he or she becomes unemployed again.
+This is a key aspect of the standard Diamond-Mortensen-Pissarides (DMP) model, as discussed
+by Diamond (1982). We incorporate enduring forms of matches in Appendix A.4
+Appendix B provides illustrative applications, drawing from Diamond (1982) for the
+standard DMP model in labor economics and from Duﬃe, Gˆ arleanu, and Pedersen (2005) for a
+typical model of over-the-counter ﬁnancial markets. Like all earlier works on continuous-time
+search, these two papers describe the matching ideas and relevant results intuitively without
+showing the existence and properties of the underlying dynamic matching model. Our two
+illustrative applications are intended to show how easily our general models can provide the
+micro foundations for continuous-time search in various settings with or without enduring
+partnerships.
+Proofs of the results on the exact law of large numbers and stationarity for a general
+continuous-time random matching model, as stated in Propositions A.1 and A.2, are given in
+Appendix C. In Appendix D, we brieﬂy explain ideas of the proofs of our existence results in
+Theorems 2.1 and A.1. Given their complexity, detailed proofs of Theorems 2.1 and A.1 are
+provided in an on-line-only supplement, Duﬃe, Qiao and Sun (2020).
+3For a survey, see Petrongolo and Pissarides (2001).
+4To this end, for any pair ( k,l) of agent types, we introduce the probability ξklthat an enduring partnership
+is formed at the time of a match. If formed, this partnership ends at a time with arrival intensity ϑkl.
+3
+
+--- PAGE 5 ---
+
+2 The Basic Model and Results
+The set of agents is speciﬁed by an atomless measure space ( I,I,λ). Without loss of generality,
+the total mass λ(I) of agents is 1. The set of states of the world is given by a probability space5
+(Ω,F,P). A key modeling concern is that for any continuum of random variables, independence
+and joint measurability with respect to the usual product space ( I×Ω,I⊗F,λ⊗P) are in
+general not compatible. For applications such as ours, one can work instead with a Fubini
+extension ( I×Ω,I⊠F,λ⊠P), which extends the usual product probability space while
+retaining the Fubini property, allowing a change in the order of iterated integrals.6
+LetS={1,2,...,K}be a ﬁnite set of agent types and ∆ be the set of probability
+measures on S(which can be viewed as the simplex in the Euclidean space RK). The time
+domain R+is the set of non-negative real numbers with its Borel σ-algebraB. The parameters
+of the model are the initial cross-sectional distribution p0∈∆ of agents’ types and, for any k
+andlinS:
+(i) A mutation intensity ηkl∈[0,∞) fork̸=lspecifying the intensity at which any type- k
+agent mutates to type l.
+(ii) A continuous matching intensity function θkl: ∆→R+specifying the intensity θkl(p)
+with which any type- kagent is matched to some agent of type l, whenever the current
+cross-sectional agent type distribution is p∈∆. This function satisﬁes the mass-balancing
+requirement pkθkl(p) =plθlk(p) that the total aggregate rate of matches of type- kagents
+to typelagents is of course equal to the aggregate rate of matches of type- lagents to
+type-kagents. We also require Lipschitz continuity7for the mapping pkθkl(p) from ∆ to
+R, for eachkandlinS.
+5We follow the convention that a probability space or other measure space such as ( I,I,λ) or (Ω,F,P) is
+countably additive.
+6See Doob (1937, 1953), Judd (1985) and Uhlig (1996) on the measurability issue associated with a continuum
+of independent random variables. We apply a resolution of this issue that is based on the Fubini extension in
+Section 2 of Sun (2006). A probability space ( I×Ω,W,Q) extending the usual product space ( I×Ω,I⊗F,λ⊗P)
+is said to be a Fubini extension of (I×Ω,I⊗F,λ⊗P) if for any real-valued Q-integrable function gon (I×Ω,W),
+the functions gi=g(i,·) andgω=g(·,ω) are integrable respectively on (Ω ,F,P) forλ-almost all i∈Iand on
+(I,I,λ) forP-almost all ω∈Ω; and if, moreover,∫
+ΩgidPand∫
+Igωdλare integrable, respectively, on ( I,I,λ)
+and on (Ω,F,P), with∫
+I×ΩgdQ =∫
+I(∫
+ΩgidP)
+dλ=∫
+Ω(∫
+Igωdλ)
+dP. To reﬂect the fact that the probability
+space (I×Ω,W,Q) has (I,I,λ) and (Ω,F,P) as its marginal spaces, as required by the Fubini property, this
+space is denoted by ( I×Ω,I⊠F,λ⊠P).
+7A mapping ψfrom a subset Xof an Euclidean space to another Euclidean space is said to be Lipschitz
+continuous if there is a positive real number Csuch that for any x,x′∈X,∥ψ(x)−ψ(x′)∥≤C∥x−x′∥, where∥·∥
+is the usual Euclidean norm. This Lipschitz continuity condition on pkθkl(p) (which is weaker than the Lipschitz
+continuity of θkl) accommodates the general labor-market matching functions used in the standard DMP model.
+For this, see Subsection B.1 below. The Lipschitz continuity of pkθkl(p) leads to a Lipschitz condition on the
+ordinary diﬀerential equation in Equation (2.2), which guarantees the uniqueness of the solution of the ordinary
+diﬀerential equation with a given initial condition; see Footnote 9 below.
+4
+
+--- PAGE 6 ---
+
+(iii) A probability distribution ςkl∈∆ of the new type of a type- kagent that is induced by
+a match with a type- lagent. For expositional simplicity, we denote ςkl({r}) asςklror
+ςkl(r).
+The main solution objects of our model are, for any agent i, stateω, and time t, the
+agent’s type α(i,ω,t ) and the agent’s last partner ϕ(i,ω,t ). As a matter of deﬁnition, if by
+timetagentihas never been matched, then ϕ(i,ω,t ) =i. Thus,ϕ(i,ω,0) =i. These solution
+objects form functions α:I×Ω×R+→Sandϕ:I×Ω×R+→I.
+For agenti, we letα(i) denote her type process and let α(i,t) denote her type at time
+t. Our objective is to model all agents’ type processes, as well as the random mutation,
+random matching, and matched-induced type changes, in a manner consistent with the given
+parameters.
+Because the counting processes for the cumulative number of mutations and matches of
+any agentihave an intensity, all of α(i,t) andϕ(i,t) are piece-wise constant in t. Without
+loss of generality, we can therefore take these processes to be right-continuous with left-limits
+(RCLL).8
+LetNiklbe the counting process for the number of matches by agent i, when of type k,
+to an agent of type l, and letNi=∑
+k,l∈SNiklbe the counting process for the total number of
+matches by agent i. That is,Ni(t) is the cumulative number of matches by agent iup to time
+t. Then-th matching time dn
+iof agentiis thus sup{t∈R+:Ni(t)<n}. At a ﬁnite matching
+timedn
+i, agentiis by deﬁnition matched to agent ϕ(i,dn
+i). Let Θkl(t) be the cumulative total
+quantity of matches of agents of any given type kwith agents of another given type lby time
+t. That is, Θ kl(ω,t) =∫
+INikl(ω,t)dλ(i).
+Next, we deﬁne a mapping Rfrom ∆ to the space of K×Kmatrices by
+Rkr(p) =ηkr+K∑
+l=1θkl(p)ςklrfork̸=r,andRkk(p) =−∑
+l̸=kRkl(p). (2.1)
+For a type- kagent and at a given cross-sectional distribution pof agent types, Rkr(p) can
+be viewed as the intensity of transition to a type r̸=kthat stems from both mutation and
+match-induced type changing.
+8That is, for P-almost all ω∈Ω and any t∈R+, there exists ϵ >0 such that α(i,ω,·) are constant on
+(t−ϵ,t) and [t,t+ϵ), and likewise for ϕ(i,ω,·).
+5
+
+--- PAGE 7 ---
+
+We will show that the ordinary diﬀerential equation (ODE)9deﬁned on ∆ by
+dx(t)
+dt=x(t)R(x(t)) (2.2)
+governs the evolution of the expected cross-sectional type distribution. Further, we will use the
+exact law of large numbers to show conditions under which the cross-sectional type distribution
+is deterministic almost surely and therefore solves the same ODE (2.2).
+We will also provide natural conditions under which the initial condition for the pop-
+ulation cross-sectional distribution coincides with the initial probability distribution of each
+agent’s type, in which case the path of each agent’s type distribution coincides with the path
+of the cross-sectional type distribution.
+For given parameters ( p0,η,θ,ς ), a continuous-time independent dynamical system D
+with random mutation, random matching, and match-induced type changes is deﬁned by ( α,ϕ)
+with the following properties:
+1. The type α(i,ω,t ) is (I⊠F)⊗B-measurable.10
+2. The cross-sectional type distribution ptat timetis deﬁned by
+ptk=λ({i∈I:α(i,t) =k}),
+and has the speciﬁed initial condition p0=p0.
+3. For each agent i, the type process α(i) is a process in Swhose transition intensity11
+at timetto any type r, givenα(i,t)̸=rand cross-sectional type distribution pt, is
+Rα(i,t),r(pt).
+4. The agents’ stochastic type processes {αi:i∈I}are pairwise independent. That is, for
+anyi,j∈Iwithi̸=j,αiandαjare independent.
+5. When some agent iis matched to some agent j, agentjis also matched to agent i. That
+9We note that the r-th component of pR(p),
+∑
+k∈SpkRkr(p) =K∑
+k=1[
+pkηkr+K∑
+l=1pkθkl(p)ςklr]
+,
+is Lipschitz continuous, by the Lipschitz continuity of pkθkl(p). Hence the ordinary diﬀerential equation in
+Equation (2.2) has a unique solution with a given initial condition, as noted in Footnote 7.
+10As usual, (I⊠F)⊗Bdenotes the product σ-algebra ofI⊠FandB.
+11That is, the conditional probability of the event ( α(i,t+ ∆t) =r) givenα(i,t) andpt, divided by ∆ tgoes
+toRα(i,t),r(pt) as ∆tgoes to zero. Following Br´ emaud (1981), for each kandr̸=k, lettingCikrdenote the
+counting process for the cumulative number of transitions of agent ifrom typekto typer, a martingale Mikr
+is deﬁned by Mikr(t) =Cikr(t)−∫t
+01{α(i,s)=k}Rkr(ps)ds.
+6
+
+--- PAGE 8 ---
+
+is, for any agent i, forP-almost all ω∈Ω, if then-th matching time dn
+i(ω) is ﬁnite, then
+we haveϕ(ϕ(i,dn
+i(ω)),dn
+i(ω)) =i.
+The following theorem presents the general existence and properties of a continuous-
+time independent dynamical system with random mutation, random matching and random
+type changing.
+Theorem 2.1. For any given parameters (p0,η,θ,ς ), there exists a Fubini extension (I×Ω,I⊠
+F,λ⊠P)on which is deﬁned a continuous-time independent dynamical system Dwith these
+parameters such that:
+(1) ForP-almost all ω∈Ω, the realized cross-sectional type distribution pt(ω)at any time t
+is equal to the expected cross-sectional type distribution ¯pt, which solves Equation (2.2) .
+(2) For each agent i, the type process α(i)is a continuous-time Markov chain12inSwhose
+transition intensity at time tfrom any state kto any state r̸=kisRkr(¯pt). The
+probability distribution pi(t)of the type of agent iat timetthus satisﬁes the ODE13
+dpi(t)
+dt=pi(t)R(¯pt).
+(3) ForP-almost all ω∈Ωand for any types kandl, at any time tthe cumulative total
+quantity Θkl(ω,t)of matches of agents of type kwith agents of type lis equal to its
+expectation E(Θkl(t))and grows at the rate ¯ptkθkl(¯pt).
+(4) ForP-almost all ω∈Ω, the cross-sectional type process αωis a Markov chain in Swith,
+at any time t, the same generator (transition intensity matrix) R(¯pt).
+(5) There exists a probability distribution p∗onSsuch thatp∗R(p∗) = 0 .
+(6) For any p∗∈∆satisfyingp∗R(p∗) = 0 , the dynamical system Dwith parameters
+(p∗,η,θ,ς )hasp∗as a stationary type distribution. That is, with probability one the
+realized cross-sectional type distribution ptisp∗at any time tand the transition intensity
+matrixR(¯pt)is constant and equal to R(p∗).
+Property (3) can be used to compute the volumes of speciﬁc sorts of transactions, such as
+ﬁnancial trades, the velocity of circulation of money, quantities of job matches and layoﬀs, and
+so on. Property (4) implies, in principle, the ability to empirically recover the full stochastic
+12For the deﬁnition and properties of a continuous-time Markov chains with time-dependent transition inten-
+sities, see, for example, Stroock (2014).
+13This ODE is known as the Kolmogorov forward equation. See, for instance, Stroock (2014). The matrix
+R(¯pt) is known as the “generator” of the associated Markov chain.
+7
+
+--- PAGE 9 ---
+
+evolution behavior of agents’ life-time type processes (including all sample-path moments) by
+observing the cross-sectional distribution of sample paths of agents’ types in the single given
+observed state of the world.
+References
+Daron Acemoglu and Martin Kaae Jensen, Robust comparative statics in large dynamic economies,
+Journal of Political Economy 123(2015), 587–640.
+Daron Acemoglu and Robert Shimer, Holdups and eﬃciency with search frictions, International Eco-
+nomic Review 40(1999), 827–849.
+Manuel Amador and Pierre-Olivier Weill, Learning from private and public observations of others’
+actions, Journal of Economic Theory 147(2012), 910–940.
+Robert M. Anderson, A nonstandard representation of Brownian motion and Itˆ o integration, Israel
+Journal of Mathematics ,25(1976), 15–46.
+Robert M. Anderson and Roberto C. Raimondo, Equilibrium in continuous-time ﬁnancial markets:
+endogenously dynamically complete markets, Econometrica 76(2008), 841–907.
+Robert M. Anderson Haosui Duanmu, M. Ali Khan, Metin Uyanik, On abstract economies with an
+arbitrary set of players and action sets in locally-convex topological vector spaces, 2020.
+Raymond Battalio, Larry Samuelson and John Van Huyck, Optimization incentives and coordination
+failure in laboratory stag hunt games, Econometrica 69(2001), 749–764.
+Michel Bena¨ ım and J¨ orgen Weibull, Deterministic approximation of stochastic evolution in games,
+Econometrica 71(2003), 873–903.
+Felix J. Bierbrauer and Martin F. Hellwig, Public-good provision in large economies, working paper,
+Max Planck Institute for Research on Collective Goods, 2015.
+Immanuel Bomze, Lotka-Volterra equation and replicator dynamics: a two-dimensional classiﬁcation,
+Biological Cybernetics 48(1983), 201–211.
+Tilman B¨ orgers and Rajiv Sarin, Learning through reinforcement and replicator dynamics, Journal of
+Economic Theory 77(1997), 1–14.
+Pierre Br´ emaud, Point Processes and Queues: Martingale Dynamics , Springer-Verlag, New York, 1981.
+Donald J. Brown and Abraham Robinson, Nonstandard exchange economies, Econometrica 43(1975),
+41–55.
+Sergio Currarini, Matthew O. Jackson and Paolo Pin, An economic model of friendship, homophily,
+minorities, and segregation, Econometrica 77(2009), 1003-1045.
+Peter Diamond, Wage determination and eﬃciency in search equilibrium, Review of Economic Studies
+2(1982), 217-227.
+Peter Diamond, Search, sticky prices, and inﬂation, Review of Economic Studies 60(1993), 53–68.
+Peter Diamond and Joel Yellin, Inventories and money holdings in a search economy, Econometrica 58
+(1990), 929–950.
+8
+
+--- PAGE 10 ---
+
+J. L. Doob, Stochastic processes depending on a continuous parameter, Transactions of the American
+Mathematical Society 42(1937), 107–140.
+J. L. Doob, Stochastic Processes , Wiley, New York, 1953.
+Haosui Duanmu, Jeﬀrey S. Rosenthal and William Weiss, Ergodicity of Markov processes via nonstan-
+dard analysis, Memoirs of the American Mathematical Society , 2018.
+Darrell Duﬃe, Nicolae Gˆ arleanu, and Lasse H. Pedersen, Over-the-counter markets, Econometrica 73
+(2005), 1815–1847.
+Darrell Duﬃe, Semyon Malamud and Gustavo Manso, Information percolation with equilibrium search
+dynamics, Econometrica 77(2009), 1513–1574.
+Darrell Duﬃe, Lei Qiao and Yeneng Sun, Dynamic directed random matching, Journal of Economic
+Theory 174(2018), 124–183.
+Darrell Duﬃe, Lei Qiao and Yeneng Sun, Supplement to continuous time random matching, Graduate
+School of Business, Stanford University.
+Manfred Eigen, Self organization of matter and the evolution of biological macromolecules, Die Natur-
+wissenschaften 58(1971), 465–523.
+Christopher Flinn, Minimum wage eﬀects on labor market outcomes under search, matching, and en-
+dogenous contact rates, Econometrica ,74(2006), 1013–1062.
+Peter J. Hammond, Consequentialism, non-Archimedean probabilities, and lexicographic expected util-
+ity, 39–66, In: Bicchieri, C., Jeﬀrey, R., Skyrms, B. (Eds.), The Logic of Strategy, Oxford University,
+Oxford, 1999.
+Peter J. Hammond, A notion of statistical equilibrium for games with many players, working paper,
+University of Warwick, 2015.
+Wei He and Nicholas C. Yannelis, Existence of Walrasian equilibria with discontinuous, non-ordered,
+interdependent and price-dependent preferences, Economic Theory 61(2016), 497–513.
+Martin F. Hellwig, A model of monetary exchange, Econometric Research Program, Research Memo-
+randum Number 202, Princeton University, 1976.
+Martin F. Hellwig, Incomplete-information games in large populations with anonymity, working paper,
+Max Planck Institute for Research on Collective Goods, 2019.
+Josef Hofbauera and William Sandholmb, Evolution in games with randomly disturbed payoﬀs, Journal
+of Economic Theory 132(2007), 47–69.
+Ed Hopkins, Learning, matching, and aggregation, Games and Economic Behavior 26(1999), 79–110.
+Arthur Hosios, On the eﬃciency of matching and related models of search and unemployment, Review
+of Economic Studies 57(1990), 279–298.
+Julien Hugonnier, Benjamin Lester snd Pierre-Olivier Weill, Frictional intermediation in over-the-
+counter markets, Working paper, EPFL, 2018.
+K. L. Judd, The law of large numbers with a continuum of iid random variables, Journal of Economic
+Theory 35(1985), 19–25.
+Ehud Kalai, Large robust games, Econometrica 72(2004), 1631–1665.
+9
+
+--- PAGE 11 ---
+
+H. Jerome Keisler, An inﬁnitesimal approach to stochastic analysis, Memoirs of the American Mathe-
+matical Socociety 48(1984)
+M. Ali Khan, Some remarks on the core of a large economy, Econometrica 42(1974), 633–642.
+M. Ali Khan, Kali P. Rath, Haomiao Yu and Yongchao Zhang, On the equivalence of large individualized
+and distributionalized games, Theoretical Economics 12(2017), 533–554
+Nobuhiro Kiyotaki and Ricardo Lagos, A model of job and worker ﬂows, Journal of Political Economy
+115(2007), 770–819.
+Ricardo Lagos and Guillaume Rocheteau, Liquidity in asset markets with search frictions, Econometrica
+77(2009), 403–426.
+Benjamin Lester, Guillaume Rocheteau and Pierre-Olivier Weill, Competing for order ﬂow in OTC
+markets, Journal of Money, Credit, and Banking 47(2015), 77–126.
+Peter A. Loeb, Conversion from nonstandard to standard measure spaces and applications in probability
+theory, Transactions of the American Mathematical Socociety 211(1975), 113–122.
+Peter A. Loeb and Manfred Wolﬀ, eds. Nonstandard Analysis for the Working Mathematician , Second
+Edition, Springer, Berlin, 2015.
+Richard McLean and Andrew Postlewaite, Informational size and incentive compatibility, Econometrica
+70(2002), 2421–2454.
+Richard McLean and Andrew Postlewaite, Informational size and eﬃcient auctions, Review of Economic
+Studies 71(2004), 809–827.
+Dale Mortensen, Speciﬁc capital and labor turnover, Bell Journal of Economics 9(1978), 572–586.
+Dale Mortensen, Property rights and eﬃciency in mating, racing, and related games, American Economic
+Review 72(1982), 968–979.
+Dale Mortensen and Christopher Pissarides, Job creation and job destruction in the theory of unem-
+ployment, The Review of Economic Studies 61(1994), 397–415.
+Giuseppe Moscarini, Job matching and the wage distribution, Econometrica 73(2005), 481–516.
+Edwin Perkins, A global intrinsic characterization of brownian local time, Annals of Probability 9(1981),
+800–817.
+Barbara Petrongolo and Christopher Pissarides, Looking into the black box: a survey of the matching
+function, Journal of Economic Literature 39(2001) 390–431.
+Fabien Postel-Vinay and Jean-Marc Robin, Equilibrium wage dispersion with worker and employer
+heterogeneity, Econometrica 70(2002), 2295–2350.
+Philip Protter, Stochastic Integration and Diﬀerential Equations, Second Edition , Springer, New York,
+2005.
+Richard Rogerson, Robert Shimer and Randall Wright, Search-theoretic models of labor markets: a
+survey, Journal of Economic Literature 43(2005), 959–988.
+Peter Rupert, Martin Schindler and Randall Wright, The search-theoretic approach to monetary eco-
+nomics: a primer, Journal of Monetary Economics 48(2001), 605–622.
+Peter Schuster and Karl Sigmund, Replicator dynamics, Journal of Theoretical Biology 100 (1983),
+533–538.
+10
+
+--- PAGE 12 ---
+
+Shouyong Shi, Credit and money in a search model with divisible commodities, The Review of Economic
+Studies 63(1996): 627-652.
+Shouyong Shi, A divisible search model of ﬁat money, Econometrica 65(1997), 75–102.
+Shouyong Shi and Quan Wen, Labor market search and the dynamic eﬀects of taxes and subsidies,
+Journal of Monetary Economics 43(1999), 457–495.
+Robert Shimer, The cyclical behavior of equilibrium unemployment and vacancies, American economic
+review (2005): 25-49.
+Daniel Stroock, An Introduction to Markov Processes, Second Edition , New York: Springer, 2014.
+Yeneng Sun, The exact law of large numbers via Fubini extension and characterization of insurable risks,
+Journal of Economic Theory 126(2006), 31–69.
+Alberto Trejos and Randall Wright, Search, bargaining, money, and prices, Journal of Political Economy
+103(1995), 118–140.
+Harald Uhlig, A law of large numbers for large economies, Economic Theory 8(1996), 41–50.
+Semih ¨Usl¨ u, Pricing and liquidity in decentralized asset markets, Econometrica 87(2019), 2079–2140.
+Dimitri Vayanos and Tan Wang, Search and endogenous concentration of liquidity in asset markets,
+Journal of Economic Theory 136(2007) 66–104.
+Pierre-Olivier Weill, Liquidity premia in dynamic bargaining markets, Journal of Economic Theory 140
+(2008), 66–96.
+Nicholas C. Yannelis, Debreu’s social equilibrium theorem with asymmetric information and a continuum
+of agents, Economic Theory 38(2009), 419–432.
+Ruilin Zhou, Currency exchange in a random search model. The Review of Economic Studies 64(1997),
+289-310.
+11
+
+--- PAGE 13 ---
+
+APPENDICES
+In these appendices, we ﬁrst consider random matching with enduring partnerships, then
+present some illustrative applications, and provide proofs of Propositions A.1 and A.2. The
+proof of Theorem A.1 is complex. For the convenience of the reader, we provide in Appendix
+D a sketch of its proof. A separate on-line-only supplement, Duﬃe, Qiao and Sun (2020),
+provides detailed proofs of Theorem A.1 and of the remaining results in Section 2.
+A Random Matching with Enduring Partnerships
+When a pair of agents stays together for some amount of time after matching, one needs to keep
+track of the types of the agents and their partners. For this purpose, we introduce a special
+symbolJto represent “no-match” and the notion of extended types. Let ˆS=S×(S∪{J}) be
+the set of extended types. An agent with an extended type of the form ( k,l) has typek∈S
+and is currently matched to some agent of type linS. If an agent’s extended type is of the
+form (k,J), then the agent is “unmatched.” The space ˆ∆ of extended type distributions is the
+set of probability distributions ˆ ponˆSsuch that the probability ˆ pklat (k,l) is the same as the
+probability ˆ plkat (l,k) for allkandlinS. A time is an element of R+, the set of non-negative
+real numbers, with its Borel σ-algebraB.
+The main objects of our model are α:I×Ω×R+→S,π:I×Ω×R+→I, and
+g:I×Ω×R+→S∪{J}specifying, for any agent i, stateω, and time t, the agent’s type
+α(i,ω,t ), the agent’s current partner π(i,ω,t ), and the partner’s type g(i,ω,t ). As usual, let
+α(i) (orαi) andg(i) (orgi) denote the type processes for agent iand her partners; let α(i,t)
+(orαit) andg(i,t) (orgit) denote the random types of agent iand of the partner of agent i
+at timet, respectively; and let αtandgtdenote the respective mappings α(·,·,t) andg(·,·,t)
+onI×Ω. Our objective is to model the type processes αandg, as well as random matching
+between agents in a manner consistent with given parameters for independent random mutation,
+independent random matching among agents, independent random break-up for matched pairs,
+and independent random type changes at each matching and break-up.
+The parameters of the model are the initial extended type distribution ˆ p0∈ˆ∆ and, for
+anykandlinS:
+(i) The mutation intensity ηkl∈R+fork̸=lwith which any type kagent mutates to type
+l.
+(ii) A matching intensity function θkl:ˆ∆→R+, specifying the intensity θkl(ˆp) with which
+any type-kagent is matched with a type- lagent, if the cross-sectional agent extended
+type distribution is ˆ p∈ˆ∆. This function is continuous and satisﬁes the mass-balancing
+12
+
+--- PAGE 14 ---
+
+requirement ˆ pkJ·θkl(ˆp) = ˆplJ·θlk(ˆp), that the total aggregate rate of matches of type- k
+agents to type lagents is of course equal to the aggregate rate of matches of type- lagents
+to type-kagents. We also require the functions ˆ pkJθkl(ˆp), k,l∈Sfrom ˆ∆ toRto be
+Lipschitz continuous.14
+(iii) The enduring probability ξkl∈[0,1] that a match between a type- kagent and a type- l
+agent causes a long-term relationship between the two agents after their match, where
+ξkl=ξlk.
+(iv)σkl∈M (S×S) specifying the probability distribution of the new types of a type- kagent
+and a type- lagent who have been matched, conditional on the event that the match
+causes an enduring relationship between them, where σkl((k′,l′)) =σlk((l′,k′)) for any
+k′,l′∈S.
+(v)ςkl∈M (S) specifying the probability distribution of the new type of a type- kagent
+who is matched with a type- lagent, conditional on the event that there is no enduring
+relationship (the match is dissolved immediately).
+(vi) The break-up intensity ϑkl∈[0,∞), which is the mean rate at which an existing long-term
+relationship between a type- kagent and a type- lagent is broken, where ϑkl=ϑlk.
+For simplicity, we assume that when an enduring match between a type- kagent and a
+type-lagent is eventually broken, these agents emerge with new types drawn independently
+with the probability distributions ςklandςlk, respectively.
+14As noted earlier in Footnote 7, this Lipschitz continuity condition, which is weaker than the Lipschitz
+continuity of θkl, accommodates general labor-market matching functions as in Subsection B.1 below. The
+Lipschitz continuity of ˆ pkJθkl(ˆp) leads to the Lipschitz condition on the ordinary diﬀerential equation in Equation
+(A.1), which guarantees the uniqueness of the solution of the ordinary diﬀerential equation for the cross-sectional
+extended type distributions.
+13
+
+--- PAGE 15 ---
+
+Table 1: Transition intensities
+fromto
+(k′,l′) (k′,J)
+(k,l)ηkk′δl(l′) +ηll′δk(k′) ϑklςkl(k′)
+Case 1: mutation Case 2: break up
+(k,J)∑K
+r=1θkr(ˆp)ξkrσkr(k′,l′) ηkk′+∑K
+r=1θkr(ˆp)(1−ξkr)ςkr(k′)
+Case 3: enduring matching Case 4: mutation, or matching without enduring
+Note thatδk(k′) in Case 1 is one for k=k′and zero for k̸=k′. Given the parameters
+above and any extended type distribution ˆ p, it is easy to derive the desired transition intensities
+listed in Table 1. For example, in Case 2, an agent with extended type ( k,l) may break up
+with the partner and become an agent with type ( k′,J), the corresponding transition intensity
+isϑklςkl(k′). LetQ(ˆp) be the transition matrix described in the table above. For any ( k,l)∈
+ˆS, it is easy to verify that the function∑
+(k′,l′)∈ˆSˆpk′l′Q(k′,l′)(k,l)(ˆp) from ˆ∆ toRis Lipschitz
+continuous, using the Lipschitz continuity of ˆ pkJθkl(ˆp).
+For given parameters (ˆ p0,η,θ,ξ,σ,ς,ϑ ), a continuous-time independent dynamical sys-
+tem ˆDwith enduring partnerships, if it exists, is a triple ( α,π,g ) deﬁned by the properties:
+1.α(i,ω,t ) andg(i,ω,t ) are (I⊠F)⊗B-measurable. The stochastic processes αiandgi
+are right-continuous with left limits (RCLL), a standard regularity property of stochastic
+processes, found for example, in Protter (2005). For any t∈R+,π(·,·,t) (also denoted
+byπt(·,·)) is a random matching on I×Ω in the sense that: (i) πt(·,·) is a measurable
+mapping from ( I×Ω,I⊠F) to (I,I) and (ii) for any ω∈Ω, the mapping πωt(·) =π(·,ω,t)
+is an involution on I, that is, for any i∈I,πωt(πωt(i)) =i; and is measure-preserving,
+that is, for any A∈I,λ(
+π−1
+ωt(A))
+=λ(A). For anyi∈Iandt∈R+,
+g(i,ω,t ) =
+
+α(π(i,ω,t ),ω,t) ifπ(i,ω,t )̸=i
+J ifπ(i,ω,t ) =i
+14
+
+--- PAGE 16 ---
+
+forP-almost all ω∈Ω.
+2. The cross-sectional extended type distribution ˆ p(t) at timetis deﬁned by
+ˆpkl(t) =λ({i∈I:α(i,t) =k,g(i,t) =l}).
+Let ˇp(t) be the expected cross-sectional extended type distribution E(ˆp(t)). For any agent
+i∈I, the extended type process ( α(i),g(i)) of agentiis a continuous-time Markov chain
+inS×(S∪{J}) whose generator (transition-intensity matrix) at time tisQ(ˇp(t)).
+3. For each i,j∈Iwithi̸=j, if agentsi,jare not matched at time zero, then the extended
+type processes ( αi,gi) and (αj,gj) are independent.15
+The exact law of large numbers (Theorem 2.16 of Sun (2006)) will be used to show
+that the cross-sectional type distribution ˆ p(t) is deterministic almost surely, and equal to its
+expectation ˇ p(t), which is a solution of the following ordinary diﬀerential equation
+dˇp(t)
+dt= ˇp(t)Q(ˇp(t)), ˇp(0) = ˆp0. (A.1)
+We are now ready to state the general existence of a continuous-time independent dy-
+namical system with random mutation, random matching, random type changing and random
+break-up.
+Theorem A.1. For any given parameters (ˆp0,η,θ,ξ,σ,ς,ϑ ), there exists a Fubini extension
+on which is deﬁned a continuous-time independent dynamical system ˆDwith these parameters
+such that the initial cross-sectional extended type distribution is ˆp0with probability one.
+A proof of this result is in our online supplement, Duﬃe, Qiao and Sun (2020). For the
+convenience of the reader, we also provide a sketch for the proof in Appendix D.
+In the next two propositions, we state the properties of a continuous-time independent
+dynamical system with random mutation, random matching, and random match-induced type
+changing, and random break-up. Appendix C contains the proofs of both results.
+Using the exact law of large numbers, Part (1) of the next proposition shows that
+the cross-sectional distribution of agent types evolves deterministically, according to Equa-
+tion (A.1). Part (2) implies, in principle, the ability to empirically recover the full stochastic
+evolution behavior of agents’ life-time type processes (including all sample-path moments) by
+observing the cross-sectional distribution of sample paths of agents’ types in the single given
+observed state of the world.
+15If agentsi,jare matched at time zero, then it would not be possible for ( αi,gi) and (αj,gj) to be independent
+because the agents may break up jointly with a given intensity.
+15
+
+--- PAGE 17 ---
+
+Proposition A.1. Let(ˆp0,η,θ,ξ,σ,ς,ϑ )be the parameters for a continuous-time independent
+dynamical system ˆDwith enduring partnerships. Then we have the following properties.
+(1) ForP-almost all ω∈Ω, the realized cross-sectional extended type distribution ˆp(ω,t)at
+any timetis equal to the expected cross-sectional extended type distribution ˇp(t) =E(ˆp(t)),
+which satisﬁes Equation (A.1).
+(2) ForP-almost allω∈Ω, the cross-sectional extended type process (αω,gω)is a continuous-
+time Markov chain with, at any time t, the transition intensity matrix Q(ˇp(t)).
+The following proposition shows the general existence of a stationary cross-sectional
+distribution of agents’ types.
+Proposition A.2. (1) There exists a probability distribution ˆp∗onˆSsuch that ˆp∗Q(ˆp∗) = 0 .
+(2) For any ˆp∗∈ˆ∆satisfying ˆp∗Q(ˆp∗) = 0 , a continuous-time independent dynamical system
+Dwith parameters (ˆp∗,η,θ,ξ,σ,ς,ϑ )hasˆp∗as a stationary extended type distribution.
+That is, with probability one, the realized cross-sectional extended type distribution ˆp(t)
+at any time tisˆp∗, and all of the relevant Markov chains are time homogeneous with a
+constant transition intensity matrix Q(ˆp∗).
+B Illustrative Applications
+This appendix provides two illustrative applications of our results, providing mathematical
+foundations for typical models of labor and ﬁnancial markets.
+B.1 The Diamond (1982) model of labor markets
+In the literature on continuous-time search with enduring partnerships, often used to study
+labor markets, a common assumption is that unmatched agents (unemployed workers and
+vacant positions) have matching opportunities described by independent Poisson processes.
+Already matched agents break up with speciﬁed intensities. Our illustrative application here
+is the model of Diamond (1982).
+The agents are workers and ﬁrms. Each ﬁrm has a single job position. Our results
+for continuous-time random matching with enduring partnerships provide a foundation for the
+equilibrium employment rate as a result of job search with frictions.
+The type space of the agents is S={W,F}, whereWandFrepresent workers and ﬁrms
+respectively. The sizes of the populations of workers and ﬁrms are LandKrespectively.
+Frictions in the labor market make it impossible for all the unemployed workers to
+ﬁnd jobs instantaneously. The quantity of new job matches is governed by a continuously
+16
+
+--- PAGE 18 ---
+
+diﬀerentiable mapping ( U,V)↦→g(U,V). That is, the aggregate matching rate of unemployed
+workers and vacant jobs is g(U,V), whereUandVare the populations of unemployed workers
+and vacant ﬁrms respectively. Clearly, the population of employed workers is L−U=K−V,
+andg(0,V) =g(U,0) = 0. When a ﬁrm and a worker meet, they form a (long term) job
+match with probability one. Furthermore, each matched job-worker pair faces a randomly
+timed separation at an exogenously speciﬁed intensity b.
+In Diamond (1982), the total population size L+Kof workers and ﬁrms is not assumed
+to be one. In order to stay with our convention that the agent space has total mass one, we can
+rescale without loss of generality. Viewed in terms of our model, the fraction of unemployed
+workers is ˆ pWJ=U/(L+K) and the fraction of vacant ﬁrms is ˆ pFJ=V/(L+K). The
+corresponding parameters are given as follows. There is no mutation in this model, so ηWF=
+ηFW= 0.
+Matching occurs only between unemployed workers and ﬁrms with vacant jobs. For
+matching intensities, we deﬁne
+θkl(ˆp) =
+
+g((L+K)ˆpWJ,(L+K)ˆpFJ)
+(L+K)ˆpkJif (k,l) = (W,F ) or (F,W ) and ˆpkJ>0
+∂g
+∂U(
+0,(L+K)ˆpFJ)
+if (k,l) = (W,F ) and ˆpWJ= 0
+∂g
+∂V(
+(L+K)ˆpWJ,0)
+if (k,l) = (F,W ) and ˆpFJ= 0
+0 otherwise.
+It is obvious that θWFis continuous for ˆ pWJ>0. Sinceg(0,(L+K)ˆpFJ) = 0, it is clear that
+lim
+ˆpWJ→0g(
+(L+K)ˆpWJ,(L+K)ˆpFJ)
+(L+K)ˆpWJ=∂g
+∂U(
+0,(L+K)ˆpFJ)
+.
+Hence,θWFis also continuous when ˆ pWJ= 0. The continuity of θFWfollows the same proof.
+It is easy to see that for any ˆ pWJ,
+ˆpWJθWF=g(
+(L+K)ˆpWJ,(L+K)ˆpFJ)
+(L+K).
+Sincegis continuously diﬀerentiable, we know that ˆ pWJθWFis Lipschitz continuous. Similarly,
+we have
+ˆpFJθFW=g(
+(L+K)ˆpWJ,(L+K)ˆpFJ)
+(L+K).
+Hence, the mass-balancing requirement and the Lipschitz continuity condition are satisﬁed.
+17
+
+--- PAGE 19 ---
+
+For enduring-relationship probabilities, we deﬁne for any k,l∈S,
+ξkl=
+
+1 if (k,l) = (W,F ) or (F,W )
+0 otherwise.
+The match-induced type-change probabilities are
+σkl(k′,l′) =δk(k′)δl(l′)
+and
+ςkl(k′) =δk(k′).
+The mean separation rates are
+ϑkl=
+
+bif (k,l) = (W,F ) or (F,W )
+0 otherwise.
+Proposition A.1 (1) implies that with probability one, the realized cross-sectional ex-
+tended type distribution ˆ p(t) is the same as the expected cross-sectional extended type distri-
+bution ˇp(t), which satisﬁes Equation (A.1). In the notation of this example, with probability
+one,
+dˆpWF(t)
+dt=∑
+(k,l)∈ˆSˆpkl(t)Q(k,l)(W,F)(ˆp(t)) (B.1)
+= ˆpWJ(t)Q(W,J)(W,F)(ˆp(t)) + ˆpWF(t)Q(W,F)(W,F)(ˆp(t))
+= ˆpWJ(t)θWF(ˆp(t))−ˆpWF(t)Q(W,F)(W,J)(ˆp(t))
+=g(
+(L+K)ˆpWJ(t),(L+K)ˆpFJ(t))
+(L+K)−bˆpWF(t).
+By Equation (32) in Diamond (1982), we can let
+f(E,L,K ) =g(U,V) =g(L−E,K−E),
+whereEis the size of the population of employed workers. It is then clear that with probability
+one, the realized quantity E(t) of employed workers at any time tis (L+K) ˆpWF(t). Further,
+L−E(t) = (L+K) ˆpWJ(t) andK−E(t) = (L+K) ˆpFJ(t). Equation (B.1) can then be
+expressed as
+dE(t)
+dt=f(E(t),L,K )−bE(t), (B.2)
+18
+
+--- PAGE 20 ---
+
+which is Equation (22) in Diamond (1982).16
+B.2 Over-the-counter ﬁnancial markets
+Our second illustrative application is the model of over-the-counder ﬁnancial markets of Duﬃe,
+Gˆ arleanu, and Pedersen (2005). There are two classes of agents, investors and marketmakers.
+Each agent consumes a single nonstorable consumption good that is used as a num´ eraire. In
+Duﬃe, Gˆ arleanu, and Pedersen (2005), the masses of investors and marketmakers are each 1.
+In order to stay within the simplex ∆ of agent masses stipulated by our basic model, without
+loss of generality we rescale these two type masses to 1 /2.
+Investors can hold 0 or 1 unit of the asset. A fraction sof investors are initially endowed
+with 1 unit of the asset. An investor is characterized as an asset owner or non-owner, and also
+by an intrinsic preference for ownership that is high ( h) or low (l). A low type switches from
+low to high with intensity λu, and switches back with intensity λd.
+The type space is thus S={ho,hn,lo,ln,m}, where the letters “ h” and “l” designate
+the investor’s intrinsic preference, “ o” and “n” indicate whether the investor owns the asset
+or not, and “ m” indicates a marketmaker. Marketmakers never change their type. When a
+high-preference non-owner meets an low-preference owner, they endogenously choose to trade
+the asset, generating a change of types for each. Other investor-to-investor matches generate
+no trade, thus no type changes. Trades generated by contact with a marketmaker will be
+characterized shortly.
+Investors meet by independent random search, as follows. At the successive event times
+of a Poisson process with some intensity parameter λ, an investor contacts another investor
+chosen at random, uniformly from the entire investor population. Thus, letting
+µk(t) =pk(t)
+pho(t) +phn(t) +plo(t) +pln(t)= 2pk(t)
+denote the relative fraction of investors (among all the investors) of type kat timet, the
+intensity with which any given investor contacts an investor of type kisλµk(t). In Duﬃe,
+Gˆ arleanu, and Pedersen (2005), contact is directional, in the sense that the event of a type
+kinvestor contacting a type rinvestor is distinguished from the event of a type rinvestor
+contacting a type kinvestor. Thus the total meeting intensity for speciﬁc type- kinvestor with
+some type-rinvestor is θkr(p(t)) = 2λµr(t) = 4λpr(t).This directional-contact formulation
+implies that the derived matching intensity function θautomatically satisﬁes the mass-balance
+16Sincefandbare the matching and mean separation rates respectively, Equation (B.2) was claimed intuitively
+in Diamond (1982) without showing the existence and properties of the underlying dynamic matching model.
+Our results in Appendix A provide a rigorous micro foundation for the continuous time search ideas in Diamond
+(1982), and prove the existence of the desired dynamic matching model and the validity of Equation (B.2).
+19
+
+--- PAGE 21 ---
+
+condition. Directional contact also allows in principle for a diﬀerence in the terms of trade
+in the asset bargaining outcome, depending on which of a pair contacts the other, but that
+diﬀerence plays no role here.
+Each investor also contacts some randomly drawn marketmaker at the event times of a
+Poisson process with a ﬁxed intensity of ρ. When a type- hninvestor meets a marketmaker, the
+community of marketmakers may be experiencing an excess of buyer contacts relative to seller
+contacts. Marketmakers are able to instantly lay oﬀ their trades in the inter-dealer market,
+but do not absorb excess order ﬂow into their own accounts. In that case, each marketmaker
+rations trade by randomizing whether it quotes a price that is acceptable to the contacting
+investor. Speciﬁcally, at contact with a marketmaker, a type- hninvestor trades successfully
+with probabilitymin(phn,plo)
+phn(and becomes a type- hoinvestor), which implies that the intensity
+for her successful search with a marketmaker is ρmin(phn,plo)
+phn. Similarly, the intensity for a
+type-loinvestor to search successfully for a marketmaker to trade is ρmin(phn,plo)
+plo.
+Viewed in terms of our model in Section 2, the corresponding parameters are given as
+follows. The type mutation intensities are, for any kandr∈Ssuch thatk̸=r,
+ηkr=
+
+λuif (k,r) = (lo,ho ) or (ln,hn )
+λdif (k,r) = (ho,lo ) or (hn,ln )
+0 otherwise.
+For matching intensities, we have for any kandr∈S,
+θkr(p) =
+
+4λpr ifk,r∈{ho,lo,hn,ln}
+ρmin(phn,plo)
+phnifk=hnandr=m
+ρmin(phn,plo)
+ploifk=loandr=m
+2ρmin(phn,plo) ifk=mandr∈{hn,lo}
+0 otherwise.
+It is obvious that the mass-balancing requirements for θas well as the Lipschitz continuity
+for the mapping pkθkr(p) are satisﬁed. When a type- hninvestor meets a type- loinvestor or
+ﬁnds successfully a marketmaker to trade, the type- hninvestor, having purchased the asset,
+becomes a type- hoinvestor. Likewise the type- loinvestor becomes a type- lninvestor. Thus,
+20
+
+--- PAGE 22 ---
+
+we have for any k,r,k′∈S,
+ςkr(k′) =
+
+δho(k′) ifk=hnandr∈{lo,m}
+δln(k′) ifk=loandr∈{hn,m}
+δk(k′) otherwise.
+Then we can derive the following transition intensities as listed in Equation (2.1):
+R(ho)(lo)(p) =λd
+R(hn)(lo)(p) = 0
+R(lo)(lo)(p) =−λu−4λphn−ρmin(phn,plo)
+plo
+R(ln)(lo)(p) = 0
+R(m)(lo)(p) = 0.
+The evolution of the fraction of type- loagents is thus governed by (with probability one)
+dplo(t)
+dt=pho(t)R(ho)(lo)(p(t)) +plo(t)R(lo)(lo)(p(t))
+=λdpho(t)−(
+λu+ 4λphn(t) +ρmin(phn(t),plo(t))
+plo(t))
+plo(t)
+=λdpho(t)−λuplo(t)−4λphnplo(t)−ρmin(phn(t),plo(t)).
+Becauseµk(t) = 2pk(t),
+dµlo(t)
+dt=λdµho(t)−λuµlo(t)−2λµhn(t)µlo(t)−ρmin(µhn(t),µlo(t)), (B.3)
+which is Equation (3) of Duﬃe, Gˆ arleanu, and Pedersen (2005). The remaining population-
+distribution evolution equations of Duﬃe, Gˆ arleanu, and Pedersen (2005) follow similarly. Sim-
+ilar to the remark in Footnote 16, while Equation (B.3) was claimed in Duﬃe, Gˆ arleanu, and
+Pedersen (2005) intuitively without showing the existence and properties of the underlying
+dynamic matching model, the verbal description of continuous time matching as in Duﬃe,
+Gˆ arleanu, and Pedersen (2005) can be formulated and proved by our model and results in
+Section 2, which lead to a rigorous derivation of Equation (B.3).
+21
+
+--- PAGE 23 ---
+
+C Proofs of Propositions A.1 and A.2
+C.1 Proof of Proposition A.1
+For anyi∈I,ω∈Ω andt∈R+, letβ(i,ω,t ) = (α(i,ω,t ), g(i,ω,t )) be the extended type
+of agentiwith sample realization ωat timet. For any t > t 1>···> tn>0, ∆t > 0,
+(k,l),(k′,l′),(k1,l1),..., (kn,ln)∈ˆSwith (k,l)̸= (k′,l′), we have
+λ⊠P(
+βt+∆t(i,ω) = (k′,l′),βt(i,ω) = (k,l),βt1(i,ω) = (k1,l1),...,βtn(i,ω) = (kn,ln))
+=∫
+IP(
+βt+∆t
+i(ω) = (k′,l′),βt
+i(ω) = (k,l),βt1
+i(ω) = (k1,l1),...,βtn
+i(ω) = (kn,ln))
+dλ
+=∫
+IP(
+βt
+i= (k,l),βt1
+i= (k1,l1),...,βtn
+i= (kn,ln))
+P(
+βt+∆t
+i = (k′,l′)⏐⏐βt
+i= (k,l),βt1
+i= (k1,l1),...,βtn
+i= (kn,ln))
+dλ
+=∫
+IP(
+βt
+i= (k,l),βt1
+i= (k1,l1),...,βtn
+i= (kn,ln))
+P(
+βt+∆t
+i = (k′,l′)⏐⏐βt
+i= (k,l))
+dλ.
+Because the transition intensity matrix Q(ˇpt) at any time tof the Markov chain βidoes not
+depend oni∈I, so does the conditional probability P(
+βt+∆t
+i = (k′,l′)⏐⏐βt
+i= (k,l))
+. Let
+P(
+βt+∆t
+i = (k′,l′)⏐⏐βt
+i= (k,l))
+=Q(k,l)(k′,l′)(ˇp(t)) ∆t+o(∆t).
+SinceQ(ˇpt) is the transition intensity matrix, we know that o(∆t) divided by ∆ tconverges to
+zero whenever ∆ tgoes to zero. Hence, we obtain that
+λ⊠P(
+βt+∆t(i,ω) = (k′,l′),βt(i,ω) = (k,l),βt1(i,ω) = (k1,l1),...,βtn(i,ω) = (kn,ln))
+=∫
+IP(
+βt
+i= (k,l),βt1
+i= (k1,l1),...,βtn
+i= (kn,ln))(
+Q(k,l)(k′,l′)(ˇp(t)) ∆t+o(∆t))
+dλ
+= [λ⊠P(A)][
+Q(k,l)(k′,l′)(ˇp(t)) ∆t+o(∆t)]
+,
+where
+A={(i,ω) :βt(i,ω) = (k,l),βt1(i,ω) = (k1,l1),...,βtn(i,ω) = (kn,ln)}.
+Therefore, we have
+λ⊠P(
+{(i,ω) :βt+∆t(i,ω) = (k′,l′)}⏐⏐A)
+=Q(k,l)(k′,l′)(ˇp(t)) ∆t+o(∆t). (C.1)
+Note that Equation (C.1) also holds in the case when n= 0, which means that
+λ⊠P(
+{(i,ω) :βt+∆t(i,ω) = (k′,l′)}⏐⏐βt(i,ω) = (k,l))
+=Q(k,l)(k′,l′)(ˇp(t)) ∆t+o(∆t).(C.2)
+22
+
+--- PAGE 24 ---
+
+By Equations (C.1) and (C.2), we know that β, when viewed as a stochastic process with
+sample space ( I×Ω,I⊠F,λ⊠P), is a Markov chain with time- ttransition intensity matrix
+Q(ˇp(t)). By the Fubini property, it is clear that the distribution of βtis ˇp(t). Therefore, ˇ p(t)
+satisﬁes the ordinary diﬀerential equation (A.1).
+For any agent i∈I, letBi={j∈I:P(π0(i) =j)>0},which is the set of agents
+j∈Iwho could be matched with agent iwith positive probability at the initial time. It
+is then clear that Biis ﬁnite or countably inﬁnite, and has λ-measure zero (because λis
+atomless). By property (3) of the continuous-time independent dynamical system ˆDwith
+enduring partnerships, we know that for any j /∈Bi, the extended type processes βi= (αi,gi)
+andβj= (αj,gj) are independent. Hence, the stochastic processes βi,i∈Isatisfy the condition
+of essential pairwise independence in the sense that for each i∈I,βiandβjare independent
+forλ-almost all j∈I.
+By the exact law of large numbers in Theorem 2.16 of Sun (2006), we know that for
+P-almost all ω∈Ω, the processes βωandβhave the same ﬁnite-dimensional distributions
+in the sense that for any 0 ≤t1≤ ··· ≤tn, (βt1ω,...,βtnω) and (βt1,...,βtn) (viewed as
+random vectors) have the same distribution. The ﬁnite-dimensional distributions of a process
+determines whether the process is a Markov chain and also its transition intensity matrix. Thus,
+forP-almost all ω∈Ω,βωis also a Markov chain with transition intensity matrix Q(ˇp(t)) at
+timet. So Part (2) of Proposition A.1 is proven. We also know that for P-almost all ω∈Ω,
+βt
+ωandβthave the same distribution at any time t, which implies that ˆ p(ω,t) = ˇp(t). Hence,
+Part (1) of Proposition A.1 is shown.
+C.2 Proof of Proposition A.2
+Part (1) of Proposition A.2: for any ˆ p,ˆq∈ˆ∆, deﬁne a vector ˆ qQ(ˆp) inRK×RK+1by letting
+[ˆqQ(ˆp)]kl=∑
+(k′,l′)∈ˆSˆqk′l′Q(ˆp)(k′l′)(kl).
+SinceQ(kl)(k′l′)is continuous on ˆ∆, and ˆ∆ is compact, we can ﬁnd a positive real number c
+such that⏐⏐cQ(kl)(k′l′)(ˆp)⏐⏐≤1 for any ˆp∈ˆ∆, and (k,l),(k′,l′)∈ˆS.
+It is easy to see that ˆ pQ(ˆp) = 0 is equivalent to the statement that f(ˆp)≜ˆp+cˆpQ(ˆp)
+has a ﬁxed point ˆ p=f(ˆp).
+Next we show that fis a function from ˆ∆ to ˆ∆. For this purpose, we need to show that
+the values of fare probabilities and satisfy some symmetry condition for ˆ∆. Note that
+f(ˆp)kl= ˆpkl+∑
+(k′,l′)∈ˆScˆpk′l′Q(ˆp)(k′,l′)(k,l)
+23
+
+--- PAGE 25 ---
+
+=(
+1 +cQ(ˆp)(k,l)(k,l))
+ˆpkl+∑
+(k′,l′)̸=(k,l)cˆpk′l′Q(ˆp)(k′,l′)(k,l).
+By the deﬁnition of Q(ˆp), we know that Q(ˆp)(k′,l′)(k,l)≥0 if (k′,l′)̸= (k,l). The choice of c
+implies that(
+1 +cQ(ˆp)(k,l)(k,l))
+≥0. Thus, [f(ˆp)]kl≥0 for any (k,l)∈ˆS.
+It is also easy to see that
+∑
+(k,l)∈ˆSf(ˆp)(k,l)=∑
+(k,l)∈ˆS∑
+(k′,l′)∈ˆS(
+ˆpk′l′+cˆpk′l′Q(ˆp)(k′,l′)(k,l))
+=∑
+(k′,l′)∈ˆS∑
+(k,l)∈ˆS(
+ˆpk′l′+cˆpk′l′Q(ˆp)(k′,l′)(k,l))
+=∑
+(k′,l′)∈ˆS
+ˆpk′l′+cˆpk′l′∑
+(k,l)∈ˆSQ(ˆp)(k′,l′)(k,l)
+
+=∑
+(k′,l′)∈ˆSˆp(k′,l′)= 1,
+where the last identity follows from the fact that∑
+(k,l)∈ˆSQ(ˆp)(k′,l′)(k,l)= 0. Hence, the values
+offare probabilities.
+Fix any ˆp∈ˆ∆, andk,l∈S. For anyk1,l1∈Swith (k1,l1)̸= (k,l), we have
+ˆpk1l1Q(ˆp)(k1,l1)(k,l)= ˆpk1l1(
+ηk1kδl1(l) +ηl1lδk1(k))
+(C.3)
+= ˆpl1k1(
+ηl1lδk1(k) +ηk1kδl1(l))
+= ˆpl1k1Q(ˆp)(l1,k1)(l,k).
+By the mass-balancing requirement, and the symmetries of ξandσ, we can obtain that
+K∑
+k′=1ˆpk′JQ(ˆp)(k′,J)(k,l)=K∑
+k′=1ˆpk′JK∑
+l′=1θk′l′(ˆp)ξk′l′σk′l′(k,l)
+=K∑
+k′=1K∑
+l′=1ˆpk′Jθk′l′(ˆp)ξk′l′σk′l′(k,l)
+=K∑
+l′=1ˆpl′JK∑
+k′=1θl′k′(ˆp)ξl′k′σl′k′(l,k)
+=K∑
+k′=1ˆpl′JQ(ˆp)(l′,J)(l,k).
+24
+
+--- PAGE 26 ---
+
+It follows from Equation (C.4) and the symmetry of ϑthat
+ˆpklQ(ˆp)(k,l)(k,l)=−∑
+(k′,l′)∈ˆS\(k,l)ˆpklQ(ˆp)(k,l)(k′,l′)
+=−∑
+(k′,l′)∈S×S\(k,l)ˆpklQ(ˆp)(k,l)(k′,l′)−∑
+k′∈SˆpklQ(ˆp)(k,l)(k′,J)
+=−∑
+(l′,k′)∈S×S\(l,k)ˆplkQ(ˆp)(l,k)(l′,k′)−∑
+k′∈Sˆpklϑklςkl(k′)
+=−∑
+(l′,k′)∈S×S\(l,k)ˆplkQ(ˆp)(l,k)(l′,k′)−ˆpklϑkl
+=−∑
+(l′,k′)∈S×ˆS\(l,k)ˆplkQ(ˆp)(l,k)(l′,k′)
+= ˆplkQ(ˆp)(l,k)(l,k).
+The above equations imply that
+f(ˆp)kl= ˆpkl+c∑
+(k′,l′)∈ˆSˆpk′l′Q(ˆp)(k′,l′)(k,l)
+= ˆpkl+c∑
+(k′,l′)∈S×S\(k,l)ˆpk′l′Q(ˆp)(k′,l′)(k,l)+c∑
+k′∈Sˆpk′JQ(ˆp)(k′,J)(k,l)+cˆpklQ(ˆp)(k,l)(k,l)
+= ˆplk+c∑
+(l′,k′)∈S×S\(l,k)ˆpl′k′Q(ˆp)(l′,k′)(l,k)+c∑
+l′∈Sˆpl′JQ(ˆp)(l′,J)(l,k)+cˆplkQ(ˆp)(l,k)(l,k)
+=f(ˆp)lk
+Hence,fis a function from ˆ∆ to ˆ∆.
+It is clear that fis continuous on ˆ∆. By Kakutani’s Fixed Point Theorem, there exists
+a ˆp∗∈ˆ∆ such that ˆ p∗+cˆp∗Q(ˆp∗) = ˆp∗. Therefore, ˆ p∗Q(ˆp∗) = 0.
+Part (2) of Proposition A.2: Assume that ˆ p∗Q(ˆp∗) = 0. Since the function ˆ pQ(ˆp) is
+Lipschitz continuous in ˆ p, the ordinary diﬀerential equation in Equation (A.1) with the initial
+condition ˇp(0) = ˆp∗must have a unique solution ˆ p∗, and hence ˇ p(t) = ˆp∗at any time t.
+Therefore, ˆp∗is a stationary distribution.
+D Sketch for the Proof of Theorem A.1
+In this section, we brieﬂy explain the ideas for proving Theorem A.1.17The detailed proof of
+Theorem A.1 is provided in an on-line-only supplement, Duﬃe, Qiao and Sun (2020).
+The popular idea that a continuum of agents search continuously over time for trading
+17Note that the existence result in Theorem 2.1 is a special case of Theorem A.1 with all the enduring
+probabilities being zero.
+25
+
+--- PAGE 27 ---
+
+partners independently of each other is to model the situation that a large but ﬁnite number
+of agents are matched with small probabilities at small time intervals without central coor-
+dinations. Though such an idea of continuous-time independent random matching is widely
+used intuitively, there has been no underlying mathematical model representing the idea. The
+main purpose of this paper is to provide the ﬁrst mathematical foundation for continuous-time
+independent random matching.
+We take the following approach for constructing a general model of continuous-time
+independent random matching. First, we analyze a ﬁnite-period dynamic random matching
+model with ﬁnitely many agents in Appendices E.1, E.2 and E.3 of the online supplement.
+Then, using techniques in nonstandard analysis,18we transform in Appendix E.4 such a ﬁnite
+model to a limit model with inﬁnitely many agents who are matched at each inﬁnitesimal time
+interval with inﬁnitesimal probabilities, which leads to continuous-time independent random
+matching.
+It is diﬃcult to work with a general dynamic random matching model with ﬁnitely many
+agents. Since agent ibeing matched to agent jimplies agent jbeing matched to agent i,
+random matching with ﬁnitely many agents must induce correlations. Such kind of individual
+level correlations also happens when a pair of matched agents breaks up with some probability.
+A source of systemic correlations for all the agents come from the matching probabilities at each
+time period, since such matching probabilities depend on the underlying cross-sectional type
+distribution of agents which is random in the ﬁnite-agent setting. In order to obtain meaningful
+approximate results, we provide delicate estimations in Appendix E.3 for the cumulative eﬀect
+of the correlations and randomness across multiple time periods. The advantage of working
+with a limit model of continuous-time independent random matching is that such kind of
+correlations and randomness disappears completely, which is convenient for applications to
+economic models in various areas.19
+In Appendix E.1, we construct a static random matching model with ˆMagents given
+general matching parameters {qkl}k,l∈S, where ˆMis a ﬁnite positive even integer. Since we
+allow enduring partnerships in our dynamic matching model, we need to consider a static
+18For a comprehensive introduction to nonstandard analysis, see the ﬁrst three chapters of Loeb and Wolﬀ
+(2015). Nonstandard analysis has been used to study continuous time stochastic processes such as Poisson
+process in Loeb (1975), Brownian motion and Itˆ o process in Anderson (1976), Perkins (1981), and Keisler
+(1984), and Markov processes in Duanmu, Rosenthal and Weiss (2018). For applications of nonstandard analysis
+to economics, see, for example, Brown and Robinson (1975), Khan (1974), Hammond (1999), and Anderson and
+Raimondo (2008). In the proof of Theorem A.1 in Appendix E, nonstandard analysis is only used in Appendix
+E.4.
+19Economic models with many agents are also very popular in situations without the consideration of random
+matching. For some recent developments, see McLean and Postlewaite (2002, 2004), Kalai (2004), Yannelis
+(2009), Acemoglu and Jensen (2015), Bierbrauer and Hellwig (2015), Hammond (2015), He and Yannelis (2016),
+Khan et al. (2017), Hellwig (2019) and Anderson et al. (2020) among others.
+26
+
+--- PAGE 28 ---
+
+random matching model with some agents being matched initially, which will be used in the
+matching step of each time period. We assume that only single (i.e., initially unmatched) agents
+will participate in the static matching considered here. Let Ikbe the set of single agents with
+typek, and|Ik|the number of agents in Ik. We ﬁrst randomly choose a subset AklinIkto be
+matched with type- lagents such that the number of agents in Akl(denoted by|Akl|) is taken to
+be the largest even integer less than or equal to |Ik|qkl. Then, the probability of a type- kagent
+to be matched with a type- lagent is|Akl|/|Ik|. As mentioned above, the matching outcome
+is correlated due to the ﬁniteness of the agent space. Another diﬃculty is that the matching
+probability|Akl|/|Ik|is, in general, only an approximation of the matching parameter qkl(note
+thatqklcan be quite arbitrary). Since the static random matching model will be used in the
+matching step of our dynamic matching model, the matching parameters/probabilities will go
+to zero as the time length of each period goes to zero and the number of agents goes to inﬁnity.
+In Lemma 1, we provide delicate estimations of the (joint) matching probabilities to control
+the cumulative eﬀect in the dynamic matching model.20
+In Appendix E.2, we develop a ﬁnite-agent dynamic matching model with ˆMagents and
+M2periods with Mbeing a positive integer. The time length of each period is1
+M. In each
+period, there are three steps. The ﬁrst step is the mutation step, agents (single or matched)
+change their types independently. The second step is the matching step, only single agents
+take part in the static random matching described in Appendix E.1. The third step is the
+type changing with break-up step, at which agents who were just matched in the last step may
+enter into a long-term partnership with a given probability, and then experience type changes
+according to speciﬁc type-changing probabilities. At this step, agents who have been matched
+for more than one step may break up with a given probability, and change their types according
+to some type-changing probabilities if they indeed break up.
+In Appendix E.3, we present some properties of the ﬁnite-agent dynamic matching model
+constructed in Appendix E.2, which will be used for the continuous time model in Appendix
+E.4. In particular, Lemma E.4 provides a careful estimate on the diﬀerence between the
+(conditional) matching probabilities and the corresponding matching parameters. Lemmas E.6
+an E.7 show that the ﬁnite-agent dynamic matching model is approximately Markovian and
+independent when the number of agents and number of periods are large enough. As mentioned
+above, the proofs of those lemmas are diﬃcult since we need to estimate very carefully about
+the cumulative eﬀect of the correlations and randomness across multiple time periods.
+20Lemma 7 in Duﬃe, Qiao and Sun (2018) considered a static random matching model with inﬁnitely many
+agents. When such a result is interpreted in the large ﬁnite setting, it means that the diﬀerence between the
+matching probability |Akl|/|Ik|and the matching parameter qklis small. In the setting of this paper, we need
+to consider the case that both the matching probability |Akl|/|Ik|and the matching parameter qklare small,
+which cannot be covered by the idea used in Lemma 7 of Duﬃe, Qiao and Sun (2018).
+27
+
+--- PAGE 29 ---
+
+In Appendix E.4, we turn to the study of the continuous time model of independent
+random matching. By the Transfer Principle in nonstandard analysis, the ﬁnite-agent dynamic
+matching model and its properties can be recast in the setting with a hyperﬁnite number of
+agents and time periods. By rounding oﬀ some inﬁnitesimals, we obtain a continuous time
+random matching model with a standard atomless probability space as the agent space. Then,
+we need to show that the continuous time random matching model as constructed satisﬁes
+all the requirements stated in Appendix A. First, the Markov property and independence of
+the continuous time model are proved, based on the approximate results in the ﬁnite-agent
+model. It is diﬃcult to show that the transition intensities are the same as listed in Table 1
+above. In order to do this, we need to provide very subtle estimates on various cumulative
+eﬀects of inﬁnitely many rare events for each of the four cases over inﬁnitely many periods with
+inﬁnitesimal time length.21
+21A discrete-time model of random matching with enduring partnerships is considered in Duﬃe, Qiao and
+Sun (2018); see also Section 5 of Duﬃe, Qiao and Sun (2018) for a discussion of some related papers on more
+specialized models of random matching in the static and discrete-time settings. Unlike the delicate analysis
+associated with continuous-time random matching in this paper, there is no need to consider the cumulative
+eﬀect of multiple periods in the discrete-time model.
+28
