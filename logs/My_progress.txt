@@ -11,4 +11,5 @@ Fubini extension: Sun 2006 and DS 2007
 
 26.01.09
 * Setup PROJECT.md
-* 
+* both notes polished by "note revision" agent
+* Met with Ben. Next week to-dos listed.
