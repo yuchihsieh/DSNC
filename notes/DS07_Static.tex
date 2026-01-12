@@ -110,15 +110,6 @@ Let $S$ be a nonempty set. A \emph{filter} $\mathcal F$ on $S$ is a nonempty col
 \end{enumerate}
 \end{definition}
 
-\begin{remark}[Existence of free ultrafilters (via Zorn/AC)]
-There is no explicit ``formula'' example of a free ultrafilter on $\mathbb N$.
-Its existence is usually proved using the \emph{Ultrafilter Lemma} (every proper filter extends to an ultrafilter), which follows from Zorn's lemma and hence from the Axiom of Choice.
-Concretely, start from the \emph{Fr\'echet filter} of cofinite sets
-$\mathcal F_{\mathrm{cof}}=\{A\subseteq\mathbb N:\mathbb N\setminus A\text{ is finite}\}$,
-extend it to an ultrafilter $\mathcal U\supseteq\mathcal F_{\mathrm{cof}}$, and then $\mathcal U$ must be \emph{free} (non-principal) because it contains no finite sets.
-For the purposes of this note, the key point is simply: we may \emph{fix} one free ultrafilter $\mathcal U$ and treat its elements as ``$\mathcal U$-large'' subsets of $\mathbb N$.
-\end{remark}
-
 Let $\mathbb N$ be the natural numbers. A (free) \emph{ultrafilter} $\mathcal U$ on $\mathbb N$ is a collection of subsets of $\mathbb N$ satisfying:
 \begin{enumerate}
   \item $\emptyset\notin\mathcal U$, and if $A\in\mathcal U$ and $A\subseteq B$, then $B\in\mathcal U$;
@@ -127,6 +118,15 @@ Let $\mathbb N$ be the natural numbers. A (free) \emph{ultrafilter} $\mathcal U$
   \item $\mathcal U$ is \emph{free}: no finite subset of $\mathbb N$ is in $\mathcal U$.
 \end{enumerate}
 Fix such a (free) ultrafilter $\mathcal U$. Intuitively, members of $\mathcal U$ are the subsets of $\mathbb N$ that we declare to be \emph{$\mathcal U$-large} (a strengthened notion of ``for almost all $n$'').
+
+\begin{remark}[Existence of free ultrafilters (via Zorn/AC)]
+  There is no explicit ``formula'' example of a free ultrafilter on $\mathbb N$.
+  Its existence is usually proved using the \emph{Ultrafilter Lemma} (every proper filter extends to an ultrafilter), which follows from Zorn's lemma and hence from the Axiom of Choice.
+  Concretely, start from the \emph{Fr\'echet filter} of cofinite sets
+  $\mathcal F_{\mathrm{cof}}=\{A\subseteq\mathbb N:\mathbb N\setminus A\text{ is finite}\}$,
+  extend it to an ultrafilter $\mathcal U\supseteq\mathcal F_{\mathrm{cof}}$, and then $\mathcal U$ must be \emph{free} (non-principal) because it contains no finite sets.
+  For the purposes of this note, the key point is simply: we may \emph{fix} one free ultrafilter $\mathcal U$ and treat its elements as ``$\mathcal U$-large'' subsets of $\mathbb N$.
+\end{remark}
 
 The \emph{ultrapower} ${}^\ast\mathbb R$ is defined as the quotient $\mathbb R^{\mathbb N}/\sim$, where for two real sequences $(x_n)$ and $(y_n)$ we declare
 \[

@@ -1,0 +1,224 @@
+\documentclass[11pt]{article}
+
+% Standalone note (NOT part of the main paper).
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage[hidelinks]{hyperref}
+\usepackage{cleveref}
+\usepackage{geometry}
+\geometry{margin=1.7in}
+
+% Theorem environments
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{remark}{Remark}[section]
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+
+\title{Notes: Fubini extensions for discrete-time random matching dynamics\\(Duffie--Sun 2007, Section 3)}
+\author{Yu-Chi Hsieh}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\newpage
+\section{Discrete-time random matching dynamics (Duffie--Sun 2007, Section 3)}
+\label{sec:ds2007-discrete}
+
+\subsection{Quick map to the source papers}
+\label{subsec:quick-map-ds2007-discrete}
+\noindent
+This note is distilled primarily from:
+\begin{itemize}
+  \item D.\ Duffie and Y.\ Sun (2007), \emph{Existence of independent random matching} (AAP 17), especially \textbf{Section 3} and the existence proof via \textbf{Sections 5--6}, and
+  \item Y.\ Sun (2006), \emph{The exact law of large numbers via Fubini extension} (JET 126), for the ELLN that turns essential pairwise independence into deterministic aggregation.
+\end{itemize}
+
+\medskip
+\noindent
+\textbf{Where to look in DS2007 (as extracted in this repo).}
+\begin{itemize}
+  \item \textbf{Dynamic model definition (three-stage per period):} DS2007 \S3.1, starting around the formal setup of $a_0$, $h_n$, $\pi_n$, $g_n$, $a_n$.
+  \item \textbf{Markov conditional independence in types:} DS2007 \S3.2, equations (5)--(7).
+  \item \textbf{Existence theorem:} DS2007 \S3.3, \textbf{Theorem 3.1}.
+  \item \textbf{Technical construction:} DS2007 \S5 (Loeb transition probabilities, generalized Fubini, generalized Ionescu--Tulcea) and \S6 (proof of Theorem 3.1).
+\end{itemize}
+
+\subsection{Aim and scope}
+\label{subsec:aim-scope-ds2007-discrete}
+The goal is to formalize a standard modeling template used in economics: a continuum of agents repeatedly undergo
+\begin{enumerate}
+  \item idiosyncratic type changes (``mutation''),
+  \item random (partial) matching, and
+  \item match-induced type changes,
+\end{enumerate}
+and to show that such a system \emph{exists} on a probability space that avoids the usual measurability paradoxes, and that (under appropriate independence) the realized cross-sectional type distribution evolves \emph{deterministically} via an exact law of large numbers (ELLN).
+
+This note focuses on the \emph{discrete-time} system of DS2007. It does \emph{not} redo the full nonstandard proof, but it states the model and independence conditions precisely and explains the construction strategy and what it buys you.
+
+\subsection{Measure-theoretic ambient space: Fubini extensions}
+\label{subsec:fubini-extension-discrete}
+We follow Sun (2006) / Duffie--Sun (2007) and work on a Fubini extension.
+
+\begin{definition}[Fubini extension (Sun 2006, Def.\ 2.2; DS2007, Def.\ 2.1)]
+Let $(I,\mathcal I,\lambda)$ and $(\Omega,\mathcal F,P)$ be probability spaces. A probability space
+\[
+(I\times\Omega,\ \mathcal I\boxtimes\mathcal F,\ \lambda\boxtimes P)
+\]
+is a \emph{Fubini extension} of the usual product $(I\times\Omega,\mathcal I\otimes\mathcal F,\lambda\otimes P)$ if:
+\begin{enumerate}
+  \item $\mathcal I\otimes\mathcal F\subseteq \mathcal I\boxtimes\mathcal F$ and $\lambda\boxtimes P$ extends $\lambda\otimes P$; and
+  \item every $\lambda\boxtimes P$-integrable $f:I\times\Omega\to\mathbb R$ satisfies the usual Fubini equalities.
+\end{enumerate}
+\end{definition}
+
+\begin{remark}[Why we work on $\boxtimes$ rather than $\otimes$]
+On the usual product $\sigma$-algebra $\mathcal I\otimes\mathcal F$, joint measurability and a continuum of (essentially) independent random variables are incompatible except in degenerate cases (Sun 2006, Prop.\ 2.1). The Fubini extension $\mathcal I\boxtimes\mathcal F$ enlarges measurability while retaining Fubini.
+\end{remark}
+
+\subsection{Model primitives and objects (DS2007, Section 3.1)}
+\label{subsec:ds2007-discrete-model}
+
+\subsubsection{Agents, types, time}
+Fix a finite type space
+\[
+S=\{1,2,\dots,K\}.
+\]
+Time is discrete: $n=0,1,2,\dots$.
+
+Let $(I,\mathcal I,\lambda)$ be an atomless probability space of agents, and $(\Omega,\mathcal F,P)$ a probability space of randomization.
+Work on a Fubini extension $(I\times\Omega,\mathcal I\boxtimes\mathcal F,\lambda\boxtimes P)$.
+
+\subsubsection{State variables (type processes) and per-period randomizations}
+DS2007 represent the cross-sectional state via \emph{type functions} (end-of-period types) and intermediate-stage type functions.
+
+\begin{definition}[Type functions and stages (DS2007 notation)]
+An \emph{initial type function} is an $\mathcal I$-measurable map
+\[
+a_0:I\to S,
+\]
+with induced initial cross-sectional distribution $p^0\in\Delta(S)$ given by $p^0(k)=\lambda(a_0^{-1}(\{k\}))$.
+
+For each period $n\ge 1$, define:
+\begin{itemize}
+  \item \textbf{Mutation-stage type} $h_n:I\times\Omega\to S$ (type \emph{after} mutation, before matching).
+  \item \textbf{Partial matching map} $\pi_n:I\times\Omega\to I\cup\{J\}$, where $J$ denotes ``no match''.
+  \item \textbf{Partner-type process} $g_n:I\times\Omega\to S\cup\{J\}$ given by
+  \[
+  g_n(i,\omega)\coloneqq h_n(\pi_n(i,\omega),\omega),
+  \]
+  with the convention $h_n(J,\omega)=J$ (so $g_n(i,\omega)=J$ if $i$ is unmatched).
+  \item \textbf{End-of-period type} $a_n:I\times\Omega\to S$ (type after the match-induced type change).
+\end{itemize}
+The sequence $(a_n)_{n\ge 0}$ is the primary state process (types at the end of each period).
+\end{definition}
+
+\begin{remark}[``Rematching'' and uniqueness of partners]
+Each period has a new draw of $\pi_n$, so agents can be matched in many different periods (rematching over time). Within a fixed period $n$ each agent is either unmatched or matched to exactly one partner (a partial matching).
+\end{remark}
+
+\subsubsection{Parameters (primitives) \texorpdfstring{$(p^0,b,q,v)$}{(p0,b,q,v)}}
+DS2007 take as given:
+\begin{itemize}
+  \item an initial cross-sectional distribution $p^0\in\Delta(S)$;
+  \item a mutation transition matrix $b=(b_{k\ell})_{k,\ell\in S}$, where $b_{k\ell}\in[0,1]$ and $\sum_{\ell} b_{k\ell}=1$ for each $k$;
+  \item no-match probabilities $q=(q_k)_{k\in S}$ with $q_k\in[0,1]$;
+  \item match-induced type-change kernels $v=(v_{k\ell})_{k,\ell\in S}$, where for each $(k,\ell)$, $v_{k\ell}$ is a probability distribution on $S$ (write $v_{k\ell}(r)$ for the probability of new type $r$ for a type-$k$ agent matched with a type-$\ell$ agent).
+\end{itemize}
+
+\subsubsection{Per-stage distributional requirements (DS2007, Section 3.1)}
+DS2007 impose stage-by-stage conditional laws. Informally:
+\begin{itemize}
+  \item \textbf{Mutation:} conditional on $a_{n-1}(i,\cdot)=k$, the post-mutation type $h_n(i,\cdot)$ has law $b_{k\cdot}$.
+  \item \textbf{Partial matching:} conditional on $h_n(i,\cdot)=k$, the event ``unmatched'' has probability $q_k$, and if matched, the partner-type distribution is proportional to the current post-mutation cross-sectional type masses among those who are matched (DS2007 equation (3)).
+  \item \textbf{Type change:} conditional on $h_n(i,\cdot)=k$ and partner type $g_n(i,\cdot)=\ell$ (or $J$), the end-of-period type $a_n(i,\cdot)$ is distributed according to $v_{k\ell}$ (or stays at $k$ if unmatched), as in DS2007 equation (4).
+\end{itemize}
+
+\begin{remark}[Expected post-mutation distribution]
+DS2007 define the \emph{expected} post-mutation cross-sectional distribution by
+\[
+\bar p_{n-\frac12}(k)\coloneqq \int_\Omega \lambda(\{i\in I:\ h_n(i,\omega)=k\})\,dP(\omega).
+\]
+Under suitable independence (see below), Sun-style ELLN implies the \emph{realized} post-mutation mass $\lambda(\{i:h_n(i,\omega)=k\})$ equals $\bar p_{n-\frac12}(k)$ for $P$-a.e.\ $\omega$.
+\end{remark}
+
+\subsection{Independence: Markov conditional independence in types (DS2007, Section 3.2)}
+\label{subsec:markov-conditional-independence}
+
+The key condition is designed to ensure that each per-period stage is (essentially) independent across agents \emph{given the appropriate Markov state}, while allowing the across-time dependence that defines Markov chains.
+
+\begin{definition}[Markov conditional independence in types (DS2007, equations (5)--(7), informal)]
+Fix $n\ge 1$. The dynamical system is \emph{Markov conditionally independent in types} at time $n$ if, for $\lambda$-a.e.\ $i$ and $\lambda$-a.e.\ $j$:
+\begin{itemize}
+  \item \textbf{(Mutation step)} conditional on the current end-of-period types $a_{n-1}(i,\cdot)$ and $a_{n-1}(j,\cdot)$ (and the past), the random variables $h_n(i,\cdot)$ and $h_n(j,\cdot)$ are independent.
+  \item \textbf{(Partial matching step)} conditional on post-mutation types $h_n(i,\cdot)$ and $h_n(j,\cdot)$ (and the past and mutation outcomes), the random variables $g_n(i,\cdot)$ and $g_n(j,\cdot)$ are independent.
+  \item \textbf{(Type-changing step)} conditional on $(h_n(i,\cdot),g_n(i,\cdot))$ and $(h_n(j,\cdot),g_n(j,\cdot))$ (and the past), the random variables $a_n(i,\cdot)$ and $a_n(j,\cdot)$ are independent.
+\end{itemize}
+Moreover, each step is required to depend on the past only through the relevant Markov state(s) (the DS2007 conditioning $\sigma$-fields encode this precisely).
+\end{definition}
+
+\begin{remark}[Why this is the right condition for exact aggregation]
+Sun (2006) gives ELLN statements for essentially pairwise independent processes (and conditional variants). DS2007's condition is tailored so that, at each stage, the relevant cross-sectional quantities aggregate deterministically, and the end-of-period type process becomes a continuum of independent Markov chains.
+\end{remark}
+
+\subsection{Main existence theorem (DS2007, Theorem 3.1)}
+\label{subsec:theorem-3-1}
+
+\begin{theorem}[Existence of discrete-time matching dynamics (Duffie--Sun 2007, Thm.\ 3.1)]
+Fix parameters $(p^0,b,q,v)$ as above. There exists a Fubini extension
+\[
+(I\times\Omega,\mathcal I\boxtimes\mathcal F,\lambda\boxtimes P)
+\]
+of the usual product probability space and a dynamical system $(a_n,h_n,\pi_n,g_n)_{n\ge 1}$ with initial type function $a_0$ such that:
+\begin{itemize}
+  \item the mutation, partial matching, and match-induced type change steps have the prescribed conditional laws given by $(b,q,v)$; and
+  \item the system is Markov conditionally independent in types (in the DS2007 sense).
+\end{itemize}
+\end{theorem}
+
+\subsection{How the existence proof works (very high-level)}
+\label{subsec:proof-scheme}
+DS2007 prove the theorem using nonstandard analysis and Loeb measures.
+
+\begin{itemize}
+  \item \textbf{Hyperfinite agents:} start with a hyperfinite agent set $I=\{1,\dots,M\}$, with internal counting probability $\lambda_0(A)=|A|/M$, then Loeb-ize to get an atomless standard agent space $(I,\mathcal I,\lambda)$.
+
+  \item \textbf{Stage-by-stage internal transition probabilities:} each period has three randomization stages. DS2007 build these using internal transition probabilities (kernels) on hyperfinite spaces:
+  \begin{itemize}
+    \item mutation draws are built from a hyperfinite product space whose coordinate functions are \emph{internally independent} (transfer of finite-product independence),
+    \item matching draws use a hyperfinite space of partial matchings (extending the static perfect-matching construction), and
+    \item type-change draws are again coordinatewise products conditional on the realized post-mutation and partner types.
+  \end{itemize}
+
+  \item \textbf{Infinite-horizon gluing:} to combine all periods into one global sample space, DS2007 construct an infinite product of Loeb transition probabilities. The technical spine is:
+  \begin{itemize}
+    \item a generalized Fubini theorem for Loeb transition probabilities (DS2007 Theorem 5.1),
+    \item a generalized Ionescu--Tulcea theorem for the infinite product system (DS2007 Theorem 5.5),
+    \item and the resulting Fubini extension on the infinite product space (DS2007 Proposition 5.9).
+  \end{itemize}
+  This yields a standard probability space that supports the entire discrete-time dynamical system and preserves the Fubini property needed for iterated integrals and ELLN arguments.
+\end{itemize}
+
+\subsection{What you get after existence: deterministic aggregates via ELLN}
+\label{subsec:elln-implications-discrete}
+Once the relevant processes are essentially pairwise independent on a Fubini extension (or conditionally so, at each stage), Sun (2006) implies exact aggregation:
+\begin{itemize}
+  \item realized cross-sectional distributions (of $h_n$, $g_n$, $a_n$) coincide almost surely with their expectations;
+  \item the cross-sectional distribution of $a_n$ is deterministic and evolves according to a recursion determined by the micro transition primitives $(b,q,v)$ and the matching rule;
+  \item individual type paths $(a_n(i,\cdot))_{n\ge 0}$ form a continuum of independent Markov chains (in the precise DS2007/companion-paper sense).
+\end{itemize}
+
+\subsection{Bibliographic notes}
+\label{subsec:biblio}
+\begin{quote}
+D.\ Duffie and Y.\ Sun, \emph{Existence of independent random matching}, Annals of Applied Probability 17 (2007), 386--419.
+\end{quote}
+\begin{quote}
+Y.\ Sun, \emph{The exact law of large numbers via Fubini extension and characterization of insurable risks}, Journal of Economic Theory 126 (2006), 31--69.
+\end{quote}
+
+\end{document}
+
+
