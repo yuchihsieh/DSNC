@@ -13,3 +13,12 @@ Fubini extension: Sun 2006 and DS 2007
 * Setup PROJECT.md
 * both notes polished by "note revision" agent
 * Met with Ben. Next week to-dos listed.
+
+26.01.11
+* Reread DS07 Static and prepard pre to Kelvin.
+
+26.01.12
+* Study DS07 Discrete-time: properties, things before the existence proof.
+
+26.01.13
+* Study DS07 Discrete-time: the existence proof.

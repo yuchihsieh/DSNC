@@ -6,7 +6,7 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{cleveref}
 \usepackage{geometry}
-\geometry{margin=1.7in}
+\geometry{margin=2.5in}
 
 % Theorem environments
 \theoremstyle{definition}
@@ -220,6 +220,176 @@ D.\ Duffie and Y.\ Sun, \emph{Existence of independent random matching}, Annals 
 \begin{quote}
 Y.\ Sun, \emph{The exact law of large numbers via Fubini extension and characterization of insurable risks}, Journal of Economic Theory 126 (2006), 31--69.
 \end{quote}
+
+\appendix
+
+\section{Appendix: Hyperfinite, stage-by-stage construction (DS2007, Section 6 ``idea level'')}
+\label{app:hyperfinite-stage-by-stage}
+
+This appendix makes the stage-wise construction explicit on a \emph{hyperfinite} agent set, in the style of DS2007 Section~6. The goal is to see concretely how one produces
+\[
+(h_n,\pi_n,g_n,a_n) \quad\text{from}\quad (a_{n-1}; b,q,v)
+\]
+at the internal level, so that after Loeb-ization the model satisfies the desired conditional laws and (essential) conditional independence.
+
+\subsection{Hyperfinite agent set and internal counting measure}
+\label{app:hyperfinite-agents}
+Fix an unlimited hyperinteger $M\in{}^\ast\mathbb N$ and let
+\[
+I\coloneqq\{1,2,\dots,M\}\subset{}^\ast\mathbb N.
+\]
+Let $\mathcal I_0$ be the internal power set of $I$ (internal subsets), and define the internal counting probability measure
+\[
+\lambda_0(A)\coloneqq \frac{|A|}{M},\qquad A\in\mathcal I_0.
+\]
+Loeb-izing yields the standard (atomless) agent space $(I,\mathcal I,\lambda)$.
+
+\subsection{How DS2007 organizes time: three internal stages per period}
+\label{app:three-stages-per-period}
+DS2007's Section~6 indexes the randomness as an infinite sequence of internal sample spaces. For each period $n\ge 1$, there are three stages, which we can label as:
+\[
+\text{mutation stage }(3n-2),\qquad \text{matching stage }(3n-1),\qquad \text{type-change stage }(3n).
+\]
+At each stage, the random object is typically an internal function $\omega:I\to(\cdot)$ on the agent set, so that agent-level randomness is obtained by evaluation at $i$.
+
+\subsection{Mutation stage: product draw on $S^I$}
+\label{app:mutation-stage}
+\noindent\textbf{Input:} end-of-period type profile $a_{n-1}:I\to S$ (internal at the hyperfinite level).
+
+\medskip
+\noindent\textbf{Goal:} construct an internal random post-mutation profile $h_n:I\to S$ such that for each agent $i$ and types $k,\ell\in S$,
+\[
+P(h_n(i)=\ell\mid a_{n-1}(i)=k)=b_{k\ell},
+\]
+and such that (conditionally on $a_{n-1}$) the family $\{h_n(i)\}_{i\in I}$ is internally independent.
+
+\medskip
+\noindent\textbf{Construction:}
+Let $S^I$ denote the internal set of all internal functions $\omega:I\to S$, with internal power set $\mathcal F^{(3n-2)}_0$.
+For each agent $i\in I$, define the (internal) probability vector on $S$
+\[
+\gamma_i(\ell)\coloneqq b_{a_{n-1}(i),\ell}.
+\]
+Define an internal probability measure $Q^{(3n-2)}_0$ on $S^I$ by the hyperfinite product
+\[
+Q^{(3n-2)}_0 \coloneqq \bigotimes_{i\in I}\gamma_i.
+\]
+Then draw $\omega^{(3n-2)}\sim Q^{(3n-2)}_0$ and set
+\[
+h_n(i)\coloneqq \omega^{(3n-2)}(i).
+\]
+Because $Q^{(3n-2)}_0$ is a (hyperfinite) product measure, the coordinates are internally independent (finite-product independence transferred to hyperfinite products).
+
+\subsection{Matching stage: internal partial matching conditional on $h_n$}
+\label{app:matching-stage}
+\noindent\textbf{Input:} post-mutation type profile $h_n:I\to S$.
+
+\medskip
+\noindent\textbf{Goal:} construct an internal random partial matching $\pi_n:I\to I\cup\{J\}$ such that:
+\begin{itemize}
+  \item conditional on $h_n(i)=k$, $P(\pi_n(i)=J)=q_k$;
+  \item conditional on being matched, partner types follow the ``proportional to matched mass'' rule (DS2007 equation (3));
+  \item within a period, each agent is matched to at most one partner (partial matching).
+\end{itemize}
+
+\medskip
+\noindent\textbf{Encoding trick (fixed points = no match).}
+Instead of sampling $\pi_n$ directly, DS2007 effectively samples an internal bijection $\omega:I\to I$ such that:
+\begin{itemize}
+  \item $\omega(i)=i$ indicates \emph{no match} (a fixed point),
+  \item if $\omega(i)\neq i$ then $\omega(\omega(i))=i$ (two-cycles encode pairs).
+\end{itemize}
+Given such an $\omega$, define
+\[
+\pi_n(i)\coloneqq
+\begin{cases}
+J, & \omega(i)=i,\\
+\omega(i), & \omega(i)\neq i.
+\end{cases}
+\]
+This ensures that within period $n$ each agent is either unmatched or matched to exactly one partner.
+
+\medskip
+\noindent\textbf{How to choose the unmatched set with type-dependent probabilities.}
+For each $k\in S$, let
+\[
+A_k \coloneqq \{i\in I:\ h_n(i)=k\}\in \mathcal I_0
+\]
+be the internal set of post-mutation type-$k$ agents. DS2007 choose internal integers $m_k$ with
+\[
+\frac{m_k}{|A_k|}\approx q_k
+\]
+(infinitely close), and then choose internal subsets $B_k\subseteq A_k$ with $|B_k|=m_k$.
+Intuitively, $B_k$ is the set of type-$k$ agents designated ``unmatched.''
+
+\medskip
+\noindent\textbf{Uniform matching on the matched pool.}
+Let
+\[
+I^{\mathrm{match}}\coloneqq I\setminus \bigcup_{k\in S} B_k.
+\]
+On $I^{\mathrm{match}}$ (which is internally even-sized after suitable choice of $(m_k)$), sample a uniform random perfect matching (a fixed-point-free involution) and extend it by fixing each $i\in \bigcup_k B_k$.
+This yields an internal distribution over partial matchings consistent with $(q_k)$ and with the proportional-to-matched-mass partner-type rule.
+
+\subsection{Partner-type process and type-change stage}
+\label{app:type-change-stage}
+With $h_n$ and $\pi_n$ defined, set the partner-type process
+\[
+g_n(i)\coloneqq h_n(\pi_n(i))\in S\cup\{J\},
+\]
+using the convention $h_n(J)=J$.
+
+\medskip
+\noindent\textbf{Goal:} sample end-of-period types $a_n:I\to S$ such that:
+\begin{itemize}
+  \item if $g_n(i)=J$ then $a_n(i)=h_n(i)$ (no change when unmatched);
+  \item if $g_n(i)=\ell\in S$ then $a_n(i)$ is distributed as $v_{h_n(i),\ell}$;
+  \item conditional on $(h_n,g_n)$, the family $\{a_n(i)\}_{i\in I}$ is internally independent.
+\end{itemize}
+
+\medskip
+\noindent\textbf{Construction (another product draw on $S^I$).}
+For each agent $i$, define a probability measure $\xi_i$ on $S$ by:
+\[
+\xi_i \coloneqq
+\begin{cases}
+\delta_{h_n(i)}, & g_n(i)=J,\\
+v_{h_n(i),g_n(i)}, & g_n(i)\in S.
+\end{cases}
+\]
+Let $Q^{(3n)}_0\coloneqq \bigotimes_{i\in I}\xi_i$ be the internal product measure on $S^I$.
+Draw $\omega^{(3n)}\sim Q^{(3n)}_0$ and set $a_n(i)\coloneqq \omega^{(3n)}(i)$.
+
+\subsection{Why this stage-wise construction delivers ``conditional independence''}
+\label{app:why-conditional-independence}
+At the internal level, mutation and type-change stages are built from product measures on $S^I$, so conditional independence across agents is straightforward.
+The matching stage is subtler because matching is without replacement, but DS2007 show (via explicit hyperfinite counting bounds) that the dependence induced by the matching constraint vanishes in the Loeb ``essential'' sense (independence holds for $\lambda$-a.e.\ pair of agents), yielding their Markov conditional independence in types.
+
+\section{Appendix: Gluing across time via Loeb transition probabilities and generalized Ionescu--Tulcea}
+\label{app:ionescu-tulcea}
+
+The stage-wise constructions above specify, at each step, an internal \emph{transition probability} from the past to the next randomization outcome (a kernel).
+To obtain one global probability space supporting \emph{all} periods simultaneously, DS2007 build an infinite product of Loeb transition probabilities.
+
+\subsection{From internal transition probabilities to Loeb transition probabilities}
+\label{app:loeb-transition}
+An \emph{internal transition probability} assigns to each internal state $x$ an internal probability measure on a hyperfinite sample space.
+Loeb-izing these state-dependent internal measures yields a family of standard (Loeb) measures $\{P_x\}$, called a \emph{Loeb transition probability} in DS2007.
+
+\subsection{Generalized Fubini for Loeb transition probabilities (DS2007, Thm.\ 5.1)}
+\label{app:gen-fubini}
+DS2007 Theorem~5.1 is a Fubini-type theorem for the Loeb product $\lambda\boxtimes P$ when $P$ is a \emph{transition probability} (state-dependent family of measures) rather than a single fixed marginal.
+This is the technical tool that allows iterated integrals and section measurability in the presence of state-dependent kernels.
+
+\subsection{Generalized Ionescu--Tulcea for an infinite sequence of Loeb transition probabilities (DS2007, Thm.\ 5.5)}
+\label{app:gen-ionescu}
+Given a sequence of (Loeb) transition probabilities describing successive stages, DS2007 Theorem~5.5 constructs a unique countably additive probability measure on the infinite product $\sigma$-algebra that has the specified one-step kernels as its conditional distributions.
+This is the infinite-horizon analog of the classical Ionescu--Tulcea theorem for Markov kernels, adapted to the Loeb setting.
+
+\subsection{Resulting Fubini extension on the infinite product (DS2007, Prop.\ 5.9)}
+\label{app:fubini-extension-infinite}
+Finally, DS2007 Proposition~5.9 shows that the resulting infinite product space, equipped with the Loeb product measure, is again a Fubini extension of the corresponding usual product.
+This ensures the global space is rich enough (measurability) and still supports the Fubini manipulations needed to apply ELLN stage-by-stage across all periods.
 
 \end{document}
 

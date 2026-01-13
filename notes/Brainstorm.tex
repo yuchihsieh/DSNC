@@ -1,0 +1,73 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amssymb}
+\usepackage[hidelinks]{hyperref}
+\usepackage{geometry}
+\geometry{margin=1.7in}
+
+\title{Brainstorm: Versions of DSNC}
+\author{Yu-Chi Hsieh}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{One-shot (static) sparse network formation as a DSNC precursor}
+\label{sec:static}
+Given Duffie--Sun (2007)'s \emph{static} random matching construction, it is natural to ask whether one can build a \emph{one-shot} (static) random \emph{sparse network} on a continuum of agents as a precursor to DSNC.
+The ambition would be: define a random graph $G$ on a continuum agent space on a Fubini extension, such that agent-level local network objects (e.g.\ degrees, rooted neighborhoods) are jointly measurable and admit exact aggregation via ELLN.
+
+\medskip
+\noindent
+\textbf{Immediate key design choice: how to enforce sparsity (finite degree).}
+Naive ``independent edges across all pairs'' (graphon/Erd\H{o}s--R\'enyi on a continuum) typically yields infinite degree almost surely, so it is not appropriate for DSNC. Instead, one wants primitives that generate \emph{finite degree} almost surely (or at least with $\lambda$-probability one over agents).
+
+\medskip
+\noindent
+\textbf{Two natural static sparse constructions (high-level).}
+\begin{itemize}
+  \item \textbf{Stub/configuration-style:} assign each agent a random number of ``stubs'' $D_i\in\mathbb N$ (finite a.s.), then match stubs uniformly to form edges (allowing or ruling out loops/multiedges by design). This is very close in spirit to DS2007's hyperfinite matching arguments, except done on the collection of stubs rather than agents.
+  \item \textbf{Finite partner proposals per agent:} each agent draws $K_i$ potential partners (with $K_i$ finite a.s.), then apply a deterministic symmetrization/selection rule to produce an undirected network. This guarantees finite out-degree by construction, but the symmetrization step needs care.
+\end{itemize}
+
+\medskip
+\noindent
+\textbf{Degree bound vs.\ degree distribution.}
+A hard degree cap is not strictly necessary; often it is enough that degrees are finite a.s.\ (and possibly have finite mean) to capture ``sparse'' behavior and to support later nonexplosion arguments in continuous time.
+
+\section{Discrete-time DSNC as a stepping stone}
+\label{sec:discrete}
+While the ultimate goal of this project is a \emph{continuous-time} model of dynamic sparse networks on a continuum (DSNC), it is natural to consider a \emph{discrete-time} analogue as an intermediate step.
+In each period, one could sequentially apply a finite list of random updates, for example:
+\begin{itemize}
+  \item existing links break with some probability (possibly type-dependent);
+  \item agents form new links (``new friends'') via a random matching/search device (allowing the possibility of no match);
+  \item conditional on the realized network and current types, idiosyncratic type changes occur;
+  \item conditional on the realized links, link-induced type changes occur (influence transmission along edges);
+  \item record the updated network and types, and repeat next period.
+\end{itemize}
+This mirrors the Duffie--Sun (2007) discrete-time pattern of ``multi-stage randomization each period,'' except that the state now includes \emph{persistent links} (not just types).
+
+\subsection*{Why this is feasible (conceptually)}
+At a high level, a discrete-time DSNC can be organized as a Markov chain on a (large) state space, with each period consisting of a fixed sequence of conditional kernels.
+This matches the Duffie--Sun (2007) approach: define per-stage conditional laws and then prove existence of a probability space (typically via Loeb/Fubini-extension machinery) supporting the whole infinite sequence of stages while retaining a Fubini property.
+
+\subsection*{Main technical difficulties}
+The key challenges are not about discrete vs.\ continuous time, but about \emph{state space} and \emph{dependence induced by persistent links}:
+\begin{itemize}
+  \item \textbf{State space measurability/topology:} to leverage Sun (2006) exact LLN (ELLN) cleanly, one wants the agent-level state to live in a well-behaved measurable space (often Polish, or a projective limit of Polish truncations). For DSNC, the relevant ``type'' may encode a rooted finite-degree network neighborhood (rooted tree/graph with marks), which requires careful measurable/topological choices.
+  \item \textbf{Essential pairwise independence:} persistent edges create dependence between linked agents. One must prove an ``essential'' independence statement of the form: for $\lambda$-a.e.\ $i$, the state process of $i$ is independent of that of $j$ for $\lambda$-a.e.\ $j$ (possibly in a conditional/Markov sense), despite the fact that some pairs \emph{are} directly linked. In sparse continuum models, one hopes overlaps and direct interactions live on $\lambda\times\lambda$-null sets, but this must be proved in the chosen construction.
+  \item \textbf{Macro dynamics/closure:} even after establishing exact aggregation, the resulting deterministic evolution is typically an infinite-dimensional ODE (or measure-valued dynamics). Existence/uniqueness and useful closure properties (e.g.\ truncations, ``pair approximation is exact'') become separate mathematical tasks.
+\end{itemize}
+
+\subsection*{Why it still seems like a promising stepping stone}
+A discrete-time DSNC is a reasonable sandbox because it lets us reuse the Duffie--Sun/Sun pipeline at the right abstraction level:
+\begin{itemize}
+  \item build a rich probability space (Fubini extension / Loeb product) that supports a continuum of agent-indexed randomness jointly measurably;
+  \item structure the model period-by-period via conditional kernels (a DS2007-style ``Markov conditional independence'' template);
+  \item once the right notion of (conditional) essential pairwise independence is verified for the relevant cross-sectional process, apply Sun (2006) ELLN to obtain \emph{exact} deterministic aggregation.
+\end{itemize}
+If this works in discrete time, it clarifies what must be true in continuous time (DQS2025-style), and isolates the genuinely network-specific obstacles (state space and independence) from the time-parametrization issues.
+
+\end{document}
+
