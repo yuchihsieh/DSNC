@@ -1,24 +1,27 @@
-26.01.02
+2026-01-02
 Fubini extension: Sun 2006 and DS 2007
 
-26.01.07
+2026-01-07
 * discussed with GPT about internal sets --- why they are important to nonstandard analysis
 * 1st round understanding DS 2007 --- Fubini extension (By Keisler's thm) and then show essential pairwise independence: finite combinatorics -> hyperfinite O(1/N) -> infinitisimals -> independence
 * Goal tmr: DLS 2025, continuous time matching!
 
-26.01.08
+2026-01-08
 * Brief understanding of DLS 2025. More work to do to understand the details next week!
 
-26.01.09
+2026-01-09
 * Setup PROJECT.md
 * both notes polished by "note revision" agent
 * Met with Ben. Next week to-dos listed.
 
-26.01.11
+2026-01-11
 * Reread DS07 Static and prepard pre to Kelvin.
 
-26.01.12
+2026-01-12
 * Study DS07 Discrete-time: properties, things before the existence proof.
 
-26.01.13
+2026-01-13
 * Study DS07 Discrete-time: the existence proof.
+
+2026-01-14
+* Met with Kelvin: nonstandard analysis and static model (Fubini + essential pairwise uncorrelatedness)

@@ -422,3 +422,15 @@ With this enlarged state, one writes a micro generator $Q(\hat{p})$. Working on 
 
 
 
+
+**************
+* 2026-01-14 *
+**************
+
+Kelvin
+
+Progress
+- Went through the basics of nonstandard analysis and introduced static, one-shot model of random matching on a continuum of agents. Two keys: Fubini property (by Keisler) and essential pairwise uncorrelatedness (for ELLN).
+
+File
+- DS07_Static
