@@ -434,3 +434,15 @@ Progress
 
 File
 - DS07_Static
+
+
+
+**************
+* 2026-01-15 *
+**************
+
+Ben
+
+- Breifly updated progress
+- Learning is good. Cooking sth up (a static model with some microfoundation) is also important (this sounds like something Kelvin and I can work on now).
+- Talked about pitching this to Bruno and how to pitch (See meeting logs for details) 
